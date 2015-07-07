@@ -120,7 +120,7 @@
                                 @foreach ($product->photos as $photo)
                                     <li>
                                         <span class="delete" data-imagen="{!! $photo->id !!}" title="Eliminar imagen"><i class="icon-close"></i></span>
-                                        <a href="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url !!}" data-lightbox="gallery"><img src="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url_thumb !!}" alt="img" /></a>
+                                        <a href="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url !!}"><img src="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url_thumb !!}" alt="img" /></a>
                                     </li>
                                 @endforeach
 
@@ -129,7 +129,7 @@
 
                                 <li>
                                     <span class="delete" data-imagen="@{{ id }}" title="Eliminar imagen"><i class="icon-close"></i></span>
-                                    <a href="/media/products/@{{ product_id }}/@{{ url }}" data-lightbox="gallery"><img src="/media/products/@{{ product_id }}/@{{ url_thumb }}" alt="img" /></a>
+                                    <a href="/media/products/@{{ product_id }}/@{{ url }}" ><img src="/media/products/@{{ product_id }}/@{{ url_thumb }}" alt="img" /></a>
                                 </li>
 
 

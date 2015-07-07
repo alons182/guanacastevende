@@ -29,7 +29,7 @@
             <ul class="header__menu__ul">
                 <li class="header__menu__item"><a class="header__menu__link" href="#">Acerca de</a> </li>
                 <li class="header__menu__item"><a class="header__menu__link" href="{{ route('products_path') }}">Productos</a> </li>
-                <li class="header__menu__item"><a class="header__menu__link" href="#">Contactenos</a> </li>
+                <li class="header__menu__item"><a class="header__menu__link" href="{{ route('contact_path') }}">Contactenos</a> </li>
                 <li class="header__menu__item"><a class="header__menu__link" href="#">Blog</a> </li>
                 <li class="header__menu__item parent">
                     <span class="header__menu__link">Mi Cuenta</span>

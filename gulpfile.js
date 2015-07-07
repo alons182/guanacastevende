@@ -22,14 +22,15 @@ elixir(function(mix) {
          'tooltipster.css',
          'themes/tooltipster-diamante.css',
          'magnific-popup.css',
-         'li-scroller.css',*/
-         'lightbox.css',
+         'li-scroller.css',
+         'lightbox.css',*/
+         'magnific-popup.css',
          'select2.css',
          'main.css'
          ],'public/css/bundle.css','resources/assets/css')
 
         .styles([
-            'lightbox.css',
+            'magnific-popup.css',
             'admin.css'
         ],'public/css/backend.css','resources/assets/css')
 
@@ -37,6 +38,7 @@ elixir(function(mix) {
          'jquery-1.11.1.min.js',
          'jquery.cycle2.min.js',
          'jquery.hoverIntent.minified.js',
+         'jquery.magnific-popup.min.js',
          'select2.min.js',
          'handlebars-v3.0.3.js',
          'lightbox.min.js',
@@ -47,8 +49,9 @@ elixir(function(mix) {
 
         .scripts([
             //'jquery-1.11.1.min.js',
+            //'lightbox.min.js',
+            'jquery.magnific-popup.min.js',
             'handlebars-v3.0.3.js',
-            'lightbox.min.js',
             'ajaxupload.js',
             'holder.js',
             'admin.js'

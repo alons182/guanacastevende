@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
+use App\Mailers\ContactMailer;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 
@@ -15,13 +17,19 @@ class PagesController extends Controller
      * @var ProductRepository
      */
     private $productRepository;
+    /**
+     * @var ContactMailer
+     */
+    private $mailer;
 
     /**
      * @param ProductRepository $productRepository
+     * @param ContactMailer $mailer
      */
-    function __construct(ProductRepository $productRepository)
+    function __construct(ProductRepository $productRepository, ContactMailer $mailer)
     {
         $this->productRepository = $productRepository;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -38,13 +46,32 @@ class PagesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for contact.
      *
      * @return Response
      */
-    public function create()
+    public function Contact()
     {
-        //
+
+       return view('pages.contact');
+
+    }
+
+    /**
+     * @param ContactRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postContact(ContactRequest $request)
+    {
+
+        $data = $request->all();
+
+        $this->mailer->contact($data);
+
+        Flash('Mensaje enviado correctamente');
+
+        return Redirect()->route('contact_path');
+
     }
 
     /**

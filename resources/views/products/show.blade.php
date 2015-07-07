@@ -9,7 +9,7 @@
         <div class="product__media">
             <div class="product__img">
                 @if($product->image)
-                    <a class="product__img__link" href="{!! photos_path('products') !!}{!! $product->image !!}" data-lightbox="gallery">
+                    <a class="product__img__link" href="{!! photos_path('products') !!}{!! $product->image !!}">
                         <img class="img" src="{!! photos_path('products').'thumb_'.$product->image !!}" alt="{!! $product->name !!}" width="500"  height="400"/>
                     </a>
                 @else
@@ -22,7 +22,7 @@
                     <h3 class="product__media__title">Más imagenes</h3>
 
                     @foreach ($photos as $photo)
-                        <a class="product__media__gallery__link" href="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url !!}" data-lightbox="gallery">
+                        <a class="product__media__gallery__link" href="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url !!}">
                             <img src="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url !!}"
                                  data-src="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url!!}"
                                  alt="{!! $product->name !!}">

@@ -19,6 +19,14 @@ Route::get('/home', [
     'as'   => 'home',
     'uses' => 'PagesController@Home'
 ]);
+Route::get('/contact', [
+    'as'   => 'contact_path',
+    'uses' => 'PagesController@Contact'
+]);
+Route::post('contact', [
+    'as'   => 'contact.store',
+    'uses' => 'PagesController@postContact'
+]);
 /**
  * User & Profile
  */
