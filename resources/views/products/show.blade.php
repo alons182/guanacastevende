@@ -9,9 +9,9 @@
         <div class="product__media">
             <div class="product__img">
                 @if($product->image)
-                    <img src="{!! photos_path('products').'thumb_'.$product->image !!}" alt="{!! $product->name !!}" width="500"  height="400"/>
+                    <img class="img" src="{!! photos_path('products').'thumb_'.$product->image !!}" alt="{!! $product->name !!}" width="500"  height="400"/>
                 @else
-                    <img src="holder.js/481x531/text:No-image" alt="{!! $product->name !!}">
+                    <img class="img" src="holder.js/481x531/text:No-image" alt="{!! $product->name !!}">
                 @endif
             </div>
             @if (count($photos)>0)
