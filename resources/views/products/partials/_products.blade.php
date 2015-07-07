@@ -4,7 +4,7 @@
         <figure class="products__item__img">
             @if($product->image)
                 <a href="{!! URL::route('product_path', [$product->slug]) !!}">
-                    <img src="{!! photos_path('products') !!}/thumb_{!! $product->image !!}" alt="{!! $product->name !!}" />
+                    <img src="{!! photos_path('products') !!}thumb_{!! $product->image !!}" alt="{!! $product->name !!}" />
                  </a>
             @else
                 <a href="{!! URL::route('product_path', [$product->slug]) !!}">
