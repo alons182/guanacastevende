@@ -17,7 +17,7 @@ class ProductsTableSeeder extends Seeder {
     {
         $faker = Faker::create();
         $usersIds = User::lists('id')->all();
-        factory(Product::class, 10)->create([
+        factory(Product::class, 13)->create([
             'user_id'     => $faker->randomElement($usersIds),
         ]);
 
