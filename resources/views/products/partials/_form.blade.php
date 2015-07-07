@@ -6,7 +6,7 @@
         <div class="form">
 
             <div class="form__group">
-                {!! Form::label('name','Name:',['class'=>'col-sm-2 control-label']) !!}
+                {!! Form::label('name','Nombre:',['class'=>'col-sm-2 control-label']) !!}
 
                     {!! Form::text('name', null,['class'=>'form__control','required'=>'required']) !!}
                     {!! errors_for('name',$errors) !!}
@@ -29,7 +29,7 @@
 
             </div>
                 <div class="form__group">
-                    {!! Form::label('tags','Tags:',['class'=>'col-sm-2 control-label'])!!}
+                    {!! Form::label('tags','Etiquetas:',['class'=>'col-sm-2 control-label'])!!}
 
                         {!! Form::select('tags[]', $tags_list, isset($selected_tags) ? $selected_tags : null , ['multiple' => 'multiple','id'=>'tags','class'=>'form__control']) !!}
                         {!! errors_for('tags',$errors) !!}
@@ -37,7 +37,7 @@
                 </div>
 
             <div class="form__group">
-                {!! Form::label('description','Description:',['class'=>'col-sm-2 control-label'])!!}
+                {!! Form::label('description','Descripción:',['class'=>'col-sm-2 control-label'])!!}
 
                     {!! Form::textarea('description',null,['class'=>'form__control','id'=>'ckeditor','required'=>'required']) !!}
                     {!! errors_for('description',$errors) !!}
@@ -58,7 +58,7 @@
 
 
             <div class="form__group">
-                {!! Form::label('published','Published:',['class'=>'col-sm-2 control-label'])!!}
+                {!! Form::label('published','Publicado:',['class'=>'col-sm-2 control-label'])!!}
 
                     {!! Form::select('published', ['1' => 'Yes', '0' => 'No'], null,['class'=>'form__control selectpicker','required'=>'required']) !!}
                     {!! errors_for('published',$errors) !!}
@@ -85,7 +85,7 @@
         </header>
         <div class="panel-body">
             <div class="form__group">
-                {!! Form::label('image','Image:',['class'=>'col-sm-2 control-label'])!!}
+                {!! Form::label('image','Imagen:',['class'=>'col-sm-2 control-label'])!!}
 
 
                 {!! Form::file('image') !!}
@@ -104,7 +104,7 @@
             @endif
                 <div class="form__group">
 
-                {!! Form::label('gallery','Gallery:',['class'=>'control-label'])!!}
+                {!! Form::label('gallery','Galeria:',['class'=>'control-label'])!!}
                 @if(isset($product))
                     {!! Form::hidden('product_id',  $product->id) !!}
                 @endif
