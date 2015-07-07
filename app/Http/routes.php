@@ -27,6 +27,10 @@ Route::post('contact', [
     'as'   => 'contact.store',
     'uses' => 'PagesController@postContact'
 ]);
+Route::get('/about', [
+    'as'   => 'about_path',
+    'uses' => 'PagesController@About'
+]);
 /**
  * User & Profile
  */
