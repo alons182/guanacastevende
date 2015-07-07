@@ -698,6 +698,8 @@ img {
   left: 15%;
   color: #fff;
   text-transform: uppercase;
+  background-color: rgba(0,0,0,0.75);
+  padding: 1rem;
 }
 .banner__slide__link {
   position: absolute;

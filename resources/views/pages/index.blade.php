@@ -17,7 +17,7 @@
                     <a href="{!! URL::route('product_path', [$product->slug]) !!}" class="banner__slide__link"></a>
                 </div>
             @endforeach
-            
+
 
         </div>
     </div>
