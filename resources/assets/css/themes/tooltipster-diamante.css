@@ -1,0 +1,12 @@
+.tooltipster-diamante {
+	border-radius: 5px; 
+	border-bottom: 3px solid #5D2A0F; /*#ED202D;*/
+	background: #FBE4BA; /*#2a2a2a;*/
+	color: #000;
+}
+.tooltipster-diamante .tooltipster-content {
+	font-family: 'Century Gothic';
+	font-size: 14px;
+	line-height: 16px;
+	padding: 8px 10px;
+}

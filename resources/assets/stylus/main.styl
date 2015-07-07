@@ -1,0 +1,737 @@
+//@import "nib"
+@import "normalize.styl"
+@import "icons.styl"
+
+verde = #98AC31
+turquesa = #68C8CE
+azul = #25323D
+oscuro = #343434
+gris = #777777
+gris2 = #e5e5e5
+naranja = #FD6100
+
+*
+	box-sizing border-box
+*
+	&:after
+	&:before
+		box-sizing border-box
+
+
+body
+	font-family 'Lato', serif
+	font-size 80%
+	line-height 30px
+	background #FFF
+	color gris
+
+ul
+	margin 0
+	padding 0
+
+
+a
+	text-decoration none
+	transition all .5s ease
+
+
+h1
+h2
+h3
+h4
+h5
+	margin-top 0
+	font-weight 400
+h1
+	line-height 45px
+
+img
+	max-width 100%
+	height auto
+
+.right
+	right 0
+	float right
+.left
+	left 0
+	float left
+.txt-center
+	text-align center
+
+.no-padding
+	padding-left 0 !important
+	padding-right 0 !important
+.clear
+	clear both
+.transparent
+	background-color transparent
+.btn
+	//width 120px
+	height 45px
+	display block
+	padding 0 1rem
+	margin 0
+	color #FFF
+	font-size 12px
+	text-transform uppercase
+	text-align center
+	line-height 45px
+	background #000000
+	font-weight 400
+	border 0
+	text-shadow none
+	box-shadow none
+	border-radius 0
+	text-decoration none
+	display inline-block
+
+
+	&:hover
+		background-color verde
+		//border-color #d6d6d6
+		box-shadow 0 1px 1px gris
+		color white
+.btn-default
+	background-color #37BC9B
+	margin-left 1rem
+.btn-link
+	display inline-block
+	color verde
+
+.alert
+	padding 15px
+	margin-bottom 20px
+	border 1px solid #eed3d7
+	border-radius 4px
+	position absolute
+	top 0px
+	right 21px
+	/* Each alert has its own width */
+	float right
+	clear right
+	max-width 500px
+	z-index 999
+	.close
+		display none
+	&-block
+		padding 15px
+		margin-bottom 20px
+		border 1px solid #eed3d7
+		border-radius 4px
+		max-width 500px
+
+	&-info
+	&-success
+		color white
+		background-color #37BC9B
+	&-danger
+		color white
+		background-color #DA4453
+.inner
+	max-width 1280px
+	margin 0 auto
+	position relative
+	padding-left 1rem
+	padding-right 1rem
+@media screen and (min-width: 1024px)
+	body
+		font-size 100%
+
+.top
+	background-color oscuro
+	padding 1rem
+	display  none
+
+.search
+	&__input
+		width 70%
+		border 0
+		border-bottom: 1px solid #ffffff;
+		margin 0
+		background-color Transparent
+		background-image url('/img/icon-search.png')
+		background-position 10px center
+		background-repeat no-repeat
+		height 45px
+		line-height 45px
+		padding 0 0 0 50px
+		width 70%
+		font-size 20px
+		color #acacac
+		max-width 70%
+		font-weight 300
+		position relative
+		font-family 'Lato', Sans-Serif
+		outline none
+
+	&__button
+		background #282828
+		height 44px
+		border 1px solid #535353
+		text-align center
+		line-height 44px
+		color #FFF
+		text-transform uppercase
+		font-size 16px
+		width 20%
+		float right
+		cursor pointer
+		font-weight 400
+		&:hover
+			background-color white
+			color #000
+
+.header
+	border-bottom 1px solid gris2
+	height 82px
+	&__logo
+		display block
+		padding .65rem 0
+		float left
+		margin-right 2rem
+	&__menu
+		display none
+		text-align center
+		background-color oscuro
+		position absolute
+		left 0
+		right 0
+		top 82px
+		z-index 999
+
+		&__link
+			display block
+			padding .5rem
+			color white
+			text-transform uppercase
+			position relative
+			z-index 1
+			font-weight 300
+			cursor pointer
+			&:hover
+				background-color oscuro
+				color white
+	&__submenu
+		background-color #000
+		&__item
+			&:hover
+				background-color #000
+
+		&__link
+			color white
+			text-transform uppercase
+			font-weight 300
+			padding .5rem 1rem
+			display block
+			font-size .8rem
+			&:hover
+				color verde
+	&__btn-menu
+		position absolute
+		right 70px
+		top 0
+		color verde
+		font-size 2rem
+		border none
+		outline none
+		background-color transparent
+		line-height 82px
+	&__btn-search
+		position absolute
+		right 15px
+		top 20px
+		color verde
+		font-size 2rem
+		border 1px solid verde
+		outline none
+		background-color transparent
+		i:before
+			content "\f00d"
+		&.open
+			i:before
+				content "\f002"
+
+
+@media screen and (min-width: 1024px)
+	.header
+		&__menu
+			display block !important
+			position static
+			background-color transparent
+			float left
+
+			&__item
+				display inline-block
+				margin-right -4px
+				position relative
+				&:before
+					content ''
+					position absolute
+					height 40px
+					width 1px
+					top 20px
+					left 0
+					background-color gris2
+					z-index 0
+
+			&__link
+				color gris
+				padding 1.6rem 1.3rem
+		&__submenu
+			display none
+			position absolute
+			background-color oscuro
+			width 200px
+			top 82px
+			z-index 999
+			text-align left
+
+		&__btn-menu
+			display none
+
+.main
+	overflow hidden
+	min-height 530px
+
+.form
+	&__group
+		padding 0 0 15px 0
+		margin 0
+		position relative
+	&__control
+		height 36px
+		border 1px solid gris2
+		font-size 14px
+		color oscuro
+		font-weight 300
+		box-sizing border-box
+		width 100%
+		margin 0
+		outline 0
+		line-height 1
+		padding 1%
+	label
+		font-size 12px
+		color oscuro
+		font-weight 400
+		text-transform uppercase
+		display block
+	input[readonly="readonly"]
+		background-color gris2
+	.error
+		color #DA4453
+		font-size 12px
+	.input
+		&__group
+			&__btn
+				position absolute
+				right 0
+				top 25px
+			&__icon
+				position absolute
+				left 0
+				top 25px
+				top 30px
+				padding .2rem .8rem
+				background-color gris2
+				color oscuro
+			&--left
+				input
+					padding-left 2.5rem
+			&--right
+				input
+					padding-right 2.5rem
+
+@media screen and (min-width: 640px)
+	.form
+		&__control
+			max-width 100%
+.banner
+	display block
+	width 100%
+	border-bottom 1px solid white
+	border-left 1px solid white
+	&__slide
+		width 100%
+		height 540px
+		background-position center center
+		background-repeat no-repeat
+		background-size cover
+
+		&__title
+			font-size 3rem
+			font-weight 300
+			position absolute
+			top 25%
+			left 15%
+			color white
+			text-transform uppercase
+		&__link
+			position absolute
+			top 0
+			left 0
+			right 0
+			bottom 0
+
+
+	&__pager
+		position absolute
+		bottom 1rem
+		z-index 200
+		text-align center
+		left 0
+		right 0
+		span
+			font-size 2rem
+			color white
+			cursor pointer
+	.cycle-prev
+	.cycle-next
+		position absolute
+		top 40%
+		z-index 200
+		color white
+		font-size 4rem
+		cursor pointer
+		background-color oscuro
+		padding .5rem
+	.cycle-prev
+		left 0
+	.cycle-next
+		right 0
+.products__item
+	display block
+	width 100%
+	position relative
+	border-bottom 1px solid white
+	border-left 1px solid white
+	border-right 1px solid white
+	height 300px
+	overflow hidden
+	background-color gris2
+	&__img
+		img
+			width 100%
+	&__stick
+		position absolute
+		top 0
+		background-color rgba(oscuro,.75)
+		color white
+		left 0
+		padding 0.5rem .5rem .5rem 0
+		max-width 250px
+		overflow hidden
+		i
+			background-color #000
+			padding 1rem
+			margin-right 5px
+	&__info
+		position absolute
+		background-color oscuro
+		color white
+		left 0
+		bottom 0
+		right 0
+		font-size 1rem
+		color white
+	&__intro
+		font-size 1rem
+		line-height 20px
+		font-weight 300
+		margin-bottom 0
+	&__link
+		color white
+		display block
+		padding 1.2rem
+		&:before
+			float right
+			font-size 1.5rem
+		&:hover
+			&:before
+				color verde
+	&__edit
+		color white
+		background-color verde
+		padding .5rem
+		display block
+		position absolute
+		z-index 2
+		top 0
+		right 0
+		&:hover
+			background-color gris2
+.products__container
+.product__container
+	width 100%
+	margin 1rem 0
+
+.products__categories
+	width 100%
+	margin-top 2rem
+
+	&__title
+		color oscuro
+		text-transform uppercase
+		font-size 1.2rem
+	&__ul
+		list-style  none
+		margin 0
+	&__item
+		margin-bottom 10px
+	&__link
+		padding .5rem 1rem
+		display block
+		color oscuro
+		font-weight 300
+		border 1px solid gris2
+		position relative
+		&:before
+			float right
+
+		&:hover
+			border-top-color oscuro
+			&:before
+				color verde
+.product
+
+	&__media
+	&__info
+		width 100%
+		position relative
+	&__media
+		&__title
+			text-transform uppercase
+			color #000
+		&__gallery
+			&__link
+				display inline-block
+				padding .5rem
+				width 80px
+				height 80px
+				position relative
+				overflow hidden
+				img
+					position absolute
+					top 0
+					left 0
+					width 100%
+					height 100%
+	&__title
+		color #000
+	&__share
+		position relative
+		text-align  center
+		&__title
+			margin 0
+			display block
+			color #000
+
+		a
+			display inline-block
+			font-size 1.5rem
+			color verde
+			padding .5rem
+			vertical-align middle
+			&:hover
+				color #000
+.pagination-container
+	clear both
+	padding-top .5rem
+	padding-bottom .5rem
+	border-bottom 1px solid gris2
+	border-top 1px solid gris2
+	margin-top 1rem
+
+
+	li
+		display inline-block
+		&.disabled
+			span
+				padding .5rem
+				//background-color gris
+	a
+		display block
+		padding .5rem
+		color gris
+		line-height 20px
+	span
+		padding .7rem
+		display block
+		line-height 20px
+		color  verde
+		font-weight 700
+.profile
+	width 100%
+	margin-top 2rem
+	&__title
+		color oscuro
+		text-transform uppercase
+		font-size 1.2rem
+	&__edit-link
+		a
+			color verde
+			font-size 1rem
+	&__item
+		font-weight 300
+		margin-top 0
+		margin-bottom 10px
+		border 1px solid gris2
+		padding .5rem
+		strong
+			color oscuro
+.profile__edit
+.user__edit
+.product__edit__left
+.product__edit__right
+	width 100%
+	margin-top 2rem
+	&__title
+		color oscuro
+		text-transform uppercase
+		font-size 1.2rem
+	input[type='file']
+		height 45px !important
+		cursor pointer
+	#gallery
+		list-style none
+		margin-top 1rem
+		overflow hidden
+		li
+			float left
+			position relative
+			margin-right 3px
+		a
+			display block
+			padding .5rem
+			width 80px
+			height 80px
+			position relative
+			overflow hidden
+			img
+				position absolute
+				top 0
+				left 0
+				width 100%
+				height 100%
+		.delete
+			cursor pointer
+			&:hover
+				color red
+
+
+.login__page
+.register__page
+.reset__page
+	width 100%
+	&__title
+		color oscuro
+		text-transform uppercase
+		font-size 1.2rem
+@media screen and (min-width: 640px)
+	.products__item
+		width 50%
+		height 350px
+		float left
+@media screen and (min-width: 1024px)
+	.banner
+		width 75%
+		float left
+		&__slide
+			height 699px
+	.products__item
+		width 25%
+		height 350px
+	.products__container
+	.product__container
+		float right
+		width 74%
+		.products__item
+			width 33.33%
+	.product
+		&__share
+			position absolute
+			text-align  right
+			right 0
+			top 0
+			&__title
+				display inline-block
+				vertical-align middle
+		&__info
+			float left
+			width 60%
+
+		&__media
+			float right
+			width 30%
+	.pagination-container
+		width 74%
+		float right
+		text-align right
+		clear none
+	.products__categories
+		width 22.5%
+		float left
+
+	.profile
+		width 22.5%
+		float left
+	.profile__edit
+	.product__edit__left
+		width 50%
+		float left
+	.user__edit
+	.product__edit__right
+		width 30%
+		float right
+
+	.login__page
+	.register__page
+	.reset__page
+		width 40%
+		position absolute
+		top 2rem
+		left 50%
+		transform translate(-50%,0)
+
+
+
+
+.footer
+	overflow hidden
+	background-color oscuro
+	padding 1rem 0
+	text-align center
+	margin-top 1rem
+	.left
+		float none
+	.right
+		float none
+	&__menu
+		margin-bottom 1rem
+		&__item
+			display inline-block
+		&__link
+			font-weight 300
+			color white
+			padding .5rem
+	&__social
+		text-align center
+		&__link
+			color white
+			font-size 2rem
+			padding .5rem
+	&__copyright
+		text-align center
+		a
+			font-size 2rem
+			color white
+			display inline-block
+			vertical-align middle
+
+@media screen and (min-width: 640px)
+	.footer
+		text-align left
+		.left
+			float left
+		.right
+			float right

@@ -1,0 +1,43 @@
+button {
+    border: 0;
+    outline: 0;
+}
+.filtros
+{
+    margin-top: 10px;
+}
+
+.delete-multiple{
+    margin-top: 1px;
+    display: none;
+    position: absolute;
+}
+td.pagination
+{
+    /*text-align: center;*/
+}
+#container-gallery, #inputs_photos{
+    padding: 15px;
+}
+#container-gallery #gallery{
+    margin:0;padding:0;
+}
+
+#container-gallery #gallery li{
+    display:inline-block;
+    vertical-align:top;
+    border:5px solid #fff;
+    margin:5px;
+    position: relative;
+}
+
+#container-gallery #gallery li .delete{
+    cursor:pointer;
+    position:absolute;
+    color: red;
+    top: 0;
+    left: 0;
+
+}
+
+					
