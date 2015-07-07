@@ -17,10 +17,7 @@
                     <a href="{!! URL::route('product_path', [$product->slug]) !!}" class="banner__slide__link"></a>
                 </div>
             @endforeach
-            <!--<div class="banner__slide" style="background-image: url('img/banner2.jpg');">
-                <h2 class="banner__slide__title cursive2">Style</h2>
-                <a href="{!! URL::route('product_path', [$product->slug]) !!}" class="banner__slide__link">View Collection</a>
-            </div>-->
+            
 
         </div>
     </div>

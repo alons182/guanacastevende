@@ -3,9 +3,13 @@
 
         <figure class="products__item__img">
             @if($product->image)
-                <img src="{!! photos_path('products') !!}/thumb_{!! $product->image !!}" alt="{!! $product->name !!}" />
+                <a href="{!! URL::route('product_path', [$product->slug]) !!}">
+                    <img src="{!! photos_path('products') !!}/thumb_{!! $product->image !!}" alt="{!! $product->name !!}" />
+                 </a>
             @else
-                <img src="/js/holder.js/320x350/text:No-image" alt="{!! $product->name !!}" /></a>
+                <a href="{!! URL::route('product_path', [$product->slug]) !!}">
+                    <img src="/js/holder.js/320x350/text:No-image" alt="{!! $product->name !!}" /></a>
+                </a>
             @endif
 
         </figure>
