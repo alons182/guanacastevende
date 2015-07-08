@@ -4,6 +4,7 @@
 use App\Category;
 use App\Photo;
 use App\Product;
+use App\Tag;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 class ProductRepository extends DbRepository{
@@ -62,6 +63,24 @@ class ProductRepository extends DbRepository{
             $this->sync_tags($product, $data['tags']);
         }
         return $product;
+    }
+
+    /**
+     * Verifica los tag en el arreglo ( si no existe lo crea)
+     * @param $tagsArray
+     */
+    private function verifyTags($tagsArray)
+    {
+           $tagIds = [];
+           foreach ($tagsArray as $tag) {
+               $tag = trim($tag);
+               if ($tag == '') {
+                   continue;
+               }
+               $fTag = Tag::firstOrCreate( [ 'id' => $tag ] );
+
+               $tagIds[] = $fTag->id;
+           }
     }
 
     /**

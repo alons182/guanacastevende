@@ -144,7 +144,6 @@ class ProductsController extends Controller
      */
     public function update($id, ProductFrontRequest $request)
     {
-
         $this->productRepository->update($id, $request->all());
 
         Flash('Updated Product');

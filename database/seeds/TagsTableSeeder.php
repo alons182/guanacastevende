@@ -10,9 +10,19 @@ class TagsTableSeeder extends Seeder {
     /**
      *
      */
+    private $tags = [
+        'En oferta','Ganga', 'Financio','Urge Vender','Escucho ofertas','Con Garantía','Edición Limitada','Vendo por viaje',
+        'Llame yá !!','Perfecto estado','Vendo o cambio','Precio de oferta','Negociable','En buen estado'
+    ];
+
     public function run()
     {
-        factory(Tag::class, 10)->create();
+        foreach($this->tags as $tag)
+        {
+            factory(Tag::class, 1)->create([
+                'name' => $tag
+            ]);
+        }
 
     }
 }
