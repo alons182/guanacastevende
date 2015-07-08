@@ -1391,8 +1391,8 @@ table {
 }
 @font-face {
   font-family: 'guanacastevende';
-  src: url("/fonts/guanacastevende.eot?-2vkyj5");
-  src: url("/fonts/guanacastevende.eot?#iefix-2vkyj5") format('embedded-opentype'), url("/fonts/guanacastevende.ttf?-2vkyj5") format('truetype'), url("/fonts/guanacastevende.woff?-2vkyj5") format('woff'), url("/fonts/guanacastevende.svg?-2vkyj5#guanacastevende") format('svg');
+  src: url("/fonts/guanacastevende.eot?75g8hd");
+  src: url("/fonts/guanacastevende.eot?#iefix75g8hd") format('embedded-opentype'), url("/fonts/guanacastevende.ttf?75g8hd") format('truetype'), url("/fonts/guanacastevende.woff?75g8hd") format('woff'), url("/fonts/guanacastevende.svg?75g8hd#guanacastevende") format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -1426,6 +1426,9 @@ table {
 }
 .icon-times:before {
   content: "\f00d";
+}
+.icon-tag:before {
+  content: "\f02b";
 }
 .icon-phone:before {
   content: "\f095";
@@ -1916,12 +1919,18 @@ img {
   left: 0;
   padding: 0.5rem 0.5rem 0.5rem 0;
   max-width: 250px;
+  max-height: 46px;
   overflow: hidden;
 }
 .products__item__stick i {
   background-color: #000;
   padding: 1rem;
   margin-right: 5px;
+}
+.products__item__tag {
+  font-size: 12px;
+  background-color: #1ca038;
+  padding: 0.2rem;
 }
 .products__item__info {
   position: absolute;

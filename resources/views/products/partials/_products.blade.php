@@ -14,7 +14,10 @@
 
         </figure>
         <div class="products__item__stick">
-           <i class="icon-caret-right"></i> Stick
+           <i class="icon-tag"></i>
+            @foreach($product->tags as $tag)
+                <span class="products__item__tag">{!! $tag->name !!}</span>
+            @endforeach
         </div>
         <div class="products__item__info">
             <h2 class="products__item__intro">
