@@ -3,6 +3,7 @@
     var btnMenu = $('#btn-menu'),
         btnSearch = $('#btn-search'),
         menu = $('.header__menu'),
+        categories = $('.products__categories'),
         topSearch = $('.top'),
         btnEditSlug = $('.btn-edit-slug'),
         gallery = $('#gallery'),
@@ -33,6 +34,16 @@
         },
         out:  function() {
             $(this).find(">.header__submenu").slideUp(200);
+        },
+        timeout: 200
+
+    });
+    categories.find(".parent").hoverIntent({
+        over: function() {
+            $(this).find(">.products__categories__submenu").slideDown(200 );
+        },
+        out:  function() {
+            $(this).find(">.products__categories__submenu").slideUp(200);
         },
         timeout: 200
 

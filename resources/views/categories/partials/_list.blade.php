@@ -1,25 +1,39 @@
 <aside class="products__categories">
     <h2 class="products__categories__title">Categorias</h2>
-    <ul class="products__categories__ul">
-        @forelse($categories as $category)
-            <li class="products__categories__item">
-                <a class="products__categories__link icon-caret-right" href="{!! URL::route('category_products_path', $category->slug) !!}">{!! $category->name !!}</a>
-                @if($category->getImmediateDescendants())
-                <ul class="products__subcategories__ul">
-                    @foreach($category->getImmediateDescendants() as $subcategory)
 
-                    <li class="products__subcategories__item">
-                        <a class="products__subcategories__link icon-caret-right" href="{!! URL::route('category_products_path', $subcategory->slug) !!}">{!! $subcategory->name !!}</a>
-                    </li>
-                    @endforeach
-                </ul>
-                @endif
-            </li>
-        @empty
-            <li class="products__categories__item">
-                No se encontraron categorias
-            </li>
+    <?php
+    $roots = $categories;
 
-        @endforelse
+    echo "<ul class='products__categories__ul'>";
+    foreach ($roots as $root) renderNode($root);
+    echo "</ul>";
+
+    // *Very simple* recursive rendering function
+    function renderNode($node)
+    {
+        echo "<li class='products__categories__item parent'>";
+        if ($node->children()->count() <= 0)
+        {
+            echo '<a class="products__categories__link icon-caret-right" href="' . URL::route('category_products_path', $node->slug) . '">' . $node->name . '</a>';
+
+        } else
+        {
+            echo '<span class="products__categories__link icon-caret-right">' . $node->name . '</span>';
+        }
+
+        if ($node->children()->count() > 0)
+        {
+            echo "<ul class='products__categories__submenu'>";
+            foreach ($node->children as $child) renderNode($child);
+            echo "</ul>";
+        }
+
+        echo "</li>";
+
+    }
+    ?>
+
+
+
     </ul>
 </aside>
