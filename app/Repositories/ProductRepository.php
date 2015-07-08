@@ -176,22 +176,8 @@ class ProductRepository extends DbRepository{
     {
 
         $category = Category::searchSlug($category)->firstOrFail();
-        $products = $category->products()->with('categories')->where('published', '=', 1)->get();//->paginate(2);
-      
+        $products = $category->products()->with('categories')->where('published', '=', 1)->paginate($this->limit);
 
-        if($category->getImmediateDescendants()->count() > 0)
-        {
-            foreach($category->getImmediateDescendants() as $subcategory)
-            {
-                $productsSubCategory = $subcategory->products()->with('categories')->where('published', '=', 1)->get();
-                foreach($productsSubCategory as $p)
-                {
-                    $products->push($p);
-                }
-            }
-        }
-
-        //dd($products);
         return $products;
     }
 
