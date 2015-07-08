@@ -1918,7 +1918,6 @@ img {
   color: #fff;
   left: 0;
   padding: 0.5rem 0.5rem 0.5rem 0;
-  max-width: 250px;
   max-height: 46px;
   overflow: hidden;
 }
@@ -1928,7 +1927,7 @@ img {
   margin-right: 5px;
 }
 .products__item__tag {
-  font-size: 12px;
+  font-size: 11px;
   background-color: #1ca038;
   padding: 0.2rem;
 }
