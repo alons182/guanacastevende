@@ -13,7 +13,7 @@
     <div class="clear"></div>
 @stop
 @section('scripts')
-    <script src="/vendor/ckeditor/ckeditor.js"></script>
+    <!--<script src="/vendor/ckeditor/ckeditor.js"></script>
     <script>
 
         CKEDITOR.replace( 'ckeditor' , {
@@ -21,5 +21,5 @@
             forcePasteAsPlainText : true,
             removePlugins : 'sourcearea'
         });
-    </script>
+    </script>-->
 @stop

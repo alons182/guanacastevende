@@ -22,7 +22,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
 
         view()->composer('categories/partials._list', function($view) use ($categoryRepository){
 
-            $view->with('categories', $categoryRepository->listCategories());
+            $view->with('categories', $categoryRepository->getParents());
         });
 
 

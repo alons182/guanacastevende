@@ -52,7 +52,8 @@ class CategoriesController extends Controller {
 	 */
 	public function create()
 	{
-        return View('admin.categories.create');
+        $options = $this->categoryRepository->getParentsAndChildrenList();
+        return View('admin.categories.create')->with(compact('options'));
 	}
 
     /**
@@ -82,8 +83,8 @@ class CategoriesController extends Controller {
 	public function edit($id)
 	{
         $category = $this->categoryRepository->findById($id);
-
-        return View('admin.categories.edit')->withCategory($category);
+        $options = $this->categoryRepository->getParentsAndChildrenList();
+        return View('admin.categories.edit')->withCategory($category)->withOptions($options);
 	}
 
     /**
@@ -159,6 +160,66 @@ class CategoriesController extends Controller {
         $this->categoryRepository->update_state($id, 0);
 
         return Redirect()->route('categories');
+    }
+    /**
+     * Move the specified page up.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function up($id)
+    {
+        return $this->move($id, 'before');
+    }
+
+    /**
+     * Move the specified page down.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function down($id)
+    {
+        return $this->move($id, 'after');
+    }
+
+    /**
+     * Move the page.
+     *
+     * @param  int $id
+     * @param  'before'|'after' $dir
+     *
+     * @return Response
+     */
+    protected function move($id, $dir)
+    {
+        $category = $this->categoryRepository->findById($id);
+        $response = Redirect()->route('categories');
+
+        if (! $category->isRoot())
+        {
+            try
+            {
+                ($dir === 'before') ? $category->moveLeft() : $category->moveRight();
+                Flash('Category moved');
+
+                return $response;
+
+            } catch (moveExp $ex)
+            {
+                dd('error');
+                Flash('The category did not move');
+
+                return $response;
+            }
+
+
+        }
+        Flash('The category did not move');
+
+        return $response;
     }
     /**
 	 * Remove the specified resource from storage.

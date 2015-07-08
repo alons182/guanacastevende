@@ -5,8 +5,10 @@ use App\Category;
 use App\Photo;
 use App\Product;
 use App\Tag;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 class ProductRepository extends DbRepository{
 
 
@@ -172,10 +174,24 @@ class ProductRepository extends DbRepository{
      */
     public function findByCategory($category)
     {
+
         $category = Category::searchSlug($category)->firstOrFail();
+        $products = $category->products()->with('categories')->where('published', '=', 1)->get();//->paginate(2);
+      
 
-        $products = $category->products()->with('categories')->where('published', '=', 1)->paginate($this->limit);
+        if($category->getImmediateDescendants()->count() > 0)
+        {
+            foreach($category->getImmediateDescendants() as $subcategory)
+            {
+                $productsSubCategory = $subcategory->products()->with('categories')->where('published', '=', 1)->get();
+                foreach($productsSubCategory as $p)
+                {
+                    $products->push($p);
+                }
+            }
+        }
 
+        //dd($products);
         return $products;
     }
 

@@ -35,9 +35,9 @@
 
             </div>
             <div class="form-group">
-                {!! Form::label('categories','Categorias:',['class'=>'col-sm-2 control-label'])!!}
+                {!! Form::label('categories','Categoria:',['class'=>'col-sm-2 control-label'])!!}
                 <div class="col-sm-10">
-                {!! Form::select('categories[]', $categories_list, isset($selected_categories) ? $selected_categories : null , ['multiple' => 'multiple','class'=>'form-control','required'=>'required']) !!}
+                {!! Form::select('categories[]', ['' => ''] + $categories_list, isset($selected_categories) ? $selected_categories : null , ['class'=>'form-control','required'=>'required']) !!}
                 {!! errors_for('categories',$errors) !!}
                 </div>
             </div>

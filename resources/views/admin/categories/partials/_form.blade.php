@@ -34,6 +34,14 @@
 
 
             </div>
+            <div class="form-group">
+                {!! Form::label('parent_id','Categoria Padre:',['class'=>'col-sm-2 control-label'])!!}
+                <div class="col-sm-10">
+                    {!! Form::select('parent_id', ($options) ?  ['root' => 'Root'] + $options : ['root' => 'Root']  , null , ['class'=>'form-control','required'=>'required']) !!}
+                    {!! errors_for('parent_id',$errors) !!}
+                </div>
+
+            </div>
 
 
             <div class="form-group">

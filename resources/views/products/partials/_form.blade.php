@@ -12,16 +12,8 @@
                     {!! errors_for('name',$errors) !!}
 
             </div>
-            <div class="form__group">
-                {!! Form::label('slug','Slug:',['class'=>'col-sm-2 control-label']) !!}
-                    <div class="input__group input__group--right">
-                        {!! Form::text('slug', null,['class'=>'form__control', 'readonly']) !!}
-                        <span class="input__group__btn">
-                            <button class="btn btn-white btn-edit-slug" type="button">Edit!</button>
-                        </span>
-                        {!! errors_for('slug',$errors) !!}
-                    </div>
-            </div>
+               {!! Form::hidden('slug', null,['class'=>'form__control', 'readonly']) !!}
+
             <div class="form__group">
                 {!! Form::label('categories','Categorias:',['class'=>'col-sm-2 control-label'])!!}
                 {!! Form::select('categories[]', $categories_list, isset($selected_categories) ? $selected_categories : null , ['multiple' => 'multiple','id'=>'categories','class'=>'form__control','required'=>'required']) !!}

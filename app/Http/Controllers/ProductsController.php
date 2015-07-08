@@ -8,10 +8,12 @@ use App\Http\Requests\ProductFrontRequest;
 use App\Repositories\PhotoRepository;
 use App\Repositories\ProductRepository;
 use App\Tag;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 
 class ProductsController extends Controller
@@ -66,6 +68,18 @@ class ProductsController extends Controller
             $products = $this->productRepository->findByCategory($category);
 
         $q = (isset($search['q'])) ? $search['q'] : '';
+
+        // Paginate
+        $perPage = 2; // Item per page (change if needed)
+        //$currentPage = $request->get('page') - 1;
+        //dd($currentPage);
+        //$pagedData = $products->slice($currentPage * $perPage, $perPage)->all();
+
+        $products = new Paginator($products, count($products), $perPage, null,[
+            'path'  => $request->url(),
+            'query' => $request->query(),
+        ]);
+        //dd($products);
 
         return view('products.index')->with(compact('products','q','category'));
     }

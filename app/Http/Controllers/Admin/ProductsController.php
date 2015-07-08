@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ProductRequest;
+use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
 use App\Tag;
 use Illuminate\Http\Request;
@@ -16,13 +17,19 @@ class ProductsController extends Controller {
      * @var ProductRepository
      */
     private $productRepository;
+    /**
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
 
     /**
      * @param ProductRepository $productRepository
+     * @param CategoryRepository $categoryRepository
      */
-    function __construct(ProductRepository $productRepository)
+    function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository)
     {
         $this->productRepository = $productRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
 
@@ -58,7 +65,7 @@ class ProductsController extends Controller {
      */
     public function create()
     {
-        $categories_list = Category::lists('name', 'id');
+        $categories_list = $this->categoryRepository->getParentsAndChildrenList(); //Category::lists('name', 'id');
         $tags_list = Tag::lists('name', 'id');
         return View('admin.products.create')->with(compact('categories_list','tags_list'));
     }
@@ -91,7 +98,7 @@ class ProductsController extends Controller {
     {
 
         $product = $this->productRepository->findById($id);
-        $categories_list = Category::lists('name', 'id')->all();
+        $categories_list = $this->categoryRepository->getParentsAndChildrenList();//Category::lists('name', 'id')->all();
         $tags_list = Tag::lists('name', 'id')->all();
         $selected_categories = $product->categories()->select('categories.id AS id')->lists('id')->all();
         $selected_tags = $product->tags()->select('tags.id AS id')->lists('id')->all();

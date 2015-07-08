@@ -1,12 +1,13 @@
 <?php namespace App;
 
+use Baum\Node;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model {
+class Category extends Node {
 
     protected $table = 'categories';
     protected $fillable = [
-        'name', 'slug', 'description', 'image', 'published', 'featured'
+        'name', 'slug', 'description', 'image', 'published', 'featured','parent_id'
     ];
 
     public function scopeSearch($query, $search)
@@ -27,13 +28,13 @@ class Category extends Model {
         });
     }
 
-    /*public function scopeSearchParent($query, $search)
+    public function scopeSearchParent($query, $search)
     {
         return $query->where(function ($query) use ($search)
         {
             $query->where('parent_id', '=', $search);
         });
-    }*/
+    }
 
     public function scopeFeatured($query)
     {
@@ -53,4 +54,5 @@ class Category extends Model {
     {
         return $this->belongsToMany('App\Product');
     }
+
 }

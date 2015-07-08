@@ -45,6 +45,13 @@ class Handler extends ExceptionHandler
         {
             return redirect()->home(); //response()->view('errors.'.'404');
         }
+        if ($e instanceof MoveNotPossibleException)
+        {
+            flash($e);
+            return redirect()->route('categories');
+
+        }
+
         return parent::render($request, $e);
     }
 }

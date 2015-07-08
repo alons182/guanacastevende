@@ -147,6 +147,7 @@ return [
         App\Providers\ViewComposerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Baum\Providers\BaumServiceProvider::class,
 
     ],
 

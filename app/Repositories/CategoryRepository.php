@@ -98,7 +98,7 @@ class CategoryRepository extends DbRepository{
             $categories = $categories->where('published', '=', $search['published']);
         }
 
-        return $categories->orderBy('created_at','desc')->paginate($this->limit);
+        return $categories->orderBy('created_at','desc')->orderBy('lft')->paginate($this->limit);
     }
 
     /**
@@ -116,9 +116,62 @@ class CategoryRepository extends DbRepository{
 
 
 
+    /**
+     * get categories parents for the format to view the category select
+     * @return array
+     */
+    public function getParentsAndChildrenList()
+    {
+        $all = $this->model->select('id', 'name', 'depth')->orderBy('lft')->get();
+
+        $result = array();
+
+        foreach ($all as $item)
+        {
+            $name = $item->name;
+            if ($item->depth > 0) $name = str_repeat('—', $item->depth) . ' ' . $name;
+            $result[ $item->id ] = $name;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Get parents categories
+     * @param $category
+     * @return mixed
+     */
+    public function getParents()
+    {
+        $categories = $this->model->roots()->get();
+
+        return $categories;
+    }
+    /**
+     * Get children categories from one category
+     * @param $category
+     * @return mixed
+     */
+    public function getChildren($category)
+    {
+
+        $category = $this->model->whereSlug($category)->first();
+        $subcategories = $category->descendants()->lists('name', 'slug')->all();
+
+        return $subcategories;
+    }
+
     private function prepareData($data)
     {
         $data['slug'] = ($data['slug']=="") ? Str::slug($data['name']) : $data['slug'];
+
+        if (! $data['parent_id'])
+        {
+            $data = array_except($data, array('parent_id'));
+        }
+
+        if($data['parent_id'] == 'root')
+            $data['parent_id'] = NULL;
 
         return $data;
     }
