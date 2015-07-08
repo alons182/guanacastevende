@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests\ProductFrontRequest;
 
+use App\Repositories\CategoryRepository;
 use App\Repositories\PhotoRepository;
 use App\Repositories\ProductRepository;
 use App\Tag;
@@ -27,16 +28,22 @@ class ProductsController extends Controller
      * @var PhotoRepository
      */
     private $photoRepository;
+    /**
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
 
     /**
      * @param ProductRepository $productRepository
      * @param PhotoRepository $photoRepository
+     * @param CategoryRepository $categoryRepository
      */
-    function __construct(ProductRepository $productRepository, PhotoRepository $photoRepository)
+    function __construct(ProductRepository $productRepository, PhotoRepository $photoRepository, CategoryRepository $categoryRepository)
     {
         $this->productRepository = $productRepository;
         $this->middleware('auth',['only' =>['create','store','edit','update','destroy']]);
         $this->photoRepository = $photoRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -80,7 +87,7 @@ class ProductsController extends Controller
     public function create()
     {
 
-        $categories_list = Category::lists('name', 'id');
+        $categories_list = $this->categoryRepository->getParentsAndChildrenList();//Category::lists('name', 'id');
         $tags_list = Tag::lists('name', 'id');
 
         return View('products.create')->with(compact('categories_list','tags_list'));
@@ -129,7 +136,8 @@ class ProductsController extends Controller
 
         if(auth()->user()->id != $product->user_id) return redirect()->home();
 
-        $categories_list = Category::lists('name', 'id')->all();
+        $categories_list = $this->categoryRepository->getParentsAndChildrenList(true);//Category::lists('name', 'id')->all();
+
         $tags_list = Tag::lists('name', 'id')->all();
         $selected_categories = $product->categories()->select('categories.id AS id')->lists('id')->all();
         $selected_tags = $product->tags()->select('tags.id AS id')->lists('id')->all();

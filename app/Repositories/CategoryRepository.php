@@ -115,12 +115,12 @@ class CategoryRepository extends DbRepository{
     }
 
 
-
     /**
      * get categories parents for the format to view the category select
+     * @param bool $group
      * @return array
      */
-    public function getParentsAndChildrenList()
+    public function getParentsAndChildrenList($group = false)
     {
         $all = $this->model->select('id', 'name', 'depth')->orderBy('lft')->get();
 
@@ -131,6 +131,8 @@ class CategoryRepository extends DbRepository{
             $name = $item->name;
             if ($item->depth > 0) $name = str_repeat('—', $item->depth) . ' ' . $name;
             $result[ $item->id ] = $name;
+
+
         }
 
         return $result;

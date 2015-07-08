@@ -16,7 +16,7 @@
 
             <div class="form__group">
                 {!! Form::label('categories','Categorias:',['class'=>'col-sm-2 control-label'])!!}
-                {!! Form::select('categories[]', $categories_list, isset($selected_categories) ? $selected_categories : null , ['multiple' => 'multiple','id'=>'categories','class'=>'form__control','required'=>'required']) !!}
+                {!! Form::select('categories[]', ['' => ''] + $categories_list, isset($selected_categories) ? $selected_categories : null , ['id'=>'categories','class'=>'form__control','required'=>'required']) !!}
                 {!! errors_for('categories',$errors) !!}
 
             </div>
