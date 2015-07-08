@@ -162,6 +162,8 @@
     });
 
     //gallery
+    var photos = 0,
+        inputsPhotos = $("#inputs_photos");
     $("#add_input_photo").on('click', function (e) {
         photos++;
 

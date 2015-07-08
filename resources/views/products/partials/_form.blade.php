@@ -83,7 +83,7 @@
             <h1 class="product__edit__right__title">Imagen Principal</h1>
 
         </header>
-        <div class="panel-body">
+        <div class="form">
             <div class="form__group">
                 {!! Form::label('image','Imagen:',['class'=>'col-sm-2 control-label'])!!}
 
