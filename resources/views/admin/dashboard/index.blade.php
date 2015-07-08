@@ -71,7 +71,7 @@
                     </div>
                     <div>
 
-                        <a href="/admin/categories">
+                        <a href="/admin/tags">
                             <h3 class="no-margin">{{ $tt }}</h3>
                             Tags
                         </a>

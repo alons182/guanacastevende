@@ -2030,6 +2030,7 @@ img {
 }
 .product__title {
   color: #000;
+  margin-bottom: 0;
 }
 .product__share {
   position: relative;
@@ -2049,6 +2050,15 @@ img {
 }
 .product__share a:hover {
   color: #000;
+}
+.product__tags {
+  padding: 0.3rem;
+}
+.product__tags__item {
+  background-color: #1ca038;
+  padding: 0.3rem;
+  color: #fff;
+  font-size: 12px;
 }
 .pagination-container {
   clear: both;

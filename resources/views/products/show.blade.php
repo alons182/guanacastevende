@@ -39,6 +39,11 @@
             <h1 class="product__title">
                 {!! $product->name !!}
             </h1>
+            <div class="product__tags">
+                @foreach($product->tags as $tag)
+                    <span class="product__tags__item">{!! $tag->name !!}</span>
+                @endforeach
+            </div>
             <div class="product__description">
                 {!! $product->description !!}
             </div>
