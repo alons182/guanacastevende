@@ -478,6 +478,7 @@ img
 .product__container
 .contact__form
 .contact__address
+.reviews__container
 	width 100%
 	margin 1rem 0
 
@@ -623,6 +624,14 @@ img
 		padding .5rem
 		strong
 			color oscuro
+.animated
+	transition height 0.2s
+
+.stars
+	margin 20px 0
+	font-size 24px
+	color #d17581
+
 .profile__edit
 .user__edit
 .product__edit__left
@@ -684,6 +693,32 @@ img
 			color #000
 .about
 	margin-top 2rem
+.reviews
+	&__title
+		color #000
+	hr
+		border 1px solid gris2
+	.glyphicon
+		color verde
+	&__author__link
+		color gris
+		&:hover
+			color verde
+			text-decoration underline
+.ratings
+	margin-bottom 1rem
+	.glyphicon
+		color verde
+	p
+		margin 0
+	a
+		color verde
+		text-decoration underline
+		&:hover
+			text-decoration none
+.stars
+	display block
+
 @media screen and (min-width: 640px)
 	.products__item
 		width 50%
@@ -701,6 +736,7 @@ img
 	.products__container
 	.product__container
 	.contact__form
+	.reviews__container
 		float right
 		width 74%
 		.products__item

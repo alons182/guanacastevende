@@ -242,13 +242,14 @@ table {
 }
 @font-face {
   font-family: 'guanacastevende';
-  src: url("/fonts/guanacastevende.eot?75g8hd");
-  src: url("/fonts/guanacastevende.eot?#iefix75g8hd") format('embedded-opentype'), url("/fonts/guanacastevende.ttf?75g8hd") format('truetype'), url("/fonts/guanacastevende.woff?75g8hd") format('woff'), url("/fonts/guanacastevende.svg?75g8hd#guanacastevende") format('svg');
+  src: url("/fonts/guanacastevende.eot?-sts7x8");
+  src: url("/fonts/guanacastevende.eot?#iefix-sts7x8") format('embedded-opentype'), url("/fonts/guanacastevende.ttf?-sts7x8") format('truetype'), url("/fonts/guanacastevende.woff?-sts7x8") format('woff'), url("/fonts/guanacastevende.svg?-sts7x8#guanacastevende") format('svg');
   font-weight: normal;
   font-style: normal;
 }
 [class^="icon-"],
-[class*=" icon-"] {
+[class*=" icon-"],
+[class*=" glyphicon-"] {
   font-family: 'guanacastevende';
   speak: none;
   font-style: normal;
@@ -268,6 +269,14 @@ table {
 }
 .icon-envelope-o:before {
   content: "\f003";
+}
+.icon-star:before,
+.glyphicon-star:before {
+  content: "\f005";
+}
+.icon-star-o:before,
+.glyphicon-star-empty:before {
+  content: "\f006";
 }
 .icon-close:before {
   content: "\f00d";
@@ -826,7 +835,8 @@ img {
 .products__container,
 .product__container,
 .contact__form,
-.contact__address {
+.contact__address,
+.reviews__container {
   width: 100%;
   margin: 1rem 0;
 }
@@ -992,6 +1002,14 @@ img {
 .profile__item strong {
   color: #343434;
 }
+.animated {
+  transition: height 0.2s;
+}
+.stars {
+  margin: 20px 0;
+  font-size: 24px;
+  color: #d17581;
+}
 .profile__edit,
 .user__edit,
 .product__edit__left,
@@ -1090,6 +1108,41 @@ img {
 .about {
   margin-top: 2rem;
 }
+.reviews__title {
+  color: #000;
+}
+.reviews hr {
+  border: 1px solid #e5e5e5;
+}
+.reviews .glyphicon {
+  color: #1ca038;
+}
+.reviews__author__link {
+  color: #777;
+}
+.reviews__author__link:hover {
+  color: #1ca038;
+  text-decoration: underline;
+}
+.ratings {
+  margin-bottom: 1rem;
+}
+.ratings .glyphicon {
+  color: #1ca038;
+}
+.ratings p {
+  margin: 0;
+}
+.ratings a {
+  color: #1ca038;
+  text-decoration: underline;
+}
+.ratings a:hover {
+  text-decoration: none;
+}
+.stars {
+  display: block;
+}
 @media screen and (min-width: 640px) {
   .products__item {
     width: 50%;
@@ -1111,13 +1164,15 @@ img {
   }
   .products__container,
   .product__container,
-  .contact__form {
+  .contact__form,
+  .reviews__container {
     float: right;
     width: 74%;
   }
   .products__container .products__item,
   .product__container .products__item,
-  .contact__form .products__item {
+  .contact__form .products__item,
+  .reviews__container .products__item {
     width: 33.33%;
   }
   .product__share {

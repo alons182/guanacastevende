@@ -36,6 +36,9 @@ class ViewComposerServiceProvider extends ServiceProvider {
         view()->composer('profiles/edit', function($view) {
             $view->with('currentUser', Auth::user());
         });
+        view()->composer('profiles/reviews', function($view){
+            $view->with('currentUser', Auth::user());
+        });
 
 
         view()->composer('admin/dashboard/index', function($view) {

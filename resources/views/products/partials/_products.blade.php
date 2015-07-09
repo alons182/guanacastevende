@@ -1,3 +1,4 @@
+
 @forelse($products as $product)
     <div class="products__item">
 

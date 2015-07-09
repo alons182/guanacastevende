@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->tinyInteger('active')->default(1);
+            $table->float('rating_cache',2,1)->unsigned()->default(3.0);
+            $table->integer('rating_count')->unsigned()->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

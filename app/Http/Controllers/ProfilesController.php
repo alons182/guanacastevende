@@ -25,6 +25,7 @@ class ProfilesController extends Controller
     {
         $this->userRepository = $userRepository;
         $this->middleware('currentUser', ['only' => ['edit', 'update']]);
+
     }
 
 
@@ -38,8 +39,8 @@ class ProfilesController extends Controller
     public function show($username)
     {
         $user = $this->userRepository->findByUsername($username);
-
-        return View('profiles.show')->with(compact('user'));
+        $reviews = $user->reviews()->approved()->notSpam()->orderBy('created_at','desc')->paginate(100);
+        return View('profiles.show')->with(compact('user','reviews'));
     }
 
     /**

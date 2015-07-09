@@ -17,7 +17,7 @@
 
                         <div class="form">
                             <div class="form__group">
-                                <label class="col-md-4 control-label">E-Mail Address</label>
+                                <label class="col-md-4 control-label">Tu correo electrónico</label>
                                 <div class="col-md-6">
                                     <input type="email" class="form__control" name="email" value="{{ old('email') }}">
                                 </div>

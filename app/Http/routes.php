@@ -34,6 +34,14 @@ Route::get('/about', [
 /**
  * User & Profile
  */
+Route::post('profile/{user}/reviews',[
+    'as' => 'profile_review',
+    'uses' => 'UsersController@postReview'
+]);
+Route::get('profile/{user}/reviews',[
+    'as' => 'profile_reviews',
+    'uses' => 'UsersController@Reviews'
+]);
 Route::resource('users', 'UsersController');
 
 Route::resource('profile', 'ProfilesController', [

@@ -24,6 +24,7 @@ elixir(function(mix) {
          'magnific-popup.css',
          'li-scroller.css',
          'lightbox.css',*/
+         'starrr.css',
          'magnific-popup.css',
          'select2.css',
          'main.css'
@@ -43,6 +44,8 @@ elixir(function(mix) {
          'handlebars-v3.0.3.js',
          'lightbox.min.js',
          'ajaxupload.js',
+         'expanding.js',
+         'starrr.js',
          'holder.js',
          'main.js'
          ],'public/js/bundle.js','resources/assets/js')

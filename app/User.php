@@ -71,6 +71,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * Relationship with the Review model
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
+
+    /**
      * create a profile
      * @param null $profile
      * @return mixed
@@ -127,5 +136,18 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function removeRole($role)
     {
         return $this->roles()->detach($role);
+    }
+
+    // The way average rating is calculated (and stored) is by getting an average of all ratings,
+    // storing the calculated value in the rating_cache column (so that we don't have to do calculations later)
+    // and incrementing the rating_count column by 1
+
+    public function recalculateRating()
+    {
+        $reviews = $this->reviews()->notSpam()->approved();
+        $avgRating = $reviews->avg('rating');
+        $this->rating_cache = round($avgRating,1);
+        $this->rating_count = $reviews->count();
+        $this->save();
     }
 }
