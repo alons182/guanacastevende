@@ -85,11 +85,13 @@
                 </thead>
                 <tbody>
 
+                @if($option)
                     <tr>
                         <td>{!! $option->name !!}</td>
                         <td> {!! money($option->price,'₡') !!}</td>
 
                     </tr>
+                @endif
                     <tr>
                         <td> Etiqueta: {!! $product->tags->first()->name  !!}</td>
                         <td> {!! money($product->tags->first()->price,'₡') !!}</td>
@@ -99,7 +101,7 @@
                 </tbody>
 
             </table>
-            <h1 class="product__payment__title">Total: {!! money($product->tags->first()->price + $option->price, '₡') !!}</h1>
+            <h1 class="product__payment__title">Total: {!! money($product->tags->first()->price + ($option) ? $option->price : 0, '₡') !!}</h1>
         </div>
 
 

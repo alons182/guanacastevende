@@ -194,7 +194,7 @@ class ProductsController extends Controller {
     {
 
         $product = $this->productRepository->findById($productId);
-        $option = Option::findOrFail($product->option_id);
+        $option = ($product->option_id) ? Option::findOrFail($product->option_id) : null;
         return view('products.payment')->with(compact('product','option'));
     }
 
