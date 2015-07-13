@@ -11,6 +11,12 @@
 |
 */
 
+Route::group(['prefix' => 'api/v1'], function(){
+    Route::get('products/{id}/tags', 'Api\TagsController@index');
+    Route::resource('products','Api\ProductsController');
+    Route::resource('tags','Api\TagsController',['only' => ['index','show']]);
+
+});
 Route::get('/', [
     'as'   => 'home',
     'uses' => 'PagesController@Home'
@@ -58,7 +64,14 @@ Route::get('/products', [
     'as'   => 'products_path',
     'uses' => 'ProductsController@index'
 ]);
-
+Route::get('/products/{product}/payment',[
+    'as'   => 'product_payment',
+    'uses' => 'ProductsController@payment'
+]);
+Route::post('/products/payment',[
+    'as'   => 'product_payment.store',
+    'uses' => 'ProductsController@postPayment'
+]);
 Route::get('/products/create',[
     'as'   => 'product_create',
     'uses' => 'ProductsController@create'

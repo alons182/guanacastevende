@@ -39,8 +39,8 @@ class PagesController extends Controller
      */
     public function Home()
     {
-        $featured = $this->productRepository->getFeatured();
-        $products = $this->productRepository->getAllExceptFeatured();
+        $featured = $this->productRepository->getFeaturedBanner();
+        $products = $this->productRepository->getFeatured();
 
         return view('pages.index')->with(compact('products','featured'));
     }

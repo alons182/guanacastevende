@@ -61,4 +61,11 @@ $factory->define(App\Category::class, function ($faker) {
         'featured'    => 0,
     ];
 });
+$factory->define(App\Option::class, function ($faker) {
+    return [
+        'name'        => $faker->word,
+        'price'   => 100,
+        'description' => $faker->text(),
+    ];
+});
 

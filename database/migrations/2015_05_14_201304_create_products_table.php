@@ -21,8 +21,9 @@ class CreateProductsTable extends Migration {
             $table->string('slug');
             $table->text('description')->nullable();
             $table->double('price', 15, 2)->default(0);
+            $table->integer('option_id')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('published')->default(1);
+            $table->boolean('published')->default(0);
             $table->boolean('featured')->default(0);
 			$table->timestamps();
 		});

@@ -67,8 +67,9 @@ class ProductRepository extends DbRepository{
         return $product;
     }
 
+
     /**
-     * Verifica los tag en el arreglo ( si no existe lo crea)
+     * Verifica los tag en el arreglo ( si no existe lo crea) no esta funcionado actualmente
      * @param $tagsArray
      */
     private function verifyTags($tagsArray)
@@ -205,12 +206,24 @@ class ProductRepository extends DbRepository{
 
         if (isset($search['published']) && $search['published'] != "")
         {
-            $products = $products->where('published', '=', $search['published']);
+           $products = $products->where('published', '=', $search['published']);
         }
+
 
         return $products->with('categories')->orderBy('created_at', 'desc')->paginate($this->limit);
     }
 
+    /**
+     * Get all the featured products for the store
+     * @return mixed
+     */
+    public function getFeaturedBanner()
+    {
+
+        $products = $this->model->FeaturedBanner()->orderBy('created_at','DESC')->get();
+
+        return $products;
+    }
     /**
      * Get all the featured products for the store
      * @return mixed
@@ -251,6 +264,8 @@ class ProductRepository extends DbRepository{
     private function prepareData($data)
     {
         $data['slug'] = ($data['slug']=="") ? Str::slug($data['name']) : $data['slug'];
+        $data['option'] =( isset($data['option']) ) ? $data['option'] : 0;
+        $data['tags'] =( isset($data['tags']) ) ? $data['tags'] : [];
 
         return $data;
     }

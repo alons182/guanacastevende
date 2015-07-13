@@ -71,6 +71,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * Relationship with the Payment model
+     * @return mixed
+     */
+    public function payments()
+    {
+        return $this->hasMany('App\Payment');
+    }
+
+    /**
      * Relationship with the Review model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

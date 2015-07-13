@@ -4,7 +4,10 @@
             <h1 class="product__edit__left__title">Editando Producto</h1>
         </header>
         <div class="form">
-
+            <div class="form__group">
+                {!! Form::submit(isset($buttonText) ? $buttonText : 'Agregar Producto',['class'=>'btn btn-primary'])!!}
+                {!! link_to_route('profile.show',  'Regresar', (isset($product)) ? $product->user->username : Auth::user()->username, ['class'=>'btn btn-default'])!!}
+            </div>
             <div class="form__group">
                 {!! Form::label('name','Nombre:',['class'=>'col-sm-2 control-label']) !!}
 
@@ -20,13 +23,14 @@
                 {!! errors_for('categories',$errors) !!}
 
             </div>
-                <div class="form__group">
+                <!--<div class="form__group">
                     {!! Form::label('tags','Etiquetas:',['class'=>'col-sm-2 control-label'])!!}
 
                         {!! Form::select('tags[]', $tags_list, isset($selected_tags) ? $selected_tags : null , ['multiple' => 'multiple','id'=>'tags','class'=>'form__control']) !!}
                         {!! errors_for('tags',$errors) !!}
 
-                </div>
+                </div>-->
+
 
             <div class="form__group">
                 {!! Form::label('description','Descripción:',['class'=>'col-sm-2 control-label'])!!}
@@ -47,8 +51,24 @@
                     </div>
 
             </div>
+            <div class="form__group">
+                {!! Form::label('option','Opciones:',['class'=>'col-sm-2 control-label'])!!}
+                @foreach($options_list as $option)
+                    <input type="checkbox" value="{!! $option->id !!}" name="option_id" {!! (isset($product)) ? ($product->option_id == $option->id) ? 'checked="checked"' : '' : '' !!}> <b>{!! $option->name !!}</b> <br />
+                    <div class="option__description">
+                        {!! $option->description !!}
+                    </div>
+                @endforeach
 
+            </div>
+            <div class="form__group">
+                {!! Form::label('tags','Etiquetas:',['class'=>'col-sm-2 control-label'])!!}
+                @foreach($tags_list as $tag)
+                    <input type="checkbox" value="{!! $tag->id !!}" name="tags[]" {!! isset($selected_tags[0]) ? ($tag->id == $selected_tags[0]) ? 'checked="checked"' : '' : '' !!}> {!! $tag->name !!} - {!! $tag->price !!} <br />
+                @endforeach
+            </div>
 
+            @if(isset($product))
             <div class="form__group">
                 {!! Form::label('published','Publicado:',['class'=>'col-sm-2 control-label'])!!}
 
@@ -57,12 +77,10 @@
 
 
             </div>
+            @endif
 
 
-            <div class="form__group">
-            {!! Form::submit(isset($buttonText) ? $buttonText : 'Agregar Producto',['class'=>'btn btn-primary'])!!}
-            {!! link_to_route('profile.show',  'Regresar', (isset($product)) ? $product->user->username : Auth::user()->username, ['class'=>'btn btn-default'])!!}
-            </div>
+
 
         </div>
     </section>

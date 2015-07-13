@@ -40,6 +40,10 @@ class ViewComposerServiceProvider extends ServiceProvider {
             $view->with('currentUser', Auth::user());
         });
 
+        view()->composer('products/payment', function($view) {
+            $view->with('currentUser', Auth::user());
+        });
+
 
         view()->composer('admin/dashboard/index', function($view) {
             $view->with('currentUser', Auth::user());

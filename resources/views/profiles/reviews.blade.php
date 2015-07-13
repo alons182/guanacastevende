@@ -10,6 +10,9 @@
     <article class="reviews reviews__container">
         @include('profiles.partials.reviews')
     </article>
+    @if ($reviews)
+        <div class="pagination-container">{!! $reviews->render() !!}</div>
+    @endif
     <div class="clear"></div>
 
 @stop

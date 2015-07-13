@@ -79,7 +79,7 @@ class UsersController extends Controller
     {
 
         $user = $this->userRepository->findByUsername($username);
-        $reviews = $user->reviews()->approved()->notSpam()->orderBy('created_at','desc')->paginate(100);
+        $reviews = $user->reviews()->approved()->notSpam()->orderBy('created_at','desc')->paginate(10);
 
 
         return view('profiles.reviews')->with(compact('user','reviews'));

@@ -39,8 +39,7 @@ class ProfilesController extends Controller
     public function show($username)
     {
         $user = $this->userRepository->findByUsername($username);
-        $reviews = $user->reviews()->approved()->notSpam()->orderBy('created_at','desc')->paginate(100);
-        return View('profiles.show')->with(compact('user','reviews'));
+        return View('profiles.show')->with(compact('user'));
     }
 
     /**
