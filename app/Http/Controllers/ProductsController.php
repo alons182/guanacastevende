@@ -207,12 +207,12 @@ class ProductsController extends Controller {
     {
         $product = $this->productRepository->findById($request->input('product_id'));
 
-        $option = Option::findOrFail($product->option_id);
-        $descriptionPayment = $option->name. ' '.$option->price. ' - Etiqueta: '. $product->tags->first()->name. ' ' .$product->tags->first()->price;
+        $option = ($product->option_id) ? Option::findOrFail($product->option_id) : null;
+        $descriptionPayment = ($option) ? $option->name. ' '.$option->price : ''. ' - Etiqueta: '. $product->tags->first()->name. ' ' .$product->tags->first()->price;
 
         $input = array_add($request->all(), 'user_id',auth()->user()->id);
         $input = array_add($input, 'description',$descriptionPayment);
-        $input = array_add($input, 'amount', $option->price + $product->tags->first()->price );
+        $input = array_add($input, 'amount', ($option) ? $option->price : 0 + $product->tags->first()->price );
 
         $payment = $this->paymentRepository->store($input);
 
