@@ -30,7 +30,7 @@ class Product extends Model {
     {
         return $query->where(function ($query)
         {
-            $query->where('option', '=', 2)
+            $query->where('option_id', '=', 2)
                 ->where('featured', '=', 1)
                 ->where('published', '=', 1);
         });
@@ -39,7 +39,7 @@ class Product extends Model {
     {
         return $query->where(function ($query)
         {
-            $query->where('option', '<>', 2)
+            $query->where('option_id', '<>', 2)
                 ->where('featured', '=', 1)
                 ->where('published', '=', 1);
         });
@@ -48,7 +48,7 @@ class Product extends Model {
     {
         return $query->where(function ($query)
         {
-            $query->where('option', '<>', 2)
+            $query->where('option_id', '<>', 2)
                 ->where('featured', '<>', 1)
                 ->where('published', '=', 1);
         });
