@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration {
             $table->text('description')->nullable();
             $table->double('price', 15, 2)->default(0);
             $table->integer('option_id')->nullable();
+            $table->string('message_option')->nullable();
             $table->string('image')->nullable();
             $table->boolean('published')->default(0);
             $table->boolean('featured')->default(0);

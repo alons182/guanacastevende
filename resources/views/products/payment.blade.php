@@ -4,19 +4,18 @@
 @section('meta-description')Creando un nuevo producto @stop
 @section('content')
 
+    <div class="payment">
+        {!! Form::open(['route'=>'product_payment.store', 'class'=>'form-horizontal']) !!}
+        <div class="left-section">
+            <h1 class="payment__title">Opciones de pago</h1>
 
-    {!! Form::open(['route'=>'product_payment.store', 'class'=>'form-horizontal']) !!}
-    <div class="product__payment__left">
-        <header class="panel-heading">
-            <h1 class="product__payment__title">Opciones de pago</h1>
-        </header>
-        <div class="payment__methods">
-            <span class="pull-left left"><input type="radio" value="1" name="payment_method" checked data-method="card"> Datafono Tarjeta de credito o debito</span>
-            <span class="pull-right right"><input type="radio" value="2" name="payment_method" data-method="paypal"> Paypal</span>
-        </div>
-        <section class="panel payment__method__card">
+            <div class="payment__methods">
+                <span class="pull-left left"><input type="radio" value="1" name="payment_method" checked data-method="card"> Datafono Tarjeta de credito o debito</span>
+                <span class="pull-right right"><input type="radio" value="2" name="payment_method" data-method="paypal"> Paypal</span>
+            </div>
+            <section class="panel payment__method__card">
 
-            <div class="form">
+                <div class="form">
                     <!-- First name Form Input -->
                     <div class="form__group">
                         {!! Form::label('first_name', 'Nombre:') !!}
@@ -56,57 +55,52 @@
                     </div>
 
 
-                <div class="form__group">
-                    {!! Form::submit('Pagar', ['class' => 'btn btn-primary']) !!}
+                    <div class="form__group">
+                        {!! Form::submit('Pagar', ['class' => 'btn btn-primary']) !!}
+                    </div>
+
                 </div>
+            </section>
+            <section class="panel payment__method__paypal">
+                    <h1 class="payment__title">Paypal</h1>
 
-            </div>
-        </section>
-        <section class="panel payment__method__paypal">
-            <header class="panel-heading">
-                <h1 class="product__payment__title">Paypal</h1>
-            </header>
 
-        </section>
+            </section>
 
-</div>
-    <div class="product__payment__right">
-        <h1 class="product__payment__title">Opciones compradas</h1>
-        {!! Form::hidden('product_id', $product->id,['class'=>'form__control', 'readonly']) !!}
-
-        <div class="table-responsive options-table">
-
-            <table class="table table-striped  table-bordered table-responsive">
-                <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Precio</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                @if($option)
-                    <tr>
-                        <td>{!! $option->name !!}</td>
-                        <td> {!! money($option->price,'₡') !!}</td>
-
-                    </tr>
-                @endif
-                    <tr>
-                        <td> Etiqueta: {!! $product->tags->first()->name  !!}</td>
-                        <td> {!! money($product->tags->first()->price,'₡') !!}</td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-            <h1 class="product__payment__title">Total: {!! money($product->tags->first()->price + ($option) ? $option->price : 0, '₡') !!}</h1>
         </div>
+        <div class="right-section">
+            <h1 class="payment__title">Opciones compradas</h1>
+            {!! Form::hidden('product_id', $product->id,['class'=>'form__control', 'readonly']) !!}
 
+            <div class="table-responsive payment__options-table">
+
+                <table class="table table-striped  table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Precio</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    @foreach($items as $item)
+                        <tr>
+                            <td>{!! $item['name'] !!}</td>
+                            <td> {!! money($item['price'],'₡') !!}</td>
+                        </tr>
+                    @endforeach
+
+                    </tbody>
+
+                </table>
+                <h1 class="payment__title">Total: {!! money($total, '₡') !!} </h1>
+            </div>
+
+
+        </div>
+        {!! Form::close() !!}
 
     </div>
-{!! Form::close() !!}
 
 @stop
 

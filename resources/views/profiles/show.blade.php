@@ -3,11 +3,11 @@
 @section('meta-description')Perfil de {!! $user->username !!}@stop
 @section('content')
 
-
-    <section class="profile">
+<div class="profile">
+    <section class="profile__info">
         @include('profiles.partials.profile-info')
     </section>
-    <article class="products__container">
+    <article class="products__items">
         @if ($user->isCurrent())
             <div class="pull-right right">{!! link_to_route('products.create','Nuevo Producto',null,['class'=>'btn btn-success']) !!}</div>
         @endif
@@ -19,5 +19,7 @@
         @endif
     </article>
     <div class="clear"></div>
+</div>
+
 
 @stop

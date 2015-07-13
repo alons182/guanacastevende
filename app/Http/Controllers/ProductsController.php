@@ -114,13 +114,13 @@ class ProductsController extends Controller {
 
         $product = $this->productRepository->store($input, Auth()->user());
 
-        Flash('Product Created');
+
 
 
         if ($product->option_id == 0 && $product->tags->count() == 0 )
         {
             $this->productRepository->update_state($product->id, 1);
-
+            flash('Producto Creado correctamente');
             return Redirect()->route('profile.show', Auth()->user()->username);
         }
 
@@ -140,6 +140,7 @@ class ProductsController extends Controller {
     public function show($slug)
     {
         $product = $this->productRepository->findBySlug($slug);
+
         $photos = $this->photoRepository->getPhotos($product->id);
 
         return view('products.show')->with(compact('product', 'photos'));
@@ -195,7 +196,38 @@ class ProductsController extends Controller {
 
         $product = $this->productRepository->findById($productId);
         $option = ($product->option_id) ? Option::findOrFail($product->option_id) : null;
-        return view('products.payment')->with(compact('product','option'));
+        $items = [];
+        $total = 0;
+        if($option)
+        {
+            $optionItem = [
+
+                        'name' => $option->name,
+                        'price' => $option->price
+                    ];
+
+            $items[] = $optionItem;
+
+        }
+
+        if($product->tags->count())
+        {
+            $tagItem =[
+
+                    'name' => $product->tags->first()->name,
+                    'price' => $product->tags->first()->price
+
+
+            ];
+            $items[] = $tagItem;
+
+        }
+        foreach($items as $item)
+        {
+            $total += $item['price'];
+        }
+
+        return view('products.payment')->with(compact('product','items', 'total'));
     }
 
     /**
@@ -205,14 +237,7 @@ class ProductsController extends Controller {
      */
     public function postPayment(PaymentRequest $request)
     {
-        $product = $this->productRepository->findById($request->input('product_id'));
-
-        $option = ($product->option_id) ? Option::findOrFail($product->option_id) : null;
-        $descriptionPayment = ($option) ? $option->name. ' '.$option->price : ''. ' - Etiqueta: '. $product->tags->first()->name. ' ' .$product->tags->first()->price;
-
-        $input = array_add($request->all(), 'user_id',auth()->user()->id);
-        $input = array_add($input, 'description',$descriptionPayment);
-        $input = array_add($input, 'amount', ($option) ? $option->price : 0 + $product->tags->first()->price );
+        $input = $request->all();
 
         $payment = $this->paymentRepository->store($input);
 

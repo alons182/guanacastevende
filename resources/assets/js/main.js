@@ -51,6 +51,15 @@
 
 
     $("input[name='option_id']").on('click', checkOnlyOne);
+    $("input[name='option_id']").on('click', function(){
+       if( $(this).attr('value') == 4 ){
+           $(this).siblings('input[type="text"]').attr('disabled',false);
+
+       }else
+       {
+           $(this).siblings('input[type="text"]').attr('disabled',true);
+       }
+    });
     $("input[name='tags[]']").on('click', checkOnlyOne);
     function checkOnlyOne()
     {

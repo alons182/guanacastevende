@@ -4,7 +4,7 @@
         @endif
 
     </small></h2>
-<div class="ratings">
+<div class="profile__ratings">
     <p class="pull-right right">{!! link_to_route('profile_reviews', 'Calificaciones: '.$user->rating_count, $user->username) !!}</p>
     <p>
         @for ($i=1; $i <= 5 ; $i++)

@@ -7,7 +7,7 @@ class Product extends Model {
     protected $table = 'products';
 
     protected $fillable = [
-        'user_id','name', 'slug', 'description', 'price','option_id', 'image', 'published', 'featured'
+        'user_id','name', 'slug', 'description', 'price','option_id', 'message_option', 'image', 'published', 'featured'
     ];
 
     public function scopeSearch($query, $search)

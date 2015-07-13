@@ -131,6 +131,86 @@ img
 	&-danger
 		color white
 		background-color #DA4453
+.form
+	&__group
+		padding 0 0 15px 0
+		margin 0
+		position relative
+	&__control
+		height 36px
+		border 1px solid gris2
+		font-size 14px
+		color oscuro
+		font-weight 300
+		box-sizing border-box
+		width 100%
+		margin 0
+		outline 0
+		line-height 1
+		padding 1%
+	textarea
+		height 150px
+	label
+		font-size 12px
+		color oscuro
+		font-weight 400
+		text-transform uppercase
+		display block
+	input[readonly="readonly"]
+		background-color gris2
+	.error
+		color #DA4453
+		font-size 12px
+	.input
+		&__group
+			&__btn
+				position absolute
+				right 0
+				top 25px
+			&__icon
+				position absolute
+				left 0
+				top 25px
+				top 30px
+				padding .2rem .8rem
+				background-color gris2
+				color oscuro
+			&--left
+				input
+					padding-left 2.5rem
+			&--right
+				input
+					padding-right 2.5rem
+.left-section
+.right-section
+	width 100%
+
+.pagination-container
+	clear both
+	padding-top .5rem
+	padding-bottom .5rem
+	border-bottom 1px solid gris2
+	border-top 1px solid gris2
+	margin-top 1rem
+
+	li
+		display inline-block
+		&.disabled
+			span
+				padding .5rem
+	//background-color gris
+	a
+		display block
+		padding .5rem
+		color gris
+		line-height 20px
+	span
+		padding .7rem
+		display block
+		line-height 20px
+		color  verde
+		font-weight 700
+
 .inner
 	max-width 1280px
 	margin 0 auto
@@ -141,6 +221,18 @@ img
 	body
 		font-size 100%
 
+	.left-section
+		width 50%
+		float left
+
+	.right-section
+		width 30%
+		float right
+	.pagination-container
+		width 74%
+		float right
+		text-align right
+		clear none
 .top
 	background-color oscuro
 	padding 1rem
@@ -297,61 +389,6 @@ img
 	overflow hidden
 	min-height 533px
 
-.form
-	&__group
-		padding 0 0 15px 0
-		margin 0
-		position relative
-	&__control
-		height 36px
-		border 1px solid gris2
-		font-size 14px
-		color oscuro
-		font-weight 300
-		box-sizing border-box
-		width 100%
-		margin 0
-		outline 0
-		line-height 1
-		padding 1%
-	textarea
-		height 150px
-	label
-		font-size 12px
-		color oscuro
-		font-weight 400
-		text-transform uppercase
-		display block
-	input[readonly="readonly"]
-		background-color gris2
-	.error
-		color #DA4453
-		font-size 12px
-	.input
-		&__group
-			&__btn
-				position absolute
-				right 0
-				top 25px
-			&__icon
-				position absolute
-				left 0
-				top 25px
-				top 30px
-				padding .2rem .8rem
-				background-color gris2
-				color oscuro
-			&--left
-				input
-					padding-left 2.5rem
-			&--right
-				input
-					padding-right 2.5rem
-
-@media screen and (min-width: 640px)
-	.form
-		&__control
-			max-width 100%
 .banner
 	display block
 	width 100%
@@ -407,129 +444,168 @@ img
 		left 0
 	.cycle-next
 		right 0
-.products__item
-	display block
-	width 100%
-	position relative
-	border-bottom 1px solid white
-	border-left 1px solid white
-	border-right 1px solid white
-	height 300px
-	overflow hidden
-	background-color gris2
-	&__img
-		img
-			width 100%
-	&__stick
-		position absolute
-		top 0
-		background-color rgba(oscuro,.75)
-		color white
-		left 0
-		padding 0.5rem .5rem .5rem 0
-		//max-width 250px
-		max-height 46px
-		overflow hidden
-		i
-			background-color #000
-			padding 1rem
-			margin-right 5px
-	&__tag
-		font-size 11px
-		background-color verde
-		padding .2rem
 
-	&__info
-		position absolute
-		background-color oscuro
-		color white
-		left 0
-		bottom 0
-		right 0
-		font-size 1rem
-		color white
-	&__intro
-		font-size 1rem
-		line-height 20px
-		font-weight 300
-		margin-bottom 0
-	&__link
-		color white
-		display block
-		padding 1.2rem
-		&:before
-			float right
-			font-size 1.5rem
-		&:hover
-			&:before
-				color verde
-	&__edit
-		color white
-		background-color verde
-		padding .5rem
-		display block
-		position absolute
-		z-index 2
-		top 0
-		right 0
-		&:hover
-			background-color gris2
-.products__container
-.product__container
-.contact__form
-.contact__address
-.reviews__container
-	width 100%
-	margin 1rem 0
-
-.products__categories
-	width 100%
-	margin-top 2rem
-
-	&__title
-		color oscuro
-		text-transform uppercase
-		font-size 1.2rem
-	&__ul
-		list-style  none
-		margin 0
-	&__item
-		margin-bottom 10px
-		position relative
-	&__link
-		padding .5rem 1rem
-		display block
-		color oscuro
-		font-weight 300
-		border 1px solid gris2
-		position relative
-		cursor pointer
-		&:before
-			float right
-
-		&:hover
-			border-top-color oscuro
-			&:before
-				color verde
-	&__submenu
-		background-color white
-		border 1px solid gris2
-		padding .5rem
-		position absolute
-		top 0
-		right -15rem
-		display none
-		min-width 250px
-		z-index 999
-		list-style  none
-		margin 0
+@media screen and (min-width: 1024px)
+	.banner
+		width 75%
+		float left
+		&__slide
+			height 699px
+.products
+	&__categories
+	&__items
+		width 100%
+		margin 1rem 0
+	&__categories
+		&__title
+			color oscuro
+			text-transform uppercase
+			font-size 1.2rem
+		&__ul
+			list-style  none
+			margin 0
 		&__item
 			margin-bottom 10px
 			position relative
 		&__link
-			color #000
+			padding .5rem 1rem
+			display block
+			color oscuro
+			font-weight 300
+			border 1px solid gris2
+			position relative
 			cursor pointer
+			&:before
+				float right
+
+			&:hover
+				border-top-color oscuro
+				&:before
+					color verde
+		&__submenu
+			background-color white
+			border 1px solid gris2
+			padding .5rem
+			position absolute
+			top 0
+			right -15rem
+			display none
+			min-width 250px
+			z-index 999
+			list-style  none
+			margin 0
+			&__item
+				margin-bottom 10px
+				position relative
+			&__link
+				color #000
+				cursor pointer
+
+	&__item
+		display block
+		width 100%
+		position relative
+		border-bottom 1px solid white
+		border-left 1px solid white
+		border-right 1px solid white
+		height 300px
+		overflow hidden
+		background-color gris2
+
+		&__img
+			img
+				width 100%
+		&__stick
+			position absolute
+			top 0
+			background-color rgba(oscuro,.75)
+			color white
+			left 0
+			padding 0.5rem .5rem .5rem 0
+			//max-width 250px
+			max-height 46px
+			overflow hidden
+			i
+				background-color #000
+				padding 1rem
+				margin-right 5px
+		&__tag
+			font-size 11px
+			background-color verde
+			padding .2rem
+			margin-right 2px
+		&__published
+			background-color red
+			color white
+			font-size 13px
+			padding .3rem
+			position absolute
+			bottom 3.5rem
+
+		&__info
+			position absolute
+			background-color oscuro
+			color white
+			left 0
+			bottom 0
+			right 0
+			font-size 1rem
+			color white
+		&__intro
+			font-size 1rem
+			line-height 20px
+			font-weight 300
+			margin-bottom 0
+		&__link
+			color white
+			display block
+			padding 1.2rem
+			&:before
+				float right
+				font-size 1.5rem
+			&:hover
+				&:before
+					color verde
+		&__edit
+			color white
+			background-color verde
+			padding .5rem
+			display block
+			position absolute
+			z-index 2
+			top 0
+			right 0
+			&:hover
+				background-color gris2
+
+@media screen and (min-width: 640px)
+	.products
+		&__item
+			width 50%
+			height 350px
+			float left
+@media screen and (min-width: 1024px)
+	.products
+		&__categories
+			width 22.5%
+			float left
+			margin-top 2rem
+		&__items
+			float right
+			width 74%
+		&__item
+			width 33.33%
+			height 350px
+	.home
+		.products
+			&__item
+				width 25%
 .product
+	&__edit
+		margin 1rem 0
+	&__container
+		width 100%
+		margin 1rem 0
 	&__media
 	&__info
 		width 100%
@@ -553,7 +629,6 @@ img
 					width 100%
 					height 100%
 	&__title
-		color #000
 		margin-bottom 0
 	&__share
 		position relative
@@ -579,74 +654,6 @@ img
 			color white
 			font-size 12px
 
-.pagination-container
-	clear both
-	padding-top .5rem
-	padding-bottom .5rem
-	border-bottom 1px solid gris2
-	border-top 1px solid gris2
-	margin-top 1rem
-
-
-	li
-		display inline-block
-		&.disabled
-			span
-				padding .5rem
-				//background-color gris
-	a
-		display block
-		padding .5rem
-		color gris
-		line-height 20px
-	span
-		padding .7rem
-		display block
-		line-height 20px
-		color  verde
-		font-weight 700
-.profile
-	width 100%
-	margin-top 2rem
-	&__title
-		color oscuro
-		text-transform uppercase
-		font-size 1.2rem
-	&__edit-link
-		a
-			color verde
-			font-size 1rem
-	&__item
-		font-weight 300
-		margin-top 0
-		margin-bottom 10px
-		border 1px solid gris2
-		padding .5rem
-		strong
-			color oscuro
-.animated
-	transition height 0.2s
-
-.stars
-	margin 20px 0
-	font-size 24px
-	color #d17581
-
-.profile__edit
-.user__edit
-.product__edit__left
-.product__edit__right
-.product__payment__left
-.product__payment__right
-	width 100%
-	margin-top 2rem
-	&__title
-		color oscuro
-		text-transform uppercase
-		font-size 1.2rem
-	input[type='file']
-		height 45px !important
-		cursor pointer
 	#gallery
 		list-style none
 		margin-top 1rem
@@ -673,87 +680,11 @@ img
 			&:hover
 				color red
 
-
-.login__page
-.register__page
-.reset__page
-	width 100%
-	&__title
-		color oscuro
-		text-transform uppercase
-		font-size 1.2rem
-.contact
-	&__address
-		margin-top 2rem
-		font-style normal
-		&__title
-			text-transform uppercase
-			color #000
-			font-size 1.2rem
-	&__form
-		&__title
-			color #000
-.about
-	margin-top 2rem
-.reviews
-	&__title
-		color #000
-	hr
-		border 1px solid gris2
-	.glyphicon
-		color verde
-	&__author__link
-		color gris
-		&:hover
-			color verde
-			text-decoration underline
-.ratings
-	margin-bottom 1rem
-	.glyphicon
-		color verde
-	p
-		margin 0
-	a
-		color verde
-		text-decoration underline
-		&:hover
-			text-decoration none
-.stars
-	display block
-.option__description
-	font-size 13px
-	padding-left 1rem
-	margin-bottom 1rem
-.payment__methods
-	margin-bottom 1rem
-	overflow hidden
-.payment__method__paypal
-	display none
-
-
-@media screen and (min-width: 640px)
-	.products__item
-		width 50%
-		height 350px
-		float left
 @media screen and (min-width: 1024px)
-	.banner
-		width 75%
-		float left
-		&__slide
-			height 699px
-	.products__item
-		width 25%
-		height 350px
-	.products__container
-	.product__container
-	.contact__form
-	.reviews__container
-		float right
-		width 74%
-		.products__item
-			width 33.33%
 	.product
+		&__container
+			float right
+			width 74%
 		&__share
 			position absolute
 			text-align  right
@@ -769,31 +700,113 @@ img
 		&__media
 			float right
 			width 30%
-	.pagination-container
-		width 74%
-		float right
-		text-align right
-		clear none
-	.products__categories
-	.contact__address
-		width 22.5%
-		float left
 
+.profile
+	&__info
+		width 100%
+		margin-top 2rem
+	&__title
+		color oscuro
+		text-transform uppercase
+		font-size 1.2rem
+	&__edit-link
+		a
+			color verde
+			font-size 1rem
+	&__item
+		font-weight 300
+		margin-top 0
+		margin-bottom 10px
+		border 1px solid gris2
+		padding .5rem
+		strong
+			color oscuro
+	&__ratings
+		margin-bottom 1rem
+		.glyphicon
+			color verde
+		p
+			margin 0
+		a
+			color verde
+			text-decoration underline
+			&:hover
+				text-decoration none
+	.stars
+		display block
+		font-size 1.5rem
+		margin 1rem 0
+		span
+			cursor pointer
+			color verde
+@media screen and (min-width: 1024px)
 	.profile
-		width 22.5%
-		float left
-	.profile__edit
-	.product__edit__left
-	.product__payment__left
+		&__info
+			width 22.5%
+			float left
+.reviews
+	&__items
+		width 100%
+		margin 1rem 0
 
-		width 50%
-		float left
-	.user__edit
-	.product__edit__right
-	.product__payment__right
-		width 30%
-		float right
+	hr
+		border 1px solid gris2
+	.glyphicon
+		color verde
+	&__author__link
+		color gris
+		&:hover
+			color verde
+			text-decoration underline
+@media screen and (min-width: 1024px)
+	.reviews
+		&__items
+			float right
+			width 74%
 
+.contact
+	&__address
+		margin-top 2rem
+		font-style normal
+		&__title
+			text-transform uppercase
+			color #000
+			font-size 1.2rem
+	&__form
+		margin 1rem 0
+
+@media screen and (min-width: 1024px)
+	.contact
+		&__address
+			width 22.5%
+			float left
+		&__form
+			float right
+			width 74%
+
+.about
+	margin-top 2rem
+.payment
+	margin 1rem 0
+	&__methods
+		margin-bottom 1rem
+		overflow hidden
+	&__method__paypal
+		display none
+.option__description
+	font-size 13px
+	padding-left 1rem
+	margin-bottom 1rem
+.login__page
+.register__page
+.reset__page
+	width 100%
+	&__title
+		color oscuro
+		text-transform uppercase
+		font-size 1.2rem
+
+@media screen and (min-width: 1024px)
 	.login__page
 	.register__page
 	.reset__page
@@ -802,9 +815,6 @@ img
 		top 2rem
 		left 50%
 		transform translate(-50%,0)
-
-
-
 
 .footer
 	overflow hidden
