@@ -15,7 +15,7 @@
 
         </figure>
         <div class="products__item__stick">
-           <i class="{!! ($product->option_id == 4 && $product->tags->count()) ? $product->tags->first()->icon : 'icon-tag' !!} animated "></i>
+           <i class="{!! ($product->option_id == 4) ? ($product->tags->count()) ? $product->tags->first()->icon : 'icon-tag' : 'icon-tag' !!} animated "></i>
             @if($product->option_id == 3 )
                 <span class="products__item__tag">
                      NUEVO

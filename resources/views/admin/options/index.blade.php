@@ -34,7 +34,7 @@
 
                             <td>{!!$option->id!!}</td>
                             <td>{!!$option->name!!}</td>
-                            <td>{!! money($option->price, 'c') !!}</td>
+                            <td>{!! money($option->price, '₡') !!}</td>
                             <td class="center">{!! $option->created_at !!}</td>
 
 
