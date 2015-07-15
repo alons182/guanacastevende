@@ -242,8 +242,8 @@ table {
 }
 @font-face {
   font-family: 'guanacastevende';
-  src: url("/fonts/guanacastevende.eot?-sts7x8");
-  src: url("/fonts/guanacastevende.eot?#iefix-sts7x8") format('embedded-opentype'), url("/fonts/guanacastevende.ttf?-sts7x8") format('truetype'), url("/fonts/guanacastevende.woff?-sts7x8") format('woff'), url("/fonts/guanacastevende.svg?-sts7x8#guanacastevende") format('svg');
+  src: url("/fonts/guanacastevende.eot?-ditb6h");
+  src: url("/fonts/guanacastevende.eot?#iefix-ditb6h") format('embedded-opentype'), url("/fonts/guanacastevende.ttf?-ditb6h") format('truetype'), url("/fonts/guanacastevende.woff?-ditb6h") format('woff'), url("/fonts/guanacastevende.svg?-ditb6h#guanacastevende") format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -289,6 +289,9 @@ table {
 }
 .icon-tag:before {
   content: "\f02b";
+}
+.icon-fire:before {
+  content: "\f06d";
 }
 .icon-phone:before {
   content: "\f095";
@@ -892,11 +895,21 @@ img {
   padding: 1rem;
   margin-right: 5px;
 }
+.products__item__stick .icon-fire {
+  background-color: #ffa500;
+}
+.products__item__stick .icon-fire:before {
+  -webkit-animation: pulse 1s infinite;
+          animation: pulse 1s infinite;
+  font-size: 1.5rem;
+}
 .products__item__tag {
   font-size: 11px;
   background-color: #1ca038;
   padding: 0.2rem;
   margin-right: 2px;
+  -webkit-animation: colorpulse 2s 1s infinite;
+          animation: colorpulse 2s 1s infinite;
 }
 .products__item__published {
   background-color: #f00;
@@ -905,6 +918,15 @@ img {
   padding: 0.3rem;
   position: absolute;
   bottom: 3.5rem;
+}
+.products__item__price {
+  background-color: #ff4500;
+  color: #fff;
+  font-size: 13px;
+  padding: 0.3rem;
+  position: absolute;
+  bottom: 3.5rem;
+  right: 0;
 }
 .products__item__info {
   position: absolute;
@@ -1205,6 +1227,9 @@ img {
   font-size: 13px;
   padding-left: 1rem;
   margin-bottom: 1rem;
+}
+.option__tags {
+  margin-left: 2rem;
 }
 .login__page,
 .register__page,

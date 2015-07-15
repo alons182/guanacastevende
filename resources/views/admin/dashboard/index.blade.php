@@ -23,7 +23,7 @@
                     </div>
                     <div>
 
-                         <a href="/admin/users">
+                         <a href="/admin/users" style="display: block;">
                              <h3 class="no-margin">{{ $tu }}</h3>
                              Users
                          </a>
@@ -39,7 +39,7 @@
                     </div>
                     <div>
 
-                        <a href="/admin/products">
+                        <a href="/admin/products" style="display: block;">
                             <h3 class="no-margin">{{ $tp }}</h3>
                             Products
                         </a>
@@ -55,7 +55,7 @@
                     </div>
                     <div>
 
-                        <a href="/admin/categories">
+                        <a href="/admin/categories" style="display: block;">
                             <h3 class="no-margin">{{ $tc }}</h3>
                             Categories
                         </a>
@@ -71,9 +71,41 @@
                     </div>
                     <div>
 
-                        <a href="/admin/tags">
+                        <a href="/admin/tags" style="display: block;">
                             <h3 class="no-margin">{{ $tt }}</h3>
                             Tags
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="circle-icon bg-default">
+                        <i class="fa fa-adjust"></i>
+                    </div>
+                    <div>
+
+                        <a href="/admin/options" style="display: block;">
+                            <h3 class="no-margin">{{ $op }}</h3>
+                            Options
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="circle-icon bg-dark">
+                        <i class="fa fa-money"></i>
+                    </div>
+                    <div>
+
+                        <a href="/admin/payments" style="display: block;">
+                            <h3 class="no-margin">{{ $pm }}</h3>
+                            Payments
                         </a>
                     </div>
                 </div>

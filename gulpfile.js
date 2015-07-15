@@ -17,13 +17,13 @@ elixir(function(mix) {
         .stylus('main.styl', 'resources/assets/css')
 
         .styles([
-         /*'animate.css',
-         'chosen.min.css',
+         /*'chosen.min.css',
          'tooltipster.css',
          'themes/tooltipster-diamante.css',
          'magnific-popup.css',
          'li-scroller.css',
          'lightbox.css',*/
+         'animate.css',
          'starrr.css',
          'magnific-popup.css',
          'select2.css',

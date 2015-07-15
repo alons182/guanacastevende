@@ -17,6 +17,7 @@ class CreateTagsTable extends Migration {
 			$table->increments('id');
             $table->string('name');
             $table->double('price', 15, 2)->default(0);
+            $table->string('icon')->nullable();
 			$table->timestamps();
 		});
         Schema::create('product_tag', function(Blueprint $table)

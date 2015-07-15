@@ -53,11 +53,12 @@
     $("input[name='option_id']").on('click', checkOnlyOne);
     $("input[name='option_id']").on('click', function(){
        if( $(this).attr('value') == 4 ){
-           $(this).siblings('input[type="text"]').attr('disabled',false);
+           $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled',false);
+
 
        }else
        {
-           $(this).siblings('input[type="text"]').attr('disabled',true);
+           $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled',true).attr('checked',false);
        }
     });
     $("input[name='tags[]']").on('click', checkOnlyOne);

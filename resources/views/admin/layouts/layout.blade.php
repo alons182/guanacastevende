@@ -10,7 +10,7 @@
 
     <title>@yield('meta-title','Guanacaste Vende | Administration')</title>
     <!-- bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="/css/bootstrap.min.css">-->
     <!-- /bootstrap -->
 
     <!-- core styles -->

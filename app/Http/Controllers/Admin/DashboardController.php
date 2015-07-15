@@ -3,7 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Option;
 use App\Repositories\CategoryRepository;
+use App\Repositories\PaymentRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\TagRepository;
 use App\Repositories\UserRepository;
@@ -27,19 +29,25 @@ class DashboardController extends Controller {
      * @var TagRepository
      */
     private $tagRepository;
+    /**
+     * @var PaymentRepository
+     */
+    private $paymentRepository;
 
     /**
      * @param UserRepository $userRepository
      * @param ProductRepository $productRepository
      * @param CategoryRepository $categoryRepository
      * @param TagRepository $tagRepository
+     * @param PaymentRepository $paymentRepository
      */
-    function __construct(UserRepository $userRepository, ProductRepository $productRepository, CategoryRepository $categoryRepository, TagRepository $tagRepository)
+    function __construct(UserRepository $userRepository, ProductRepository $productRepository, CategoryRepository $categoryRepository, TagRepository $tagRepository, PaymentRepository $paymentRepository)
     {
         $this->userRepository = $userRepository;
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
+        $this->paymentRepository = $paymentRepository;
     }
 
     /**
@@ -54,8 +62,9 @@ class DashboardController extends Controller {
         $tp = $this->productRepository->getTotal();
         $tc = $this->categoryRepository->getTotal();
         $tt = $this->tagRepository->getTotal();
-
-        return View('admin.dashboard.index')->with(compact('tu','tp','tc','tt'));
+        $op = Option::count();
+        $pm = $this->paymentRepository->getTotal();
+        return View('admin.dashboard.index')->with(compact('tu','tp','tc','tt','op','pm'));
 	}
 
 

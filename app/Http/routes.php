@@ -195,6 +195,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
         'uses' => 'Admin\ProductsController@index'
     ]);
     Route::resource('tags', 'Admin\TagsController');
+
+    # options
+    Route::get('options', [
+        'as'   => 'options',
+        'uses' => 'Admin\OptionsController@index'
+    ]);
+    Route::resource('options', 'Admin\OptionsController');
+    # payments
+    Route::get('payments', [
+        'as'   => 'payments',
+        'uses' => 'Admin\PaymentsController@index'
+    ]);
+    Route::resource('payments', 'Admin\PaymentsController');
 });
 
 // Authentication routes...

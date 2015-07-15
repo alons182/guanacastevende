@@ -264,7 +264,7 @@ class ProductRepository extends DbRepository{
     private function prepareData($data)
     {
         $data['slug'] = ($data['slug']=="") ? Str::slug($data['name']) : $data['slug'];
-        $data['option'] =( isset($data['option']) ) ? $data['option'] : 0;
+        $data['option_id'] =( isset($data['option_id']) ) ? ($data['option_id'] == '') ? 0 : $data['option_id'] : 0;
         $data['tags'] =( isset($data['tags']) ) ? $data['tags'] : [];
 
         return $data;

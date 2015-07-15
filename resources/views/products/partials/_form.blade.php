@@ -45,7 +45,7 @@
 
                         <div class="input__group input__group--left">
                             <span class="input__group__icon">&cent;</span>
-                            {!! Form::text('price',isset($product) ? money($product->price, false) : null,['class'=>'form__control','required'=>'required'])!!}
+                            {!! Form::text('price',isset($product) ? money($product->price, false) : null,['class'=>'form__control','required'=>'required', 'onkeypress'=>'return event.charCode >= 48 && event.charCode <= 57'])!!}
                             {!! errors_for('price',$errors) !!}
 
                         </div>
@@ -59,17 +59,18 @@
                             {!! $option->description !!}
                         </div>
                         @if($option->id == 4)
-                            {!! Form::text('message_option', null,['class'=>'form__control','disabled'=>'disabled','placeholder' => 'Escribe tu frase']) !!}
+                            <div class="option__tags">
+                                {!! Form::label('tags','Etiquetas:',['class'=>'col-sm-2 control-label'])!!}
+                                @foreach($tags_list as $tag)
+                                    <input type="checkbox" value="{!! $tag->id !!}" name="tags[]" {!! isset($selected_tags[0]) ? ($tag->id == $selected_tags[0]) ? 'checked="checked"' : '' : '' !!} disabled="disabled" > {!! $tag->name !!} - {!! $tag->price !!} <br />
+                                @endforeach
+                            </div>
+
+
                         @endif
                     @endforeach
 
 
-                </div>
-                <div class="form__group">
-                    {!! Form::label('tags','Etiquetas:',['class'=>'col-sm-2 control-label'])!!}
-                    @foreach($tags_list as $tag)
-                        <input type="checkbox" value="{!! $tag->id !!}" name="tags[]" {!! isset($selected_tags[0]) ? ($tag->id == $selected_tags[0]) ? 'checked="checked"' : '' : '' !!}> {!! $tag->name !!} - {!! $tag->price !!} <br />
-                    @endforeach
                 </div>
 
                 @if(isset($product))

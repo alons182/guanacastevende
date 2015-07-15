@@ -6,7 +6,7 @@ class Tag extends Model {
 
     protected $table = 'tags';
     protected $fillable = [
-        'name'
+        'name','icon','price'
     ];
 
     public function scopeSearch($query, $search)

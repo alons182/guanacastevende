@@ -10,7 +10,7 @@
             <h1 class="payment__title">Opciones de pago</h1>
 
             <div class="payment__methods">
-                <span class="pull-left left"><input type="radio" value="1" name="payment_method" checked data-method="card"> Datafono Tarjeta de credito o debito</span>
+                <span class="pull-left left"><input type="radio" value="1" name="payment_method" checked data-method="card"> Tarjeta de credito o debito</span>
                 <span class="pull-right right"><input type="radio" value="2" name="payment_method" data-method="paypal"> Paypal</span>
             </div>
             <section class="panel payment__method__card">

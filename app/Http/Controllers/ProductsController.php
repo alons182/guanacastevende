@@ -206,22 +206,19 @@ class ProductsController extends Controller {
                         'price' => $option->price
                     ];
 
+            if($product->option_id == 4)
+            {
+                $priceTag = ($product->tags->count()) ? $product->tags->first()->price : 0;
+                $optionItem['price'] = $priceTag;
+                $optionItem['name'] .= ($product->tags->count()) ? ' Etiqueta: '.$product->tags->first()->name : 'No escogio etiqueta';
+
+            }
+
+
             $items[] = $optionItem;
 
         }
 
-        if($product->tags->count())
-        {
-            $tagItem =[
-
-                    'name' => $product->tags->first()->name,
-                    'price' => $product->tags->first()->price
-
-
-            ];
-            $items[] = $tagItem;
-
-        }
         foreach($items as $item)
         {
             $total += $item['price'];

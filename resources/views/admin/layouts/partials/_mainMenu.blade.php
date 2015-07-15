@@ -32,6 +32,18 @@
                                 <span>Users</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{!! URL::route('options') !!}">
+                                <i class="fa fa-adjust"></i>
+                                <span>Options</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{!! URL::route('payments') !!}">
+                                <i class="fa fa-money"></i>
+                                <span>Payments</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </nav>

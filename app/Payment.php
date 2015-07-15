@@ -12,6 +12,15 @@ class Payment extends Model
         'user_id','product_id','amount', 'description'
     ];
 
+    public function scopeSearch($query, $search)
+    {
+
+        return $query->whereHas('user', function ($query) use ($search){
+            $query->Where('username', 'like', '%' . $search . '%');
+        });
+
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

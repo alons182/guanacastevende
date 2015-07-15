@@ -23,7 +23,7 @@ class TagsTableSeeder extends Seeder {
         {
             factory(Tag::class, 1)->create([
                 'name' => $tag,
-                'price' => 1500
+                'price' => 4000
             ]);
         }
 

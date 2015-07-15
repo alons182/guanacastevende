@@ -525,15 +525,23 @@ img
 			//max-width 250px
 			max-height 46px
 			overflow hidden
+
 			i
 				background-color #000
 				padding 1rem
 				margin-right 5px
+
+			.icon-fire
+				background-color orange
+				&:before
+					animation pulse 1s infinite
+					font-size 1.5rem
 		&__tag
 			font-size 11px
 			background-color verde
 			padding .2rem
 			margin-right 2px
+			animation colorpulse 2s 1s infinite
 		&__published
 			background-color red
 			color white
@@ -541,6 +549,14 @@ img
 			padding .3rem
 			position absolute
 			bottom 3.5rem
+		&__price
+			background-color #ff4500
+			color white
+			font-size 13px
+			padding .3rem
+			position absolute
+			bottom 3.5rem
+			right 0
 
 		&__info
 			position absolute
@@ -797,6 +813,8 @@ img
 	font-size 13px
 	padding-left 1rem
 	margin-bottom 1rem
+.option__tags
+	margin-left 2rem
 .login__page
 .register__page
 .reset__page

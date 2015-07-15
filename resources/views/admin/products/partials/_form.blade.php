@@ -49,6 +49,13 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    {!! Form::label('option_id','Option:',['class'=>'col-sm-2 control-label'])!!}
+                    <div class="col-sm-10">
+                        {!! Form::text('option_id', null,['class'=>'form-control']) !!}
+                        {!! errors_for('option_id',$errors) !!}
+                    </div>
+                </div>
             <div class="form-group">
                 {!! Form::label('description','Description:',['class'=>'col-sm-2 control-label'])!!}
                 <div class="col-sm-10">

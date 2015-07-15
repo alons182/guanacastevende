@@ -3291,3 +3291,13 @@ Copyright (c) 2014 Daniel Eden
 
   }
 }
+
+/* The animation code mine */
+@keyframes colorpulse {
+    from {background-color: #1ca038;}
+    to {background-color: #ff4500;}
+}
+@-webkit-keyframes colorpulse {
+    from {background-color: #1ca038;}
+    to {background-color: #ff4500;}
+}

@@ -17,6 +17,7 @@ class PaymentRepository extends DbRepository {
     function __construct(Payment $model)
     {
         $this->model = $model;
+        $this->limit = 10;
     }
 
     /**
@@ -29,6 +30,37 @@ class PaymentRepository extends DbRepository {
         $data = $this->prepareData($data);
 
         $payment = $this->model->create($data);
+
+        return $payment;
+    }
+
+    /**
+     * get all categories from admin control
+     * @param $search
+     * @return mixed
+     */
+    public function getAll($search)
+    {
+        if (isset($search['q']) && ! empty($search['q']))
+        {
+            $payments = $this->model->Search($search['q']);
+        } else
+        {
+            $payments = $this->model;
+        }
+
+
+        return $payments->orderBy('created_at','desc')->paginate($this->limit);
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function destroy($id)
+    {
+        $payment = $this->findById($id);
+        $payment->delete();
 
         return $payment;
     }
