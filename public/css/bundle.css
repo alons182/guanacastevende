@@ -5123,6 +5123,7 @@ img {
   left: 0;
   right: 0;
   top: 45px;
+  display: none;
 }
 .header__menu__account:after {
   content: '';
@@ -5210,6 +5211,9 @@ img {
   .header__menu__link {
     color: #777;
     padding: 1.6rem 1.3rem;
+  }
+  .header__menu__account {
+    display: block;
   }
   .header__submenu {
     display: none;
