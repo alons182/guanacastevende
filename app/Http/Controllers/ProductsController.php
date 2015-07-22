@@ -180,7 +180,7 @@ class ProductsController extends Controller {
 
         $this->productRepository->update($id, $request->all());
 
-        Flash('Updated Product');
+        Flash('Producto Actualizado');
 
         return Redirect()->route('profile.show', Auth()->user()->username);
     }

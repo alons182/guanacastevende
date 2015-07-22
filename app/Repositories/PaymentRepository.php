@@ -74,7 +74,7 @@ class PaymentRepository extends DbRepository {
         if($product->option_id)
         {
             $product->published = 1;
-            $product->featured = ($product->option_id == 2) ? $product->featured = 1 : 0;
+            $product->featured = ($product->option_id != 1 ) ? $product->featured = 1 : 0;
             $product->save();
 
             $option = Option::findOrFail($product->option_id);
