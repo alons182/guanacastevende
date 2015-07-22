@@ -41,7 +41,10 @@
             </h2>
         </div>
        @if (isset($user) && $user->isCurrent())
+
             {{--  link_to_route('products.edit', 'Editar', $product->id,['class'=>'products__item__edit']) --}}
+            <button type="submit" class="products__item__delete " form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}">Eliminar</button>
+            {!! Form::open(['method' => 'delete', 'id' =>'form-delete','data-confirm' => 'Estas seguro?']) !!}{!! Form::close() !!}
         @endif
 
     </div>

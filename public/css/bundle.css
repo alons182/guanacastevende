@@ -5462,7 +5462,8 @@ img {
 .products__item__link:hover:before {
   color: #1ca038;
 }
-.products__item__edit {
+.products__item__edit,
+.products__item__delete {
   color: #fff;
   background-color: #1ca038;
   padding: 0.5rem;
@@ -5472,8 +5473,13 @@ img {
   top: 0;
   right: 0;
 }
-.products__item__edit:hover {
+.products__item__edit:hover,
+.products__item__delete:hover {
   background-color: #e5e5e5;
+}
+.products__item__delete {
+  background-color: #f00;
+  border: none;
 }
 @media screen and (min-width: 640px) {
   .products__item {

@@ -253,6 +253,10 @@ class ProductsController extends Controller {
      */
     public function destroy($id)
     {
-        //
+        $this->productRepository->destroy($id);
+
+        Flash('Producto Eliminado');
+
+        return Redirect()->route('profile.show', Auth()->user()->username);
     }
 }
