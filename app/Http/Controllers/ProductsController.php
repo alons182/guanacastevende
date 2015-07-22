@@ -133,13 +133,12 @@ class ProductsController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param $slug
+     * @param $id
      * @return Response
-     * @internal param int $id
      */
-    public function show($slug)
+    public function show($id)
     {
-        $product = $this->productRepository->findBySlug($slug);
+        $product = $this->productRepository->findById($id);
 
         $photos = $this->photoRepository->getPhotos($product->id);
 

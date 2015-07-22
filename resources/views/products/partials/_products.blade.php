@@ -4,11 +4,11 @@
 
         <figure class="products__item__img">
             @if($product->image)
-                <a href="{!! ($product->published) ? URL::route('product_path', [$product->slug]) : '#' !!}">
+                <a href="{!! ($product->published) ? URL::route('product_path', [$product->id]) : '#' !!}">
                     <img src="{!! photos_path('products') !!}thumb_{!! $product->image !!}" alt="{!! $product->name !!}" />
                  </a>
             @else
-                <a href="{!! ($product->published) ? URL::route('product_path', [$product->slug]) : '#' !!}">
+                <a href="{!! ($product->published) ? URL::route('product_path', [$product->id]) : '#' !!}">
                     <img src="/js/holder.js/320x350/text:No-image" alt="{!! $product->name !!}" /></a>
                 </a>
             @endif
@@ -37,7 +37,7 @@
         </div>
         <div class="products__item__info">
             <h2 class="products__item__intro">
-                <a class="products__item__link icon-caret-right" href="{!! ($product->published) ? URL::route('product_path', [$product->slug]) : '#' !!}">{!! $product->name !!}</a>
+                <a class="products__item__link icon-caret-right" href="{!! ($product->published) ? URL::route('product_path', [$product->id]) : '#' !!}">{!! $product->name !!}</a>
             </h2>
         </div>
        @if (isset($user) && $user->isCurrent())
