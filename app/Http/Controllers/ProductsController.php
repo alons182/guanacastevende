@@ -203,13 +203,15 @@ class ProductsController extends Controller {
             $optionItem = [
 
                         'name' => $option->name,
-                        'price' => $option->price
+                        'price' => $option->price,
+                        'priceDollar' => number_format($option->price/530,2)
                     ];
 
             if($product->option_id == 4)
             {
                 $priceTag = ($product->tags->count()) ? $product->tags->first()->price : 0;
                 $optionItem['price'] = $priceTag;
+                $optionItem['priceDollar'] = number_format($option->price/530,2);
                 $optionItem['name'] .= ($product->tags->count()) ? ' Etiqueta: '.$product->tags->first()->name : 'No escogio etiqueta';
 
             }

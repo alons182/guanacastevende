@@ -9,7 +9,7 @@
                     {!! link_to_route('profile.show',  'Regresar', (isset($product)) ? $product->user->username : Auth::user()->username, ['class'=>'btn btn-default'])!!}
                 </div>
                 <div class="form__group">
-                    {!! Form::label('name','Nombre:',['class'=>'col-sm-2 control-label']) !!}
+                    {!! Form::label('name','Nombre de producto:',['class'=>'col-sm-2 control-label']) !!}
 
                         {!! Form::text('name', null,['class'=>'form__control','required'=>'required']) !!}
                         {!! errors_for('name',$errors) !!}

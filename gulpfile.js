@@ -47,6 +47,7 @@ elixir(function(mix) {
          'expanding.js',
          'starrr.js',
          'holder.js',
+         'jquery.maskedinput.min.js',
          'main.js'
          ],'public/js/bundle.js','resources/assets/js')
 

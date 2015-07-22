@@ -72,7 +72,7 @@ class ProfilesController extends Controller
 
         Flash::message('Perfil Actualizado!');
 
-        return Redirect()->route('profile.edit', $user->username);
+        return Redirect()->route('profile.show', $user->username);
     }
 
 

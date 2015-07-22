@@ -50,7 +50,7 @@
                     </div>
                     <div class="form__group">
                         {!! Form::label('exp_card', 'Fecha de expiracion de tarjeta:') !!}
-                        {!! Form::text('exp_card', null, ['class' => 'form__control','required' => 'required']) !!}
+                        {!! Form::text('exp_card', null, ['id'=>'exp_card','class' => 'form__control','required' => 'required','placeholder' => '02/2015']) !!}
                         {!! errors_for('exp_card',$errors) !!}
                     </div>
 
@@ -63,7 +63,19 @@
             </section>
             <section class="panel payment__method__paypal">
                     <h1 class="payment__title">Paypal</h1>
-
+                @foreach($items as $item)
+                    <script async="async" src="/vendor/paypal-button.min.js?merchant=SHAHQGFU3JV94"
+                            data-button="buynow"
+                            data-name="{!! $item['name'] !!}"
+                            data-quantity="1"
+                            data-amount="{!! $item['priceDollar'] !!}"
+                            data-currency="USD"
+                            data-shipping="0"
+                            data-tax="0"
+                            data-callback="http://guanacastevende.com/profile/admin"
+                            data-env="sandbox"
+                            ></script>
+                @endforeach
 
             </section>
 
@@ -103,6 +115,8 @@
     </div>
 
 @stop
+
+
 
 
 		

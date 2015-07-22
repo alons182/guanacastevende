@@ -108,13 +108,15 @@ img
 	border 1px solid #eed3d7
 	border-radius 4px
 	position absolute
-	top 0px
-	right 21px
+	top 50%
+	right 50%//21px
 	/* Each alert has its own width */
 	float right
 	clear right
 	max-width 500px
 	z-index 999
+	transform translate(50%, 0)
+	font-size 2rem
 	.close
 		display none
 	&-block
@@ -307,6 +309,22 @@ img
 			&:hover
 				background-color oscuro
 				color white
+		&__account
+			font-size 12px
+			position absolute
+			left 0
+			right 0
+			top 45px
+			&:after
+				content ''
+				width 0
+				height 0
+				border-left 5px solid transparent
+				border-right 5px solid transparent
+				border-top 5px solid verde
+				position relative
+				top 10px
+				left 10px
 	&__submenu
 		background-color #000
 		&__item
@@ -322,6 +340,10 @@ img
 			font-size .8rem
 			&:hover
 				color verde
+			&__featured
+				background-color verde
+				&:hover
+					background-color #000
 	&__btn-menu
 		position absolute
 		right 70px
@@ -386,7 +408,7 @@ img
 			display none
 
 .main
-	overflow hidden
+	//overflow hidden
 	min-height 533px
 
 .banner
@@ -461,9 +483,22 @@ img
 			color oscuro
 			text-transform uppercase
 			font-size 1.2rem
+			cursor pointer
+			&:after
+				content ''
+				width 0
+				height 0
+				border-left 5px solid transparent
+				border-right 5px solid transparent
+				border-top 5px solid verde
+				position relative
+				top 10px
+				left 10px
+
 		&__ul
 			list-style  none
 			margin 0
+			display none
 		&__item
 			margin-bottom 10px
 			position relative
@@ -483,12 +518,12 @@ img
 				&:before
 					color verde
 		&__submenu
-			background-color white
+			background-color gris2
 			border 1px solid gris2
 			padding .5rem
-			position absolute
+			position relative
 			top 0
-			right -15rem
+			left 0
 			display none
 			min-width 250px
 			z-index 999
@@ -497,9 +532,11 @@ img
 			&__item
 				margin-bottom 10px
 				position relative
-			&__link
+
+			.products__categories__link
 				color #000
 				cursor pointer
+				background-color white
 
 	&__item
 		display block
@@ -606,12 +643,30 @@ img
 			width 22.5%
 			float left
 			margin-top 2rem
+			&__title
+				cursor inherit
+			&__ul
+				display block !important
+			&__submenu
+				background-color white
+				position absolute
+				top 0
+				left auto
+				right -15rem
+
+				&__item
+					margin-bottom 10px
+					position relative
+				&__link
+					color #000
+					cursor pointer
 		&__items
 			float right
 			width 74%
 		&__item
 			width 33.33%
 			height 350px
+
 	.home
 		.products
 			&__item

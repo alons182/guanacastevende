@@ -1,3 +1,4 @@
+<div class="clear"></div>
 <footer class="footer">
     <div class="inner">
         <div class="left">
