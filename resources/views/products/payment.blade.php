@@ -50,7 +50,7 @@
                     </div>
                     <div class="form__group">
                         {!! Form::label('exp_card', 'Fecha de expiracion de tarjeta:') !!}
-                        {!! Form::text('exp_card', null, ['id'=>'exp_card','class' => 'form__control','required' => 'required','placeholder' => '02/2015']) !!}
+                        {!! Form::text('exp_card', null, ['id'=>'exp_card','class' => 'form__control','required' => 'required','placeholder' => '02/15']) !!}
                         {!! errors_for('exp_card',$errors) !!}
                     </div>
 
