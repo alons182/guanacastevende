@@ -29,7 +29,7 @@
         </div>
         @if(! $product->published)
             <div class="products__item__published">
-                No Publicado
+                En espera de confirmación
             </div>
         @endif
         <div class="products__item__price">

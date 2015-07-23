@@ -119,7 +119,7 @@ class ProductsController extends Controller {
 
         if ($product->option_id == 0 && $product->tags->count() == 0 )
         {
-            $this->productRepository->update_state($product->id, 1);
+            //$this->productRepository->update_state($product->id, 1);
             flash('Producto Creado correctamente');
             return Redirect()->route('profile.show', Auth()->user()->username);
         }
