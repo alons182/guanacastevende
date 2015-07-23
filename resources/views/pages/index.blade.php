@@ -21,7 +21,7 @@
                     <h2 class="banner__slide__title cursive">Publicidad</h2>
                     <a href="#" class="banner__slide__link"></a>
                 </div>
-               
+
 
 
             </div>

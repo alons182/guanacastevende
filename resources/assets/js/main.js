@@ -12,9 +12,9 @@
     $('.alert').delay(3000).fadeOut(300);
     $('#categories').select2();
     $('#tags').select2();
-    $("#exp_card").mask("99/9999", {
+    $("#exp_card").mask("99/99", {
         completed: function() {
-            alert("completed!");
+           
         }
     });
     btnMenu.on('click', function(){

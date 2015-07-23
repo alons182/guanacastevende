@@ -177,7 +177,7 @@ class ProductRepository extends DbRepository{
     {
 
         $category = Category::searchSlug($category)->firstOrFail();
-        $products = $category->products()->with('categories')->where('published', '=', 1)->paginate($this->limit);
+        $products = $category->products()->with('categories')->where('published', '=', 1)->orderBy('option_id','DESC')->paginate($this->limit);
 
         return $products;
     }
