@@ -124,7 +124,7 @@
                     {!! Form::label('image','Imagen:',['class'=>'col-sm-2 control-label'])!!}
 
 
-                    {!! Form::file('image') !!}
+                    {!! Form::file('image',['required'=>'required']) !!}
                     {!! errors_for('image',$errors) !!}
 
                 </div>

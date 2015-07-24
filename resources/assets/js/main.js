@@ -37,6 +37,7 @@
 
                 } else {
                     $this.attr('name', 'categories[]');
+                    $this.attr('required', 'required');
                 }
 
 
