@@ -27,7 +27,8 @@ class ProductFrontRequest extends Request
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'categories' => 'required'
+            'categories' => 'required',
+            'image' => 'required|image'
 
         ];
     }

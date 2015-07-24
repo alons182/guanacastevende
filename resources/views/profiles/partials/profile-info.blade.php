@@ -15,7 +15,7 @@
 </div>
 <p class="profile__item"> <strong>Username:</strong> {!! $user->username !!} </p>
 <p class="profile__item"> <strong>Nombre:</strong> {!! $user->profile->first_name !!} {!! $user->profile->last_name !!} </p>
-<p class="profile__item"> <strong>Email:</strong> {!! $user->email !!} </p>
+<p class="profile__item"> <strong>Teléfono:</strong> {!! $user->profile->telephone !!} </p>
 <p class="profile__item"> <strong>Direccion:</strong> {!! $user->profile->address !!} </p>
 @if(!$user->isCurrent() && !Auth::guest())
     @include('profiles.partials.review-form')

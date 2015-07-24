@@ -96,7 +96,7 @@ class ProductsController extends Controller {
     public function create()
     {
 
-        $categories_list = $this->categoryRepository->getParentsAndChildrenList();//Category::lists('name', 'id');
+        $categories_list = $this->categoryRepository->getParents();//Category::lists('name', 'id');
         $tags_list = Tag::select('name', 'price', 'id')->get();
         $options_list = Option::select('name','description', 'price', 'id')->get();
         return View('products.create')->with(compact('categories_list', 'tags_list','options_list'));

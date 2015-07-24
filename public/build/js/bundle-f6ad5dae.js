@@ -4952,7 +4952,8 @@ if (!Object.prototype.hasOwnProperty)
     Version: 1.3.1
 */
 !function(a){function b(){var a=document.createElement("input"),b="onpaste";return a.setAttribute(b,""),"function"==typeof a[b]?"paste":"input"}var c,d=b()+".mask",e=navigator.userAgent,f=/iphone/i.test(e),g=/chrome/i.test(e),h=/android/i.test(e);a.mask={definitions:{9:"[0-9]",a:"[A-Za-z]","*":"[A-Za-z0-9]"},autoclear:!0,dataName:"rawMaskFn",placeholder:"_"},a.fn.extend({caret:function(a,b){var c;if(0!==this.length&&!this.is(":hidden"))return"number"==typeof a?(b="number"==typeof b?b:a,this.each(function(){this.setSelectionRange?this.setSelectionRange(a,b):this.createTextRange&&(c=this.createTextRange(),c.collapse(!0),c.moveEnd("character",b),c.moveStart("character",a),c.select())})):(this[0].setSelectionRange?(a=this[0].selectionStart,b=this[0].selectionEnd):document.selection&&document.selection.createRange&&(c=document.selection.createRange(),a=0-c.duplicate().moveStart("character",-1e5),b=a+c.text.length),{begin:a,end:b})},unmask:function(){return this.trigger("unmask")},mask:function(b,e){var i,j,k,l,m,n;return!b&&this.length>0?(i=a(this[0]),i.data(a.mask.dataName)()):(e=a.extend({autoclear:a.mask.autoclear,placeholder:a.mask.placeholder,completed:null},e),j=a.mask.definitions,k=[],l=n=b.length,m=null,a.each(b.split(""),function(a,b){"?"==b?(n--,l=a):j[b]?(k.push(new RegExp(j[b])),null===m&&(m=k.length-1)):k.push(null)}),this.trigger("unmask").each(function(){function i(a){for(;++a<n&&!k[a];);return a}function o(a){for(;--a>=0&&!k[a];);return a}function p(a,b){var c,d;if(!(0>a)){for(c=a,d=i(b);n>c;c++)if(k[c]){if(!(n>d&&k[c].test(x[d])))break;x[c]=x[d],x[d]=e.placeholder,d=i(d)}u(),w.caret(Math.max(m,a))}}function q(a){var b,c,d,f;for(b=a,c=e.placeholder;n>b;b++)if(k[b]){if(d=i(b),f=x[b],x[b]=c,!(n>d&&k[d].test(f)))break;c=f}}function r(a){var b,c,d,e=a.which;8===e||46===e||f&&127===e?(b=w.caret(),c=b.begin,d=b.end,0===d-c&&(c=46!==e?o(c):d=i(c-1),d=46===e?i(d):d),t(c,d),p(c,d-1),a.preventDefault()):27==e&&(w.val(z),w.caret(0,v()),a.preventDefault())}function s(b){var c,d,f,g=b.which,j=w.caret();if(0==g){if(j.begin>=n)return w.val(w.val().substr(0,n)),b.preventDefault(),!1;j.begin==j.end&&(g=w.val().charCodeAt(j.begin-1),j.begin--,j.end--)}b.ctrlKey||b.altKey||b.metaKey||32>g||g&&(0!==j.end-j.begin&&(t(j.begin,j.end),p(j.begin,j.end-1)),c=i(j.begin-1),n>c&&(d=String.fromCharCode(g),k[c].test(d)&&(q(c),x[c]=d,u(),f=i(c),h?setTimeout(a.proxy(a.fn.caret,w,f),0):w.caret(f),e.completed&&f>=n&&e.completed.call(w))),b.preventDefault())}function t(a,b){var c;for(c=a;b>c&&n>c;c++)k[c]&&(x[c]=e.placeholder)}function u(){w.val(x.join(""))}function v(a){var b,c,d,f=w.val(),g=-1;for(b=0,d=0;n>b;b++)if(k[b]){for(x[b]=e.placeholder;d++<f.length;)if(c=f.charAt(d-1),k[b].test(c)){x[b]=c,g=b;break}if(d>f.length)break}else x[b]===f.charAt(d)&&b!==l&&(d++,g=b);return a?u():l>g+1?e.autoclear||x.join("")===y?(w.val(""),t(0,n)):u():(u(),w.val(w.val().substring(0,g+1))),l?b:m}var w=a(this),x=a.map(b.split(""),function(a){return"?"!=a?j[a]?e.placeholder:a:void 0}),y=x.join(""),z=w.val();w.data(a.mask.dataName,function(){return a.map(x,function(a,b){return k[b]&&a!=e.placeholder?a:null}).join("")}),w.attr("readonly")||w.one("unmask",function(){w.unbind(".mask").removeData(a.mask.dataName)}).bind("focus.mask",function(){clearTimeout(c);var a;z=w.val(),a=v(),c=setTimeout(function(){u(),a==b.length?w.caret(0,a):w.caret(a)},10)}).bind("blur.mask",function(){v(),w.val()!=z&&w.change()}).bind("keydown.mask",r).bind("keypress.mask",s).bind(d,function(){setTimeout(function(){var a=v(!0);w.caret(a),e.completed&&a==w.val().length&&e.completed.call(w)},0)}),g&&h&&w.bind("keyup.mask",s),v()}))}})}(jQuery);
-;(function($){
+;
+(function ($) {
 
     var btnMenu = $('#btn-menu'),
         btnSearch = $('#btn-search'),
@@ -4964,19 +4965,57 @@ if (!Object.prototype.hasOwnProperty)
         infoBox = $('#InfoBox');
 
     $('.alert').delay(3000).fadeOut(300);
-    $('#categories').select2();
+    // $('#categories').select2();
+    $('body ').on('change', '.rootCategories', function () {
+
+        var $this = $(this);
+        var containerId = $this.data('container');
+        var $result = $this.next('.select__sub-category');
+
+        $.get("/api/v1/categories/" + $(this).val() + "/children",
+            /* { option: $(this).val() },*/
+            function (result) {
+
+                var subcategories = $.map(result.data, function (obj, index) {
+                    return {
+                        category_id: obj.id,
+                        category_name: obj.name,
+                        category_children: parseInt(obj.children)
+                    }
+                });
+                subcategories['container'] = containerId + 1;
+
+                if (result.data.length) {
+                    var html = categorySelectTemplate(subcategories);
+                    $result.html(html);
+
+                } else {
+                    $this.attr('name', 'categories[]');
+                }
+
+
+            });
+    });
+    function categorySelectTemplate(subcategories) {
+        var templateHtml = $.trim($('#selectCategoryTemplate').html());
+        var template = Handlebars.compile(templateHtml);
+
+        return template(subcategories);
+
+    }
+
     $('#tags').select2();
     $("#exp_card").mask("99/99", {
-        completed: function() {
-           
+        completed: function () {
+
         }
     });
-    btnMenu.on('click', function(){
+    btnMenu.on('click', function () {
         menu.toggle();
 
     });
-    btnSearch.on('click', function(){
-        if($(this).hasClass('open')) {
+    btnSearch.on('click', function () {
+        if ($(this).hasClass('open')) {
             topSearch.slideDown();
             $(this).removeClass('open');
         }
@@ -4988,10 +5027,10 @@ if (!Object.prototype.hasOwnProperty)
     });
 
     menu.find(".parent").hoverIntent({
-        over: function() {
-            $(this).find(">.header__submenu").slideDown(200 );
+        over: function () {
+            $(this).find(">.header__submenu").slideDown(200);
         },
-        out:  function() {
+        out: function () {
             $(this).find(">.header__submenu").slideUp(200);
         },
         timeout: 200
@@ -4999,10 +5038,10 @@ if (!Object.prototype.hasOwnProperty)
     });
 
     $("body").hoverIntent({
-        over:function() {
-            $('.products__categories__ul').slideDown(200 );
+        over: function () {
+            $('.products__categories__ul').slideDown(200);
         },
-        out: function() {
+        out: function () {
             $('.products__categories__ul').slideUp(200);
         },
         selector: '.products__categories.mobile',
@@ -5010,10 +5049,10 @@ if (!Object.prototype.hasOwnProperty)
     });
 
     categories.find(".parent").hoverIntent({
-        over: function() {
-            $(this).find(">.products__categories__submenu").slideDown(200 );
+        over: function () {
+            $(this).find(">.products__categories__submenu").slideDown(200);
         },
-        out:  function() {
+        out: function () {
             $(this).find(">.products__categories__submenu").slideUp(200);
         },
         timeout: 200
@@ -5022,19 +5061,17 @@ if (!Object.prototype.hasOwnProperty)
 
 
     $("input[name='option_id']").on('click', checkOnlyOne);
-    $("input[name='option_id']").on('click', function(){
-       if( $(this).attr('value') == 4 ){
-           $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled',false);
+    $("input[name='option_id']").on('click', function () {
+        if ($(this).attr('value') == 4) {
+            $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled', false);
 
 
-       }else
-       {
-           $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled',true).attr('checked',false);
-       }
+        } else {
+            $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled', true).attr('checked', false);
+        }
     });
     $("input[name='tags[]']").on('click', checkOnlyOne);
-    function checkOnlyOne()
-    {
+    function checkOnlyOne() {
         // in the handler, 'this' refers to the box clicked on
         var $box = $(this);
         if ($box.is(":checked")) {
@@ -5050,13 +5087,12 @@ if (!Object.prototype.hasOwnProperty)
         }
     }
 
-    $("input[name='payment_method']").on('click', function(){
+    $("input[name='payment_method']").on('click', function () {
 
-        if($(this).data('method')=== 'card')
-        {
+        if ($(this).data('method') === 'card') {
             $('.payment__method__paypal').slideUp();
             $('.payment__method__card').slideDown();
-        }else{
+        } else {
             $('.payment__method__paypal').slideDown();
             $('.payment__method__card').slideUp();
         }
@@ -5064,7 +5100,7 @@ if (!Object.prototype.hasOwnProperty)
 
     // SMOOTH ANCHOR SCROLLING
     var $root = $('html, body');
-    $('a.anchor').click(function(e) {
+    $('a.anchor').click(function (e) {
         var href = $.attr(this, 'href');
         if (typeof($(href)) != 'undefined' && $(href).length > 0) {
             var anchor = '';
@@ -5078,7 +5114,7 @@ if (!Object.prototype.hasOwnProperty)
                 console.log(anchor);
                 $root.animate({
                     scrollTop: $(anchor).offset().top
-                }, 500, function() {
+                }, 500, function () {
                     window.location.hash = anchor;
                 });
                 e.preventDefault();
@@ -5087,8 +5123,8 @@ if (!Object.prototype.hasOwnProperty)
     });
 
     // Forms with ajax process
-    $('form[data-remote]').on('submit', function(e){
-        var form =$(this);
+    $('form[data-remote]').on('submit', function (e) {
+        var form = $(this);
         var method = form.find('input[name="_method"]').val() || 'POST';
         var url = form.prop('action');
         form.find('.loader').show();
@@ -5096,16 +5132,15 @@ if (!Object.prototype.hasOwnProperty)
             type: method,
             url: url,
             data: form.serialize(),
-            success: function(){
+            success: function () {
                 var message = form.data('remote-success-message');
                 form.find('.loader').hide();
-                if(message)
-                {
+                if (message) {
 
                     $('.response').removeClass('message-error').addClass('message-success').html(message).fadeIn(300).delay(4500).fadeOut(300);
                 }
             },
-            error:function(){
+            error: function () {
                 form.find('.loader').hide();
                 $('.response').removeClass('message-success').addClass('message-error').html('Whoops, looks like something went wrong.').fadeIn(300).delay(4500).fadeOut(300);
 
@@ -5117,18 +5152,18 @@ if (!Object.prototype.hasOwnProperty)
         e.preventDefault();
     });
 
-    $('input[data-confirm], button[data-confirm]').on('click', function(e){
+    $('input[data-confirm], button[data-confirm]').on('click', function (e) {
         var input = $(this);
 
-        input.prop('disabled','disabled');
+        input.prop('disabled', 'disabled');
 
-        if(! confirm(input.data('confirm'))){
+        if (!confirm(input.data('confirm'))) {
             e.preventDefault();
 
         }
     });
-    $("form[data-confirm]").submit(function() {
-        if ( ! confirm($(this).attr("data-confirm"))) {
+    $("form[data-confirm]").submit(function () {
+        if (!confirm($(this).attr("data-confirm"))) {
             return false;
         }
     });
@@ -5136,11 +5171,11 @@ if (!Object.prototype.hasOwnProperty)
     function limpiaForm(miForm) {
 
         // recorremos todos los campos que tiene el formulario
-        $(":input", miForm).each(function() {
+        $(":input", miForm).each(function () {
             var type = this.type;
             var tag = this.tagName.toLowerCase();
             //limpiamos los valores de los campos…
-            if (type == 'text' || type == 'password'  || type == 'email' || tag == 'textarea')
+            if (type == 'text' || type == 'password' || type == 'email' || tag == 'textarea')
                 this.value = "";
             // excepto de los checkboxes y radios, le quitamos el checked
             // pero su valor no debe ser cambiado
@@ -5153,48 +5188,43 @@ if (!Object.prototype.hasOwnProperty)
     }
 
 
-    $(window).load(function() {
+    $(window).load(function () {
 
         resizes();
 
-     });
+    });
 
-     $(window).resize(resizes);
+    $(window).resize(resizes);
 
-     function resizes()
-     {
-
+    function resizes() {
 
 
-         if(getWindowWidth() > 640){
+        if (getWindowWidth() > 640) {
 
-             $( ".products__item" ).each(function( index ) {
+            $(".products__item").each(function (index) {
 
-                 if($( this ).find('img').height() < $( this ).height())
-                 {
-                     $( this ).find('img').height($( this ).height());
-                 }
-             });
+                if ($(this).find('img').height() < $(this).height()) {
+                    $(this).find('img').height($(this).height());
+                }
+            });
 
-        }else{
-             $('.products__item').find('img').height('auto');
-         }
+        } else {
+            $('.products__item').find('img').height('auto');
+        }
 
-         if(getWindowWidth() < 1024)
-         {
-             $('.products__categories').addClass('mobile');
+        if (getWindowWidth() < 1024) {
+            $('.products__categories').addClass('mobile');
 
-         }else{
-             $('.products__categories').removeClass('mobile');
-         }
+        } else {
+            $('.products__categories').removeClass('mobile');
+        }
 
 
+    }
 
-         }
 
-
-    btnEditSlug.on('click',function(){
-        $('input[name="slug"]').prop( "readOnly", null );
+    btnEditSlug.on('click', function () {
+        $('input[name="slug"]').prop("readOnly", null);
     });
 
     //gallery
@@ -5202,29 +5232,30 @@ if (!Object.prototype.hasOwnProperty)
         inputsPhotos = $("#inputs_photos");
     $("#add_input_photo").on('click', function (e) {
         photos++;
+        if (photos < 6) {
+            inputsPhotos.append('<div><strong>Foto' + photos + ': </strong>' +
+            '<input type="file" name="new_photo_file[]" size="45" /></div><br />');
 
-        inputsPhotos.append('<div><strong>Foto' + photos + ': </strong>'+
-        '<input type="file" name="new_photo_file[]" size="45" /></div><br />');
+        }
 
     });
-    function deletePhoto()
-    {
+    function deletePhoto() {
         var btn_delete = $(this),
             url = "/photos/" + btn_delete.attr("data-imagen");
 
-        $.post(url,{_token: $('input[name=_token]').val()}, function(data){
+        $.post(url, {_token: $('input[name=_token]').val()}, function (data) {
             btn_delete.parent().fadeOut("slow");
         });
     }
 
     $("#UploadButton").ajaxUpload({
-        url : "/photos",
+        url: "/photos",
         name: "file",
-        data: {id: $('input[name=product_id]').val(), _token: $('input[name=_token]').val() },
-        onSubmit: function() {
+        data: {id: $('input[name=product_id]').val(), _token: $('input[name=_token]').val()},
+        onSubmit: function () {
             infoBox.html('Uploading ... ');
         },
-        onComplete: function(result) {
+        onComplete: function (result) {
 
             infoBox.html('Uploaded succesfull!');
 
@@ -5233,20 +5264,19 @@ if (!Object.prototype.hasOwnProperty)
 
             fillPhotosInfo(photos);
 
-            gallery.find('li').find('.delete').on('click',deletePhoto);
+            gallery.find('li').find('.delete').on('click', deletePhoto);
 
 
         }
     });
 
-    gallery.find('li').find('.delete').on('click',deletePhoto);
+    gallery.find('li').find('.delete').on('click', deletePhoto);
 
-    function photoTemplate(photo)
-    {
+    function photoTemplate(photo) {
 
-        var templateHtml = $.trim( $('#photoTemplate').html() );
+        var templateHtml = $.trim($('#photoTemplate').html());
 
-        var template = Handlebars.compile( templateHtml );
+        var template = Handlebars.compile(templateHtml);
 
         return template(photo);
 
@@ -5260,7 +5290,7 @@ if (!Object.prototype.hasOwnProperty)
 
         var html = photoTemplate(jsonData);
 
-        (gallery.length === 0) ? gallery.html( html ) : gallery.prepend(html);
+        (gallery.length === 0) ? gallery.html(html) : gallery.prepend(html);
 
         gallery.find('li').eq(0).hide().show("slow");
 
@@ -5280,7 +5310,7 @@ if (!Object.prototype.hasOwnProperty)
             // The "opener" function should return the element from which popup will be zoomed in
             // and to which popup will be scaled down
             // By defailt it looks for an image tag:
-            opener: function(openerElement) {
+            opener: function (openerElement) {
                 // openerElement is the element on which popup was initialized, in this case its <a> tag
                 // you don't need to add "opener" option if this code matches your needs, it's defailt one.
                 return openerElement.is('img') ? openerElement : openerElement.find('img');
@@ -5290,8 +5320,8 @@ if (!Object.prototype.hasOwnProperty)
     // This will create a single gallery from all elements that have class "gallery-item"
     $('.product__media__gallery__link').magnificPopup({
         type: 'image',
-        gallery:{
-            enabled:true
+        gallery: {
+            enabled: true
         },
         mainClass: 'mfp-with-zoom', // this class is for CSS animation below
 
@@ -5304,7 +5334,7 @@ if (!Object.prototype.hasOwnProperty)
             // The "opener" function should return the element from which popup will be zoomed in
             // and to which popup will be scaled down
             // By defailt it looks for an image tag:
-            opener: function(openerElement) {
+            opener: function (openerElement) {
                 // openerElement is the element on which popup was initialized, in this case its <a> tag
                 // you don't need to add "opener" option if this code matches your needs, it's defailt one.
                 return openerElement.is('img') ? openerElement : openerElement.find('img');
@@ -5313,8 +5343,8 @@ if (!Object.prototype.hasOwnProperty)
     });
     $('#gallery a').magnificPopup({
         type: 'image',
-        gallery:{
-            enabled:true
+        gallery: {
+            enabled: true
         },
         mainClass: 'mfp-with-zoom', // this class is for CSS animation below
 
@@ -5327,7 +5357,7 @@ if (!Object.prototype.hasOwnProperty)
             // The "opener" function should return the element from which popup will be zoomed in
             // and to which popup will be scaled down
             // By defailt it looks for an image tag:
-            opener: function(openerElement) {
+            opener: function (openerElement) {
                 // openerElement is the element on which popup was initialized, in this case its <a> tag
                 // you don't need to add "opener" option if this code matches your needs, it's defailt one.
                 return openerElement.is('img') ? openerElement : openerElement.find('img');
@@ -5345,10 +5375,8 @@ if (!Object.prototype.hasOwnProperty)
     var closeReviewBtn = $('#close-review-box');
     var ratingsField = $('#ratings-hidden');
 
-    openReviewBtn.click(function(e)
-    {
-        reviewBox.slideDown(400, function()
-        {
+    openReviewBtn.click(function (e) {
+        reviewBox.slideDown(400, function () {
             $('#new-review').trigger('autosize.resize');
             newReview.focus();
         });
@@ -5356,11 +5384,9 @@ if (!Object.prototype.hasOwnProperty)
         closeReviewBtn.show();
     });
 
-    closeReviewBtn.click(function(e)
-    {
+    closeReviewBtn.click(function (e) {
         e.preventDefault();
-        reviewBox.slideUp(300, function()
-        {
+        reviewBox.slideUp(300, function () {
             newReview.focus();
             openReviewBtn.fadeIn(200);
         });
@@ -5368,11 +5394,9 @@ if (!Object.prototype.hasOwnProperty)
 
     });
 
-    $('.starrr').on('starrr:change', function(e, value){
+    $('.starrr').on('starrr:change', function (e, value) {
         ratingsField.val(value);
     });
-
-
 
 
 })(jQuery);
@@ -5419,15 +5443,15 @@ function getScrollerWidth() {
 }
 
 function getWindowHeight() {
-    var windowHeight=0;
-    if (typeof(window.innerHeight)=='number') {
-        windowHeight=window.innerHeight;
+    var windowHeight = 0;
+    if (typeof(window.innerHeight) == 'number') {
+        windowHeight = window.innerHeight;
     } else {
         if (document.documentElement && document.documentElement.clientHeight) {
             windowHeight = document.documentElement.clientHeight;
         } else {
             if (document.body && document.body.clientHeight) {
-                windowHeight=document.body.clientHeight;
+                windowHeight = document.body.clientHeight;
             }
         }
     }
@@ -5435,15 +5459,15 @@ function getWindowHeight() {
 }
 
 function getWindowWidth() {
-    var windowWidth=0;
-    if (typeof(window.innerWidth)=='number') {
-        windowWidth=window.innerWidth;
+    var windowWidth = 0;
+    if (typeof(window.innerWidth) == 'number') {
+        windowWidth = window.innerWidth;
     } else {
         if (document.documentElement && document.documentElement.clientWidth) {
             windowWidth = document.documentElement.clientWidth;
         } else {
             if (document.body && document.body.clientWidth) {
-                windowWidth=document.body.clientWidth;
+                windowWidth = document.body.clientWidth;
             }
         }
     }

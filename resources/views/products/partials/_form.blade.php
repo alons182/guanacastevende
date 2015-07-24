@@ -18,19 +18,38 @@
                    {!! Form::hidden('slug', null,['class'=>'form__control', 'readonly']) !!}
 
                 <div class="form__group">
-                    {!! Form::label('categories','Categorias:',['class'=>'col-sm-2 control-label'])!!}
-                    {!! Form::select('categories[]', ['' => ''] + $categories_list, isset($selected_categories) ? $selected_categories : null , ['id'=>'categories','class'=>'form__control','required'=>'required']) !!}
+                    {!! Form::label('categories','Seleccione una categoria:',['class'=>'col-sm-2 control-label'])!!}
+
+                    <div class="select__category">
+                        <select  name="parentCategories" class="rootCategories" size="5" data-container="0">
+
+                            @foreach($categories_list as $category)
+                                <option class="option-icon" value="{!! $category->id !!}">{!! $category->name !!} </option>
+                            @endforeach
+
+                        </select>
+                        <div class="select__sub-category">
+
+                        </div>
+                    </div>
+                    <script id="selectCategoryTemplate" type="text/x-handlebars-template">
+
+                        <select  name="parentCategories" class="rootCategories" size="5" data-container="@{{ container }}">
+
+                            @{{#each this}}
+                                <option class="@{{#if category_children }} option-icon @{{/if}}" value="@{{ category_id }}">@{{ category_name }} </option>
+                            @{{/each}}
+                        </select>
+                        <div class="select__sub-category">
+
+                        </div>
+                    </script>
+
+
+                    {{-- Form::select('categories[]', ['' => ''] + $categories_list, isset($selected_categories) ? $selected_categories : null , ['id'=>'categories','class'=>'form__control','required'=>'required']) --}}
                     {!! errors_for('categories',$errors) !!}
 
                 </div>
-                    <!--<div class="form__group">
-                        {!! Form::label('tags','Etiquetas:',['class'=>'col-sm-2 control-label'])!!}
-
-                            {!! Form::select('tags[]', $tags_list, isset($selected_tags) ? $selected_tags : null , ['multiple' => 'multiple','id'=>'tags','class'=>'form__control']) !!}
-                            {!! errors_for('tags',$errors) !!}
-
-                    </div>-->
-
 
                 <div class="form__group">
                     {!! Form::label('description','Descripción:',['class'=>'col-sm-2 control-label'])!!}

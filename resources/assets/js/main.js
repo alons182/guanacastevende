@@ -1,4 +1,5 @@
-;(function($){
+;
+(function ($) {
 
     var btnMenu = $('#btn-menu'),
         btnSearch = $('#btn-search'),
@@ -10,19 +11,57 @@
         infoBox = $('#InfoBox');
 
     $('.alert').delay(3000).fadeOut(300);
-    $('#categories').select2();
+    // $('#categories').select2();
+    $('body ').on('change', '.rootCategories', function () {
+
+        var $this = $(this);
+        var containerId = $this.data('container');
+        var $result = $this.next('.select__sub-category');
+
+        $.get("/api/v1/categories/" + $(this).val() + "/children",
+            /* { option: $(this).val() },*/
+            function (result) {
+
+                var subcategories = $.map(result.data, function (obj, index) {
+                    return {
+                        category_id: obj.id,
+                        category_name: obj.name,
+                        category_children: parseInt(obj.children)
+                    }
+                });
+                subcategories['container'] = containerId + 1;
+
+                if (result.data.length) {
+                    var html = categorySelectTemplate(subcategories);
+                    $result.html(html);
+
+                } else {
+                    $this.attr('name', 'categories[]');
+                }
+
+
+            });
+    });
+    function categorySelectTemplate(subcategories) {
+        var templateHtml = $.trim($('#selectCategoryTemplate').html());
+        var template = Handlebars.compile(templateHtml);
+
+        return template(subcategories);
+
+    }
+
     $('#tags').select2();
     $("#exp_card").mask("99/99", {
-        completed: function() {
-           
+        completed: function () {
+
         }
     });
-    btnMenu.on('click', function(){
+    btnMenu.on('click', function () {
         menu.toggle();
 
     });
-    btnSearch.on('click', function(){
-        if($(this).hasClass('open')) {
+    btnSearch.on('click', function () {
+        if ($(this).hasClass('open')) {
             topSearch.slideDown();
             $(this).removeClass('open');
         }
@@ -34,10 +73,10 @@
     });
 
     menu.find(".parent").hoverIntent({
-        over: function() {
-            $(this).find(">.header__submenu").slideDown(200 );
+        over: function () {
+            $(this).find(">.header__submenu").slideDown(200);
         },
-        out:  function() {
+        out: function () {
             $(this).find(">.header__submenu").slideUp(200);
         },
         timeout: 200
@@ -45,10 +84,10 @@
     });
 
     $("body").hoverIntent({
-        over:function() {
-            $('.products__categories__ul').slideDown(200 );
+        over: function () {
+            $('.products__categories__ul').slideDown(200);
         },
-        out: function() {
+        out: function () {
             $('.products__categories__ul').slideUp(200);
         },
         selector: '.products__categories.mobile',
@@ -56,10 +95,10 @@
     });
 
     categories.find(".parent").hoverIntent({
-        over: function() {
-            $(this).find(">.products__categories__submenu").slideDown(200 );
+        over: function () {
+            $(this).find(">.products__categories__submenu").slideDown(200);
         },
-        out:  function() {
+        out: function () {
             $(this).find(">.products__categories__submenu").slideUp(200);
         },
         timeout: 200
@@ -68,19 +107,17 @@
 
 
     $("input[name='option_id']").on('click', checkOnlyOne);
-    $("input[name='option_id']").on('click', function(){
-       if( $(this).attr('value') == 4 ){
-           $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled',false);
+    $("input[name='option_id']").on('click', function () {
+        if ($(this).attr('value') == 4) {
+            $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled', false);
 
 
-       }else
-       {
-           $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled',true).attr('checked',false);
-       }
+        } else {
+            $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled', true).attr('checked', false);
+        }
     });
     $("input[name='tags[]']").on('click', checkOnlyOne);
-    function checkOnlyOne()
-    {
+    function checkOnlyOne() {
         // in the handler, 'this' refers to the box clicked on
         var $box = $(this);
         if ($box.is(":checked")) {
@@ -96,13 +133,12 @@
         }
     }
 
-    $("input[name='payment_method']").on('click', function(){
+    $("input[name='payment_method']").on('click', function () {
 
-        if($(this).data('method')=== 'card')
-        {
+        if ($(this).data('method') === 'card') {
             $('.payment__method__paypal').slideUp();
             $('.payment__method__card').slideDown();
-        }else{
+        } else {
             $('.payment__method__paypal').slideDown();
             $('.payment__method__card').slideUp();
         }
@@ -110,7 +146,7 @@
 
     // SMOOTH ANCHOR SCROLLING
     var $root = $('html, body');
-    $('a.anchor').click(function(e) {
+    $('a.anchor').click(function (e) {
         var href = $.attr(this, 'href');
         if (typeof($(href)) != 'undefined' && $(href).length > 0) {
             var anchor = '';
@@ -124,7 +160,7 @@
                 console.log(anchor);
                 $root.animate({
                     scrollTop: $(anchor).offset().top
-                }, 500, function() {
+                }, 500, function () {
                     window.location.hash = anchor;
                 });
                 e.preventDefault();
@@ -133,8 +169,8 @@
     });
 
     // Forms with ajax process
-    $('form[data-remote]').on('submit', function(e){
-        var form =$(this);
+    $('form[data-remote]').on('submit', function (e) {
+        var form = $(this);
         var method = form.find('input[name="_method"]').val() || 'POST';
         var url = form.prop('action');
         form.find('.loader').show();
@@ -142,16 +178,15 @@
             type: method,
             url: url,
             data: form.serialize(),
-            success: function(){
+            success: function () {
                 var message = form.data('remote-success-message');
                 form.find('.loader').hide();
-                if(message)
-                {
+                if (message) {
 
                     $('.response').removeClass('message-error').addClass('message-success').html(message).fadeIn(300).delay(4500).fadeOut(300);
                 }
             },
-            error:function(){
+            error: function () {
                 form.find('.loader').hide();
                 $('.response').removeClass('message-success').addClass('message-error').html('Whoops, looks like something went wrong.').fadeIn(300).delay(4500).fadeOut(300);
 
@@ -163,18 +198,18 @@
         e.preventDefault();
     });
 
-    $('input[data-confirm], button[data-confirm]').on('click', function(e){
+    $('input[data-confirm], button[data-confirm]').on('click', function (e) {
         var input = $(this);
 
-        input.prop('disabled','disabled');
+        input.prop('disabled', 'disabled');
 
-        if(! confirm(input.data('confirm'))){
+        if (!confirm(input.data('confirm'))) {
             e.preventDefault();
 
         }
     });
-    $("form[data-confirm]").submit(function() {
-        if ( ! confirm($(this).attr("data-confirm"))) {
+    $("form[data-confirm]").submit(function () {
+        if (!confirm($(this).attr("data-confirm"))) {
             return false;
         }
     });
@@ -182,11 +217,11 @@
     function limpiaForm(miForm) {
 
         // recorremos todos los campos que tiene el formulario
-        $(":input", miForm).each(function() {
+        $(":input", miForm).each(function () {
             var type = this.type;
             var tag = this.tagName.toLowerCase();
             //limpiamos los valores de los campos…
-            if (type == 'text' || type == 'password'  || type == 'email' || tag == 'textarea')
+            if (type == 'text' || type == 'password' || type == 'email' || tag == 'textarea')
                 this.value = "";
             // excepto de los checkboxes y radios, le quitamos el checked
             // pero su valor no debe ser cambiado
@@ -199,48 +234,43 @@
     }
 
 
-    $(window).load(function() {
+    $(window).load(function () {
 
         resizes();
 
-     });
+    });
 
-     $(window).resize(resizes);
+    $(window).resize(resizes);
 
-     function resizes()
-     {
-
+    function resizes() {
 
 
-         if(getWindowWidth() > 640){
+        if (getWindowWidth() > 640) {
 
-             $( ".products__item" ).each(function( index ) {
+            $(".products__item").each(function (index) {
 
-                 if($( this ).find('img').height() < $( this ).height())
-                 {
-                     $( this ).find('img').height($( this ).height());
-                 }
-             });
+                if ($(this).find('img').height() < $(this).height()) {
+                    $(this).find('img').height($(this).height());
+                }
+            });
 
-        }else{
-             $('.products__item').find('img').height('auto');
-         }
+        } else {
+            $('.products__item').find('img').height('auto');
+        }
 
-         if(getWindowWidth() < 1024)
-         {
-             $('.products__categories').addClass('mobile');
+        if (getWindowWidth() < 1024) {
+            $('.products__categories').addClass('mobile');
 
-         }else{
-             $('.products__categories').removeClass('mobile');
-         }
+        } else {
+            $('.products__categories').removeClass('mobile');
+        }
 
 
+    }
 
-         }
 
-
-    btnEditSlug.on('click',function(){
-        $('input[name="slug"]').prop( "readOnly", null );
+    btnEditSlug.on('click', function () {
+        $('input[name="slug"]').prop("readOnly", null);
     });
 
     //gallery
@@ -248,29 +278,30 @@
         inputsPhotos = $("#inputs_photos");
     $("#add_input_photo").on('click', function (e) {
         photos++;
+        if (photos < 6) {
+            inputsPhotos.append('<div><strong>Foto' + photos + ': </strong>' +
+            '<input type="file" name="new_photo_file[]" size="45" /></div><br />');
 
-        inputsPhotos.append('<div><strong>Foto' + photos + ': </strong>'+
-        '<input type="file" name="new_photo_file[]" size="45" /></div><br />');
+        }
 
     });
-    function deletePhoto()
-    {
+    function deletePhoto() {
         var btn_delete = $(this),
             url = "/photos/" + btn_delete.attr("data-imagen");
 
-        $.post(url,{_token: $('input[name=_token]').val()}, function(data){
+        $.post(url, {_token: $('input[name=_token]').val()}, function (data) {
             btn_delete.parent().fadeOut("slow");
         });
     }
 
     $("#UploadButton").ajaxUpload({
-        url : "/photos",
+        url: "/photos",
         name: "file",
-        data: {id: $('input[name=product_id]').val(), _token: $('input[name=_token]').val() },
-        onSubmit: function() {
+        data: {id: $('input[name=product_id]').val(), _token: $('input[name=_token]').val()},
+        onSubmit: function () {
             infoBox.html('Uploading ... ');
         },
-        onComplete: function(result) {
+        onComplete: function (result) {
 
             infoBox.html('Uploaded succesfull!');
 
@@ -279,20 +310,19 @@
 
             fillPhotosInfo(photos);
 
-            gallery.find('li').find('.delete').on('click',deletePhoto);
+            gallery.find('li').find('.delete').on('click', deletePhoto);
 
 
         }
     });
 
-    gallery.find('li').find('.delete').on('click',deletePhoto);
+    gallery.find('li').find('.delete').on('click', deletePhoto);
 
-    function photoTemplate(photo)
-    {
+    function photoTemplate(photo) {
 
-        var templateHtml = $.trim( $('#photoTemplate').html() );
+        var templateHtml = $.trim($('#photoTemplate').html());
 
-        var template = Handlebars.compile( templateHtml );
+        var template = Handlebars.compile(templateHtml);
 
         return template(photo);
 
@@ -306,7 +336,7 @@
 
         var html = photoTemplate(jsonData);
 
-        (gallery.length === 0) ? gallery.html( html ) : gallery.prepend(html);
+        (gallery.length === 0) ? gallery.html(html) : gallery.prepend(html);
 
         gallery.find('li').eq(0).hide().show("slow");
 
@@ -326,7 +356,7 @@
             // The "opener" function should return the element from which popup will be zoomed in
             // and to which popup will be scaled down
             // By defailt it looks for an image tag:
-            opener: function(openerElement) {
+            opener: function (openerElement) {
                 // openerElement is the element on which popup was initialized, in this case its <a> tag
                 // you don't need to add "opener" option if this code matches your needs, it's defailt one.
                 return openerElement.is('img') ? openerElement : openerElement.find('img');
@@ -336,8 +366,8 @@
     // This will create a single gallery from all elements that have class "gallery-item"
     $('.product__media__gallery__link').magnificPopup({
         type: 'image',
-        gallery:{
-            enabled:true
+        gallery: {
+            enabled: true
         },
         mainClass: 'mfp-with-zoom', // this class is for CSS animation below
 
@@ -350,7 +380,7 @@
             // The "opener" function should return the element from which popup will be zoomed in
             // and to which popup will be scaled down
             // By defailt it looks for an image tag:
-            opener: function(openerElement) {
+            opener: function (openerElement) {
                 // openerElement is the element on which popup was initialized, in this case its <a> tag
                 // you don't need to add "opener" option if this code matches your needs, it's defailt one.
                 return openerElement.is('img') ? openerElement : openerElement.find('img');
@@ -359,8 +389,8 @@
     });
     $('#gallery a').magnificPopup({
         type: 'image',
-        gallery:{
-            enabled:true
+        gallery: {
+            enabled: true
         },
         mainClass: 'mfp-with-zoom', // this class is for CSS animation below
 
@@ -373,7 +403,7 @@
             // The "opener" function should return the element from which popup will be zoomed in
             // and to which popup will be scaled down
             // By defailt it looks for an image tag:
-            opener: function(openerElement) {
+            opener: function (openerElement) {
                 // openerElement is the element on which popup was initialized, in this case its <a> tag
                 // you don't need to add "opener" option if this code matches your needs, it's defailt one.
                 return openerElement.is('img') ? openerElement : openerElement.find('img');
@@ -391,10 +421,8 @@
     var closeReviewBtn = $('#close-review-box');
     var ratingsField = $('#ratings-hidden');
 
-    openReviewBtn.click(function(e)
-    {
-        reviewBox.slideDown(400, function()
-        {
+    openReviewBtn.click(function (e) {
+        reviewBox.slideDown(400, function () {
             $('#new-review').trigger('autosize.resize');
             newReview.focus();
         });
@@ -402,11 +430,9 @@
         closeReviewBtn.show();
     });
 
-    closeReviewBtn.click(function(e)
-    {
+    closeReviewBtn.click(function (e) {
         e.preventDefault();
-        reviewBox.slideUp(300, function()
-        {
+        reviewBox.slideUp(300, function () {
             newReview.focus();
             openReviewBtn.fadeIn(200);
         });
@@ -414,11 +440,9 @@
 
     });
 
-    $('.starrr').on('starrr:change', function(e, value){
+    $('.starrr').on('starrr:change', function (e, value) {
         ratingsField.val(value);
     });
-
-
 
 
 })(jQuery);
@@ -465,15 +489,15 @@ function getScrollerWidth() {
 }
 
 function getWindowHeight() {
-    var windowHeight=0;
-    if (typeof(window.innerHeight)=='number') {
-        windowHeight=window.innerHeight;
+    var windowHeight = 0;
+    if (typeof(window.innerHeight) == 'number') {
+        windowHeight = window.innerHeight;
     } else {
         if (document.documentElement && document.documentElement.clientHeight) {
             windowHeight = document.documentElement.clientHeight;
         } else {
             if (document.body && document.body.clientHeight) {
-                windowHeight=document.body.clientHeight;
+                windowHeight = document.body.clientHeight;
             }
         }
     }
@@ -481,15 +505,15 @@ function getWindowHeight() {
 }
 
 function getWindowWidth() {
-    var windowWidth=0;
-    if (typeof(window.innerWidth)=='number') {
-        windowWidth=window.innerWidth;
+    var windowWidth = 0;
+    if (typeof(window.innerWidth) == 'number') {
+        windowWidth = window.innerWidth;
     } else {
         if (document.documentElement && document.documentElement.clientWidth) {
             windowWidth = document.documentElement.clientWidth;
         } else {
             if (document.body && document.body.clientWidth) {
-                windowWidth=document.body.clientWidth;
+                windowWidth = document.body.clientWidth;
             }
         }
     }

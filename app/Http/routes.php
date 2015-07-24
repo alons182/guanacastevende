@@ -14,6 +14,8 @@
 Route::group(['prefix' => 'api/v1'], function(){
     Route::get('products/{id}/tags', 'Api\TagsController@index');
     Route::resource('products','Api\ProductsController');
+    Route::resource('categories','Api\CategoriesController');
+    Route::get('categories/{id}/children', 'Api\CategoriesController@children');
     Route::resource('tags','Api\TagsController',['only' => ['index','show']]);
 
 });

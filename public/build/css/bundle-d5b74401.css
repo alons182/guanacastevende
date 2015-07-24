@@ -4982,6 +4982,23 @@ img {
 .form .input__group--right input {
   padding-right: 2.5rem;
 }
+.form .rootCategories {
+  height: 225px;
+  width: 183px;
+  overflow-y: scroll;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+}
+.form .rootCategories .option-icon:after {
+  content: '\f0da';
+  font-family: 'guanacastevende';
+  position: relative;
+  top: 2px;
+  left: 10px;
+}
+.form .select__sub-category {
+  display: inline-block;
+}
 .left-section,
 .right-section {
   width: 100%;
@@ -5025,7 +5042,7 @@ img {
     font-size: 100%;
   }
   .left-section {
-    width: 50%;
+    width: 60%;
     float: left;
   }
   .right-section {
@@ -5418,7 +5435,7 @@ img {
           animation: colorpulse 2s 1s infinite;
 }
 .products__item__published {
-  background-color: #f00;
+  background-color: #f9ad0a;
   color: #fff;
   font-size: 13px;
   padding: 0.3rem;
