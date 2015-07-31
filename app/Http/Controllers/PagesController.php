@@ -130,6 +130,17 @@ class PagesController extends Controller
         return view('pages.terms-privacy');
 
     }
+    /**
+     * Show the Tips Page.
+     *
+     * @return Response
+     */
+    public function Tips()
+    {
+
+        return view('pages.tips');
+
+    }
 
 
 }

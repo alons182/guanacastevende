@@ -55,6 +55,10 @@ Route::get('/terms-privacy', [
     'as'   => 'termsPrivacy_path',
     'uses' => 'PagesController@TermsPrivacy'
 ]);
+Route::get('/tips', [
+    'as'   => 'tips_path',
+    'uses' => 'PagesController@Tips'
+]);
 /**
  * User & Profile
  */

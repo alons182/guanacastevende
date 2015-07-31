@@ -801,6 +801,9 @@ img {
 .main ul {
   margin-left: 45px;
 }
+.main ul a {
+  color: #1ca038;
+}
 .banner {
   display: block;
   width: 100%;
@@ -1328,6 +1331,9 @@ img {
 }
 .options__info b {
   color: #1ca038;
+}
+.tips {
+  margin-top: 2rem;
 }
 .terms {
   margin-top: 2rem;

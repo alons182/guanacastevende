@@ -4,7 +4,7 @@
 @section('content')
     <section class="terms">
 
-        <h1>Politicas de artículos prohibidos</h1>
+        <h1 class="terms__title">Politicas de artículos prohibidos</h1>
 
         <p>A continuación se encuentra el listado de productos y servicios cuyo ofrecimiento, solicitud, publicación,
             compra o venta están prohibidos por Guanacaste Vende por políticas internas y/o para garantizar el
