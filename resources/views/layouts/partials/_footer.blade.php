@@ -1,6 +1,10 @@
 <div class="clear"></div>
 <footer class="footer">
     <div class="inner">
+        <div class="footer__terms">
+            <a class="footer__terms__link" href="{{ route('terms_path') }}">Términos y Condiciones</a>
+        </div>
+
         <div class="left">
             <nav class="footer__menu">
                 <ul class="footer__menu__ul">

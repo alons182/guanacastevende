@@ -43,6 +43,18 @@ Route::get('/terms', [
     'as'   => 'terms_path',
     'uses' => 'PagesController@Terms'
 ]);
+Route::get('/terms-products', [
+    'as'   => 'termsProducts_path',
+    'uses' => 'PagesController@TermsProducts'
+]);
+Route::get('/terms-username', [
+    'as'   => 'termsUsername_path',
+    'uses' => 'PagesController@TermsUsername'
+]);
+Route::get('/terms-privacy', [
+    'as'   => 'termsPrivacy_path',
+    'uses' => 'PagesController@TermsPrivacy'
+]);
 /**
  * User & Profile
  */

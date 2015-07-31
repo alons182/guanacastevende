@@ -4,9 +4,32 @@
 @section('content')
     <section class="about">
         <h1 class="about__title">Acerca de Nosotros</h1>
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet ratione, tenetur. Amet delectus deleniti dicta dolor dolores dolorum et magnam minima neque nesciunt omnis perferendis quod rem, reprehenderit saepe suscipit?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ea quaerat quia? Amet commodi corporis dolorum, eligendi facilis fugiat, fugit hic iusto neque praesentium quasi veniam veritatis? Iusto, qui, repudiandae!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at cumque, debitis, ea eligendi est harum incidunt iusto laudantium magni natus perferendis perspiciatis ratione saepe sequi sit sunt. Commodi, consequatur!</p>
+        <p>Guanacaste Vende es un espacio para que tod@s los Guanacastec@s tengan la oportunidad de vender sus productos en una plataforma dinámica y actual hecha 100% por Guanacastecos, de manera eficiente y segura.</p>
+
+        <p>El sitio web fue creado por Avotz Web Works, equipo netamente Guanacasteco con habilidades y aptitudes de primer nivel y que permiten así poder generar</p>
+
+        <h2>Enlaces de interés:</h2>
+        <ul>
+            <li><a href="/terms">Términos y condiciones Generales</a></li>
+            <li><a href="/terms-username">Política y elección de Nombre de usuario-username</a></li>
+            <li><a href="/terms-privacy">Política de Privacidad</a></li>
+            <li><a href="/terms-products">Politicas de artículos prohibidos</a></li>
+        </ul>
+
+
+       <h2>Ayuda</h2>
+        <h3>Tips y consejos</h3>
+        <ul>
+            <li>Cómo elegir buenas claves</li>
+            <li>Creo que recibí un e-mail falso</li>
+            <li>Proteger mi computadora</li>
+            <li>Sospecho que mi cuenta está en peligro</li>
+            <li>Cómo recuperar mi clave</li>
+            <li>Cómo sé si un vendedor es confiable</li>
+            <li>Cómo pago y recibo mi producto</li>
+            <li>Cómo califico a mi vendedor</li>
+        </ul>
+
 
 
 

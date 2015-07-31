@@ -353,6 +353,9 @@ ul {
   margin: 0;
   padding: 0;
 }
+ul li {
+  margin-bottom: 1rem;
+}
 a {
   text-decoration: none;
   transition: all 0.5s ease;
@@ -371,6 +374,14 @@ h1 {
 img {
   max-width: 100%;
   height: auto;
+}
+.ul__numbers {
+  margin-left: 45px;
+  list-style-type: decimal;
+}
+.ul__letters {
+  margin-left: 45px;
+  list-style-type: lower-alpha;
 }
 .right {
   right: 0;
@@ -786,6 +797,9 @@ img {
 }
 .main {
   min-height: 565px;
+}
+.main ul {
+  margin-left: 45px;
 }
 .banner {
   display: block;
@@ -1316,12 +1330,15 @@ img {
   color: #1ca038;
 }
 .terms {
+  margin-top: 2rem;
+}
+.terms-input {
   margin-bottom: 1rem;
 }
-.terms__link {
+.terms-input__link {
   color: #1ca038;
 }
-.terms__label {
+.terms-input__label {
   display: inline-block !important;
 }
 .option__description {
@@ -1363,6 +1380,17 @@ img {
   padding: 1rem 0;
   text-align: center;
   margin-top: 1rem;
+}
+.footer__terms {
+  text-align: center;
+}
+.footer__terms__link {
+  color: #fff;
+  background-color: #1ca038;
+  padding: 0.3rem;
+}
+.footer__terms__link:hover {
+  text-decoration: underline;
 }
 .footer .left {
   float: none;

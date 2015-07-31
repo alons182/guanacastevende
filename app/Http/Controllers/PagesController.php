@@ -97,6 +97,39 @@ class PagesController extends Controller
         return view('pages.terms');
 
     }
+    /**
+     * Show the Terms Page.
+     *
+     * @return Response
+     */
+    public function TermsProducts()
+    {
+
+        return view('pages.terms-products');
+
+    }
+    /**
+     * Show the Terms Page.
+     *
+     * @return Response
+     */
+    public function TermsUsername()
+    {
+
+        return view('pages.terms-username');
+
+    }
+    /**
+     * Show the Terms Page.
+     *
+     * @return Response
+     */
+    public function TermsPrivacy()
+    {
+
+        return view('pages.terms-privacy');
+
+    }
 
 
 }

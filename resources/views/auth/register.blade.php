@@ -42,9 +42,9 @@
                                 </div>
                                 {!! errors_for('password_confirmation',$errors) !!}
                             </div>
-                            <div class="form-group terms">
-                                {!! Form::label('terms', 'Acepta:',['class'=>'terms__label']) !!}
-                                <a href="/terms" target="_blank" class="terms__link">Términos y condiciones</a>
+                            <div class="form-group terms-input">
+                                {!! Form::label('terms', 'Acepta:',['class'=>'terms-input__label']) !!}
+                                <a href="/terms" target="_blank" class="terms-input__link">Términos y condiciones</a>
                                 {!! Form::checkbox('terms') !!}
                                 {!! errors_for('terms',$errors) !!}
                             </div>

@@ -29,6 +29,9 @@ ul
 	margin 0
 	padding 0
 
+	li
+		margin-bottom 1rem
+
 
 a
 	text-decoration none
@@ -49,6 +52,13 @@ img
 	max-width 100%
 	height auto
 
+.ul__numbers
+	margin-left 45px
+	list-style-type decimal
+
+.ul__letters
+	margin-left 45px
+	list-style-type lower-alpha
 .right
 	right 0
 	float right
@@ -428,6 +438,9 @@ img
 .main
 	//overflow hidden
 	min-height 565px
+
+	ul
+		margin-left 45px
 
 .banner
 	display block
@@ -892,6 +905,8 @@ img
 		color verde
 
 .terms
+	margin-top 2rem
+.terms-input
 	margin-bottom 1rem
 	&__link
 		color verde
@@ -929,6 +944,16 @@ img
 	padding 1rem 0
 	text-align center
 	margin-top 1rem
+
+	&__terms
+		text-align center
+		&__link
+			color white
+			background-color verde
+			padding .3rem
+			&:hover
+				text-decoration underline
+
 	.left
 		float none
 	.right
