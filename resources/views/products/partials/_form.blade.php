@@ -2,7 +2,7 @@
     <div class="left-section">
         <section class="panel">
                 <h1 class="product__edit__title">Editando Producto</h1>
-
+                <p>Ingresa aquí tu producto, es gratis y <strong>estará en línea por 30 días</strong> !!</p>
             <div class="form">
                 <div class="form__group">
                     {!! Form::submit(isset($buttonText) ? $buttonText : 'Agregar Producto',['class'=>'btn btn-primary'])!!}
@@ -68,6 +68,15 @@
                             {!! errors_for('price',$errors) !!}
 
                         </div>
+
+                </div>
+                <div class="from__group options__info">
+                    <p>Publicar artículos en Guancaste Vende <b>es completamente gratuito</b>, solamente que deberás esperar por la confirmación teléfonica dentro de las próximas 72 horas y la respectiva activación de tu anuncio.</p>
+                    <p><b>Si no deseas esperar</b> puedes escoger cualquiera de los siguientes servicios que <b>son opcionales, y tienen el costo indicado.</b> Si escoges cualquiera de ellos, debes pagar en línea con tarjeta de crédito ó débito, o con tu cuenta PayPal en nuestro servidor seguro, una vez que oprimas el botón de <strong>AGREGAR PRODUCTO</strong></p>
+                    <p>(si no quieres ninguna de las opciones simplemente deja los checkbox vacíos en las opciones):</p>
+
+
+
 
                 </div>
                 <div class="form__group">

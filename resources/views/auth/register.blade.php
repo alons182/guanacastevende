@@ -42,7 +42,12 @@
                                 </div>
                                 {!! errors_for('password_confirmation',$errors) !!}
                             </div>
-
+                            <div class="form-group">
+                                {!! Form::label('terms', 'Acepta:') !!}
+                                <a href="/terms" target="_blank">Términos y condiciones</a>
+                                {!! Form::checkbox('terms') !!}
+                                {!! errors_for('terms',$errors) !!}
+                            </div>
                             <div class="form__group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">

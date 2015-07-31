@@ -86,5 +86,17 @@ class PagesController extends Controller
 
     }
 
+    /**
+     * Show the Terms Page.
+     *
+     * @return Response
+     */
+    public function Terms()
+    {
+
+        return view('pages.terms');
+
+    }
+
 
 }

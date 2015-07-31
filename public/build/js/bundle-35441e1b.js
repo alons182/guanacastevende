@@ -4991,7 +4991,7 @@ if (!Object.prototype.hasOwnProperty)
 
                 } else {
                     $this.attr('name', 'categories[]');
-                    $this.attr('required', 'required');
+                    
                 }
 
 

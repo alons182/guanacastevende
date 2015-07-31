@@ -39,6 +39,10 @@ Route::get('/about', [
     'as'   => 'about_path',
     'uses' => 'PagesController@About'
 ]);
+Route::get('/terms', [
+    'as'   => 'terms_path',
+    'uses' => 'PagesController@Terms'
+]);
 /**
  * User & Profile
  */

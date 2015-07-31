@@ -1312,6 +1312,9 @@ img {
 .payment__method__paypal {
   display: none;
 }
+.options__info b {
+  color: #1ca038;
+}
 .option__description {
   font-size: 13px;
   padding-left: 1rem;
