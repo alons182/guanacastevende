@@ -764,6 +764,7 @@ img {
     display: inline-block;
     margin-right: -4px;
     position: relative;
+    margin-bottom: 0;
   }
   .header__menu__item:before {
     content: '';

@@ -19,7 +19,7 @@
 
        <h2>Ayuda</h2>
         <ul>
-            <li><a href="/tips">Tips y consejos</a></li>
+            <li><a href="#">Tips y consejos</a></li>
         </ul>
 
 
