@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('meta-title')Guanacaste Vende | {!! $product->name !!}@stop
 @section('meta-description'){!! trim(strip_tags( $product->description ))!!} | @foreach ($product->tags as $tag)
-{!! trim($tag->name) !!}@endforeach
+    {!! trim($tag->name) !!}@endforeach
 @stop
 @section('content')
     <div class="product">
@@ -11,7 +11,8 @@
                 <div class="product__img">
                     @if($product->image)
                         <a class="product__img__link" href="{!! photos_path('products') !!}{!! $product->image !!}">
-                            <img class="img" src="{!! photos_path('products').'thumb_'.$product->image !!}" alt="{!! $product->name !!}" width="500"  height="400"/>
+                            <img class="img" src="{!! photos_path('products').'thumb_'.$product->image !!}"
+                                 alt="{!! $product->name !!}" width="500" height="400"/>
                         </a>
                     @else
                         <img class="img" src="holder.js/481x531/text:No-image" alt="{!! $product->name !!}">
@@ -23,7 +24,8 @@
                         <h3 class="product__media__title">Más imagenes</h3>
 
                         @foreach ($photos as $photo)
-                            <a class="product__media__gallery__link" href="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url !!}">
+                            <a class="product__media__gallery__link"
+                               href="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url !!}">
                                 <img src="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url !!}"
                                      data-src="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url!!}"
                                      alt="{!! $product->name !!}">
@@ -40,6 +42,7 @@
                 <h1 class="product__title">
                     {!! $product->name !!}
                 </h1>
+
                 <div class="product__tags">
                     @foreach($product->tags as $tag)
                         <span class="product__tags__item">{!! $tag->name !!}</span>
@@ -51,9 +54,12 @@
                 <div class="product__price">
                     {!! money($product->price, '₡') !!}
                 </div>
-                <div class="product__view__seller">
-                    <a href="{!! URL::route('profile.show', [$currentUser->username]) !!}" class="btn btn-success">Ver datos del vendedor</a>
-                </div>
+                @if (! Auth::guest())
+                    <div class="product__view__seller">
+                        <a href="{!! URL::route('profile.show', [$currentUser->username]) !!}" class="btn btn-success">Ver
+                            datos del vendedor</a>
+                    </div>
+                @endif
                 <div class="product__share">
                     <span class="product__share__title">Compartir</span>
                     <a class="icon-facebook" title="Facebook" href="#"
@@ -66,7 +72,8 @@
 
                     </a>
 
-                    <a class="icon-twitter" href="https://twitter.com/share?url={!! Request::url()!!}" target="_blank"></a>
+                    <a class="icon-twitter" href="https://twitter.com/share?url={!! Request::url()!!}"
+                       target="_blank"></a>
                     <a class="icon-google-plus" href="https://plus.google.com/share?url={!! Request::url()!!}" onclick="javascript:window.open(this.href,
   '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
                 </div>

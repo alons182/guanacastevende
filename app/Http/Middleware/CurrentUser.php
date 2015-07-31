@@ -25,6 +25,8 @@ class CurrentUser
             $username = $params['profile'];
         }
 
+        if( !auth()->user() ) return Redirect()->home();
+
         if (auth()->user()->username != $username)
         {
             return Redirect()->home();

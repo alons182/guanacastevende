@@ -25,6 +25,7 @@ class UserRequest extends Request {
             'username' => 'required|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|size:6',
+			'terms' => 'required'
 		];
 	}
 

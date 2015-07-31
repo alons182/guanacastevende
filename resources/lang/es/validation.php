@@ -122,7 +122,8 @@ return [
         "city" => "Ciudad",
         "estate" => "Provincia",
         "comment" => "Comentario",
-        "rating" => "Puntos"
+        "rating" => "Puntos",
+        "terms" => "Términos y condiciones"
 
     ],
 

@@ -785,7 +785,7 @@ img {
   }
 }
 .main {
-  min-height: 533px;
+  min-height: 565px;
 }
 .banner {
   display: block;
@@ -1314,6 +1314,15 @@ img {
 }
 .options__info b {
   color: #1ca038;
+}
+.terms {
+  margin-bottom: 1rem;
+}
+.terms__link {
+  color: #1ca038;
+}
+.terms__label {
+  display: inline-block !important;
 }
 .option__description {
   font-size: 13px;

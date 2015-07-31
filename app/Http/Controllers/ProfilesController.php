@@ -24,6 +24,7 @@ class ProfilesController extends Controller
     function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
+        $this->middleware('auth', ['only' => ['show']]);
         $this->middleware('currentUser', ['only' => ['edit', 'update']]);
 
     }

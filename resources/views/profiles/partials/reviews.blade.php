@@ -9,7 +9,7 @@
 
                 <a href="{{ route('profile.show', $review->author->username) }}" class="reviews__author__link">{!! $review->author->username !!}</a> <span class="pull-right right">{{$review->timeago}}</span>
 
-            <p>{{{$review->comment}}}</p>
+            <p>{{ $review->comment }}</p>
         </div>
     </div>
 @endforeach

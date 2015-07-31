@@ -1,5 +1,5 @@
 <h2 class="profile__title">Tu Perfil <small class="profile__edit-link">
-        @if ($user->isCurrent())
+        @if ($user->isCurrent() && !Auth::guest())
             | {!! link_to_route('profile.edit', 'Edita Tu Perfil', $currentUser->username) !!}
         @endif
 
