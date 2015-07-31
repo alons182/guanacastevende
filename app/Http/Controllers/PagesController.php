@@ -94,7 +94,7 @@ class PagesController extends Controller
     public function Terms()
     {
 
-        return view('pages.terms2');
+        return view('pages.terms');
 
     }
 

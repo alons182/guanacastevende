@@ -6,7 +6,7 @@ estamos para servirle @stop
     <section class="contact">
 
         <address class="contact__address">
-            <h2 class="contact__address__title">Horario de atención</h2>
+            <h2 class="contact__address__title">Horario de atención cása</h2>
             De Lunes a Viernes de 08:00 am a 12:00 y de 1:00 pm a 5:00 pm<br/>
             Sábados de 08:00 a 12:00 pm<br/>
 
