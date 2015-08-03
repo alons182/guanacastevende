@@ -30,7 +30,7 @@ class Product extends Model {
     {
         return $query->where(function ($query)
         {
-            $query->where('option_id', '=', 2)
+            $query->where('option_id', '=', 3)
                 ->where('featured', '=', 1)
                 ->where('published', '=', 1);
         });

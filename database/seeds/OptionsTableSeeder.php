@@ -25,7 +25,7 @@ class OptionsTableSeeder extends Seeder {
             'price' => 2000,
             'description' => 'Con esta opción, su anuncio aparecerá con el mensaje de "Nuevo" <b>durante los primeros 4 días de publicación.</b> (Nota: esta opción no estará disponible después de completado este proceso, y no aparece en los anuncios destacados más recientes en la página principal, pero sí en la página que le corresponda según el criterio de búsqueda de los usuarios). Precio ¢ 2,000'
         ]);
-        
+
         factory(Option::class, 1)->create([
             'name' => 'Opcion 3: Destacado y confirmación automática del anuncio',
             'price' => 7000,
