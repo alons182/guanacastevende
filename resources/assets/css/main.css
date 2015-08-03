@@ -443,6 +443,22 @@ img {
   display: inline-block;
   color: #1ca038;
 }
+.btn-remove {
+  background-color: #f00;
+}
+.info__system {
+  background-color: #fd6100;
+  color: #fff;
+  padding: 0.5rem;
+  text-align: center;
+}
+.info__system a {
+  color: #fff;
+  text-decoration: underline;
+}
+.info__system a:hover {
+  color: #1ca038;
+}
 .alert {
   padding: 15px;
   margin-bottom: 20px;
@@ -454,12 +470,13 @@ img {
 /* Each alert has its own width */
   float: right;
   clear: right;
-  max-width: 500px;
+  max-width: 900px;
   z-index: 999;
   -webkit-transform: translate(50%, 0);
       -ms-transform: translate(50%, 0);
           transform: translate(50%, 0);
   font-size: 2rem;
+  text-align: center;
 }
 .alert .close {
   display: none;

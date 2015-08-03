@@ -76,5 +76,20 @@ class ProfilesController extends Controller
         return Redirect()->route('profile.show', $user->username);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @param $username
+     * @return Response
+     */
+    public function Favorites($username)
+    {
+
+        $user = $this->userRepository->findByUsername($username);
+
+        return view('profiles.favorites')->with(compact('user'));
+    }
+
+
 
 }

@@ -40,7 +40,7 @@
                 <a class="products__item__link icon-caret-right" href="{!! ($product->published) ? URL::route('product_path', [$product->id]) : '#' !!}">{!! $product->name !!}</a>
             </h2>
         </div>
-       @if (isset($user) && $user->isCurrent())
+       @if (isset($user) && $user->isCurrent() && $user->isHisProduct($product))
 
             {{--  link_to_route('products.edit', 'Editar', $product->id,['class'=>'products__item__edit']) --}}
             <button type="submit" class="products__item__delete " form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}">Eliminar</button>

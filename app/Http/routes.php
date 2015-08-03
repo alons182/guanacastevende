@@ -70,6 +70,11 @@ Route::get('profile/{user}/reviews',[
     'as' => 'profile_reviews',
     'uses' => 'UsersController@Reviews'
 ]);
+
+Route::get('profile/{user}/favorites',[
+    'as' => 'profile_favorites',
+    'uses' => 'ProfilesController@Favorites'
+]);
 Route::resource('users', 'UsersController');
 
 Route::resource('profile', 'ProfilesController', [
@@ -106,6 +111,18 @@ Route::get('categories/{category}/products', [
         'as'   => 'category_products_path',
         'uses' => 'ProductsController@search']
 );
+
+//save, load & delete favorites front
+Route::post('/products/{product}/favorites', [
+    'as'   => 'save_favorites',
+    'uses' => 'ProductsController@saveFavorites'
+]);
+
+Route::post('/products/{product}/deletefavorites', [
+    'as'   => 'delete_favorites',
+    'uses' => 'ProductsController@deleteFavorites'
+]);
+
 
 Route::resource('products', 'ProductsController');
 

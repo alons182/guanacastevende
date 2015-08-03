@@ -60,6 +60,14 @@
                         <a href="{!! URL::route('profile.show', [$currentUser->username]) !!}" class="btn btn-success">Ver
                             datos del vendedor</a>
 
+                        @if($currentUser->hasFavorite($product))
+
+                            <button type="submit"  class="btn btn-remove" style="float: right;" form="form-favorites" formaction="{!! URL::route('delete_favorites', [$product->id]) !!}" >Quitar de favoritos</button>
+                        @else
+                            <button type="submit"  class="btn btn-success" style="float: right;" form="form-favorites" formaction="{!! URL::route('save_favorites', [$product->id]) !!}" >Guardar en favoritos</button>
+                        @endif
+
+
                 @else
                         <a href="#" class="btn btn-success link__disabled" title="Inicia Sesion para ver los datos del vendedor!">Ver
                             datos del vendedor</a>
@@ -87,5 +95,6 @@
         </article>
     </div>
 
+    {!! Form::open(['method' => 'post', 'id' => 'form-favorites']) !!}{!! Form::close() !!}
 
 @stop

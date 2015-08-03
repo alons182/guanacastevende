@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Profile extends Model {
 
@@ -15,4 +16,25 @@ class Profile extends Model {
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * Verify is the profile complete
+     * @return bool
+     */
+    public function isComplete()
+    {
+
+
+        if(Auth::guest()) return false;
+
+        foreach($this->attributes as $attribute)
+        {
+            if(!$attribute || $attribute == '')
+            {
+                return false;
+            }
+
+        }
+
+        return true;
+    }
 }

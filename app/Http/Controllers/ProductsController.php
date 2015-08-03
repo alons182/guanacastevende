@@ -259,4 +259,39 @@ class ProductsController extends Controller {
 
         return Redirect()->route('profile.show', Auth()->user()->username);
     }
+
+    /**
+     *Save one product in your favorites
+     * @param $productId
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function saveFavorites($productId, Request $request)
+    {
+
+        $user = auth()->user();
+
+        $user->favorites()->attach($productId);
+
+        flash('Propiedad Guardada en tus favoritos!');
+
+        return Redirect()->route('profile_favorites', $user->username);
+
+    }
+
+    /**
+     *Delete one product from favorites
+     * @param $productId
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deleteFavorites($productId)
+    {
+        $user = auth()->user();
+
+        $user->favorites()->detach($productId);
+
+        flash('Propiedad eliminada de tus favoritos!');
+
+        return Redirect()->route('profile_favorites', $user->username);
+    }
 }

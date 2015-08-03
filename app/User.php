@@ -71,6 +71,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * Relationship with the Product model Favorites
+     * @return mixed
+     */
+    public function favorites()
+    {
+        return $this->belongsToMany('App\Product');
+    }
+
+    /**
      * Relationship with the Payment model
      * @return mixed
      */
@@ -109,6 +118,34 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         if(Auth::guest()) return false;
 
         return Auth::user()->id == $this->id;
+    }
+
+    /**
+     * Verify is the user logged is a user profile
+     * @param $product
+     * @return bool
+     */
+    public function isHisProduct($product)
+    {
+        if(Auth::guest()) return false;
+
+        return $this->products()->where('id','=',$product->id)->count();
+
+        //return Auth::user()->id == $this->id;
+    }
+
+    /**
+     * Verify is the user logged is a user profile
+     * @param $product
+     * @return bool
+     */
+    public function hasFavorite($product)
+    {
+        if(Auth::guest()) return false;
+
+        return count($product->users()->where('user_id', '=', $this->id)->get());
+
+       // return Auth::user()->id == $this->id;
     }
 
     /**
