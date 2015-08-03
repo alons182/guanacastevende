@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 class DatabaseSeeder extends Seeder
 {
     private $tables = [
-        'users','profiles', 'roles','role_user','categories','products','category_product','product_tag','tags','photos','options'
+        'users','profiles', 'roles','role_user',/*'categories',*/'products',/*'category_product',*/'product_tag','tags','photos','options'
     ];
     private $seeders = [
         'UsersTableSeeder','RolesTableSeeder','ProfilesTableSeeder',
         'UsersRolesTableSeeder','TagsTableSeeder','ProductsTableSeeder',
-        'CategoriesTableSeeder','CategoriesProductsTableSeeder','OptionsTableSeeder'
+        /*'CategoriesTableSeeder','CategoriesProductsTableSeeder',*/'OptionsTableSeeder'
     ];
     /**
      * Run the database seeds.

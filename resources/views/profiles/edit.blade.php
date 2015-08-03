@@ -35,9 +35,14 @@
 
                 <!-- Telephone Form Input -->
                 <div class="form__group">
-                    {!! Form::label('telephone', 'Teléfono:') !!}
+                    {!! Form::label('telephone', 'Teléfono #1:') !!}
                     {!! Form::text('telephone', null, ['class' => 'form__control','required' => 'required']) !!}
                     {!! errors_for('telephone',$errors) !!}
+                </div>
+                <div class="form__group">
+                    {!! Form::label('telephone2', 'Teléfono #2:') !!}
+                    {!! Form::text('telephone2', null, ['class' => 'form__control','required' => 'required']) !!}
+                    {!! errors_for('telephone2',$errors) !!}
                 </div>
                 <div class="form__group">
                     {!! Form::label('city', 'Ciudad:') !!}

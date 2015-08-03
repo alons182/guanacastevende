@@ -383,6 +383,9 @@ img {
   margin-left: 45px;
   list-style-type: lower-alpha;
 }
+.link__disabled {
+  background-color: #777 !important;
+}
 .right {
   right: 0;
   float: right;
@@ -899,7 +902,7 @@ img {
 }
 .products__categories__ul {
   list-style: none;
-  margin: 0;
+  margin: 0 !important;
   display: none;
 }
 .products__categories__item {
@@ -1355,6 +1358,9 @@ img {
 }
 .option__tags {
   margin-left: 2rem;
+}
+.option__tags i {
+  color: #fd6100;
 }
 .login__page,
 .register__page,

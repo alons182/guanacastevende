@@ -39,6 +39,7 @@ $factory->define(App\Profile::class, function ($faker) {
         'ide'=> $faker->randomNumber(),
         'address'=> $faker->address,
         'telephone'=> $faker->phoneNumber,
+        'telephone2'=> $faker->phoneNumber,
         'city'=> $faker->city
     ];
 });

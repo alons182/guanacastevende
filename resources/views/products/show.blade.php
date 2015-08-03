@@ -54,12 +54,17 @@
                 <div class="product__price">
                     {!! money($product->price, '₡') !!}
                 </div>
+                <div class="product__view__seller">
                 @if (! Auth::guest())
-                    <div class="product__view__seller">
+
                         <a href="{!! URL::route('profile.show', [$currentUser->username]) !!}" class="btn btn-success">Ver
                             datos del vendedor</a>
-                    </div>
+
+                @else
+                        <a href="#" class="btn btn-success link__disabled" title="Inicia Sesion para ver los datos del vendedor!">Ver
+                            datos del vendedor</a>
                 @endif
+                </div>
                 <div class="product__share">
                     <span class="product__share__title">Compartir</span>
                     <a class="icon-facebook" title="Facebook" href="#"

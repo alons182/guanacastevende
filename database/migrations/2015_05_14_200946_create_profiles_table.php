@@ -22,6 +22,7 @@ class CreateProfilesTable extends Migration {
             $table->string('ide')->nullable();
             $table->string('address')->nullable();
             $table->string('telephone')->nullable();
+			$table->string('telephone2')->nullable();
             $table->string('city')->nullable();
             $table->timestamps();
 		});

@@ -17,7 +17,7 @@ class OptionsTableSeeder extends Seeder {
         factory(Option::class, 1)->create([
             'name' => 'Opcion 1: Confirmación automática de anuncio',
             'price' => 1500,
-            'description' => 'Precio ¢ 1,500 Seleccione esta opción si desea que su anuncio aparezca inmediatamente en línea sin tener que esperar a nuestra confirmación telefónica. Esta opción NO es necesaria si escoge cualquiera de las siguientes 3 opciones. '
+            'description' => 'Precio ¢ 1,500 Seleccione esta opción si desea que su anuncio aparezca inmediatamente en línea sin tener que esperar a nuestra confirmación telefónica. <b>Esta opción NO es necesaria si escoge cualquiera de las siguientes 3 opciones.</b>'
         ]);
 
         factory(Option::class, 1)->create([
@@ -29,7 +29,7 @@ class OptionsTableSeeder extends Seeder {
         factory(Option::class, 1)->create([
             'name' => 'Opcion 3: Mensaje de “NUEVO” y confirmación automática del anuncio.',
             'price' => 2000,
-            'description' => 'Con esta opción, su anuncio aparecerá con el mensaje de "Nuevo" durante los primeros 4 días de publicación. (Nota: esta opción no estará disponible después de completado este proceso, y no aparece en los anuncios destacados más recientes en la página principal, pero sí en la página que le corresponda según el criterio de búsqueda de los usuarios). Precio ¢ 2,000'
+            'description' => 'Con esta opción, su anuncio aparecerá con el mensaje de "Nuevo" <b>durante los primeros 4 días de publicación.</b> (Nota: esta opción no estará disponible después de completado este proceso, y no aparece en los anuncios destacados más recientes en la página principal, pero sí en la página que le corresponda según el criterio de búsqueda de los usuarios). Precio ¢ 2,000'
         ]);
 
         factory(Option::class, 1)->create([
