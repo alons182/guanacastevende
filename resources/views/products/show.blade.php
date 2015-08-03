@@ -90,11 +90,37 @@
                     <a class="icon-google-plus" href="https://plus.google.com/share?url={!! Request::url()!!}" onclick="javascript:window.open(this.href,
   '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
                 </div>
+                <div class="product__likes">
+
+                    <div class="fb-like"></div>
+                    <div class="g-plusone" data-annotation="inline" data-width="300"></div>
+                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+
+                </div>
             </div>
 
         </article>
     </div>
 
     {!! Form::open(['method' => 'post', 'id' => 'form-favorites']) !!}{!! Form::close() !!}
+
+@stop
+@section('scripts')
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.4&appId=363306470411928";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <script src="https://apis.google.com/js/platform.js" async defer>
+        {lang: 'es'}
+    </script>
+
+
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 @stop
