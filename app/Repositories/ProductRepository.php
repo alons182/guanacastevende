@@ -55,7 +55,7 @@ class ProductRepository extends DbRepository{
         $product = $this->model->findOrFail($id);
         $data = $this->prepareData($data);
 
-        $data['image'] = (isset($data['image'])) ? $this->storeImage($data['image'], $data['name'], 'products', null, null, 640, null) : $product->image;
+        $data['image'] = (isset($data['image'])) ? $this->storeImage($data['image'], $data['name'], 'products', null, null, 640, null, true) : $product->image;
 
         $product->fill($data);
         $product->save();
