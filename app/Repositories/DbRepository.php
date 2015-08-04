@@ -65,7 +65,7 @@ class DbRepository {
         return $model;
     }
 
-    public function storeImage($file, $name, $directory, $width = null, $height = null, $thumbWidth, $thumbHeight = null)
+    public function storeImage($file, $name, $directory, $width = null, $height = null, $thumbWidth, $thumbHeight = null, $watermark = null )
     {
 
         $filename = Str::slug($name) . '.' . $file->getClientOriginalExtension();
@@ -112,12 +112,15 @@ class DbRepository {
                 }
             }
         }
+        if($watermark) $image->insert('img/logo.png','center');
+
         $image->save($path . $filename, 60)
             ->resize($thumbWidth, $thumbHeight, function ($constraint)
             {
                 $constraint->aspectRatio();
             })
             ->interlace()
+
             ->save($path . 'thumb_' . $filename, 60);
 
         return $filename;

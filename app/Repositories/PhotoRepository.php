@@ -25,7 +25,7 @@ class PhotoRepository extends DbRepository {
     public function store($data)
     {
         $cant = count($this->getPhotos($data['product_id']));
-        $data['url'] = ($data['photo']) ? $this->storeImage($data['photo'], 'photo_' . ++ $cant, 'products/' . $data['product_id'], null, null, 150, null) : '';
+        $data['url'] = ($data['photo']) ? $this->storeImage($data['photo'], 'photo_' . ++ $cant, 'products/' . $data['product_id'], null, null, 150, null, true) : '';
         $data['url_thumb'] = 'thumb_' . $data['url'];
 
         $photo = $this->model->create($data);
@@ -53,9 +53,10 @@ class PhotoRepository extends DbRepository {
      * @param null $height
      * @param $thumbWidth
      * @param null $thumbHeight
+     * @param null $watermark
      * @return string
      */
-    public function storeImage($file, $name, $directory, $width = null, $height = null, $thumbWidth, $thumbHeight = null)
+    public function storeImage($file, $name, $directory, $width = null, $height = null, $thumbWidth, $thumbHeight = null, $watermark = null )
     {
         $extension = pathinfo($file["name"], PATHINFO_EXTENSION);
         $filename = Str::slug($name) . '.' . $extension;
@@ -105,6 +106,7 @@ class PhotoRepository extends DbRepository {
                 }
             }
         }
+        if($watermark) $image->insert('img/logo.png','center');
         $image->save($path . $filename, 60)->resize($thumbWidth, $thumbHeight, function ($constraint)
         {
             $constraint->aspectRatio();
