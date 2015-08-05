@@ -4991,7 +4991,8 @@ if (!Object.prototype.hasOwnProperty)
 
                 } else {
                     $this.attr('name', 'categories[]');
-                    
+                    $this.find('option').removeClass('selected');
+                    $this.find('option[value='+ $this.val()+']').addClass('selected');
                 }
 
 
