@@ -112,7 +112,6 @@
         if ($(this).attr('value') == 4) {
             $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled', false);
 
-
         } else {
             $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled', true).attr('checked', false);
         }

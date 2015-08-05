@@ -9,7 +9,7 @@
     </section>
     <article class="products__items">
         @if ($user->isCurrent())
-            <div class="pull-right right">{!! link_to_route('products.create','Nuevo Producto',null,['class'=>'btn btn-success']) !!}</div>
+            <div class="pull-right right">{!! link_to_route('products.create','Vender Articulo',null,['class'=>'btn btn-success']) !!}</div>
         @endif
         <h1>{!! ($user->isCurrent()) ? 'Tus Productos' : 'Productos del Usuario' !!} </h1>
 

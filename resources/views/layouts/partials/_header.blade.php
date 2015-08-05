@@ -45,7 +45,7 @@
                             <li class="header__submenu__item"><a href="{{ url('/auth/register') }}" class="header__submenu__link">Registrate</a></li>
                         @else
                             <li class="header__submenu__item"><a href="{{ route('profile.show', $currentUser->username) }}" class="header__submenu__link">Perfil</a></li>
-                            <li class="header__submenu__item"><a href="{{ route('products.create') }}" class="header__submenu__link header__submenu__link__featured">Vende tu articulo</a></li>
+                            <li class="header__submenu__item"><a href="{{ route('products.create') }}" class="header__submenu__link header__submenu__link__featured">Vender articulo</a></li>
                             <li class="header__submenu__item"><a href="{{ url('/auth/logout') }}" class="header__submenu__link">Cerrar sesion</a></li>
                             <li class="header__submenu__item"><a href="{{ route('profile_favorites', $currentUser->username) }}" class="header__submenu__link">Favoritos</a></li>
                         @endif
