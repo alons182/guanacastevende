@@ -55,10 +55,8 @@
                     {!! money($product->price, '₡') !!}
                 </div>
                 <div class="product__view__seller">
+                    <a href="{!! URL::route('profile.show', [$product->user->username]) !!}" class="btn btn-success" title="Inicia Sesion para ver los datos del vendedor!">Ver datos del vendedor</a>
                 @if (! Auth::guest())
-
-                        <a href="{!! URL::route('profile.show', [$currentUser->username]) !!}" class="btn btn-success">Ver
-                            datos del vendedor</a>
 
                         @if($currentUser->hasFavorite($product))
 
@@ -67,10 +65,6 @@
                             <button type="submit"  class="btn btn-success" style="float: right;" form="form-favorites" formaction="{!! URL::route('save_favorites', [$product->id]) !!}" >Guardar en favoritos</button>
                         @endif
 
-
-                @else
-                        <a href="#" class="btn btn-success link__disabled" title="Inicia Sesion para ver los datos del vendedor!">Ver
-                            datos del vendedor</a>
                 @endif
                 </div>
                 <div class="product__share">
@@ -96,6 +90,9 @@
                     <div class="g-plusone" data-annotation="inline" data-width="300"></div>
                     <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
 
+                </div>
+                <div class="product__comments">
+                    <div class="fb-comments" data-href="{!! Request::url()!!}" data-numposts="5"></div>
                 </div>
             </div>
 

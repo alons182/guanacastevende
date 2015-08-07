@@ -20,7 +20,7 @@
         <div class="right">
             <div class="footer__social">
                 <a class="footer__social__link" href="https://www.facebook.com/guanacastevende" target="_blank"><i class="icon-facebook"></i></a>
-                <a class="footer__social__link" href="#"><i class="icon-twitter"></i></a>
+                <a class="footer__social__link" href="https://twitter.com/GuanacasteVende" target="_blank"><i class="icon-twitter"></i></a>
                 <a class="footer__social__link" href="#"><i class="icon-youtube"></i></a>
                 <a class="footer__social__link" href="https://plus.google.com/u/1/115256153353906339860/about?cfem=1" target="_blank"><i class="icon-google-plus"></i></a>
             </div>

@@ -540,6 +540,7 @@ img {
   overflow-y: scroll;
   display: inline-block;
   border: 1px solid #e5e5e5;
+  font-size: 13px;
 }
 .form .rootCategories .option-icon:after {
   content: '\f0da';
