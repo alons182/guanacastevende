@@ -219,6 +219,13 @@ img
 		display inline-block
 		border 1px solid #e5e5e5
 		font-size 13px
+
+		option
+			&::selection
+			&::-moz-selection
+			&::-webkit-selection
+				background-color red
+
 		.option-icon
 			&:after
 				content '\f0da'
@@ -234,6 +241,7 @@ img
 				top 2px
 				left 10px
 				color verde
+
 	.select__sub-category
 		display inline-block
 .left-section

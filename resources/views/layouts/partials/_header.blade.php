@@ -41,7 +41,7 @@
 
                     <ul class="header__submenu">
                         @if (Auth::guest())
-                            <li class="header__submenu__item"><a href="{{ url('/auth/login') }}" class="header__submenu__link">Logueate</a></li>
+                            <li class="header__submenu__item"><a href="{{ url('/auth/login') }}" class="header__submenu__link">Ingresar</a></li>
                             <li class="header__submenu__item"><a href="{{ url('/auth/register') }}" class="header__submenu__link">Registrate</a></li>
                         @else
                             <li class="header__submenu__item"><a href="{{ route('profile.show', $currentUser->username) }}" class="header__submenu__link">Perfil</a></li>
