@@ -4709,7 +4709,8 @@ table {
   font-style: normal;
 }
 [class^="icon-"],
-[class*=" icon-"] {
+[class*=" icon-"],
+[class*=" glyphicon-"] {
   font-family: 'guanacastevende';
   speak: none;
   font-style: normal;
@@ -4733,10 +4734,12 @@ table {
 .icon-envelope-o:before {
   content: "\f003";
 }
-.icon-star:before {
+.icon-star:before,
+.glyphicon-star:before {
   content: "\f005";
 }
-.icon-star-o:before {
+.icon-star-o:before,
+.glyphicon-star-empty:before {
   content: "\f006";
 }
 .icon-close:before {
