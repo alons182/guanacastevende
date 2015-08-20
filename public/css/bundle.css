@@ -4757,7 +4757,8 @@ table {
 .icon-facebook:before {
   content: "\f09a";
 }
-.icon-bars:before {
+.icon-bars:before,
+.icon-menu:before {
   content: "\f0c9";
 }
 .icon-google-plus:before {
@@ -5128,9 +5129,12 @@ img {
 }
 .header__logo {
   display: block;
-  padding: 0.65rem 0;
+  padding-top: 5px;
   float: left;
   margin-right: 2rem;
+}
+.header__logo img {
+  display: block;
 }
 .header__menu {
   display: none;
@@ -5177,6 +5181,9 @@ img {
 }
 .header__submenu {
   background-color: #000;
+}
+.header__submenu__item {
+  margin-bottom: 0;
 }
 .header__submenu__item:hover {
   background-color: #000;
