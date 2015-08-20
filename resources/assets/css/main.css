@@ -948,8 +948,9 @@ img {
   position: relative;
   cursor: pointer;
 }
-.products__categories__link:before {
+.products__categories__link i {
   float: right;
+  margin-top: 8px;
 }
 .products__categories__link:hover {
   border-top-color: #343434;

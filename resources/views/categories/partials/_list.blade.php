@@ -14,11 +14,11 @@
         echo "<li class='products__categories__item parent'>";
         if ($node->children()->count() <= 0)
         {
-            echo '<a class="products__categories__link icon-caret-right" href="' . URL::route('category_products_path', $node->slug) . '">' . $node->name . '</a>';
+            echo '<a class="products__categories__link " href="' . URL::route('category_products_path', $node->slug) . '">' . $node->name . '</a>';
 
         } else
         {
-            echo '<span class="products__categories__link icon-caret-right">' . $node->name . '</span>';
+            echo '<span class="products__categories__link">' . $node->name . ' <i class="icon-caret-right"></i></span>';
         }
 
         if ($node->children()->count() > 0)

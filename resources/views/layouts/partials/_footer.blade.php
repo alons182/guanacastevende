@@ -32,6 +32,23 @@
     </div>
 </footer>
 @yield('scripts')
+
+<div id='cptup-ready'></div>
+<script data-cfasync='false' type='text/javascript'>
+    window.captain = {up: function(fn) { captain.topics.push(fn) }, topics: []};
+    // Add your settings here:
+    captain.up({
+        api_key: '55d65022ecfbd93dea000025'
+    });
+</script>
+<script data-cfasync='false' type='text/javascript'>
+    (function() {
+        var cpt = document.createElement('script'); cpt.type = 'text/javascript'; cpt.async = true;
+        cpt.src = 'https://captainup.com/assets/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(cpt);
+    })();
+</script>
+
 <script src="{{ elixir('js/bundle.js') }}"></script>
 </body>
 </html>
