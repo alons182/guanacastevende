@@ -16,7 +16,7 @@ estamos para servirle @stop
 
         <div class="form contact__form">
             <h1 class="contact__form__title">Contáctenos</h1>
-            <p class="intro">"Llamános o escribínos para solucionar cualquier duda o consulta que tengas, en <b>Sueños de vida</b>
+            <p class="intro">"Llamános o escribínos para solucionar cualquier duda o consulta que tengas, en <b>Guanacaste Vende</b>
                 estamos para servirle !!"</p>
 
             {!! Form::open(['route'=>'contact.store','class'=>'form-contact']) !!}
