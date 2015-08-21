@@ -4866,6 +4866,7 @@ img {
   margin: 0;
   color: #fff;
   font-size: 12px;
+  font-weight: 400 !important;
   text-transform: uppercase;
   text-align: center;
   line-height: 45px;
@@ -4882,6 +4883,7 @@ img {
   background-color: #1ca038;
   box-shadow: 0 1px 1px #777;
   color: #fff;
+  text-decoration: none !important;
 }
 .btn-default {
   background-color: #37bc9b;
@@ -5297,11 +5299,11 @@ img {
 .main ul {
   margin-left: 45px;
 }
-.main ul a {
-  color: #1ca038;
-}
 .main a {
   color: #1ca038;
+}
+.main a:hover {
+  text-decoration: underline;
 }
 .banner {
   display: block;
