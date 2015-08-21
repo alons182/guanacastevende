@@ -403,9 +403,8 @@ img {
   display: block;
   padding: 0 1rem;
   margin: 0;
-  color: #fff;
+  color: #fff !important;
   font-size: 12px;
-  font-weight: 400 !important;
   text-transform: uppercase;
   text-align: center;
   line-height: 45px;
