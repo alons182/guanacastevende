@@ -10,7 +10,7 @@
         gallery = $('#gallery'),
         infoBox = $('#InfoBox');
 
-    $('.alert').delay(3000).fadeOut(300);
+    $('.alert').delay(4000).fadeOut(300);
     // $('#categories').select2();
     $('body ').on('change', '.rootCategories', function () {
 
