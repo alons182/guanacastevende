@@ -92,7 +92,13 @@
 
                 </div>
                 <div class="product__comments">
+                    @if(! auth()->guest())
+
                     <div class="fb-comments" data-href="{!! Request::url()!!}" data-numposts="5"></div>
+
+                    @else
+                        <a href="{!! URL::to('auth/login') !!}" class="btn btn-success" title="Inicia Sesion para ver los comentarios!">Ver comentarios</a>
+                    @endif
                 </div>
             </div>
 

@@ -1228,6 +1228,15 @@ img {
 .product #gallery .delete:hover {
   color: #f00;
 }
+.product__view__seller,
+.product__likes,
+.product__comments,
+.product__price {
+  margin-bottom: 1rem;
+}
+.product__comments {
+  text-align: center;
+}
 @media screen and (min-width: 1024px) {
   .product__container {
     float: right;
