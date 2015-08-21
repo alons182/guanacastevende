@@ -4859,6 +4859,10 @@ img {
   padding: 5px;
   border: 1px solid #e5e5e5;
 }
+.img-left {
+  float: left;
+  margin-right: 1rem;
+}
 .btn {
   height: 45px;
   display: block;
@@ -5295,11 +5299,15 @@ img {
 .main {
   min-height: 565px;
 }
+.main section {
+  margin-bottom: 2rem;
+}
 .main ul {
   margin-left: 45px;
 }
 .main a {
   color: #1ca038;
+  font-weight: 400;
 }
 .main a:hover {
   text-decoration: underline;
@@ -5803,6 +5811,9 @@ img {
     float: right;
     width: 74%;
   }
+}
+.contact {
+  overflow: hidden;
 }
 .contact__address {
   margin-top: 2rem;

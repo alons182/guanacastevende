@@ -4,9 +4,19 @@
 @section('content')
     <section class="about">
         <h1 class="about__title">Acerca de Nosotros</h1>
-        <p>Guanacaste Vende es un espacio para que tod@s los Guanacastec@s tengan la oportunidad de vender sus productos en una plataforma dinámica y actual hecha 100% por Guanacastecos, de manera eficiente y segura.</p>
+        <p>Guanacaste Vende es un espacio para que tod@s los Guanacastec@s tengan la oportunidad de vender sus productos en una plataforma dinámica y actual hecha 100% por Guanacastecos, de manera eficiente y segura.
+        </p>
 
-        <p>El sitio web fue creado por Avotz Web Works, equipo netamente Guanacasteco con habilidades y aptitudes de primer nivel y que permiten así poder generar</p>
+        <p>GuanacasteVende.com cuenta con sistemas de seguridad que encriptan y codifican la información confidencial de tus tarjetad de crédito, débito, cuentas PayPay y demás datos sensibles, para que puedas exponer tus artículos a la venta en una plataforma segura. También contamos con sellos de seguridad como <b>Verify by Visa, MasterCard SecureCode</b> que te darán la tranquilidad de realizar tus transacciones en el sitio web.
+        </p>
+        <p>GuanacasteVende.com fue creado por <a href="http://avotz.com" target="_blank">Avotz Web Works</a>, equipo netamente Guanacasteco con habilidades y aptitudes de primer nivel, que permiten poder generar sistemas y diseños de gran trascendencia.
+        </p>
+        <p>Para más información escribenos al correo <a href="mailto::info@guanacastevende.com">info@guanacastevende.com</a></p>
+        <p>También podés contactarte a nuestros diferentes departamentos:</p>
+
+        <p>Soporte Técnico para ayuda con problemas de tu cuenta o el sistema: <a href="mailto::soporte@guanacastevende.com">soporte@guanacastevende.com</a></p>
+
+        <p>Reclamos para enviar cualquier comentario en los que necesites ayuda especializada: <a href="mailto::reclamos@guanacastevende.com">reclamos@guanacastevende.com</a></p>
 
         <h2>Enlaces de interés:</h2>
         <ul>
@@ -19,7 +29,7 @@
 
        <h2>Ayuda</h2>
         <ul>
-            <li><a href="#">Tips y consejos</a></li>
+            <li><a href="/tips">Tips y consejos</a></li>
             <li><a href="/fake-email">Creo que recibí un email falso</a></li>
             <li><a href="/forget-password">Cómo recuperar mi contraseña</a></li>
             <li><a href="/reliable-seller">Cómo sé si mi vendedor es confiable?</a></li>

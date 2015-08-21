@@ -11,7 +11,7 @@ class ContactMailer extends Mailer{
     {
         $view = 'emails.contact.contact';
         $subject = 'Información desde formulario de contacto de Guanacaste vende';
-        $emailTo = $this->listLocalEmail;
+        $emailTo = $this->listProductionEmail;
 
         return $this->sendTo($emailTo, $subject, $view, $data);
     }
@@ -22,6 +22,14 @@ class ContactMailer extends Mailer{
         $subject = 'Información desde el sitio Guanacaste Vende - Nuevo Articulo Creado';
         $emailTo = $this->listAdministration;
 
+        return $this->sendTo($emailTo, $subject, $view, $data);
+    }
+
+    public function welcome($data)
+    {
+        $view = 'emails.contact.welcome';
+        $subject = 'Información desde el sitio Guanacaste Vende - Bienvenido';
+        $emailTo = $data['email'];
         return $this->sendTo($emailTo, $subject, $view, $data);
     }
 

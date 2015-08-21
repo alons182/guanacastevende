@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\UserRequest;
+use App\Mailers\ContactMailer;
 use App\Newsletters\NewsletterList;
 use App\Repositories\UserRepository;
 use App\User;
@@ -35,18 +36,24 @@ class AuthController extends Controller
      * @var NewsletterList
      */
     private $newsletterList;
+    /**
+     * @var ContactMailer
+     */
+    private $mailer;
 
     /**
      * Create a new authentication controller instance.
      *
      * @param UserRepository $userRepository
      * @param NewsletterList $newsletterList
+     * @param ContactMailer $mailer
      */
-    public function __construct(UserRepository $userRepository, NewsletterList $newsletterList)
+    public function __construct(UserRepository $userRepository, NewsletterList $newsletterList, ContactMailer $mailer)
     {
         $this->middleware('guest', ['except' => 'getLogout']);
         $this->userRepository = $userRepository;
         $this->newsletterList = $newsletterList;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -111,6 +118,8 @@ class AuthController extends Controller
 
         Auth::login($user);
         Flash::message('Cuenta Creada correctamente. se te ha enviado un correo con la información de usuario. Completa tu perfil por favor, es importante !');
+
+        $this->mailer->welcome($user->toArray());
 
         try {
             $this->newsletterList->subscribeTo('Guanacaste Vende',$request->get('email'),$request->get('username'),'');

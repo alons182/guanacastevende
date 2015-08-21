@@ -7,7 +7,7 @@
 
         <h1 class="tips__title">Cómo sé si mi vendedor es confiable?</h1>
 
-        <p>Todos los artículos cuentan con un botón llamado: “Ver datos del vendedor” donde podés ver los datos de
+        <p><img src="/img/ver-datos-del-vendedor.jpg" alt="Cómo sé si mi vendedor es confiable?" class="img img-left"/>Todos los artículos cuentan con un botón llamado: “Ver datos del vendedor” donde podés ver los datos de
             contacto y reputación del vendedor. Podés ver también los comentarios de otros compradores haciendo click en
             “Comentarios”.
 
@@ -15,7 +15,7 @@
 
         <p> No olvidés dejar tu calificacion y comentarios del vendedor para ayudar a otros igual que vos a confiar (o
             no) en el vendedor.</p>
-        <img src="/img/ver-datos-del-vendedor.jpg" alt="Cómo sé si mi vendedor es confiable?"/>
+
 
 
     </section>

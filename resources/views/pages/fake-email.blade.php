@@ -12,7 +12,10 @@
                             href="http://www.guanacastevende.com">www.guanacastevende.com</a>)</li>
                 <li>Si te llevan a una web diferente denúncia el email falso (enlace a <a href="mailto::soporte@gunacastevende.com">soporte@gunacastevende.com</a>)</li>
             </ul>
-        <img src="/img/recibi-email-falso-gte-vende.jpg" alt="Recibi email falso" />
+        <div class="tips__gallery txt-center">
+            <img src="/img/recibi-email-falso-gte-vende.jpg" alt="Recibi email falso" class="img" />
+        </div>
+
 
         <p><b>¿Enviaste tus datos desde el sitio falso?</b> Avisá a tu entidad bancaria de ser necesario.</p>
         <h3>Para que lo sepas:</h3>
