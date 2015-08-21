@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
+use App\Newsletters\NewsletterList;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
@@ -17,16 +18,22 @@ class ProfilesController extends Controller
      * @var UserRepository
      */
     private $userRepository;
+    /**
+     * @var NewsletterList
+     */
+    private $newsletterList;
 
     /**
      * @param UserRepository $userRepository
+     * @param NewsletterList $newsletterList
      */
-    function __construct(UserRepository $userRepository)
+    function __construct(UserRepository $userRepository, NewsletterList $newsletterList)
     {
         $this->userRepository = $userRepository;
         $this->middleware('auth', ['only' => ['show']]);
         $this->middleware('currentUser', ['only' => ['edit', 'update']]);
 
+        $this->newsletterList = $newsletterList;
     }
 
 
@@ -72,6 +79,12 @@ class ProfilesController extends Controller
         $user->profile->fill($input)->save();
 
         Flash::message('Perfil Actualizado!');
+
+        try {
+            $this->newsletterList->subscribeTo('Guanacaste Vende',$user->email,$request->get('first_name'),$request->get('last_name'));
+        } catch (\Mailchimp_Error $e) {
+            Flash::message($e->getMessage());
+        }
 
         return Redirect()->route('profile.show', $user->username);
     }

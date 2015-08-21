@@ -148,6 +148,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Baum\Providers\BaumServiceProvider::class,
+        App\Providers\NewsletterListServiceProvider::class,
 
     ],
 

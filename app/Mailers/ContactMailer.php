@@ -5,6 +5,7 @@ class ContactMailer extends Mailer{
 
     protected $listLocalEmail = ['alonso@avotz.com'];
     protected $listProductionEmail = ['info@guanacastevende.com'];
+    protected $listAdministration = ['administrador@guanacastevende.com'];
 
     public function contact($data)
     {
@@ -14,11 +15,12 @@ class ContactMailer extends Mailer{
 
         return $this->sendTo($emailTo, $subject, $view, $data);
     }
-    public function comment($data)
+
+    public function newProductCreated($data)
     {
-        $view = 'emails.contact.comment';
-        $subject = 'Información desde formulario de publicidad de Sueños de vida';
-        $emailTo = $data['ad_email'];
+        $view = 'emails.contact.newProduct';
+        $subject = 'Información desde el sitio Guanacaste Vende - Nuevo Articulo Creado';
+        $emailTo = $this->listAdministration;
 
         return $this->sendTo($emailTo, $subject, $view, $data);
     }

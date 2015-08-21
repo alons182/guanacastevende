@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\UserRequest;
+use App\Newsletters\NewsletterList;
 use App\Repositories\UserRepository;
 use App\User;
 use Illuminate\Http\Request;
@@ -30,16 +31,22 @@ class AuthController extends Controller
      * @var UserRepository
      */
     private $userRepository;
+    /**
+     * @var NewsletterList
+     */
+    private $newsletterList;
 
     /**
      * Create a new authentication controller instance.
      *
      * @param UserRepository $userRepository
+     * @param NewsletterList $newsletterList
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, NewsletterList $newsletterList)
     {
         $this->middleware('guest', ['except' => 'getLogout']);
         $this->userRepository = $userRepository;
+        $this->newsletterList = $newsletterList;
     }
 
     /**
@@ -104,6 +111,13 @@ class AuthController extends Controller
 
         Auth::login($user);
         Flash::message('Cuenta Creada correctamente. se te ha enviado un correo con la información de usuario. Completa tu perfil por favor, es importante !');
+
+        try {
+            $this->newsletterList->subscribeTo('Guanacaste Vende',$request->get('email'),$request->get('username'),'');
+        } catch (\Mailchimp_Error $e) {
+            Flash::message($e->getMessage());
+        }
+
 
 
         return redirect()->route('profile.edit',$user->username);

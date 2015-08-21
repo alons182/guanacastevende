@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Requests\PaymentRequest;
 use App\Http\Requests\ProductFrontRequest;
 
+use App\Mailers\ContactMailer;
 use App\Option;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PaymentRepository;
@@ -38,20 +39,26 @@ class ProductsController extends Controller {
      * @var PaymentRepository
      */
     private $paymentRepository;
+    /**
+     * @var ContactMailer
+     */
+    private $mailer;
 
     /**
      * @param ProductRepository $productRepository
      * @param PhotoRepository $photoRepository
      * @param CategoryRepository $categoryRepository
      * @param PaymentRepository $paymentRepository
+     * @param ContactMailer $mailer
      */
-    function __construct(ProductRepository $productRepository, PhotoRepository $photoRepository, CategoryRepository $categoryRepository, PaymentRepository $paymentRepository)
+    function __construct(ProductRepository $productRepository, PhotoRepository $photoRepository, CategoryRepository $categoryRepository, PaymentRepository $paymentRepository, ContactMailer $mailer)
     {
         $this->productRepository = $productRepository;
         $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update','Paid','postPaid', 'destroy']]);
         $this->photoRepository = $photoRepository;
         $this->categoryRepository = $categoryRepository;
         $this->paymentRepository = $paymentRepository;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -121,6 +128,7 @@ class ProductsController extends Controller {
         {
             //$this->productRepository->update_state($product->id, 1);
             flash('Producto Creado correctamente');
+            $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product]);
             return Redirect()->route('profile.show', Auth()->user()->username);
         }
 
