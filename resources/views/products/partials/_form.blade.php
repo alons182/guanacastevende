@@ -127,12 +127,10 @@
 
         <section class="panel">
             <h1 class="product__edit__title">Imagen Principal</h1>
-
+            <p>Podés agregar hasta 6 fotos de tu producto.</p>
             <div class="form">
                 <div class="form__group">
                     {!! Form::label('image','Imagen:',['class'=>'col-sm-2 control-label'])!!}
-
-
                     {!! Form::file('image',['required'=>'required']) !!}
                     {!! errors_for('image',$errors) !!}
 
@@ -149,7 +147,7 @@
                 @endif
                     <div class="form__group">
 
-                    {!! Form::label('gallery','Galeria:',['class'=>'control-label'])!!}
+                    {!! Form::label('gallery','Agregar fotos adicionales:',['class'=>'control-label'])!!}
                     @if(isset($product))
                         {!! Form::hidden('product_id',  $product->id) !!}
                     @endif
