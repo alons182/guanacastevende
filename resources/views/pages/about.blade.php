@@ -20,6 +20,9 @@
        <h2>Ayuda</h2>
         <ul>
             <li><a href="#">Tips y consejos</a></li>
+            <li><a href="/fake-email">Creo que recibí un email falso</a></li>
+            <li><a href="/forget-password">Cómo recuperar mi contraseña</a></li>
+            <li><a href="/reliable-seller">Cómo sé si mi vendedor es confiable?</a></li>
         </ul>
 
 

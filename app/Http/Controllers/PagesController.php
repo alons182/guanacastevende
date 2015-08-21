@@ -141,6 +141,39 @@ class PagesController extends Controller
         return view('pages.tips');
 
     }
+    /**
+     * Show the fake email Page.
+     *
+     * @return Response
+     */
+    public function FakeEmail()
+    {
+
+        return view('pages.fake-email');
+
+    }
+    /**
+     * Show the fake email Page.
+     *
+     * @return Response
+     */
+    public function ForgetPassword()
+    {
+
+        return view('pages.forget-password');
+
+    }
+    /**
+     * Show the fake email Page.
+     *
+     * @return Response
+     */
+    public function ReliableSeller()
+    {
+
+        return view('pages.seller');
+
+    }
 
 
 }

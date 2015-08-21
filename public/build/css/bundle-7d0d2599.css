@@ -4795,6 +4795,7 @@ body {
   line-height: 30px;
   background: #fff;
   color: #777;
+  font-weight: 300;
 }
 ul {
   margin: 0;
@@ -5297,6 +5298,9 @@ img {
   margin-left: 45px;
 }
 .main ul a {
+  color: #1ca038;
+}
+.main a {
   color: #1ca038;
 }
 .banner {

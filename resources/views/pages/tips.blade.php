@@ -7,12 +7,12 @@
 
         <h1 class="tips__title">Tips y consejos</h1>
         <ul>
+            <li><a href="/fake-email">Creo que recibí un email falso</a></li>
+            <li><a href="/forget-password">Cómo recuperar mi contraseña</a></li>
+            <li><a href="/reliable-seller">Cómo sé si mi vendedor es confiable?</a></li>
             <li>Cómo elegir buenas claves</li>
-            <li>Creo que recibí un e-mail falso</li>
             <li>Proteger mi computadora</li>
             <li>Sospecho que mi cuenta está en peligro</li>
-            <li>Cómo recuperar mi clave</li>
-            <li>Cómo sé si un vendedor es confiable</li>
             <li>Cómo pago y recibo mi producto</li>
             <li>Cómo califico a mi vendedor</li>
         </ul>

@@ -59,6 +59,18 @@ Route::get('/tips', [
     'as'   => 'tips_path',
     'uses' => 'PagesController@Tips'
 ]);
+Route::get('/fake-email', [
+    'as'   => 'fakeEmail_path',
+    'uses' => 'PagesController@FakeEmail'
+]);
+Route::get('/forget-password', [
+    'as'   => 'forgetPassword_path',
+    'uses' => 'PagesController@ForgetPassword'
+]);
+Route::get('/reliable-seller', [
+    'as'   => 'forgetPassword_path',
+    'uses' => 'PagesController@ReliableSeller'
+]);
 /**
  * User & Profile
  */
