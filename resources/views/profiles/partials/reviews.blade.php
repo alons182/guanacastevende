@@ -1,4 +1,4 @@
-<h1 class="reviews__title">Calificaciones</h1>
+<h1 class="reviews__title">Comentarios</h1>
 @foreach($reviews as $review)
     <hr>
     <div class="row">

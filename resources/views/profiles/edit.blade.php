@@ -5,6 +5,7 @@
 
         <div class="profile__edit left-section">
             <h1 class="profile__edit__title">Editando Perfil</h1>
+            <p>No mostraremos tus datos sensibles como <b>identificación</b> y <b>dirección</b>.</p>
             {!! Form::model($user->profile, ['method' => 'PATCH', 'route' => ['profile.update', $user->username]]) !!}
             <div class="form">
                 <!-- First name Form Input -->
@@ -25,6 +26,11 @@
                     {!! Form::text('ide', null, ['class' => 'form__control','required' => 'required']) !!}
                     {!! errors_for('ide',$errors) !!}
                 </div>
+                <div class="form__group">
+                    {!! Form::label('city', 'Ciudad:') !!}
+                    {!! Form::text('city', null, ['class' => 'form__control','required' => 'required']) !!}
+                    {!! errors_for('city',$errors) !!}
+                </div>
                 <!-- Address Form Input -->
                 <div class="form__group">
                     {!! Form::label('address', 'Dirección:') !!}
@@ -44,11 +50,7 @@
                     {!! Form::text('telephone2', null, ['class' => 'form__control','required' => 'required']) !!}
                     {!! errors_for('telephone2',$errors) !!}
                 </div>
-                <div class="form__group">
-                    {!! Form::label('city', 'Ciudad:') !!}
-                    {!! Form::text('city', null, ['class' => 'form__control','required' => 'required']) !!}
-                    {!! errors_for('city',$errors) !!}
-                </div>
+
             </div>
 
             <div class="form__group">

@@ -1,11 +1,15 @@
-<h2 class="profile__title">Tu Perfil <small class="profile__edit-link">
+<h2 class="profile__title">
         @if ($user->isCurrent() && !Auth::guest())
-            | {!! link_to_route('profile.edit', 'Edita Tu Perfil', $currentUser->username) !!}
+            Tu Perfil <small class="profile__edit-link">
+                | {!! link_to_route('profile.edit', 'Edita Tu Perfil', $currentUser->username) !!}
+            </small>
+        @else
+            Perfil de Usuario
         @endif
+</h2>
 
-    </small></h2>
 <div class="profile__ratings">
-    <p class="pull-right right">{!! link_to_route('profile_reviews', 'Calificaciones: '.$user->rating_count, $user->username) !!}</p>
+    <p class="pull-right right">{!! link_to_route('profile_reviews', 'Comentarios: '.$user->rating_count, $user->username) !!}</p>
     <p>
         @for ($i=1; $i <= 5 ; $i++)
             <span class="glyphicon glyphicon-star{!! ($i <= $user->rating_cache) ? '' : '-empty'!!}"></span>
