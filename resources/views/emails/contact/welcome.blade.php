@@ -6,7 +6,10 @@
 </head>
 <body>
 <h1>{{ $username }} ({{ $email }}), Bienvenido a Guanacaste Vende !! </h1>
-<img src="{{ url('/img/logo.png') }}" alt="Guanacaste Vende">
+<div class="logo" style="text-align: center;">
+    <img src="{{ url('/img/logo-email.png') }}" alt="Guanacaste Vende">
+</div>
+
 <p>
     Ya estás suscrito a nuestro sistema, podés empezar a vender, comprar o cambiar artículos cuando querrás. También podés unirte a nuestro sistema de puntos y ganarlos interactuando y navegando en el sitio web. Los puntos te permitirán participar en concursos y rifas !!
 </p>
