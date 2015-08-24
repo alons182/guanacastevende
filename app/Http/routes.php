@@ -203,10 +203,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
             'uses' => 'Admin\ProductsController@' . $key,
         ));
     }
-    Route::post('products/delete', [
-        'as'   => 'destroy_multiple',
-        'uses' => 'Admin\ProductsController@destroy_multiple'
+    Route::post('products/multiple', [
+        'as'   => 'option_multiple',
+        'uses' => 'Admin\ProductsController@option_multiple'
     ]);
+
 
     Route::get('products', [
         'as'   => 'products',

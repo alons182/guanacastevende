@@ -27,7 +27,7 @@
                 @endforeach
             @endif
         </div>
-        @if(! $product->published)
+        @if($product->published == 2)
             <div class="products__item__published">
                 En espera de confirmación
             </div>

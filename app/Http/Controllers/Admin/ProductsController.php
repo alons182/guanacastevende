@@ -202,7 +202,35 @@ class ProductsController extends Controller {
      * @param Request $request
      * @return Response
      */
-    public function destroy_multiple(Request $request)
+    public function option_multiple(Request $request)
+    {
+        $products_id = $request->input('chk_product');
+        $action = $request->input('select_all');
+        foreach ($products_id as $id)
+        {
+            if($action == "active")
+                $this->productRepository->update_state($id, 1);
+            elseif($action == "inactive")
+                $this->productRepository->update_state($id, 0);
+            else
+                $this->productRepository->destroy($id);
+
+        }
+
+
+        return Redirect()->route('products');
+
+    }
+
+    /**
+     * Remove multiple products from storage.
+     * DELETE /products/{id}
+     *
+     * @internal param int $chk_activity (array of ids)
+     * @param Request $request
+     * @return Response
+     */
+   /* public function destroy_multiple(Request $request)
     {
         $products_id = $request->input('chk_product');
 
@@ -215,6 +243,7 @@ class ProductsController extends Controller {
 
         return Redirect()->route('products');
 
-    }
+    }*/
+
 
 }

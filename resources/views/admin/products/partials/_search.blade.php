@@ -18,7 +18,7 @@
 
                              <div class=" form-group">
 
-                                {!! Form::select('published', ['' => '-- Select Status --','0' => 'Inactive','1' => 'Active'], $selectedStatus, ['id'=>'published','class'=>'form-control'] ) !!}
+                                {!! Form::select('published', ['' => '-- Select Status --','0' => 'Inactive','1' => 'Active','2' => 'Waiting'], $selectedStatus, ['id'=>'published','class'=>'form-control'] ) !!}
 
                              </div>
 

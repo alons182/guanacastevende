@@ -4908,8 +4908,10 @@ if (!Object.prototype.hasOwnProperty)
         status = $( "#status"),
         active = $( "#active"),
         filters = $(".filtros"),
-        chkProducts = $('.chk-product'),
+        chkProduct = $('.chk-product'),
+        chkSelectAll = $('#select-all'),
         btnDeleteMultiple = $('.delete-multiple'),
+        btnActivateMultiple = $('.activate-multiple'),
         btnEditSlug = $('.btn-edit-slug'),
         gallery = $('#gallery'),
         infoBox = $('#InfoBox'),
@@ -4925,10 +4927,31 @@ if (!Object.prototype.hasOwnProperty)
         }
     });
 
-    chkProducts.on('click',function(e) {
+    chkProduct.on('click',function(e) {
 
-        (verificaChkActivo(chkProducts)) ? btnDeleteMultiple.show('fast') : btnDeleteMultiple.hide('fast');
+        (verificaChkActivo(chkProduct)) ? btnDeleteMultiple.show('fast') : btnDeleteMultiple.hide('fast');
 
+
+    });
+    chkSelectAll.on('click',function(e) {
+
+        var c = this.checked;
+        $(':checkbox').prop('checked',c);
+
+        (verificaChkActivo(chkProduct)) ? btnDeleteMultiple.show('fast') : btnDeleteMultiple.hide('fast');
+
+
+    });
+    $('.btn-multiple').on('click',function(e) {
+
+        var action = $(this).data('action');
+
+        chkSelectAll.val(action);
+
+        (verificaChkActivo(chkProduct)) ? $('#form-option-chk').submit() : alert('Seleccione un registro de la lista');
+
+
+        e.preventDefault();
 
     });
 

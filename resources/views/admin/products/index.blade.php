@@ -8,18 +8,20 @@
 
 
     <section class="panel">
-        <div class="panel-heading">
+        <div class="panel-heading" style="overflow: hidden;">
             {!! link_to_route('admin.products.create','New Product',null,['class'=>'btn btn-success']) !!}
             @include('admin/products/partials/_search')
         </div>
         <div class="panel-body no-padding">
-            {!! Form::open(['route' =>['destroy_multiple'],'method' => 'post', 'id' =>'form-delete-chk','data-confirm' => 'You are sure?']) !!}
-            <button type="submit" class="delete-multiple btn btn-danger btn-sm "><i class="fa fa-trash-o"></i></button>
+            {!! Form::open(['route' =>['option_multiple'],'method' => 'post', 'id' =>'form-option-chk','data-confirm' => 'You are sure?']) !!}
+            <button type="submit" class="btn-multiple btn btn-success btn-sm " data-action="active" title="Active"><i class="fa fa-check-circle"></i></button>
+            <button type="submit" class="btn-multiple btn btn-danger btn-sm " data-action="inactive" title="Inactive"><i class="fa fa-times-circle"></i></button>
+            <button type="submit" class="btn-multiple btn btn-danger btn-sm " data-action="delete" title="Delete"><i class="fa fa-trash-o"></i></button>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>=</th>
+                        <th>{!! Form::checkbox('select_all', 0, null, ['id' => 'select-all']) !!} </th>
                         <th>#</th>
                         <th>Name</th>
                         <th>Description</th>
@@ -30,6 +32,7 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     @foreach ($products as $product)
                         <tr>
                             <td>{!! Form::checkbox('chk_product[]', $product->id, null, ['class' => 'chk-product']) !!}</td>
@@ -40,7 +43,12 @@
 
                             <td class="center">
                                 @if ($product->published)
-                                    <button type="submit"  class="btn btn-success btn-xs" form="form-pub-unpub" formaction="{!! URL::route('products.unpub', [$product->id]) !!}">Active</button>
+                                    @if($product->published == 1)
+                                        <button type="submit"  class="btn btn-success btn-xs" form="form-pub-unpub" formaction="{!! URL::route('products.unpub', [$product->id]) !!}">Active</button>
+                                    @elseif($product->published == 2)
+                                        <button type="submit"  class="btn btn-warning btn-xs" form="form-pub-unpub" formaction="{!! URL::route('products.pub', [$product->id]) !!}">Waiting</button>
+                                    @endif
+
                                 @else
                                     <button type="submit"  class="btn btn-danger btn-xs  "form="form-pub-unpub" formaction="{!! URL::route('products.pub', [$product->id]) !!}" >Inactive</button>
                                 @endif
