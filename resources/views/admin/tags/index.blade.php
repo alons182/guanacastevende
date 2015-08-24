@@ -13,8 +13,7 @@
             @include('admin/tags/partials/_search')
         </div>
         <div class="panel-body no-padding">
-            {!! Form::open(['route' =>['destroy_multiple'],'method' => 'post', 'id' =>'form-delete-chk','data-confirm'
-            => 'You are sure?']) !!}
+            {!! Form::open(['route' =>['option_multiple'],'method' => 'post', 'id' =>'form-option-chk','data-confirm' => 'You are sure?']) !!}
             <button type="submit" class="delete-multiple btn btn-danger btn-sm "><i class="fa fa-trash-o"></i></button>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
