@@ -564,8 +564,8 @@ strong.orange {
   padding-right: 2.5rem;
 }
 .form .rootCategories {
-  height: auto;
-  width: 183px;
+  height: 32px;
+  width: 100%;
   overflow-y: scroll;
   display: inline-block;
   border: 1px solid #e5e5e5;
@@ -604,6 +604,7 @@ strong.orange {
 @media screen and (min-width: 640px) {
   .form .rootCategories {
     height: 225px;
+    width: 183px;
   }
 }
 .left-section,
