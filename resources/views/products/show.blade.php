@@ -120,9 +120,7 @@
 
     {!! Form::open(['route'=>['save_favorites', $product->id],'method' => 'post', 'id' => 'form-favorites-save','data-remote'=>'data-remote', 'data-remote-success-message'=>'Propiedad Guardada en tus favoritos!']) !!}{!! Form::close() !!}
     {!! Form::open(['route'=>['delete_favorites', $product->id],'method' => 'post', 'id' => 'form-favorites-delete','data-remote'=>'data-remote', 'data-remote-success-message'=>'Propiedad eliminada de tus favoritos!']) !!}{!! Form::close() !!}
-    <div class="alert alert-info">
-
-    </div>
+    <div class="alert alert-info" style="display: none;"></div>
 
 @stop
 @section('scripts')
