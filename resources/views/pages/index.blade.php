@@ -14,7 +14,7 @@
                 <div class="cycle-next"><i class="icon-angle-right"></i></div>
 
                     <div class="banner__slide" style="background-image: url('/img/banner.jpg')">
-                        <h2 class="banner__slide__title cursive">Publicidad</h2>
+                        <!--<h2 class="banner__slide__title cursive">Publicidad</h2>-->
                         <a href="#" class="banner__slide__link"></a>
                     </div>
                 <div class="banner__slide" style="background-image: url('/img/banner2.jpg')">
