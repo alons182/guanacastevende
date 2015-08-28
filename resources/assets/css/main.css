@@ -564,7 +564,7 @@ strong.orange {
   padding-right: 2.5rem;
 }
 .form .rootCategories {
-  height: 225px;
+  height: auto;
   width: 183px;
   overflow-y: scroll;
   display: inline-block;
@@ -600,6 +600,11 @@ strong.orange {
 }
 .form .select__sub-category {
   display: inline-block;
+}
+@media screen and (min-width: 640px) {
+  .form .rootCategories {
+    height: 225px;
+  }
 }
 .left-section,
 .right-section {
