@@ -71,9 +71,14 @@
 
                 </div>
                 <div class="from__group options__info">
-                    <p>Publicar artículos en Guancaste Vende <b>es completamente gratuito</b>, solamente que deberás esperar por la confirmación teléfonica dentro de las próximas 72 horas y la respectiva activación de tu anuncio.</p>
-                    <p><b>Si no deseas esperar</b> puedes escoger cualquiera de los siguientes servicios que <b>son opcionales, y tienen el costo indicado.</b> Si escoges cualquiera de ellos, debes pagar en línea con tarjeta de crédito ó débito, o con tu cuenta PayPal en nuestro servidor seguro, una vez que oprimas el botón de <strong>AGREGAR PRODUCTO</strong></p>
-                    <p>(si no quieres ninguna de las opciones simplemente deja los checkbox vacíos en las opciones):</p>
+                    <div class="box">
+                        <p>Publicar artículos en Guancaste Vende <b>es completamente gratuito</b>, solamente que deberás esperar por la confirmación teléfonica dentro de las próximas 72 horas y la respectiva activación de tu anuncio.</p>
+                    </div>
+                    <div class="box">
+                        <p><b>Si no deseas esperar</b> puedes escoger cualquiera de los siguientes servicios que <b>son opcionales, y tienen el costo indicado.</b> Si escoges cualquiera de ellos, debes pagar en línea con tarjeta de crédito ó débito, o con tu cuenta PayPal en nuestro servidor seguro, una vez que oprimas el botón de <strong>AGREGAR PRODUCTO</strong></p>
+                        <p>(si no quieres ninguna de las opciones simplemente deja los checkbox vacíos en las opciones):</p>
+                    </div>
+
 
 
 
@@ -82,20 +87,23 @@
                 <div class="form__group">
                     {!! Form::label('option','Opciones:',['class'=>'col-sm-2 control-label'])!!}
                     @foreach($options_list as $option)
-                        <input type="checkbox" value="{!! $option->id !!}" name="option_id" {!! (isset($product)) ? ($product->option_id == $option->id) ? 'checked="checked"' : '' : '' !!}> <b>{!! $option->name !!}</b> <br />
-                        <div class="option__description">
-                            {!! $option->description !!}
-                        </div>
-                        @if($option->id == 4)
-                            <div class="option__tags">
-                                {!! Form::label('tags','Etiquetas:',['class'=>'col-sm-2 control-label'])!!}
-                                @foreach($tags_list as $tag)
-                                    <input type="checkbox" value="{!! $tag->id !!}" name="tags[]" {!! isset($selected_tags[0]) ? ($tag->id == $selected_tags[0]) ? 'checked="checked"' : '' : '' !!} disabled="disabled" > {!! $tag->name !!} - {!! money($tag->price, '₡') !!} <i class="{!! $tag->icon !!}"></i> <br />
-                                @endforeach
+                        <div class="box">
+                            <input type="checkbox" value="{!! $option->id !!}" name="option_id" {!! (isset($product)) ? ($product->option_id == $option->id) ? 'checked="checked"' : '' : '' !!}> <b>{!! $option->name !!}</b> <br />
+                            <div class="option__description">
+                                {!! $option->description !!}
                             </div>
+                            @if($option->id == 4)
+                                <div class="option__tags">
+                                    {!! Form::label('tags','Etiquetas:',['class'=>'col-sm-2 control-label'])!!}
+                                    @foreach($tags_list as $tag)
+                                        <input type="checkbox" value="{!! $tag->id !!}" name="tags[]" {!! isset($selected_tags[0]) ? ($tag->id == $selected_tags[0]) ? 'checked="checked"' : '' : '' !!} disabled="disabled" > {!! $tag->name !!} - {!! money($tag->price, '₡') !!} <i class="{!! $tag->icon !!}"></i> <br />
+                                    @endforeach
+                                </div>
 
 
-                        @endif
+                            @endif
+                        </div>
+
                     @endforeach
 
 

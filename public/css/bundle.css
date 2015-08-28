@@ -4863,6 +4863,11 @@ img {
   float: left;
   margin-right: 1rem;
 }
+.box {
+  border: 1px solid #e5e5e5;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
 .btn {
   height: 45px;
   display: block;
