@@ -373,6 +373,9 @@ strong.orange {
 .underline {
   text-decoration: underline;
 }
+.disabled {
+  background-color: #777 !important;
+}
 .ul__numbers {
   margin-left: 45px;
   list-style-type: decimal;

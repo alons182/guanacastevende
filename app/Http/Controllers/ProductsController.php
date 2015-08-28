@@ -279,11 +279,14 @@ class ProductsController extends Controller {
 
         $user = auth()->user();
 
-        $user->favorites()->attach($productId);
+        $productIds = $user->favorites()->lists('product_id')->all();
+        $productIds[] = $productId;
+        //dd($productIds);
+        $user->favorites()->sync($productIds);
 
-        flash('Propiedad Guardada en tus favoritos!');
+        //flash('Propiedad Guardada en tus favoritos!');
 
-        return Redirect()->route('profile_favorites', $user->username);
+        //return Redirect()->route('profile_favorites', $user->username);
 
     }
 
@@ -298,8 +301,8 @@ class ProductsController extends Controller {
 
         $user->favorites()->detach($productId);
 
-        flash('Propiedad eliminada de tus favoritos!');
+        //flash('Propiedad eliminada de tus favoritos!');
 
-        return Redirect()->route('profile_favorites', $user->username);
+        //return Redirect()->route('profile_favorites', $user->username);
     }
 }

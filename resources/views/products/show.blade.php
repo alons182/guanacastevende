@@ -63,13 +63,13 @@
 
                             @if($currentUser->hasFavorite($product))
 
-                                <button type="submit" class="btn btn-remove" style="float: right;" form="form-favorites"
+                                <button type="submit" class="btn btn-remove btn-favorites" style="float: right;" form="form-favorites-delete"
                                         formaction="{!! URL::route('delete_favorites', [$product->id]) !!}">Quitar de
                                     favoritos
                                 </button>
                             @else
-                                <button type="submit" class="btn btn-success" style="float: right;"
-                                        form="form-favorites"
+                                <button type="submit" class="btn btn-success btn-favorites" style="float: right;"
+                                        form="form-favorites-save"
                                         formaction="{!! URL::route('save_favorites', [$product->id]) !!}">Guardar en
                                     favoritos
                                 </button>
@@ -118,7 +118,11 @@
         </article>
     </div>
 
-    {!! Form::open(['method' => 'post', 'id' => 'form-favorites']) !!}{!! Form::close() !!}
+    {!! Form::open(['route'=>['save_favorites', $product->id],'method' => 'post', 'id' => 'form-favorites-save','data-remote'=>'data-remote', 'data-remote-success-message'=>'Propiedad Guardada en tus favoritos!']) !!}{!! Form::close() !!}
+    {!! Form::open(['route'=>['delete_favorites', $product->id],'method' => 'post', 'id' => 'form-favorites-delete','data-remote'=>'data-remote', 'data-remote-success-message'=>'Propiedad eliminada de tus favoritos!']) !!}{!! Form::close() !!}
+    <div class="alert alert-info">
+
+    </div>
 
 @stop
 @section('scripts')

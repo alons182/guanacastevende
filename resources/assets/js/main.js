@@ -74,6 +74,7 @@
 
     });
 
+
     menu.find(".parent").hoverIntent({
         over: function () {
             $(this).find(">.header__submenu").slideDown(200);
@@ -172,24 +173,29 @@
     // Forms with ajax process
     $('form[data-remote]').on('submit', function (e) {
         var form = $(this);
+        var btn = $('.btn-favorites');
         var method = form.find('input[name="_method"]').val() || 'POST';
         var url = form.prop('action');
+        console.log(url);
         form.find('.loader').show();
+        btn.addClass('disabled').attr('disabled', true);
         $.ajax({
             type: method,
             url: url,
             data: form.serialize(),
-            success: function () {
+            success: function (resp) {
                 var message = form.data('remote-success-message');
                 form.find('.loader').hide();
-                if (message) {
+                if (!resp) {
 
-                    $('.response').removeClass('message-error').addClass('message-success').html(message).fadeIn(300).delay(4500).fadeOut(300);
+                    $('.alert').removeClass('message-error').addClass('message-success').html(message).fadeIn(300).delay(4500).fadeOut(300);
+                }else {
+                    $('.alert').removeClass('message-success').addClass('message-error').html('Oops, A ocurrido un error. Intente más tarde.').fadeIn(300).delay(4500).fadeOut(300);
                 }
             },
             error: function () {
                 form.find('.loader').hide();
-                $('.response').removeClass('message-success').addClass('message-error').html('Whoops, looks like something went wrong.').fadeIn(300).delay(4500).fadeOut(300);
+                $('.alert').removeClass('message-success').addClass('message-error').html('Oops, A ocurrido un error. Intente más tarde.').fadeIn(300).delay(4500).fadeOut(300);
 
             }
         });
