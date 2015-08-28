@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
+use App\Newsletters\Mandrill\MandrillNewsletter;
 use App\Newsletters\NewsletterList;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -22,18 +23,24 @@ class ProfilesController extends Controller
      * @var NewsletterList
      */
     private $newsletterList;
+    /**
+     * @var MandrillNewsletter
+     */
+    private $mandrill;
 
     /**
      * @param UserRepository $userRepository
      * @param NewsletterList $newsletterList
+     * @param MandrillNewsletter $mandrill
      */
-    function __construct(UserRepository $userRepository, NewsletterList $newsletterList)
+    function __construct(UserRepository $userRepository, NewsletterList $newsletterList, MandrillNewsletter $mandrill)
     {
         $this->userRepository = $userRepository;
         $this->middleware('auth', ['only' => ['show']]);
         $this->middleware('currentUser', ['only' => ['edit', 'update']]);
 
         $this->newsletterList = $newsletterList;
+        $this->mandrill = $mandrill;
     }
 
 
@@ -47,6 +54,14 @@ class ProfilesController extends Controller
     public function show($username)
     {
         $user = $this->userRepository->findByUsername($username);
+
+        /*try {
+        $this->mandrill->send(auth()->user()->email, auth()->user()->profile->first_name);
+        } catch (\Mandrill_ValidationError $e) {
+            Flash::message($e->getMessage());
+        }*/
+
+
         return View('profiles.show')->with(compact('user'));
     }
 

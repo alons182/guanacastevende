@@ -19,4 +19,6 @@ interface NewsletterList {
      */
     public function unsubscribeFrom($listName, $email);
 
+
+
 }

@@ -4,7 +4,7 @@
 use App\Newsletters\NewsletterList as NewsletterListInterface;
 use Mailchimp;
 
-class NewsletterList implements NewsletterListInterface {
+class MailchimpNewsletter implements NewsletterListInterface {
 
     /**
      * @var Mailchimp
@@ -56,4 +56,6 @@ class NewsletterList implements NewsletterListInterface {
 
         );
     }
+
+
 }

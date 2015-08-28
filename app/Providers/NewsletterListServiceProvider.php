@@ -23,7 +23,7 @@ class NewsletterListServiceProvider extends ServiceProvider {
 	{
 		$this->app->bind(
             'App\Newsletters\NewsletterList',
-            'App\Newsletters\Mailchimp\NewsletterList'
+            'App\Newsletters\Mailchimp\MailchimpNewsletter'
             );
 	}
 
