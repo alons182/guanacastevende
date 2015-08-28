@@ -5732,9 +5732,15 @@ strong.orange {
   text-align: center;
 }
 .product__comments .fb-comments > span {
-  width: 100% !important;
+  width: 300px !important;
 }
 .product__comments iframe {
+  width: 100% !important;
+}
+.product__likes .fb-like > span {
+  width: 300px !important;
+}
+.product__likes iframe {
   width: 100% !important;
 }
 .product__view__seller {
@@ -5755,11 +5761,19 @@ strong.orange {
   }
   .product__view__seller a {
     display: inline-block;
+    vertical-align: top;
   }
   .product__view__seller button {
     display: inline-block;
+    vertical-align: top;
     float: right;
     width: auto;
+  }
+  .product__comments .fb-comments > span {
+    width: 520px !important;
+  }
+  .product__likes .fb-like > span {
+    width: 450px !important;
   }
 }
 @media screen and (min-width: 1024px) {

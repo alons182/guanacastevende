@@ -863,10 +863,15 @@ strong
 		text-align center
 		.fb-comments
 			> span
-				width 100% !important
+				width 300px !important
 		iframe
 			width 100% !important
-
+	&__likes
+		.fb-like
+			> span
+				width 300px !important
+		iframe
+			width 100% !important
 	&__view__seller
 		text-align center
 		a
@@ -883,11 +888,22 @@ strong
 			text-align left
 			a
 				display inline-block
+				vertical-align top
 
 			button
 				display inline-block
+				vertical-align top
 				float right
 				width auto
+		&__comments
+			.fb-comments
+				> span
+					width 520px !important
+		&__likes
+			.fb-like
+				> span
+					width 450px !important
+
 @media screen and (min-width: 1024px)
 	.product
 		&__container
