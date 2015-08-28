@@ -18,22 +18,26 @@
 
         <p>Reclamos para enviar cualquier comentario en los que necesites ayuda especializada: <a href="mailto::reclamos@guanacastevende.com">reclamos@guanacastevende.com</a></p>
 
-        <h2>Enlaces de interés:</h2>
-        <ul>
-            <li><a href="/terms">Términos y condiciones Generales</a></li>
-            <li><a href="/terms-username">Política y elección de Nombre de usuario-username</a></li>
-            <li><a href="/terms-privacy">Política de Privacidad</a></li>
-            <li><a href="/terms-products">Politicas de artículos prohibidos</a></li>
-        </ul>
+        <div style="display: inline-block; vertical-align: top; margin-right: 1rem">
+            <h2>Enlaces de interés:</h2>
+            <ul >
+                <li><a href="/terms">Términos y condiciones Generales</a></li>
+                <li><a href="/terms-username">Política y elección de Nombre de usuario-username</a></li>
+                <li><a href="/terms-privacy">Política de Privacidad</a></li>
+                <li><a href="/terms-products">Politicas de artículos prohibidos</a></li>
+            </ul>
+        </div>
 
 
-       <h2>Ayuda</h2>
-        <ul>
-            <li><a href="/tips">Tips y consejos</a></li>
-            <li><a href="/fake-email">Creo que recibí un email falso</a></li>
-            <li><a href="/forget-password">Cómo recuperar mi contraseña</a></li>
-            <li><a href="/reliable-seller">Cómo sé si mi vendedor es confiable?</a></li>
-        </ul>
+        <div style="display: inline-block; vertical-align: top; margin-right: 1rem">
+           <h2>Ayuda</h2>
+            <ul>
+                <li><a href="/tips">Tips y consejos</a></li>
+                <li><a href="/fake-email">Creo que recibí un email falso</a></li>
+                <li><a href="/forget-password">Cómo recuperar mi contraseña</a></li>
+                <li><a href="/reliable-seller">Cómo sé si mi vendedor es confiable?</a></li>
+            </ul>
+        </div>
 
 
 

@@ -12,6 +12,12 @@ estamos para servirle @stop
 
             <span><b>Email:</b> info@guanacastevende.com</span><br/>
             <span><b>Telefono:</b> 2222-2222</span>
+            <div class="contact__social">
+                <a class="contact__social__link" href="https://www.facebook.com/guanacastevende" target="_blank"><i class="icon-facebook"></i></a>
+                <a class="contact__social__link" href="https://twitter.com/GuanacasteVende" target="_blank"><i class="icon-twitter"></i></a>
+                <a class="contact__social__link" href="https://www.youtube.com/channel/UCVDiC3vIclXSKmrKViPIIag" target="_blank"><i class="icon-youtube"></i></a>
+                <a class="contact__social__link" href="https://plus.google.com/+GuanacastevendeCR" target="_blank"><i class="icon-google-plus"></i></a>
+            </div>
         </address>
 
         <div class="form contact__form">

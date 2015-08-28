@@ -6,7 +6,7 @@
 
         <h1 class="terms__title">Politica de Privacidad</h1>
 
-        <p>Estas políticas de privacidad (las "Políticas de Privacidad") entrarán en vigor desde su aceptación para los nuevos usuarios y están vigentes desde 1º de enerol de 2015.</p>
+        <p>Estas políticas de privacidad (las "Políticas de Privacidad") entrarán en vigor desde su aceptación para los nuevos usuarios y están vigentes desde 1º de enero del 2015.</p>
         <p>La privacidad de la información de los usuarios es muy importante para Guanacaste Vende. Es por esa razón que se toman las precauciones y recaudos para resguardar su información, utilizando los mecanismos de seguridad informática de protección de la información más completos y eficaces.Como parte normal de nuestra actividad recogemos y, en algunos casos, revelamos información sobre nuestros usuarios y visitantes de nuestro sitio Web. Estas Políticas de Privacidad describen la información que Guanacaste Vende recoge sobre sus usuarios y visitantes y lo que puede hacerse con dicha información. Esta política es muy detallada porque es importante que todos los usuarios y visitantes de nuestro sitio Web conozcan las prácticas de Guanacaste Vende de la forma más precisa posible. Al registrarse y/o navegar el sitio Web de Guanacaste Vende, el usuario y/o el visitante presta su consentimiento para que se utilice su información personal de acuerdo a las políticas que se describen a continuación.</p>
         <p>Este documento es parte integrante de los Términos y Condiciones Generales de Guanacaste Vende. Mediante la aceptación de los Términos y Condiciones Generales en el momento de la registración el usuario acepta las políticas aquí contenidas.</p>
 

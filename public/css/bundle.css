@@ -5841,6 +5841,17 @@ strong.orange {
   color: #000;
   font-size: 1.2rem;
 }
+.contact__social {
+  margin-top: 0.5rem;
+}
+.contact__social__link {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+.contact__social__link:hover {
+  color: #f7941d;
+  text-decoration: none !important;
+}
 .contact__form {
   margin: 1rem 0;
 }
