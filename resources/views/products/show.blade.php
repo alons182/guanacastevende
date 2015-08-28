@@ -68,7 +68,7 @@
                                     favoritos
                                 </button>
                             @else
-                                <button type="submit" class="btn btn-success btn-favorites" style="float: right;"
+                                <button type="submit" class="btn btn-success btn-favorites"
                                         form="form-favorites-save"
                                         formaction="{!! URL::route('save_favorites', [$product->id]) !!}">Guardar en
                                     favoritos

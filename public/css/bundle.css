@@ -5731,6 +5731,12 @@ strong.orange {
 .product__comments {
   text-align: center;
 }
+.product__comments .fb-comments > span {
+  width: 100% !important;
+}
+.product__comments iframe {
+  width: 100% !important;
+}
 .product__view__seller {
   text-align: center;
 }
@@ -5740,6 +5746,7 @@ strong.orange {
 }
 .product__view__seller button {
   display: block;
+  float: none;
   width: 100%;
 }
 @media screen and (min-width: 640px) {
@@ -5751,6 +5758,7 @@ strong.orange {
   }
   .product__view__seller button {
     display: inline-block;
+    float: right;
     width: auto;
   }
 }
