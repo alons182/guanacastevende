@@ -22,8 +22,8 @@
                     {!! Form::label('categories','Seleccione una categoria:',['class'=>'col-sm-2 control-label'])!!}
 
                     <div class="select__category">
-                        <select  name="parentCategories" class="rootCategories" size="5" data-container="0" required="required">
-
+                        <select  name="parentCategories" class="rootCategories" size="5" data-container="0" required="required" >
+                            <option value="" disabled selected>Escoje tu categoria</option>
                             @foreach($categories_list as $category)
                                 <option class="option-icon" value="{!! $category->id !!}">{!! $category->name !!} </option>
                             @endforeach
@@ -35,7 +35,7 @@
                     </div>
                     <script id="selectCategoryTemplate" type="text/x-handlebars-template">
 
-                        <select  name="parentCategories" class="rootCategories" size="5" data-container="@{{ container }}" required="required" placeholder="Toca aqui para seleccionar una categoria">
+                        <select  name="parentCategories" class="rootCategories" size="5" data-container="@{{ container }}" required="required" >
 
                             @{{#each this}}
                                 <option class="@{{#if category_children }} option-icon @{{/if}}" value="@{{ category_id }}">@{{ category_name }} </option>
