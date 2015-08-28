@@ -63,7 +63,7 @@
 
                             @if($currentUser->hasFavorite($product))
 
-                                <button type="submit" class="btn btn-remove btn-favorites" style="float: right;" form="form-favorites-delete"
+                                <button type="submit" class="btn btn-remove btn-favorites" form="form-favorites-delete"
                                         formaction="{!! URL::route('delete_favorites', [$product->id]) !!}">Quitar de
                                     favoritos
                                 </button>
