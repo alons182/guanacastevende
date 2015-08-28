@@ -605,6 +605,10 @@ strong.orange {
 .right-section {
   width: 100%;
 }
+.left-section .panel,
+.right-section .panel {
+  margin-bottom: 0;
+}
 .pagination-container {
   clear: both;
   padding-top: 0.5rem;
@@ -1170,6 +1174,7 @@ strong.orange {
 }
 .product__edit {
   margin: 1rem 0;
+  overflow: hidden;
 }
 .product__container {
   width: 100%;

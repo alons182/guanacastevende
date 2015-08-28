@@ -120,10 +120,7 @@
 
                 </div>
                 @endif
-                <div class="form__group">
-                    {!! Form::submit(isset($buttonText) ? $buttonText : 'Agregar Producto',['class'=>'btn btn-primary'])!!}
-                    {!! link_to_route('profile.show',  'Regresar', (isset($product)) ? $product->user->username : Auth::user()->username, ['class'=>'btn btn-default'])!!}
-                </div>
+
 
 
 
@@ -201,6 +198,11 @@
         </section>
 
     </div>
+
+</div>
+<div class="form__group">
+    {!! Form::submit(isset($buttonText) ? $buttonText : 'Agregar Producto',['class'=>'btn btn-primary'])!!}
+    {!! link_to_route('profile.show',  'Regresar', (isset($product)) ? $product->user->username : Auth::user()->username, ['class'=>'btn btn-default'])!!}
 </div>
 
 		
