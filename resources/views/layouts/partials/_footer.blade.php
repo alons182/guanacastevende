@@ -15,7 +15,7 @@
 
                 </ul>
             </nav>
-            <a class="footer__logo" href="#"><img src="/img/logo.png" alt="Guanacaste Vende"/></a>
+            <a class="footer__logo" href="#"><img src="/img/logo-white.png" alt="Guanacaste Vende"/></a>
         </div>
         <div class="right">
             <div class="footer__social">

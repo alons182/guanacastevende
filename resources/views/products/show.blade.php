@@ -48,25 +48,36 @@
                         <span class="product__tags__item">{!! $tag->name !!}</span>
                     @endforeach
                 </div>
-                <div class="product__description">
-                    {!! $product->description !!}
-                </div>
-                <div class="product__price">
-                    {!! money($product->price, '₡') !!}
-                </div>
-                <div class="product__view__seller">
-                    <a href="{!! URL::route('profile.show', [$product->user->username]) !!}" class="btn btn-success" title="Inicia Sesion para ver los datos del vendedor!">Ver datos del vendedor</a>
-                @if (! Auth::guest())
+                <div class="box">
+                    <div class="product__description">
+                        {!! $product->description !!}
+                    </div>
+                    <div class="product__price">
+                        {!! money($product->price, '₡') !!}
+                    </div>
+                    <div class="product__view__seller">
+                        <a href="{!! URL::route('profile.show', [$product->user->username]) !!}" class="btn btn-success"
+                           title="Inicia Sesion para ver los datos del vendedor!">Ver datos del vendedor</a>
+                        @if (! Auth::guest())
 
-                        @if($currentUser->hasFavorite($product))
+                            @if($currentUser->hasFavorite($product))
 
-                            <button type="submit"  class="btn btn-remove" style="float: right;" form="form-favorites" formaction="{!! URL::route('delete_favorites', [$product->id]) !!}" >Quitar de favoritos</button>
-                        @else
-                            <button type="submit"  class="btn btn-success" style="float: right;" form="form-favorites" formaction="{!! URL::route('save_favorites', [$product->id]) !!}" >Guardar en favoritos</button>
+                                <button type="submit" class="btn btn-remove" style="float: right;" form="form-favorites"
+                                        formaction="{!! URL::route('delete_favorites', [$product->id]) !!}">Quitar de
+                                    favoritos
+                                </button>
+                            @else
+                                <button type="submit" class="btn btn-success" style="float: right;"
+                                        form="form-favorites"
+                                        formaction="{!! URL::route('save_favorites', [$product->id]) !!}">Guardar en
+                                    favoritos
+                                </button>
+                            @endif
+
                         @endif
-
-                @endif
+                    </div>
                 </div>
+
                 <div class="product__share">
                     <span class="product__share__title">Compartir</span>
                     <a class="icon-facebook" title="Facebook" href="#"
@@ -94,10 +105,11 @@
                 <div class="product__comments">
                     @if(! auth()->guest())
 
-                    <div class="fb-comments" data-href="{!! Request::url()!!}" data-numposts="5"></div>
+                        <div class="fb-comments" data-href="{!! Request::url()!!}" data-numposts="5"></div>
 
                     @else
-                        <a href="{!! URL::to('auth/login') !!}" class="btn btn-success" title="Inicia Sesion para ver los comentarios!">Ver comentarios</a>
+                        <a href="{!! URL::to('auth/login') !!}" class="btn btn-success"
+                           title="Inicia Sesion para ver los comentarios!">Ver comentarios</a>
                     @endif
                 </div>
             </div>
@@ -111,19 +123,30 @@
 @section('scripts')
 
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
+    <script>(function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
+            js = d.createElement(s);
+            js.id = id;
             js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.4&appId=363306470411928";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
 
     <script src="https://apis.google.com/js/platform.js" async defer>
-        {lang: 'es'}
+        {
+            lang: 'es'
+        }
     </script>
 
 
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + '://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, 'script', 'twitter-wjs');</script>
 
 @stop
