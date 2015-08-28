@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row" style="margin-top:40px;">
+    <div class="row">
         <div class="col-md-6">
             <div class="well well-sm">
                 <div class="form">
@@ -8,7 +8,7 @@
                 </div>
 
                 <div class="text-right">
-                    <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Califica a este usuario</a>
+                    <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Calificar usuario</a>
                 </div>
 
                 <div class="row" id="post-review-box" style="display:none;">

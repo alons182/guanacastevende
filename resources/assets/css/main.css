@@ -1270,6 +1270,29 @@ strong.orange {
 .product__comments {
   text-align: center;
 }
+.product__view__seller {
+  text-align: center;
+}
+.product__view__seller a {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.product__view__seller button {
+  display: block;
+  width: 100%;
+}
+@media screen and (min-width: 640px) {
+  .product__view__seller {
+    text-align: left;
+  }
+  .product__view__seller a {
+    display: inline-block;
+  }
+  .product__view__seller button {
+    display: inline-block;
+    width: auto;
+  }
+}
 @media screen and (min-width: 1024px) {
   .product__container {
     float: right;
