@@ -362,6 +362,17 @@ img {
   max-width: 100%;
   height: auto;
 }
+b,
+strong {
+  color: #1ca038;
+}
+b.orange,
+strong.orange {
+  color: #f7941d;
+}
+.underline {
+  text-decoration: underline;
+}
 .ul__numbers {
   margin-left: 45px;
   list-style-type: decimal;
@@ -1412,6 +1423,9 @@ img {
 }
 .terms-input__label {
   display: inline-block !important;
+}
+.option__title {
+  color: #f7941d;
 }
 .option__description {
   font-size: 13px;

@@ -3,6 +3,7 @@
         <section class="panel">
                 <h1 class="product__edit__title">Editando Producto</h1>
                 <p>Ingresa aquí tu producto, es gratis y <strong>estará en línea por 30 días</strong> !!</p>
+                <p><strong class="orange underline">Solo se permite un artículo por publicación</strong>, esto para mantener el orden y que tus posibles compradores encuentren tu artículo en la categoría correspondiente.</p>
             <div class="form">
                 <div class="form__group">
                     {!! Form::submit(isset($buttonText) ? $buttonText : 'Agregar Producto',['class'=>'btn btn-primary'])!!}
@@ -88,7 +89,7 @@
                     {!! Form::label('option','Opciones:',['class'=>'col-sm-2 control-label'])!!}
                     @foreach($options_list as $option)
                         <div class="box">
-                            <input type="checkbox" value="{!! $option->id !!}" name="option_id" {!! (isset($product)) ? ($product->option_id == $option->id) ? 'checked="checked"' : '' : '' !!}> <b>{!! $option->name !!}</b> <br />
+                            <input type="checkbox" value="{!! $option->id !!}" name="option_id" {!! (isset($product)) ? ($product->option_id == $option->id) ? 'checked="checked"' : '' : '' !!}> <b class="option__title">{!! $option->name !!}</b> <br />
                             <div class="option__description">
                                 {!! $option->description !!}
                             </div>
