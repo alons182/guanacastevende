@@ -570,6 +570,7 @@ strong.orange {
   display: inline-block;
   border: 1px solid #e5e5e5;
   font-size: 13px;
+  margin-bottom: 0.5rem;
 }
 .form .rootCategories option::-moz-selection,
 .form .rootCategories option::-moz-selection,
@@ -601,12 +602,12 @@ strong.orange {
 .form .select__sub-category {
   display: inline-block;
   width: 100%;
-  margin-bottom: 0.5rem;
 }
 @media screen and (min-width: 640px) {
   .form .rootCategories {
     height: 225px;
     width: 183px;
+    margin-bottom: 0;
   }
   .form .select__sub-category {
     width: auto;
