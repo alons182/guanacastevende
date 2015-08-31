@@ -4908,6 +4908,7 @@ if (!Object.prototype.hasOwnProperty)
         status = $( "#status"),
         active = $( "#active"),
         filters = $(".filtros"),
+        btnOrder = $(".btn-order"),
         chkProduct = $('.chk-product'),
         chkSelectAll = $('#select-all'),
         btnDeleteMultiple = $('.delete-multiple'),
@@ -4919,7 +4920,13 @@ if (!Object.prototype.hasOwnProperty)
         inputsPhotos = $("#inputs_photos"),
         users;
 
+    btnOrder.on('click',function(e) {
 
+        $('#form-order').find('input[name="order"]').val($(this).attr("data-order"));
+        $('#form-order').submit();
+
+        return false;
+    });
 
     $("form[data-confirm]").submit(function() {
         if ( ! confirm($(this).attr("data-confirm"))) {

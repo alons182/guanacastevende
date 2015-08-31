@@ -18,6 +18,16 @@
                                   <th>#</th>
                                   <th>Username</th>
                                   <th>Email</th>
+                                  <th>
+
+                                      <a class="btn-order" href="#" data-order="rating_cache" data-dir="{!! isset($dir) ? $dir :'desc' !!}">
+                                          Rating
+
+                                          @if($dir != '')
+                                              <i class="fa fa-arrow-circle-{!! ($dir == 'desc') ? 'up' :'down' !!}"></i>
+                                          @endif
+                                      </a>
+
                                   <th>Created</th>
                                   <th>Status</th>
                                   <th>Actions</th>
@@ -29,7 +39,7 @@
                                     <td>{!! $user->id !!}</td>
                                     <td>{!! $user->username !!}
                                     <td>{!! $user->email !!}</td>
-
+                                    <td>{!! $user->rating_cache !!}</td>
                                     <td class="center">{!! $user->created_at !!}</td>
 
                                     <td class="center">
@@ -74,4 +84,10 @@
 
 {!! Form::open(array('method' => 'post', 'id' => 'form-active-inactive')) !!}{!! Form::close() !!}
 {!! Form::open(['method' => 'delete', 'id' =>'form-delete','data-confirm' => 'You are sure?']) !!}{!! Form::close() !!}
+{!! Form::open(['route' => 'users','method' => 'get', 'id' => 'form-order']) !!}
+    {!! Form::hidden('dir', ($dir) ? $dir :'ASC')!!}
+    {!! Form::hidden('order', isset($order) ? $order :'created_at')!!}
+    {!! Form::hidden('q', $search)!!}
+    {!! Form::hidden('active', $selectedStatus)!!}
+{!! Form::close() !!}
 @stop

@@ -72,6 +72,8 @@ class UserRepository extends DbRepository{
      */
     public function findAll($search = null)
     {
+        $order = 'created_at';
+        $dir = 'desc';
 
         if (! count($search) > 0) return $this->model->paginate($this->limit);
 
@@ -88,8 +90,17 @@ class UserRepository extends DbRepository{
             $users = $users->where('active', '=', $search['active']);
         }
 
+        if (isset($search['order']) && $search['order'] != "")
+        {
+            $order = $search['order'];
+        }
+        if (isset($search['dir']) && $search['dir'] != "")
+        {
+            $dir = $search['dir'];
+        }
 
-        return $users->orderBy('users.created_at', 'desc')->paginate($this->limit);
+
+        return $users->orderBy('users.'.$order , $dir)->paginate($this->limit);
 
     }
 

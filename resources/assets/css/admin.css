@@ -40,4 +40,11 @@ td.pagination
 
 }
 
+.btn-order:hover{
+    text-decoration: underline;
+    color: #1ec3c8;
+}
+
+
+
 					

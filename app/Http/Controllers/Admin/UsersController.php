@@ -35,18 +35,24 @@ class UsersController extends Controller {
 	public function index(Request $request)
 	{
         $search = $request->all();
-        if (! count($search) > 0)
+       // dd($search);
+        if (! count($search) > 0 || ! isset($search['q']) )
         {
             $search['q'] = "";
         }
         $search['active'] = (isset($search['active'])) ? $search['active'] : '';
+        $search['dir'] = (isset($search['dir'])) ? $search['dir'] : '';
+        $search['order'] = (isset($search['order'])) ? $search['order'] : '';
+
 
         $users = $this->userRepository->findAll($search);
-
+        //dd($search['dir']);
         return View('admin.users.index')->with([
             'users'          => $users,
             'search'         => $search['q'],
-            'selectedStatus' => $search['active']
+            'selectedStatus' => $search['active'],
+            'order' => $search['order'],
+            'dir' => ($search['dir'] == '') ? '' : (($search['dir'] == 'desc') ? 'asc' : 'desc')
 
         ]);
 	}
