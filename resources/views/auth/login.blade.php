@@ -42,8 +42,11 @@
                             <div class="form__group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">Iniciar</button>
+                                    <br />
+                                    <a class="btn-link" href="{{ url('/password/email') }}">Olvidaste tu contraseña?</a><br />
+                                    <a class="btn-link" href="{{ url('/auth/register')  }}">No tenés una cuenta? Haz click aquí</a>
 
-                                    <a class="btn-link" href="{{ url('/password/email') }}">Olvidaste tu contraseña?</a>
+
                                 </div>
                             </div>
                         </div>
