@@ -128,7 +128,7 @@ class ProductsController extends Controller {
         {
             $this->productRepository->update_state($product->id, 2);
             flash('Producto Creado correctamente');
-            $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product]);
+            $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product, 'profile' => Auth()->user()->profile ]);
             return Redirect()->route('profile.show', Auth()->user()->username);
         }
 

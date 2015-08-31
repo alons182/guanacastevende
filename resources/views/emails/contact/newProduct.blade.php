@@ -6,7 +6,7 @@
 </head>
 <body>
 <p>Nuevo Articulo creado en espera de publicación</p>
-<strong>Usuario :</strong> {{ $user['id'] }} - {{ $user['email'] }} - {{ $user['username'] }} <br />
+<strong>Usuario :</strong> {{ $user['id'] }} - {{ $user['email'] }} - {{ $user['username'] }} - Tel 1:{{ $profile['telephone'] }} -  Tel 2:{{ $profile['telephone2'] }} <br />
 <strong>Articulo :</strong> {{ $product['id'] }} - {{ $product['name'] }} <br />
 
 </body>
