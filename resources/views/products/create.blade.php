@@ -4,7 +4,7 @@
 @section('meta-description')Creando un nuevo producto @stop
 @section('content')
     <div class="product">
-            {!! Form::open(['route'=>'products.store','files'=> true, 'class'=>'form-horizontal']) !!}
+            {!! Form::open(['route'=>'products.store','files'=> true, 'class'=>'form-horizontal dropzone']) !!}
 
                 @include('products/partials/_form')
 
@@ -14,6 +14,8 @@
 
 @stop
 @section('scripts')
+
+   <!-- <script src="/vendor/dropzone/dropzone.js"></script>-->
     <!--<script src="/vendor/ckeditor/ckeditor.js"></script>
     <script>
 

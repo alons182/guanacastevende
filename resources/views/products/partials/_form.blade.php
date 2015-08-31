@@ -137,9 +137,9 @@
             <div class="form">
                 <div class="form__group">
                     {!! Form::label('image','Imagen:',['class'=>'col-sm-2 control-label'])!!}
-                    {!! Form::file('image',['required'=>'required']) !!}
+                    {!! Form::file('image',['required'=>'required','data-holder' =>'image-holder']) !!}
                     {!! errors_for('image',$errors) !!}
-
+                    <div id="image-holder" class="image-holder"></div>
                 </div>
                 @if (isset($product))
                     <div class="main_image">

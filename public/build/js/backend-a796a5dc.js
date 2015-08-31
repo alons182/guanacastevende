@@ -4920,6 +4920,7 @@ if (!Object.prototype.hasOwnProperty)
         inputsPhotos = $("#inputs_photos"),
         users;
 
+
     btnOrder.on('click',function(e) {
 
         $('#form-order').find('input[name="order"]').val($(this).attr("data-order"));

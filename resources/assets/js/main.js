@@ -12,6 +12,34 @@
 
     $('.alert').delay(4000).fadeOut(300);
     // $('#categories').select2();
+
+    $("#image").on('change', function () {
+        imagePreview(this);
+    });
+    $('body ').on('change', 'input[name="new_photo_file[]"]', function () {
+        imagePreview(this)
+    });
+    function imagePreview($this)
+    {
+        if (typeof (FileReader) != "undefined") {
+
+            var image_holder = $("#"+ $($this).data('holder') );
+            image_holder.empty();
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("<img />", {
+                    "src": e.target.result,
+                    "class": "thumb-image"
+                }).appendTo(image_holder);
+
+            }
+            image_holder.show();
+            reader.readAsDataURL($($this)[0].files[0]);
+        } else {
+            alert("This browser does not support FileReader.");
+        }
+    }
     $('body ').on('change', '.rootCategories', function () {
 
         var $this = $(this);
@@ -287,8 +315,8 @@
         photos++;
         if (photos < 6) {
             inputsPhotos.append('<div><strong>Foto' + photos + ': </strong>' +
-            '<input type="file" name="new_photo_file[]" size="45" /></div><br />');
-
+            '<input id="image-'+ photos +'" type="file" name="new_photo_file[]" size="45" data-holder="image-holder-'+  photos +'" /><br />' +
+            '<div id="image-holder-'+ photos +'" class="image-holder"></div>');
         }
 
     });
