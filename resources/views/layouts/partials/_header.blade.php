@@ -51,7 +51,7 @@
                         @endif
                     </ul>
                 </li>
-                <li class="header__menu__item"><a class="header__menu__link" href="#">Noticias</a> </li>
+                <li class="header__menu__item"><a class="header__menu__link" href="/blog">Noticias</a> </li>
                 <li class="header__menu__item"><a class="header__menu__link" href="{{ route('about_path') }}">Acerca de</a> </li>
                 <li class="header__menu__item"><a class="header__menu__link" href="{{ route('contact_path') }}">Contactenos</a> </li>
 
