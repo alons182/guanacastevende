@@ -11,7 +11,7 @@
                     <li class="footer__menu__item"><a class="footer__menu__link" href="{{ route('about_path') }}">Acerca de</a> </li>
                     <li class="footer__menu__item"><a class="footer__menu__link" href="{{ route('products_path') }}">Productos</a> </li>
                     <li class="footer__menu__item"><a class="footer__menu__link" href="{{ route('contact_path') }}">Contactenos</a> </li>
-                    <li class="footer__menu__item"><a class="footer__menu__link" href="/blog">Blog</a> </li>
+                    <li class="footer__menu__item"><a class="footer__menu__link" href="/blog" target="_blank">Blog</a> </li>
 
                 </ul>
             </nav>
