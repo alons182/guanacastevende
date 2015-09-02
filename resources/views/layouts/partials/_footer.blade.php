@@ -28,9 +28,12 @@
             <div class="footer__copyright">
 
                 <p>Website by <a href="http://avotz.com"><i class="icon-avotz"></i></a></p>
+                <span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=JIfaqN6F1wh6amQKHCl57GcczGx0Pmvki0HKcadEpzw1eTHLXaenO41LULWW"></script></span>
             </div>
         </div>
         <a href="#" class="siteLock" onclick="window.open('https://www.sitelock.com/verify.php?site=www.guanacastevende.com','SiteLock','width=600,height=600,left=160,top=170');" ><img alt="SiteLock" title="SiteLock" src="//shield.sitelock.com/shield/www.guanacastevende.com"/></a>
+
+
     </div>
 </footer>
 @yield('scripts')
