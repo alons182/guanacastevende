@@ -3,6 +3,7 @@
     <div class="inner">
         <div class="footer__terms">
             <a class="footer__terms__link" href="{{ route('terms_path') }}">Términos y Condiciones</a>
+
         </div>
 
         <div class="left">
@@ -25,10 +26,11 @@
                 <a class="footer__social__link" href="https://plus.google.com/+GuanacastevendeCR" target="_blank"><i class="icon-google-plus"></i></a>
             </div>
             <div class="footer__copyright">
+
                 <p>Website by <a href="http://avotz.com"><i class="icon-avotz"></i></a></p>
             </div>
         </div>
-
+        <a href="#" class="siteLock" onclick="window.open('https://www.sitelock.com/verify.php?site=www.guanacastevende.com','SiteLock','width=600,height=600,left=160,top=170');" ><img alt="SiteLock" title="SiteLock" src="//shield.sitelock.com/shield/www.guanacastevende.com"/></a>
     </div>
 </footer>
 @yield('scripts')
