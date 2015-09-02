@@ -199,7 +199,7 @@ button::-moz-focus-inner {
 .mfp-arrow-left {
   left: 0; }
   .mfp-arrow-left:after, .mfp-arrow-left .mfp-a {
-    border-right: 17px solid #FFF;
+    border-right: 17px solid #f7941d;
     margin-left: 31px; }
   .mfp-arrow-left:before, .mfp-arrow-left .mfp-b {
     margin-left: 25px;
@@ -208,7 +208,7 @@ button::-moz-focus-inner {
 .mfp-arrow-right {
   right: 0; }
   .mfp-arrow-right:after, .mfp-arrow-right .mfp-a {
-    border-left: 17px solid #FFF;
+    border-left: 17px solid #f7941d;
     margin-left: 39px; }
   .mfp-arrow-right:before, .mfp-arrow-right .mfp-b {
     border-left: 27px solid #3F3F3F; }

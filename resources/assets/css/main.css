@@ -1597,13 +1597,18 @@ strong.orange {
   display: inline-block;
   vertical-align: middle;
 }
-.footer .siteLock {
+.footer__verify {
   position: static;
   left: 50%;
   top: 95px;
   -webkit-transform: translate(-50%, 0);
       -ms-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
+}
+.footer__verify a,
+.footer__verify span {
+  display: inline-block;
+  vertical-align: middle;
 }
 @media screen and (min-width: 640px) {
   .footer {
@@ -1615,7 +1620,7 @@ strong.orange {
   .footer .right {
     float: right;
   }
-  .footer .siteLock {
+  .footer__verify {
     position: absolute;
   }
 }

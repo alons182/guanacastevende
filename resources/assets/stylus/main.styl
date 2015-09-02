@@ -1131,11 +1131,15 @@ strong
 			color white
 			display inline-block
 			vertical-align middle
-	.siteLock
+	&__verify
 		position static
 		left 50%
 		top 95px
 		transform translate(-50%, 0)
+		a
+		span
+			display inline-block
+			vertical-align middle
 
 @media screen and (min-width: 640px)
 	.footer
@@ -1144,7 +1148,7 @@ strong
 			float left
 		.right
 			float right
-		.siteLock
+		&__verify
 			position absolute
 
 @import 'tables.styl'
