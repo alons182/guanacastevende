@@ -42,7 +42,7 @@
 </footer>
 @yield('scripts')
 
-<!--<div id='cptup-ready'></div>
+<div id='cptup-ready'></div>
 <script data-cfasync='false' type='text/javascript'>
     window.captain = {up: function(fn) { captain.topics.push(fn) }, topics: []};
     // Add your settings here:
@@ -56,7 +56,7 @@
         cpt.src = 'https://captainup.com/assets/embed.es.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(cpt);
     })();
-</script>-->
+</script>
 
 <script src="{{ elixir('js/bundle.js') }}"></script>
 </body>
