@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="description" content="@yield('meta-description','Vende lo que no ocupes')">
     <meta name="viewport" content="width=device-width, user-scalable=1, initial-scale=1, maximum-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <title>@yield('meta-title','Guanacaste Vende | Home')</title>
 
     <!-- page styles -->
