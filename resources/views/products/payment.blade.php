@@ -57,6 +57,9 @@
 
                     <div class="form__group">
                         {!! Form::submit('Pagar', ['class' => 'btn btn-primary']) !!}
+                        <button type="submit" class="btn btn-danger" form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}">
+                            Cancelar<i class="fa fa-trash-o"></i>
+                        </button>
                     </div>
 
                 </div>
@@ -113,7 +116,7 @@
         {!! Form::close() !!}
 
     </div>
-
+    {!! Form::open(['method' => 'delete', 'id' =>'form-delete','data-confirm' => 'You are sure?']) !!}{!! Form::close() !!}
 @stop
 
 
