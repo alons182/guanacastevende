@@ -3,14 +3,15 @@
         <h1 class="product__edit__title">Editando Producto</h1>
         <p>Ingresa aquí tu producto, es gratis y <strong>estará en línea por 30 días</strong> !!</p>
         <p><strong class="orange underline">Solo se permite un artículo por publicación</strong>, esto para mantener el orden y que tus posibles compradores encuentren tu artículo en la categoría correspondiente.</p>
+        <hr>
     </div>
     <div class="right-section" >
 
         <section class="panel">
-            <h1 class="product__edit__title">Agregar Imagen</h1>
+            <!--<h1 class="product__edit__title">Agregar Imagen</h1>-->
             <div class="form">
                 <div class="form__group">
-                    {!! Form::label('image','Imagen:',['class'=>'col-sm-2 control-label'])!!}
+                    {!! Form::label('image','Agregar Imagen:',['class'=>'col-sm-2 control-label'])!!}
                     {!! Form::file('image',['required'=>'required','data-holder' =>'image-holder']) !!}
                     {!! errors_for('image',$errors) !!}
                     <div id="image-holder" class="image-holder"></div>
