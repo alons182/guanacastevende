@@ -6066,7 +6066,7 @@ strong.orange {
   vertical-align: middle;
 }
 .footer__verify {
-  padding: 1rem 0;
+  padding-bottom: 1rem;
 }
 .footer__verify a,
 .footer__verify span {
