@@ -143,7 +143,7 @@
                 </div>
                 <div class="from__group options__info">
                     <div class="box">
-                        <p>Publicar artículos en Guancaste Vende <b>es completamente gratuito</b>, solamente que deberás esperar por la confirmación teléfonica dentro de las próximas 72 horas y la respectiva activación de tu anuncio.</p>
+                        <p>Publicar artículos en Guancaste Vende es completamente gratuito, solamente que <b>deberás esperar por la confirmación teléfonica</b> dentro de las próximas 72 horas y la respectiva activación de tu anuncio.</p>
                     </div>
                     <div class="box">
                         <p><b>Si no deseas esperar</b> puedes escoger cualquiera de los siguientes servicios que <b>son opcionales, y tienen el costo indicado.</b> Si escoges cualquiera de ellos, debes pagar en línea con tarjeta de crédito ó débito, o con tu cuenta PayPal en nuestro servidor seguro, una vez que oprimas el botón de <strong>AGREGAR PRODUCTO</strong></p>
