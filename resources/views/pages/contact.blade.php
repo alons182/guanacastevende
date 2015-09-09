@@ -6,7 +6,7 @@ estamos para servirle @stop
     <section class="contact">
 
         <address class="contact__address">
-            <h2 class="contact__address__title">Horario de atención cása</h2>
+            <h2 class="contact__address__title">Horario de atención</h2>
             De Lunes a Viernes de 08:00 am a 12:00 y de 1:00 pm a 5:00 pm<br/>
             Sábados de 08:00 a 12:00 pm<br/>
 
@@ -22,8 +22,8 @@ estamos para servirle @stop
 
         <div class="form contact__form">
             <h1 class="contact__form__title">Contáctenos</h1>
-            <p class="intro">"Llamános o escribínos para solucionar cualquier duda o consulta que tengas, en <b>Guanacaste Vende</b>
-                estamos para servirle !!"</p>
+            <p class="intro">"Llamanos o escribínos para solucionar cualquier duda o consulta que tengas, en <b>Guanacaste Vende</b> estamos para servirte !! Responderemos tus consultas en menos de 72 horas.
+                "</p>
 
             {!! Form::open(['route'=>'contact.store','class'=>'form-contact']) !!}
 
