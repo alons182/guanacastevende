@@ -5,6 +5,7 @@
         <p><strong class="orange underline">Solo se permite un artículo por publicación</strong>, esto para mantener el orden y que tus posibles compradores encuentren tu artículo en la categoría correspondiente.</p>
 
     </div>
+    <hr style="margin-bottom: 1.5rem;">
     <div class="right-section" >
 
         <section class="panel">
