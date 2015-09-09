@@ -6009,7 +6009,7 @@ strong.orange {
 .footer {
   overflow: hidden;
   background-color: #343434;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   text-align: center;
   margin-top: 1rem;
 }
@@ -6048,6 +6048,7 @@ strong.orange {
 }
 .footer__social {
   text-align: center;
+  padding: 1rem 0;
 }
 .footer__social__link {
   color: #fff;
@@ -6056,12 +6057,16 @@ strong.orange {
 }
 .footer__copyright {
   text-align: center;
+  margin-top: -10px;
 }
 .footer__copyright a {
   font-size: 2rem;
   color: #fff;
   display: inline-block;
   vertical-align: middle;
+}
+.footer__verify {
+  padding: 1rem 0;
 }
 .footer__verify a,
 .footer__verify span {
@@ -6071,15 +6076,16 @@ strong.orange {
 @media screen and (min-width: 640px) {
   .footer {
     text-align: left;
-/*&__verify
-			position absolute
-			transform translate(-50%, 0)*/
   }
   .footer .left {
     float: left;
   }
   .footer .right {
     float: right;
+  }
+  .footer__verify,
+  .footer__social {
+    padding: 0;
   }
 }
 table {
