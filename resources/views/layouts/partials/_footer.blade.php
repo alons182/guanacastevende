@@ -27,14 +27,15 @@
                 <a class="footer__social__link" href="https://plus.google.com/+GuanacastevendeCR" target="_blank"><i class="icon-google-plus"></i></a>
             </div>
             <div class="footer__verify">
-                <a href="#" class="siteLock" onclick="window.open('https://www.sitelock.com/verify.php?site=www.guanacastevende.com','SiteLock','width=600,height=600,left=160,top=170');" ><img alt="SiteLock" title="SiteLock" src="//shield.sitelock.com/shield/www.guanacastevende.com"/></a>
                 <span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=JIfaqN6F1wh6amQKHCl57GcczGx0Pmvki0HKcadEpzw1eTHLXaenO41LULWW"></script></span>
+                <a href="#" class="siteLock" onclick="window.open('https://www.sitelock.com/verify.php?site=www.guanacastevende.com','SiteLock','width=600,height=600,left=160,top=170');" ><img alt="SiteLock" title="SiteLock" src="//shield.sitelock.com/shield/www.guanacastevende.com"/></a>
+
             </div>
 
         </div>
 
         <div class="footer__terms">
-            <a class="footer__terms__link" href="{{ route('terms_path') }}">Términos y Condiciones</a> - Esta tienda está autorizada por Visa y MasterCard para realizar transacciones Electrónicas.
+           Esta tienda está autorizada por Visa y MasterCard para realizar transacciones Electrónicas. <a class="footer__terms__link" href="{{ route('terms_path') }}">Términos y Condiciones</a>
 
         </div>
 
