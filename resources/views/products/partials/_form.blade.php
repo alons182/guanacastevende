@@ -156,7 +156,7 @@
 
                 </div>
                 <div class="form__group">
-                    {!! Form::label('option','Opciones:',['class'=>'col-sm-2 control-label'])!!}
+                    {!! Form::label('option','Opciones para publicaciones especiales:',['class'=>'col-sm-2 control-label'])!!}
                     @foreach($options_list as $option)
                         <div class="box">
                             <input type="checkbox" value="{!! $option->id !!}" name="option_id" {!! (isset($product)) ? ($product->option_id == $option->id) ? 'checked="checked"' : '' : '' !!}> <b class="option__title">{!! $option->name !!}</b> <br />
