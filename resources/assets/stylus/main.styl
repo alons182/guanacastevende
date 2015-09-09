@@ -1096,13 +1096,16 @@ strong
 	padding 1rem 0
 	text-align center
 	margin-top 1rem
-
+	&__logo
+		display block
 	&__terms
 		text-align center
+		margin-top -10px
+		color white
+		font-size 12px
 		&__link
 			color white
-			background-color verde
-			padding .3rem
+			font-size 12px
 			&:hover
 				text-decoration underline
 
@@ -1132,9 +1135,6 @@ strong
 			display inline-block
 			vertical-align middle
 	&__verify
-		position static
-		left 50%
-		top 95px
 
 		a
 		span
@@ -1148,8 +1148,8 @@ strong
 			float left
 		.right
 			float right
-		&__verify
+		/*&__verify
 			position absolute
-			transform translate(-50%, 0)
+			transform translate(-50%, 0)*/
 
 @import 'tables.styl'

@@ -6013,13 +6013,18 @@ strong.orange {
   text-align: center;
   margin-top: 1rem;
 }
+.footer__logo {
+  display: block;
+}
 .footer__terms {
   text-align: center;
+  margin-top: -10px;
+  color: #fff;
+  font-size: 12px;
 }
 .footer__terms__link {
   color: #fff;
-  background-color: #1ca038;
-  padding: 0.3rem;
+  font-size: 12px;
 }
 .footer__terms__link:hover {
   text-decoration: underline;
@@ -6058,11 +6063,6 @@ strong.orange {
   display: inline-block;
   vertical-align: middle;
 }
-.footer__verify {
-  position: static;
-  left: 50%;
-  top: 95px;
-}
 .footer__verify a,
 .footer__verify span {
   display: inline-block;
@@ -6071,18 +6071,15 @@ strong.orange {
 @media screen and (min-width: 640px) {
   .footer {
     text-align: left;
+/*&__verify
+			position absolute
+			transform translate(-50%, 0)*/
   }
   .footer .left {
     float: left;
   }
   .footer .right {
     float: right;
-  }
-  .footer__verify {
-    position: absolute;
-    -webkit-transform: translate(-50%, 0);
-        -ms-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
   }
 }
 table {
