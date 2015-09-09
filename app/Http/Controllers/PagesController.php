@@ -174,6 +174,42 @@ class PagesController extends Controller
         return view('pages.seller');
 
     }
+    /**
+     * Show the fake email Page.
+     *
+     * @return Response
+     */
+    public function Points()
+    {
+
+        return view('pages.points-promotions');
+
+    }
+
+    /**
+     * Show the fake email Page.
+     *
+     * @return Response
+     */
+    public function Purchasing()
+    {
+
+        return view('pages.purchasing');
+
+    }
+
+    /**
+     * Show the fake email Page.
+     *
+     * @return Response
+     */
+    public function Faqs()
+    {
+
+        return view('pages.faqs');
+
+    }
+
 
 
 }

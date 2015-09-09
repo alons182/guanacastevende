@@ -71,6 +71,18 @@ Route::get('/reliable-seller', [
     'as'   => 'forgetPassword_path',
     'uses' => 'PagesController@ReliableSeller'
 ]);
+Route::get('/points-promotions', [
+    'as'   => 'points_path',
+    'uses' => 'PagesController@Points'
+]);
+Route::get('/purchasing', [
+    'as'   => 'purchasing_path',
+    'uses' => 'PagesController@Purchasing'
+]);
+Route::get('/faqs', [
+    'as'   => 'faqs_path',
+    'uses' => 'PagesController@Faqs'
+]);
 /**
  * User & Profile
  */

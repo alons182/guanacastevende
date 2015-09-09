@@ -25,6 +25,7 @@
                 <li><a href="/terms-username">Política y elección de Nombre de usuario-username</a></li>
                 <li><a href="/terms-privacy">Política de Privacidad</a></li>
                 <li><a href="/terms-products">Politicas de artículos prohibidos</a></li>
+                <li><a href="/purchasing">Información de proceso de compra</a></li>
             </ul>
         </div>
 
@@ -36,6 +37,9 @@
                 <li><a href="/fake-email">Creo que recibí un email falso</a></li>
                 <li><a href="/forget-password">Cómo recuperar mi contraseña</a></li>
                 <li><a href="/reliable-seller">Cómo sé si mi vendedor es confiable?</a></li>
+                <li><a href="/points-promotions">Sistema de puntos y promociones</a></li>
+                <li><a href="/faqs">Preguntas Frecuentes</a></li>
+
             </ul>
         </div>
 
