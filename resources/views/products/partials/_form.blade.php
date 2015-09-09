@@ -1,14 +1,83 @@
 <div class="product__edit">
-    <div class="left-section">
+    <div class="panel">
+        <h1 class="product__edit__title">Editando Producto</h1>
+        <p>Ingresa aquí tu producto, es gratis y <strong>estará en línea por 30 días</strong> !!</p>
+        <p><strong class="orange underline">Solo se permite un artículo por publicación</strong>, esto para mantener el orden y que tus posibles compradores encuentren tu artículo en la categoría correspondiente.</p>
+    </div>
+    <div class="right-section" >
+
         <section class="panel">
-                <h1 class="product__edit__title">Editando Producto</h1>
-                <p>Ingresa aquí tu producto, es gratis y <strong>estará en línea por 30 días</strong> !!</p>
-                <p><strong class="orange underline">Solo se permite un artículo por publicación</strong>, esto para mantener el orden y que tus posibles compradores encuentren tu artículo en la categoría correspondiente.</p>
+            <h1 class="product__edit__title">Agregar Imagen</h1>
             <div class="form">
                 <div class="form__group">
-                    {!! Form::submit(isset($buttonText) ? $buttonText : 'Agregar Producto',['class'=>'btn btn-primary'])!!}
-                    {!! link_to_route('profile.show',  'Regresar', (isset($product)) ? $product->user->username : Auth::user()->username, ['class'=>'btn btn-default'])!!}
+                    {!! Form::label('image','Imagen:',['class'=>'col-sm-2 control-label'])!!}
+                    {!! Form::file('image',['required'=>'required','data-holder' =>'image-holder']) !!}
+                    {!! errors_for('image',$errors) !!}
+                    <div id="image-holder" class="image-holder"></div>
                 </div>
+                @if (isset($product))
+                    <div class="main_image">
+                        @if ($product->image)
+                            <img src="{!! photos_path('products') !!}thumb_{!! $product->image !!}"
+                                 alt="{!! $product->image !!}">
+
+                        @endif
+
+                    </div>
+                @endif
+                <div class="form__group">
+
+                    {!! Form::label('gallery','Agregar fotos adicionales:',['class'=>'control-label'])!!}
+                    <span>Podés agregar hasta 6 fotos de tu producto.</span>
+                    @if(isset($product))
+                        {!! Form::hidden('product_id',  $product->id) !!}
+                    @endif
+
+                    @if(isset($product))
+
+                        <div id="container-gallery">
+
+                            <a class="UploadButton btn btn-info" id="UploadButton">Subir Imagen</a>
+                            <div id="InfoBox"></div>
+                            <ul id="gallery">
+
+                                @foreach ($product->photos as $photo)
+                                    <li>
+                                        <span class="delete" data-imagen="{!! $photo->id !!}" title="Eliminar imagen"><i class="icon-close"></i></span>
+                                        <a href="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url !!}"><img src="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url_thumb !!}" alt="img" /></a>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                            <script id="photoTemplate" type="text/x-handlebars-template">
+
+                                <li>
+                                    <span class="delete" data-imagen="@{{ id }}" title="Eliminar imagen"><i class="icon-close"></i></span>
+                                    <a href="/media/products/@{{ product_id }}/@{{ url }}" ><img src="/media/products/@{{ product_id }}/@{{ url_thumb }}" alt="img" /></a>
+                                </li>
+
+
+                            </script>
+
+                        </div>
+                    @else
+                        <div id="inputs_photos">
+
+                            <input class="inputbox btn btn-info" type="button" name="new_photo"  value="Nueva Foto"  id="add_input_photo"/><i class="glyphicon glyphicon-plus-sign"></i>
+
+                        </div>
+
+                    @endif
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <div class="left-section">
+        <section class="panel">
+
+            <div class="form">
+
                 <div class="form__group">
                     {!! Form::label('name','Nombre de producto:',['class'=>'col-sm-2 control-label']) !!}
 
@@ -129,75 +198,7 @@
         </section>
 
     </div>
-    <div class="right-section" >
 
-        <section class="panel">
-            <h1 class="product__edit__title">Imagen Principal</h1>
-            <p>Podés agregar hasta 6 fotos de tu producto.</p>
-            <div class="form">
-                <div class="form__group">
-                    {!! Form::label('image','Imagen:',['class'=>'col-sm-2 control-label'])!!}
-                    {!! Form::file('image',['required'=>'required','data-holder' =>'image-holder']) !!}
-                    {!! errors_for('image',$errors) !!}
-                    <div id="image-holder" class="image-holder"></div>
-                </div>
-                @if (isset($product))
-                    <div class="main_image">
-                        @if ($product->image)
-                            <img src="{!! photos_path('products') !!}thumb_{!! $product->image !!}"
-                                 alt="{!! $product->image !!}">
-
-                        @endif
-
-                    </div>
-                @endif
-                    <div class="form__group">
-
-                    {!! Form::label('gallery','Agregar fotos adicionales:',['class'=>'control-label'])!!}
-                    @if(isset($product))
-                        {!! Form::hidden('product_id',  $product->id) !!}
-                    @endif
-
-                        @if(isset($product))
-
-                            <div id="container-gallery">
-
-                                <a class="UploadButton btn btn-info" id="UploadButton">Subir Imagen</a>
-                                <div id="InfoBox"></div>
-                                <ul id="gallery">
-
-                                    @foreach ($product->photos as $photo)
-                                        <li>
-                                            <span class="delete" data-imagen="{!! $photo->id !!}" title="Eliminar imagen"><i class="icon-close"></i></span>
-                                            <a href="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url !!}"><img src="{!! photos_path('products') !!}{!! $photo->product_id !!}/{!! $photo->url_thumb !!}" alt="img" /></a>
-                                        </li>
-                                    @endforeach
-
-                                </ul>
-                                <script id="photoTemplate" type="text/x-handlebars-template">
-
-                                    <li>
-                                        <span class="delete" data-imagen="@{{ id }}" title="Eliminar imagen"><i class="icon-close"></i></span>
-                                        <a href="/media/products/@{{ product_id }}/@{{ url }}" ><img src="/media/products/@{{ product_id }}/@{{ url_thumb }}" alt="img" /></a>
-                                    </li>
-
-
-                                </script>
-
-                            </div>
-                        @else
-                            <div id="inputs_photos">
-
-                                <input class="inputbox btn btn-info" type="button" name="new_photo"  value="Nueva Foto"  id="add_input_photo"/><i class="glyphicon glyphicon-plus-sign"></i>
-
-                            </div>
-
-                        @endif
-                    </div>
-            </div>
-        </section>
-
-    </div>
 
 </div>
 <div class="form__group">
