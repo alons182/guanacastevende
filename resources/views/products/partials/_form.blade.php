@@ -3,7 +3,7 @@
         <h1 class="product__edit__title">Editando Producto</h1>
         <p>Ingresa aquí tu producto, es gratis y <strong>estará en línea por 30 días</strong> !!</p>
         <p><strong class="orange underline">Solo se permite un artículo por publicación</strong>, esto para mantener el orden y que tus posibles compradores encuentren tu artículo en la categoría correspondiente.</p>
-        
+
     </div>
     <div class="right-section" >
 
@@ -106,7 +106,7 @@
                     <script id="selectCategoryTemplate" type="text/x-handlebars-template">
 
                         <select  name="parentCategories" class="rootCategories" size="5" data-container="@{{ container }}" required="required" >
-
+                            <option value="" disabled selected>Escoje una subcategoria</option>
                             @{{#each this}}
                                 <option class="@{{#if category_children }} option-icon @{{/if}}" value="@{{ category_id }}">@{{ category_name }} </option>
                             @{{/each}}
