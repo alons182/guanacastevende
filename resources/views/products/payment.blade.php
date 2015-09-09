@@ -57,7 +57,7 @@
 
                     <div class="form__group">
                         {!! Form::submit('Ejecutar pago', ['class' => 'btn btn-primary']) !!}
-                        <button type="submit" class="btn btn-danger" form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}">
+                        <button type="submit" class="btn btn-gray" form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}">
                             Cancelar<i class="fa fa-trash-o"></i>
                         </button>
                     </div>

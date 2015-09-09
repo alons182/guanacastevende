@@ -450,6 +450,9 @@ strong.orange {
   background-color: #37bc9b;
   margin-left: 1rem;
 }
+.btn-gray {
+  background-color: #777;
+}
 .btn-link {
   display: inline-block;
   color: #1ca038;
