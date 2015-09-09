@@ -1197,6 +1197,11 @@ strong.orange {
   margin: 1rem 0;
   overflow: hidden;
 }
+.product__edit hr {
+  border: 0;
+  height: 1px;
+  background: #e5e5e5;
+}
 .product__container {
   width: 100%;
   margin: 1rem 0;
