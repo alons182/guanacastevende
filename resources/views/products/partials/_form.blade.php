@@ -103,7 +103,15 @@
                         <div class="select__sub-category">
 
                         </div>
+
                     </div>
+                    <div class="select__category__loader">
+                        <div class="select__category__loader__container">
+
+                            <img src="/img/loading.gif" alt="Cargando..." />
+                        </div>
+                    </div>
+                    <span class="select__category__message"><b>Categoria seleccionada</b></span>
                     <script id="selectCategoryTemplate" type="text/x-handlebars-template">
 
                         <select  name="parentCategories" class="rootCategories" size="5" data-container="@{{ container }}" required="required" >

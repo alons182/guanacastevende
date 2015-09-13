@@ -268,7 +268,34 @@ strong
 	.select__sub-category
 		display inline-block
 		width 100%
-
+	.select__category__loader
+		display none
+		background rgba(0,0,0,.5)
+		position absolute
+		left 0
+		right 0
+		top 0
+		bottom 0
+		width 100%
+		height 100%
+		&__container
+			text-align center
+			position absolute
+			left 50%
+			top 50%
+			transform translate(-50%,-50%)
+	.select__category__message
+		display none
+		&:after
+			content '\e600'
+			font-family 'guanacastevende'
+			position relative
+			top 2px
+			padding .2rem
+			left 10px
+			color white
+			background-color verde
+			border-radius 50%
 @media screen and (min-width: 640px)
 	.form
 		.rootCategories
