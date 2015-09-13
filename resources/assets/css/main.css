@@ -969,6 +969,7 @@ strong.orange {
   font-size: 2rem;
   color: #fff;
   cursor: pointer;
+  padding: 0.5rem;
 }
 .banner .cycle-prev,
 .banner .cycle-next {
@@ -1638,7 +1639,7 @@ strong.orange {
 }
 .footer__copyright {
   text-align: center;
-  margin-top: -10px;
+  margin-top: 0px;
 }
 .footer__copyright a {
   font-size: 2rem;
