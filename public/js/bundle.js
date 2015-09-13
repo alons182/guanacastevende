@@ -5000,11 +5000,13 @@ if (!Object.prototype.hasOwnProperty)
         var containerId = $this.data('container');
         var $result = $this.next('.select__sub-category');
         var $loader = $('.select__category__loader');
+        var $message =  $('.select__category__message');
         $loader.show();
         $.get("/api/v1/categories/" + $(this).val() + "/children",
             /* { option: $(this).val() },*/
             function (result) {
                 $loader.hide();
+                $message.hide();
                 var subcategories = $.map(result.data, function (obj, index) {
                     return {
                         category_id: obj.id,
@@ -5022,7 +5024,7 @@ if (!Object.prototype.hasOwnProperty)
                     $this.attr('name', 'categories[]');
                     $this.find('option').removeClass('selected');
                     $this.find('option[value='+ $this.val()+']').addClass('selected');
-                    $('.select__category__message').show();
+                    $message.show();
                 }
 
 
