@@ -1,14 +1,17 @@
-<h2 class="profile__title">
-        @if ($user->isCurrent() && !Auth::guest())
-            Tu Perfil <small class="profile__edit-link">
-                | {!! link_to_route('profile.edit', 'Edita Tu Perfil', $currentUser->username) !!}
-            </small>
-        @else
-            Perfil de Usuario
-        @endif
-</h2>
+
 
 <div class="profile__ratings">
+    <div class="pull-left left">
+        <h2 class="profile__title">
+            @if ($user->isCurrent() && !Auth::guest())
+                Tu Perfil <small class="profile__edit-link">
+                    | {!! link_to_route('profile.edit', 'Edita Tu Perfil', $currentUser->username) !!}
+                </small>
+            @else
+                Perfil de Usuario
+            @endif
+        </h2>
+    </div>
     <p class="pull-right right">{!! link_to_route('profile_reviews', 'Comentarios: '.$user->rating_count, $user->username) !!}</p>
     <p>
         @for ($i=1; $i <= 5 ; $i++)

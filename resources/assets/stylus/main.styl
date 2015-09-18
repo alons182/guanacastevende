@@ -983,6 +983,10 @@ strong
 			width 30%
 
 .profile
+	.products__items
+		width 100% !important
+	.pull-left
+		float none
 	&__info
 		width 100%
 		margin-top 2rem
@@ -1022,9 +1026,12 @@ strong
 			color verde
 @media screen and (min-width: 1024px)
 	.profile
-		&__info
-			width 22.5%
+		.pull-left
 			float left
+		&__info
+			text-align  center
+			//width 22.5%
+			//float left
 .reviews
 	&__items
 		width 100%
@@ -1092,10 +1099,17 @@ strong
 	margin-top 2rem
 .terms-input
 	margin-bottom 1rem
+	padding .5rem
+
+	input[type="checkbox"]
+		transform scale(1.5)
 	&__link
+		margin-right .5rem
 		color verde
 	&__label
 		display inline-block !important
+
+
 .option__title
 	color naranja
 .option__description
@@ -1116,6 +1130,10 @@ strong
 		font-size 1.2rem
 
 @media screen and (min-width: 1024px)
+	.terms-input
+		font-size 1.3rem
+		&__label
+			font-size 1.3rem !important
 	.login__page
 	.register__page
 	.reset__page

@@ -12,7 +12,7 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form">
                             <div class="form__group">
-                                <label class="col-md-4 control-label">Username</label>
+                                <label class="col-md-4 control-label">Usuario</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form__control" name="username" value="{{ old('username') }}">
                                 </div>

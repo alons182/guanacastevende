@@ -11,9 +11,12 @@
         @if ($user->isCurrent())
             <div class="pull-right right">{!! link_to_route('products.create','Vender Articulo',null,['class'=>'btn btn-success']) !!}</div>
         @endif
-        <h1>{!! ($user->isCurrent()) ? 'Tus Productos' : 'Productos del Usuario' !!} </h1>
-
-        @include('products.partials._products',['products' => $user->products()->orderBy('created_at','DESC')->paginate(10) ])
+        <h1>{!! ($user->isCurrent()) ? 'Tus Productos' : 'Otros productos del Usuario' !!} </h1>
+        @if ($user->isCurrent())
+            @include('products.partials._products',['products' => $user->products()->orderBy('created_at','DESC')->paginate(10) ])
+        @else
+            @include('products.partials._products',['products' => $user->products()->where('published','=', 1)->orderBy('created_at','DESC')->paginate(10) ])
+        @endif
         @if ($user->products)
             <div class="pagination-container">{!!$user->products()->orderBy('created_at','DESC')->paginate(10)->render() !!}</div>
         @endif

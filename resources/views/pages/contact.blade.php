@@ -8,7 +8,6 @@ estamos para servirle @stop
         <address class="contact__address">
             <h2 class="contact__address__title">Horario de atención</h2>
             De Lunes a Viernes de 08:00 am a 12:00 y de 1:00 pm a 5:00 pm<br/>
-            Sábados de 08:00 a 12:00 pm<br/>
 
             <span><b>Email:</b> info@guanacastevende.com</span><br/>
             <span><b>Telefono:</b> 2222-2222</span>
