@@ -12,12 +12,14 @@
             @endif
         </h2>
     </div>
-    <p class="pull-right right">{!! link_to_route('profile_reviews', 'Comentarios: '.$user->rating_count, $user->username) !!}</p>
+    <p class="pull-right right">
+        <a href="{{ route('profile_reviews', $user->username) }}" class="btn btn-default">Comentarios: {!! $user->rating_count !!}</a>
+
     <p>
         @for ($i=1; $i <= 5 ; $i++)
             <span class="glyphicon glyphicon-star{!! ($i <= $user->rating_cache) ? '' : '-empty'!!}"></span>
         @endfor
-        {!! number_format($user->rating_cache, 1) !!} stars
+        <br />{!! number_format($user->rating_cache, 1) !!} Estrellas
     </p>
 </div>
 <p class="profile__item"> <strong>Username:</strong> {!! $user->username !!} </p>

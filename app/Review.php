@@ -37,6 +37,7 @@ class Review extends Model
     }
     public function getTimeagoAttribute()
     {
+        Carbon::setLocale(config('app.locale'));
         $date = Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
         return $date;
     }
