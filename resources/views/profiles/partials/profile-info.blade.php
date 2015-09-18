@@ -19,7 +19,7 @@
         @for ($i=1; $i <= 5 ; $i++)
             <span class="glyphicon glyphicon-star{!! ($i <= $user->rating_cache) ? '' : '-empty'!!}"></span>
         @endfor
-        <br />{!! number_format($user->rating_cache, 1) !!} Estrellas
+        <br />{!! number_format($user->rating_cache, 1) !!} Puntos
     </p>
 </div>
 <p class="profile__item"> <strong>Username:</strong> {!! $user->username !!} </p>
