@@ -29,7 +29,6 @@ class ProfileRequest extends Request
             'ide' => 'required',
             'address' => 'required',
             'telephone' => 'required',
-            'telephone2' => 'required',
             'city' => 'required'
 
         ];

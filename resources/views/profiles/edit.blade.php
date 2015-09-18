@@ -47,7 +47,7 @@
                 </div>
                 <div class="form__group">
                     {!! Form::label('telephone2', 'Teléfono #2:') !!}
-                    {!! Form::text('telephone2', null, ['class' => 'form__control','required' => 'required']) !!}
+                    {!! Form::text('telephone2', null, ['class' => 'form__control']) !!}
                     {!! errors_for('telephone2',$errors) !!}
                 </div>
 
