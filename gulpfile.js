@@ -48,6 +48,7 @@ elixir(function(mix) {
          'starrr.js',
          'holder.js',
          'jquery.maskedinput.min.js',
+         'jquery.custom-file-input.js',
          'main.js'
          ],'public/js/bundle.js','resources/assets/js')
 
