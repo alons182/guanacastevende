@@ -318,8 +318,9 @@
     $("#add_input_photo").on('click', function (e) {
         photos++;
         if (photos < 6) {
-            inputsPhotos.append('<div><strong>Foto' + photos + ': </strong>' +
-            '<input id="image-'+ photos +'" type="file" name="new_photo_file[]" size="45" data-holder="image-holder-'+  photos +'" /><br />' +
+            inputsPhotos.prepend('<div>' +
+            '<input class="inputfile" id="image-'+ photos +'" type="file" name="new_photo_file[]" data-holder="image-holder-'+  photos +'" />' +
+            '<label for="image-'+ photos +'" ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg><span>Imagen ' + photos + '</span></label>'+
             '<div id="image-holder-'+ photos +'" class="image-holder"></div>');
         }
 
