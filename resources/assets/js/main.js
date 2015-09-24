@@ -33,7 +33,7 @@
                     "class": "thumb-image"
                 }).appendTo(image_holder);
 
-            }
+            };
             image_holder.show();
             reader.readAsDataURL($($this)[0].files[0]);
         } else {

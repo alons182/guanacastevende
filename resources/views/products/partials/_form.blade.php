@@ -12,8 +12,11 @@
             <!--<h1 class="product__edit__title">Agregar Imagen</h1>-->
             <div class="form">
                 <div class="form__group">
-                    {!! Form::label('image','Agregar Imagen:',['class'=>'col-sm-2 control-label'])!!}
-                    {!! Form::file('image',['required'=>'required','data-holder' =>'image-holder']) !!}
+                    {!! Form::label('main-photo','Imagen Principal:',['class'=>'control-label'])!!}
+                    {!! Form::file('image',['required'=>'required','data-holder' =>'image-holder','class'=>'inputfile','id'=>'image']) !!}
+
+                    <label for="image"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Agregar imagen</span></label>
+
                     {!! errors_for('image',$errors) !!}
                     <div id="image-holder" class="image-holder"></div>
                 </div>
@@ -29,8 +32,8 @@
                 @endif
                 <div class="form__group">
 
-                    {!! Form::label('gallery','Agregar fotos adicionales:',['class'=>'control-label'])!!}
-                    <span>Podés agregar hasta 6 fotos de tu producto.</span>
+                    {!! Form::label('gallery','Fotos adicionales:',['class'=>'control-label'])!!}
+                    <span>Podés agregar hasta 5 fotos adicionales de tu producto.</span>
                     @if(isset($product))
                         {!! Form::hidden('product_id',  $product->id) !!}
                     @endif
@@ -65,8 +68,28 @@
                     @else
                         <div id="inputs_photos">
 
-                            <input class="inputbox btn btn-info" type="button" name="new_photo"  value="Nueva Foto"  id="add_input_photo"/><i class="glyphicon glyphicon-plus-sign"></i>
+                            <!--<input class="inputbox btn btn-info" type="button" name="new_photo"  value="Nueva Foto"  id="add_input_photo"/><i class="glyphicon glyphicon-plus-sign"></i>-->
 
+                            {!! Form::file('image-1',['name'=>'new_photo_file[]','required'=>'required','data-holder' =>'image-holder-1','class'=>'inputfile','id'=>'image-1']) !!}
+
+                            <label for="image-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Imagen 1</span></label>
+                            <div id="image-holder-1" class="image-holder"></div>
+                            {!! Form::file('image-2',['name'=>'new_photo_file[]','required'=>'required','data-holder' =>'image-holder-2','class'=>'inputfile','id'=>'image-2']) !!}
+
+                            <label for="image-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Imagen 2</span></label>
+                            <div id="image-holder-2" class="image-holder"></div>
+                            {!! Form::file('image-3',['name'=>'new_photo_file[]','required'=>'required','data-holder' =>'image-holder-3','class'=>'inputfile','id'=>'image-3']) !!}
+
+                            <label for="image-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Imagen 3</span></label>
+                            <div id="image-holder-3" class="image-holder"></div>
+                            {!! Form::file('image-4',['name'=>'new_photo_file[]','required'=>'required','data-holder' =>'image-holder-4','class'=>'inputfile','id'=>'image-4']) !!}
+
+                            <label for="image-4"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Imagen 4</span></label>
+                            <div id="image-holder-4" class="image-holder"></div>
+                            {!! Form::file('image-5',['name'=>'new_photo_file[]','required'=>'required','data-holder' =>'image-holder-5','class'=>'inputfile','id'=>'image-5']) !!}
+
+                            <label for="image-5"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Imagen 5</span></label>
+                            <div id="image-holder-5" class="image-holder"></div>
                         </div>
 
                     @endif

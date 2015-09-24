@@ -181,6 +181,48 @@ strong
 	&-danger
 		color white
 		background-color #DA4453
+.inputfile
+	width 0.1px
+	height 0.1px
+	opacity 0
+	overflow hidden
+	position absolute
+	z-index -1
+.inputfile + label
+	max-width 80%
+	text-overflow ellipsis
+	cursor pointer !important
+	font-size 1em !important
+	font-weight 700 !important
+	text-transform none !important
+	color white !important
+	background-color verde !important
+	display inline-block !important
+	padding 0.625rem 1.25rem
+	overflow hidden
+	white-space nowrap
+
+.inputfile + label svg
+	width 1em
+	height 1em
+	vertical-align middle
+	fill white
+	margin-top -0.25em
+	margin-right 0.25em
+
+.inputfile + label *
+	pointer-events none
+
+
+.inputfile:focus + label
+.inputfile + label:hover
+	background-color red
+
+.inputfile:focus + label
+	outline 1px dotted #000
+	outline -webkit-focus-ring-color auto 5px
+
+
 .form
 	&__group
 		padding 0 0 15px 0
@@ -424,6 +466,8 @@ strong
 		top 82px
 		z-index 999
 
+		&__ul
+			margin 0
 		&__link
 			display block
 			padding .5rem
