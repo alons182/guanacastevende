@@ -4,7 +4,9 @@
 @section('content')
     <section class="about">
         <h1 class="about__title">Acerca de Nosotros</h1>
-        <p>Guanacaste Vende es un espacio para que tod@s los Guanacastec@s tengan la oportunidad de vender sus productos de manera eficiente y segura, en una plataforma dinámica y actual hecha 100% por Guanacastecos.
+        <div class="float-content right">
+            <iframe style="float: right;margin-left: 1rem;" width="560" height="315" src="https://www.youtube.com/embed/HdN9W5j8oTk" frameborder="0" allowfullscreen></iframe>
+        </div><p>Guanacaste Vende es un espacio para que tod@s los Guanacastec@s tengan la oportunidad de vender sus productos de manera eficiente y segura, en una plataforma dinámica y actual hecha 100% por Guanacastecos.
         </p>
 
         <p>GuanacasteVende.com cuenta con sistemas de seguridad que encriptan y codifican la información confidencial de tus tarjetad de crédito, débito, cuentas PayPay y demás datos sensibles, para que puedas exponer tus artículos a la venta en una plataforma segura. También contamos con sellos de seguridad como <b>Verify by Visa, MasterCard SecureCode</b> que te darán la tranquilidad de realizar tus transacciones en el sitio web.

@@ -1,4 +1,5 @@
 <h1 class="reviews__title">Comentarios</h1>
+@include('profiles.partials.filters')
 @foreach($reviews as $review)
     <hr>
     <div class="row">

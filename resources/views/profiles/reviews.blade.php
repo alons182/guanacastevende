@@ -7,6 +7,7 @@
         <section class="profile__info">
             @include('profiles.partials.profile-info')
         </section>
+
         <article class="reviews__items">
             @include('profiles.partials.reviews')
         </article>

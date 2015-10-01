@@ -70,19 +70,24 @@ class UsersController extends Controller
 
     }
     /**
-     * Store a newly review to user
+     * get all reviews of a user
      *
      * @param ReviewRequest $request
      * @return Response
      */
-    public function Reviews($username)
+    public function Reviews($username, Request $request)
     {
 
+        $search = $request->all();
+        $search['star'] = (isset($search['star'])) ? $search['star'] : '';
+        $selectedStar = $search['star'];
+
+
         $user = $this->userRepository->findByUsername($username);
-        $reviews = $user->reviews()->approved()->notSpam()->orderBy('created_at','desc')->paginate(10);
+        $reviews = $user->reviews()->approved()->notSpam()->filter($selectedStar)->orderBy('created_at','desc')->paginate(10);
 
 
-        return view('profiles.reviews')->with(compact('user','reviews'));
+        return view('profiles.reviews')->with(compact('user','reviews','selectedStar'));
 
     }
 

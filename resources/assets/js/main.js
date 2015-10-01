@@ -8,9 +8,15 @@
         topSearch = $('.top'),
         btnEditSlug = $('.btn-edit-slug'),
         gallery = $('#gallery'),
-        infoBox = $('#InfoBox');
+        infoBox = $('#InfoBox'),
+        filters = $(".filtros");
 
     $('.alert').delay(4000).fadeOut(300);
+
+    function submitForm(){
+        filters.find('form').submit();
+    }
+    $('#star').change(submitForm);
     // $('#categories').select2();
    /* $('.inputfile').each( function()
     {

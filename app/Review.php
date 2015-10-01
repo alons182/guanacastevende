@@ -35,6 +35,12 @@ class Review extends Model
     {
         return $query->where('spam', false);
     }
+    public function scopeFilter($query, $filter)
+    {
+        if(!$filter) return $query;
+
+        return $query->where('rating', $filter);
+    }
     public function getTimeagoAttribute()
     {
         Carbon::setLocale(config('app.locale'));
