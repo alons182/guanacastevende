@@ -12,7 +12,7 @@
 
                              <div class=" form-group">
                                  <label for="star">Filtar por:</label>
-                                {!! Form::select('star', ['' => '-- Todas las Estrellas --','1' => '1 Estrella','2' => '2 Estrellas','3' => '3 Estrellas','4' => '4 Estrellas','5' => '5 Estrellas'], $selectedStar, ['id'=>'star','class'=>'form__control'] ) !!}
+                                {!! Form::select('star', ['' => '-- Todas los comentarios --','1' => '1 Estrella','2' => '2 Estrellas','3' => '3 Estrellas','4' => '4 Estrellas','5' => '5 Estrellas'], $selectedStar, ['id'=>'star','class'=>'form__control'] ) !!}
 
                              </div>
 
