@@ -119,10 +119,19 @@ Route::get('/products/{product}/payment',[
     'as'   => 'product_payment',
     'uses' => 'ProductsController@payment'
 ]);
-Route::post('/products/payment',[
+Route::post('/products/{product}/purchase',[
+    'as'   => 'product_payment.purchase',
+    'uses' => 'ProductsController@purchase'
+]);
+
+Route::get('/products/receipt',[
+    'as'   => 'purchase.response',
+    'uses' => 'ProductsController@purchaseResponse'
+]);
+/*Route::post('/products/payment',[
     'as'   => 'product_payment.store',
     'uses' => 'ProductsController@postPayment'
-]);
+]);*/
 Route::get('/products/create',[
     'as'   => 'product_create',
     'uses' => 'ProductsController@create'

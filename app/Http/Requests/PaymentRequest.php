@@ -24,12 +24,16 @@ class PaymentRequest extends Request
     public function rules()
     {
         return [
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'first_name' => 'required|max:30',
+            'last_name' => 'required|max:50',
             'email' => 'required|email',
-            'ide' => 'required',
-            'card_number' => 'required|numeric',
-            'exp_card' => 'required'
+            'telephone' => 'required|max:15',
+            'address' => 'required|max:50',
+            'city' => 'required|max:50',
+            'state' => 'required|max:15',
+            'country' => 'required',
+            'zipcode' => 'required|max:10'
+
         ];
     }
 }

@@ -1,11 +1,12 @@
 @extends('layouts.layout')
 
-@section('meta-title')Guanacaste Vende | Creando un nuevo producto @stop
-@section('meta-description')Creando un nuevo producto @stop
+@section('meta-title')Guanacaste Vende | Informacion de pago @stop
+@section('meta-description')Informacion de pago @stop
 @section('content')
 
     <div class="payment">
-        {!! Form::open(['route'=>'product_payment.store', 'class'=>'form-horizontal']) !!}
+        <div class="alert alert-danger">Procedimiento de pago en periodo de prueba</div>
+        {!! Form::open(['route'=>['product_payment.purchase',$product->id], 'class'=>'form-horizontal']) !!}
         <div class="left-section">
             <h1 class="payment__title">Opciones de pago</h1>
 
@@ -16,23 +17,18 @@
             <section class="panel payment__method__card">
 
                 <div class="form">
+
                     <!-- First name Form Input -->
                     <div class="form__group">
                         {!! Form::label('first_name', 'Nombre:') !!}
-                        {!! Form::text('first_name', $currentUser->profile->first_name , ['class' => 'form__control','required' => 'required']) !!}
+                        {!! Form::text('first_name', $currentUser->profile->first_name , ['class' => 'form__control','required' => 'required','maxlength'=>'30']) !!}
                         {!! errors_for('first_name',$errors) !!}
                     </div>
                     <!-- Last name Form Input -->
                     <div class="form__group">
                         {!! Form::label('last_name', 'Apellidos:') !!}
-                        {!! Form::text('last_name', $currentUser->profile->last_name, ['class' => 'form__control','required' => 'required']) !!}
+                        {!! Form::text('last_name', $currentUser->profile->last_name, ['class' => 'form__control','required' => 'required','maxlength'=>'50']) !!}
                         {!! errors_for('last_name',$errors) !!}
-                    </div>
-                    <!-- Identification Form Input -->
-                    <div class="form__group">
-                        {!! Form::label('ide', 'Identificación:') !!}
-                        {!! Form::text('ide', $currentUser->profile->ide, ['class' => 'form__control','required' => 'required']) !!}
-                        {!! errors_for('ide',$errors) !!}
                     </div>
                     <!-- Address Form Input -->
                     <div class="form__group">
@@ -41,22 +37,41 @@
                         {!! errors_for('email',$errors) !!}
 
                     </div>
-
-                    <!-- Telephone Form Input -->
                     <div class="form__group">
-                        {!! Form::label('card_number', 'Numero de tarjeta:') !!}
-                        {!! Form::text('card_number', null, ['class' => 'form__control','required' => 'required']) !!}
-                        {!! errors_for('card_number',$errors) !!}
+                        {!! Form::label('telephone', 'Teléfono:') !!}
+                        {!! Form::text('telephone', $currentUser->profile->telephone, ['class' => 'form__control','required' => 'required','maxlength'=>'15']) !!}
+                        {!! errors_for('telephone',$errors) !!}
                     </div>
                     <div class="form__group">
-                        {!! Form::label('exp_card', 'Fecha de expiracion de tarjeta:') !!}
-                        {!! Form::text('exp_card', null, ['id'=>'exp_card','class' => 'form__control','required' => 'required','placeholder' => '02/15']) !!}
-                        {!! errors_for('exp_card',$errors) !!}
+                        {!! Form::label('address', 'Dirección:') !!}
+                        {!! Form::text('address', $currentUser->profile->address, ['class' => 'form__control','required' => 'required','maxlength'=>'50']) !!}
+                        {!! errors_for('address',$errors) !!}
+                    </div>
+                    <div class="form__group">
+                        {!! Form::label('city', 'Ciudad:') !!}
+                        {!! Form::text('city', $currentUser->profile->city, ['class' => 'form__control','required' => 'required','maxlength'=>'50']) !!}
+                        {!! errors_for('city',$errors) !!}
+                    </div>
+                    <div class="form__group">
+                        {!! Form::label('state', 'Provincia:') !!}
+                        {!! Form::select('state', ['' => ''], null,['class'=>'form__control','required' => 'required']) !!}
+                        {!! errors_for('state',$errors) !!}
+                    </div>
+                    <div class="form__group">
+                        {!! Form::label('country', 'Pais:') !!}
+                        {!! Form::select('country', ['CR' => 'Costa Rica'], null,['class'=>'form__control','required' => 'required']) !!}
+                        {!! errors_for('country',$errors) !!}
+                    </div>
+                    <div class="form__group">
+                        {!! Form::label('zipcode', 'Codigo Postal:') !!}
+                        {!! Form::text('zipcode', null, ['class' => 'form__control','required' => 'required','maxlength'=>'10']) !!}
+                        {!! errors_for('zipcode',$errors) !!}
                     </div>
 
 
+
                     <div class="form__group">
-                        {!! Form::submit('Ejecutar pago', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::submit('Siguiente Paso', ['class' => 'btn btn-primary']) !!}
                         <button type="submit" class="btn btn-gray" form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}">
                             Cancelar<i class="fa fa-trash-o"></i>
                         </button>

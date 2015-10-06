@@ -49,6 +49,7 @@ elixir(function(mix) {
          'holder.js',
          'jquery.maskedinput.min.js',
          'jquery.custom-file-input.js',
+         'ubicaciones.js',
          'main.js'
          ],'public/js/bundle.js','resources/assets/js')
 

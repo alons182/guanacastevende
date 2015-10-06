@@ -25,7 +25,7 @@
         "classmap": [
             "database"
         ],
-        "files":["app/helpers.php"],
+        "files":["app/helpers.php","app/vpos_plugin.php"],
         "psr-4": {
             "App\\": "app/"
         }

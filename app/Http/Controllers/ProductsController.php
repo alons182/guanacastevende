@@ -59,6 +59,13 @@ class ProductsController extends Controller {
         $this->categoryRepository = $categoryRepository;
         $this->paymentRepository = $paymentRepository;
         $this->mailer = $mailer;
+
+        $this->acquirerId = 99;
+        $this->commerceId = 7574;
+        $this->mallId = 1;
+        $this->purchaseCurrencyCode = 188; //colones - 840 dolares
+        $this->terminalCode = 00000000;
+        $this->vectorInicializacion = "4760916219954089";
     }
 
     /**
@@ -201,41 +208,142 @@ class ProductsController extends Controller {
     public function payment($productId)
     {
 
-        $product = $this->productRepository->findById($productId);
-        $option = ($product->option_id) ? Option::findOrFail($product->option_id) : null;
-        $items = [];
-        $total = 0;
-        if($option)
-        {
-            $optionItem = [
-
-                        'name' => $option->name,
-                        'price' => $option->price,
-                        'priceDollar' => number_format($option->price/530,2)
-                    ];
-
-            if($product->option_id == 4)
-            {
-                $priceTag = ($product->tags->count()) ? $product->tags->first()->price : 0;
-                $optionItem['price'] = $priceTag;
-                $optionItem['priceDollar'] = number_format($option->price/530,2);
-                $optionItem['name'] .= ($product->tags->count()) ? ' Etiqueta: '.$product->tags->first()->name : 'No escogio etiqueta';
-
-            }
+        list($product, $items, $total) = $this->getPurchasedOptions($productId);
 
 
-            $items[] = $optionItem;
-
-        }
-
-        foreach($items as $item)
-        {
-            $total += $item['price'];
-        }
 
         return view('products.payment')->with(compact('product','items', 'total'));
     }
 
+
+
+    /**
+     * Post paid options
+     * @param PaymentRequest $request
+     * @return \Illuminate\View\View
+     */
+    public function purchase(PaymentRequest $request, $productId)
+    {
+        $input = $request->all();
+        $purchaseOperationNumber = $this->getUniqueNumber();
+        //$purchaseOperationNumber = $this->getToken(11);
+
+
+        list($product, $items, $total) = $this->getPurchasedOptions($productId);
+
+
+        $llaveVPOSCryptoPub = "-----BEGIN PUBLIC KEY-----\n".
+            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDTJt+hUZiShEKFfs7DShsXCkoq\n".
+            "TEjv0SFkTM04qHyHFU90Da8Ep1F0gI2SFpCkLmQtsXKOrLrQTF0100dL/gDQlLt0\n".
+            "Ut8kM/PRLEM5thMPqtPq6G1GTjqmcsPzUUL18+tYwN3xFi4XBog4Hdv0ml1SRkVO\n".
+            "DRr1jPeilfsiFwiO8wIDAQAB\n".
+            "-----END PUBLIC KEY-----";
+
+        $llaveComercioFirmaPriv = "-----BEGIN RSA PRIVATE KEY-----\n".
+            "MIICXAIBAAKBgQDI71jf/WkPdDuSPmArJFaxmvg1F+nQ7X26jkvVxDaFY57ZQlGq\n".
+            "S1wxiHE8dr06mz0vGdW0PLVggNo0aOKQXLuvyiV9QxHYpd4VPjKglMItA2ae11Qg\n".
+            "Xom0AoRDSR6+18lkFZpxXUY9KExjhL5dOIQXbnS7eVRjRfmrS5JnPeK8OwIDAQAB\n".
+            "AoGAUpwUrgJBb1kaJMYAQ7xs6BgOc8WhG4SIbGqUQw6oW67ZX/kkGh9hh/vQkks/\n".
+            "ARlRzkuQ0MkkyMgw7dsxSqjVgHTWaw0/Rh92VhXeFsi7GiGZgN0Zsnenujhye56Z\n".
+            "h8KNJc1gAihWTPbRi2dxzXFUyr6yO2MDNRbk6JQLidnvQAECQQD75aiRZHybJWHE\n".
+            "hL/rvpKYgcXiwZyKjj1fpTyjOw16PL2obpCHYjiuTF+ikTHRFv81GrgHLyvyVamb\n".
+            "/xQd3miBAkEAzDUwyGHGKcRalIwCV/hTm6hSDUBG2wfCVwuHZdcqtrzpq79+P3aq\n".
+            "W05vlF6Hf2yGGcKopAVd/t7+tmCSAklmuwJAePUo4tgr9ZwXvHQ6bIuQfWcjjOWH\n".
+            "tAjlc742xfMfX6k3MWAWSsxhh2DpM3khQNQYLHnuEJUYNz/nOB9em5EnAQJBAMKt\n".
+            "5u7x/6hr8Grzu3xAWvznkCnf4G0JzaWMcS2O3sLOAPtimSpJqAlaEpfhMs4xGPtQ\n".
+            "D9Qm5cCIuU4HbMtPTOcCQFIFEnv4VvtGJwWPSIQr6jxpL4Z+NA3sy8gWcZwKnWzp\n".
+            "72jjGx/YBW6qheLJUImAuVVS/7Tm6XztdkWMYT38fJo=\n".
+            "-----END RSA PRIVATE KEY-----";
+
+
+        $array_send['acquirerId']= $this->acquirerId;
+        $array_send['commerceId']= $this->commerceId;
+        $array_send['commerceMallId']= $this->mallId;
+        $array_send['terminalCode']= $this->terminalCode;
+
+        $array_send['purchaseAmount']= $total;
+        $array_send['purchaseCurrencyCode']= $this->purchaseCurrencyCode;
+        $array_send['purchaseOperationNumber']= $purchaseOperationNumber;
+
+        $array_send['billingAddress']=  $input["address"];
+        $array_send['billingCity']= $input["city"];
+        $array_send['billingState']= $input["state"];
+        $array_send['billingCountry']= $input["country"];
+        $array_send['billingZIP']= $input["zipcode"];
+
+        $array_send['billingPhone']= $input["telephone"];
+        $array_send['billingEMail']= $input["email"];
+        $array_send['billingFirstName']= $input["first_name"];
+        $array_send['billingLastName']= $input["last_name"];
+        $array_send['language']= "SP"; //En español
+
+        //Setear un arreglo de cadenas con los parámetros que serán devueltos //por el componente
+        $array_get['XMLREQ']="";
+        $array_get['DIGITALSIGN']="";
+        $array_get['SESSIONKEY']="";
+
+
+
+        VPOSSend($array_send,$array_get,$llaveVPOSCryptoPub,$llaveComercioFirmaPriv,$this->vectorInicializacion);
+
+        $idAcquirer = $this->acquirerId;
+        $idCommerce = $this->commerceId;
+
+
+        return view('products.purchase')->with(compact('product','items', 'total','input','array_get','idAcquirer','idCommerce'));
+
+    }
+
+    public function purchaseResponse(Request $request)
+    {
+        $input = $request->all();
+        //dd($input);
+
+        //list($product, $items, $total) = $this->getPurchasedOptions($input["product_id"]);
+
+
+        $llaveVPOSSignaturePub = "-----BEGIN PUBLIC KEY-----\n".
+            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvJS8zLPeePN+fbJeIvp/jjvLW\n".
+            "Aedyx8UcfS1eM/a+Vv2yHTxCLy79dEIygDVE6CTKbP1eqwsxRg2Z/dI+/e14WDRs\n".
+            "g0QzDdjVFIuXLKJ0zIgDw6kQd1ovbqpdTn4wnnvwUCNpBASitdjpTcNTKONfXMtH\n".
+            "pIs4aIDXarTYJGWlyQIDAQAB\n".
+            "-----END PUBLIC KEY-----";
+
+        $llaveComercioCifradoPriv = "-----BEGIN RSA PRIVATE KEY-----\n".
+            "MIICXQIBAAKBgQCr3xnDYPtCdJ1X/OtLGp01EPkAd2cOieqLKXSrbdNHuOLkpBMY\n".
+            "xw89IrWVKFDJREiaGTJ79FYvgzGSmo2FT/SW1Ecv3TIqIM75eMomWQho7l5s9Qsa\n".
+            "1xfx3FZrUnnYS2MUAJfTTXww8SPB8RkRPRk8zOUh0IvvpI9xJFywPhII1wIDAQAB\n".
+            "AoGAAWiFlIVB6cx80ZC/+NCSAzJNaASScpsMsfE4BIOU3JyWN1tk0Koo5M5ZAIzh\n".
+            "BJUrpx+Xu05IOoFvsYzUpgf+sA5COAWogqjs8OD7M5zJu66lnAmb6KwJ9bpL4aOx\n".
+            "rR/ZfjzRK1am7C4LH4MSwUa2YxVbkf5EKhyuWU21+61dp0kCQQDcBn7CzRonTpTg\n".
+            "9DcwPCowfi/QdTYw7x4cedBG/h+Bm7b7hF8qGWtQyOez8Tm0ciYt7sWBGHLYnQLq\n".
+            "UwSAfyUVAkEAx/kMsUMQPlcC5u7q37HNGb6Kvpeqg4jCdxwKUtdWzzR9xAw6ijvC\n".
+            "yEFSR4Qo1JyyoYLTkaPuzpZuMsASEcvJOwJBAL3LDIVVDv5hFqOFhiWhgHMcJnqW\n".
+            "4QwM99hwa20RwHO4snr7kGtsSdoBs3zQ1IoG/VAZ61yUjlyz89PVkMiW5JECQQCQ\n".
+            "Gb21tvfrlFP5Cc2i6MM9e/sLIMu1AUXxAvnFfHuH0PGX5qAAoNPZ7ohWFLw/ibOH\n".
+            "g3jmCFW79NbwJ0xeGpWlAkBb+equG3spXxEIO8JI8Z3CA9jvPpXKchqSifLxfRPi\n".
+            "zwd0jVnxjJ5uJGOUZkfvLWCG4bdiAWdn3pDGTugkgiW3\n".
+            "-----END RSA PRIVATE KEY-----";
+
+        $arrayIn['XMLRES']="";//$input["XMLRES"];
+        $arrayIn['DIGITALSIGN']="";//$input["DIGITALSIGN"];
+        $arrayIn['SESSIONKEY']="";//$input['SESSIONKEY'];
+
+
+        /*if(VPOSResponse($arrayIn,$arrayOut,$llaveVPOSSignaturePub,$llaveComercioCifradoPriv ,$this->vectorInicializacion)){
+            //$arrayOut['authorizationResult']= $resultadoAutorizacion;
+            //$arrayOut['authorizationCode']= $codigoAutorizacion;
+            dd("ok");
+        }else{
+         //Puede haber un problema de mala configuración de las llaves
+         //vector deinicializacion o el VPOS no ha enviado valores correctos
+            dd("Puede haber un problema de mala configuración de las llaves o vector deinicializacion o el VPOS no ha enviado valores correctos");
+        }*/
+
+
+        return view('products.purchase-response')->with(compact('product','items', 'total','input','arrayOut'));
+
+    }
     /**
      * Post paid options
      * @param PaymentRequest $request
@@ -304,5 +412,85 @@ class ProductsController extends Controller {
         //flash('Propiedad eliminada de tus favoritos!');
 
         //return Redirect()->route('profile_favorites', $user->username);
+    }
+
+    /**
+     * @param $productId
+     * @return array
+     */
+    private function getPurchasedOptions($productId)
+    {
+        $product = $this->productRepository->findById($productId);
+        $option = ($product->option_id) ? Option::findOrFail($product->option_id) : null;
+        $items = [];
+        $total = 0;
+        if ($option) {
+            $optionItem = [
+
+                'name' => $option->name,
+                'price' => $option->price,
+                'priceDollar' => number_format($option->price / 530, 2)
+            ];
+
+            if ($product->option_id == 4) {
+                $priceTag = ($product->tags->count()) ? $product->tags->first()->price : 0;
+                $optionItem['price'] = $priceTag;
+                $optionItem['priceDollar'] = number_format($option->price / 530, 2);
+                $optionItem['name'] .= ($product->tags->count()) ? ' Etiqueta: ' . $product->tags->first()->name : 'No escogio etiqueta';
+
+            }
+
+
+            $items[] = $optionItem;
+
+        }
+
+        foreach ($items as $item) {
+            $total += $item['price'];
+        }
+        return array($product, $items, $total);
+    }
+    private function crypto_rand_secure($min, $max) {
+        $range = $max - $min;
+        if ($range < 0) return $min; // not so random...
+        $log = log($range, 2);
+        $bytes = (int) ($log / 8) + 1; // length in bytes
+        $bits = (int) $log + 1; // length in bits
+        $filter = (int) (1 << $bits) - 1; // set all lower bits to 1
+        do {
+            $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
+            $rnd = $rnd & $filter; // discard irrelevant bits
+        } while ($rnd >= $range);
+        return $min + $rnd;
+    }
+
+    private function getToken($length){
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet.= "0123456789";
+        for($i=0;$i<$length;$i++){
+            $token .= $codeAlphabet[$this->crypto_rand_secure(0,strlen($codeAlphabet))];
+        }
+        return $token;
+    }
+
+    /**
+     * @return string
+     */
+    private function getUniqueNumber()
+    {
+        $d = date("d");
+        $m = date("m");
+        $y = date("Y");
+        $t = time();
+        $dmt = $d + $m + $y + $t;
+        $ran = rand(0, 10000000);
+        $dmtran = $dmt + $ran;
+        $un = uniqid();
+        $dmtun = $dmt . $un;
+        $mdun = md5($dmtran . $un);
+        $sort = substr($mdun, 21);
+        return $sort;
     }
 }

@@ -17,6 +17,27 @@
         filters.find('form').submit();
     }
     $('#star').change(submitForm);
+
+    var provincias = $('#state'),
+        ubicaciones = window.ubicaciones;
+
+    provincias.empty();
+
+
+    $.each(ubicaciones, function(index,provincia) {
+        provincias.append("<option value='"+ provincia.title +"'>" + provincia.title + "</option>");
+    });
+
+    $('input[maxlength]').on('keypress', function(e) {
+        var maxlength = $(this).attr('maxlength');
+        var val = $(this).val();
+
+        if (val.length > maxlength) {
+            return false;
+        }
+    });
+
+
     // $('#categories').select2();
    /* $('.inputfile').each( function()
     {
