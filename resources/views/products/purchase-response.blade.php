@@ -17,10 +17,12 @@
 
 
 
-                    <div class="form__group">
-                        <a href="{!! URL::route('profile.show', [$currentUser->username]) !!}" class="btn btn-success"
-                           title="Ir a tu perfil">Ir a tus productos</a>
-                    </div>
+                    @if($currentUser)
+                        <div class="form__group">
+                            <a href="{!! URL::route('profile.show', [$currentUser->username]) !!}" class="btn btn-success"
+                               title="Ir a tu perfil">Ir a tus productos</a>
+                        </div>
+                   @endif
 
                 </div>
             </section>
