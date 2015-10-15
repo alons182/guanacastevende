@@ -261,7 +261,7 @@ class ProductsController extends Controller {
         $array_send['commerceMallId']= $this->mallId;
         $array_send['terminalCode']= $this->terminalCode;
 
-        $array_send['purchaseAmount']= $total;
+        $array_send['purchaseAmount']= $total . "00";
         $array_send['purchaseCurrencyCode']= $this->purchaseCurrencyCode;
         $array_send['purchaseOperationNumber']= $purchaseOperationNumber;
 
@@ -282,7 +282,7 @@ class ProductsController extends Controller {
         $array_get['DIGITALSIGN']="";
         $array_get['SESSIONKEY']="";
 
-
+        
 
         VPOSSend($array_send,$array_get,$llaveVPOSCryptoPub,$llaveComercioFirmaPriv,$this->vectorInicializacion);
 
@@ -338,6 +338,7 @@ class ProductsController extends Controller {
             //$arrayOut['authorizationCode']= $codigoAutorizacion;
             //dd($arrayOut);
             flash('ok');
+            return view('products.purchase-response')->with(compact('input','arrayOut'));
         }else{
          //Puede haber un problema de mala configuración de las llaves
          //vector deinicializacion o el VPOS no ha enviado valores correctos
