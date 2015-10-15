@@ -12,9 +12,11 @@
 
             <section class="panel payment__method__card">
                 @if(isset($arrayOut))
-                    @foreach($arrayOut as $itemArray)
-                        {!! $itemArray !!} <br />
-                    @endforeach
+                    
+                    @while(list($key, $val) = each($arrayOut))
+                         <br> {!! $key !!} "=>" {!! $val !!}
+
+                    @endwhile
                 @endif
                 <div class="form">
                     @if(isset($items))
