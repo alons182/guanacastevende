@@ -124,7 +124,11 @@ Route::post('/products/{product}/purchase',[
     'uses' => 'ProductsController@purchase'
 ]);
 
-Route::get('/products/receipt',[
+/*Route::get('/products/receipt',[
+    'as'   => 'purchase.response',
+    'uses' => 'ProductsController@purchaseResponse'
+]);*/
+Route::post('/products/receipt',[
     'as'   => 'purchase.response',
     'uses' => 'ProductsController@purchaseResponse'
 ]);
