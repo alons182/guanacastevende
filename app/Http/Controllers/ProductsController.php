@@ -297,7 +297,7 @@ class ProductsController extends Controller {
     public function purchaseResponse(Request $request)
     {
         $input = $request->all();
-        dd($input);
+        //dd($input);
 
         //list($product, $items, $total) = $this->getPurchasedOptions($input["product_id"]);
 
@@ -344,7 +344,7 @@ class ProductsController extends Controller {
          //vector deinicializacion o el VPOS no ha enviado valores correctos
             //dd("Puede haber un problema de mala configuración de las llaves o vector deinicializacion o el VPOS no ha enviado valores correctos");
             //flash('ok');
-           flash('Puede haber un problema de mala configuración de las llaves o vector de inicializacion o el VPOS no ha enviado valores correctos');
+           flash('Respuesta Inválida');
         }
 
 
