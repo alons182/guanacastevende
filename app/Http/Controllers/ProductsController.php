@@ -276,6 +276,7 @@ class ProductsController extends Controller {
         $array_send['billingFirstName']= $input["first_name"];
         $array_send['billingLastName']= $input["last_name"];
         $array_send['language']= "SP"; //En español
+        $array_send['Reserved2']= $productId;
 
         //Setear un arreglo de cadenas con los parámetros que serán devueltos //por el componente
         $array_get['XMLREQ']="";
@@ -299,7 +300,7 @@ class ProductsController extends Controller {
         $input = $request->all();
         //dd($input);
 
-        //list($product, $items, $total) = $this->getPurchasedOptions(40);
+        list($product, $items, $total) = $this->getPurchasedOptions($input['Reserved2']);
 
 
         $llaveVPOSSignaturePub = "-----BEGIN PUBLIC KEY-----\n".
@@ -342,7 +343,7 @@ class ProductsController extends Controller {
             {
 
                 flash('Operación Autorizada');
-                //$payment = $this->paymentRepository->store(['product_id' => 40,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+                //$payment = $this->paymentRepository->store(['product_id' => $input['Reserved2'],'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
             }
             if($arrayOut['authorizationResult'] == 01)
             {
@@ -354,7 +355,7 @@ class ProductsController extends Controller {
             {
 
                 flash('Operación Rechazada');
-
+                $payment = $this->paymentRepository->store(['product_id' => $input['Reserved2'],'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
             }
 
 
