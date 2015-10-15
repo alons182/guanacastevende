@@ -343,7 +343,7 @@ class ProductsController extends Controller {
             {
 
                 flash('Operación Autorizada');
-                $payment = $this->paymentRepository->store(['product_id' => 40,'authorizationResult' => $arrayOut['authorizationResult']]);
+                $payment = $this->paymentRepository->store(['product_id' => 40]);
             }
             if($arrayOut['authorizationResult'] == 01)
             {
@@ -355,7 +355,7 @@ class ProductsController extends Controller {
             {
 
                 flash('Operación Rechazada');
-              
+
             }
 
 
@@ -365,7 +365,7 @@ class ProductsController extends Controller {
         }
 
 
-        return view('products.purchase-response')->with(compact('input','arrayOut'));
+        return view('products.purchase-response')->with(compact('input','items','arrayOut'));
 
     }
     /**
