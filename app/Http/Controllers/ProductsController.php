@@ -354,7 +354,7 @@ class ProductsController extends Controller {
             {
 
                 flash('Operación Rechazada');
-                
+
             }
 
 

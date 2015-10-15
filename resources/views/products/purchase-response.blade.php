@@ -17,6 +17,7 @@
                          <br> {!! $key !!} "=>" {!! $val !!}
 
                     @endwhile
+                    <h2>Numero de operacion: {!! $arrayOut['purchaseOperationNumber'] !!}</h2>
                 @endif
                 <div class="form">
                     @if(isset($items))
