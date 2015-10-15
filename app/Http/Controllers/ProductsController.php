@@ -277,7 +277,6 @@ class ProductsController extends Controller {
         $array_send['billingLastName']= $input["last_name"];
         $array_send['language']= "SP"; //En español
 
-        $array_send['productId']= $productId;
         //Setear un arreglo de cadenas con los parámetros que serán devueltos //por el componente
         $array_get['XMLREQ']="";
         $array_get['DIGITALSIGN']="";
@@ -298,7 +297,7 @@ class ProductsController extends Controller {
     public function purchaseResponse(Request $request)
     {
         $input = $request->all();
-        dd($input);
+        //dd($input);
 
         //list($product, $items, $total) = $this->getPurchasedOptions($input["product_id"]);
 
