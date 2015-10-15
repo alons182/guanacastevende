@@ -330,15 +330,17 @@ class ProductsController extends Controller {
         $arrayIn['SESSIONKEY']="";//$input['SESSIONKEY'];
 
 
-        /*if(VPOSResponse($arrayIn,$arrayOut,$llaveVPOSSignaturePub,$llaveComercioCifradoPriv ,$this->vectorInicializacion)){
+        if(VPOSResponse($arrayIn,$arrayOut,$llaveVPOSSignaturePub,$llaveComercioCifradoPriv ,$this->vectorInicializacion)){
             //$arrayOut['authorizationResult']= $resultadoAutorizacion;
             //$arrayOut['authorizationCode']= $codigoAutorizacion;
-            dd("ok");
+            //dd("ok");
+            flash('ok');
         }else{
          //Puede haber un problema de mala configuración de las llaves
          //vector deinicializacion o el VPOS no ha enviado valores correctos
-            dd("Puede haber un problema de mala configuración de las llaves o vector deinicializacion o el VPOS no ha enviado valores correctos");
-        }*/
+            //dd("Puede haber un problema de mala configuración de las llaves o vector deinicializacion o el VPOS no ha enviado valores correctos");
+            flash('Puede haber un problema de mala configuración de las llaves o vector de inicializacion o el VPOS no ha enviado valores correctos');
+        }
 
 
         return view('products.purchase-response')->with(compact('product','items', 'total','input','arrayOut'));
