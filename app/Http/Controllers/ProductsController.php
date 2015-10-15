@@ -339,7 +339,7 @@ class ProductsController extends Controller {
             //dd($arrayOut);
             flash('ok');
 
-            $payment = $this->paymentRepository->store(['user_id' => Auth()->user()->id, 'product_id' => 0, 'Description'=> $items[0]['name'].'-'. $arrayOut['authorizationResult']]);
+            $payment = $this->paymentRepository->store(['user_id' => Auth()->user()->id, 'product_id' => 40, 'Description'=> $items[0]['name'].'-'. $arrayOut['authorizationResult']]);
         }else{
 
            flash('Respuesta Inválida');
