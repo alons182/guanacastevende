@@ -264,6 +264,7 @@ class ProductsController extends Controller {
         $array_send['purchaseAmount']= $total . "00";
         $array_send['purchaseCurrencyCode']= $this->purchaseCurrencyCode;
         $array_send['purchaseOperationNumber']= $purchaseOperationNumber;
+        $array_send['taxes']= 0;
 
         $array_send['billingAddress']=  $input["address"];
         $array_send['billingCity']= $input["city"];
