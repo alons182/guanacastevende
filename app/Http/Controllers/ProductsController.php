@@ -297,7 +297,7 @@ class ProductsController extends Controller {
     public function purchaseResponse(Request $request)
     {
         $input = $request->all();
-       // dd($input);
+        dd($input);
 
         //list($product, $items, $total) = $this->getPurchasedOptions($input["product_id"]);
 
@@ -325,10 +325,13 @@ class ProductsController extends Controller {
             "zwd0jVnxjJ5uJGOUZkfvLWCG4bdiAWdn3pDGTugkgiW3\n".
             "-----END RSA PRIVATE KEY-----";
 
+        $arrayIn['IDACQUIRER'] = (isset($input['IDACQUIRER'])) ? $input['IDACQUIRER'] : "";
+        $arrayIn['IDCOMMERCE'] = (isset($input['IDCOMMERCE'])) ? $input['IDCOMMERCE'] : "";
         $arrayIn['XMLRES'] = (isset($input["XMLRES"])) ? $input["XMLRES"] : "";
         $arrayIn['DIGITALSIGN']=  (isset($input["DIGITALSIGN"])) ? $input["DIGITALSIGN"] : "";
         $arrayIn['SESSIONKEY']= (isset($input['SESSIONKEY'])) ? $input['SESSIONKEY'] : "";
 
+        $arrayOut= "";
 
         if(VPOSResponse($arrayIn,$arrayOut,$llaveVPOSSignaturePub,$llaveComercioCifradoPriv ,$this->vectorInicializacion)){
             //$arrayOut['authorizationResult']= $resultadoAutorizacion;

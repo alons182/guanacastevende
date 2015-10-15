@@ -13,7 +13,7 @@
             <section class="panel payment__method__card">
                 @if(isset($arrayOut))
                     @foreach($arrayOut as $itemArray)
-                        {!! $itemArray !!}
+                        {!! $itemArray !!} <br />
                     @endforeach
                 @endif
                 <div class="form">
