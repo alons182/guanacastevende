@@ -7,7 +7,7 @@
     <div class="payment">
 
 
-           <div class="alert alert-danger">Procedimiento de pago en periodo de prueba</div>
+           <!--<div class="alert alert-danger">Procedimiento de pago en periodo de prueba</div>-->
             <h1 class="payment__title">Comprobante de pago</h1>
 
             <section class="panel payment__method__card">

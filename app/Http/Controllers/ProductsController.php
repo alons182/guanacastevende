@@ -339,7 +339,8 @@ class ProductsController extends Controller {
          //Puede haber un problema de mala configuración de las llaves
          //vector deinicializacion o el VPOS no ha enviado valores correctos
             //dd("Puede haber un problema de mala configuración de las llaves o vector deinicializacion o el VPOS no ha enviado valores correctos");
-            flash('Puede haber un problema de mala configuración de las llaves o vector de inicializacion o el VPOS no ha enviado valores correctos');
+            //flash('ok');
+           flash('Puede haber un problema de mala configuración de las llaves o vector de inicializacion o el VPOS no ha enviado valores correctos');
         }
 
 
