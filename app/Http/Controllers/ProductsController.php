@@ -300,8 +300,6 @@ class ProductsController extends Controller {
         $input = $request->all();
         //dd($input);
 
-        //list($product, $items, $total) = $this->getPurchasedOptions($input['reserved2']);
-
 
         $llaveVPOSSignaturePub = "-----BEGIN PUBLIC KEY-----\n".
             "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvJS8zLPeePN+fbJeIvp/jjvLW\n".
@@ -338,12 +336,13 @@ class ProductsController extends Controller {
             //$arrayOut['authorizationResult']= $resultadoAutorizacion;
             //$arrayOut['authorizationCode']= $codigoAutorizacion;
             //dd($arrayOut);
+            list($product, $items, $total) = $this->getPurchasedOptions($arrayOut['reserved2']);
 
             if($arrayOut['authorizationResult'] == 00)
             {
 
                 flash('Operación Autorizada');
-                //$payment = $this->paymentRepository->store(['product_id' => $input['reserved2'],'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+                //$payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
             }
             if($arrayOut['authorizationResult'] == 01)
             {
@@ -355,7 +354,7 @@ class ProductsController extends Controller {
             {
 
                 flash('Operación Rechazada');
-               // $payment = $this->paymentRepository->store(['product_id' => $input['reserved2'],'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+                $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
             }
 
 
