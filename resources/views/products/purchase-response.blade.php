@@ -11,7 +11,11 @@
             <h1 class="payment__title">Comprobante de pago</h1>
 
             <section class="panel payment__method__card">
-
+                @if(isset($arrayOut))
+                    @foreach($arrayOut as $itemArray)
+                        {!! $itemArray !!}
+                    @endforeach
+                @endif
                 <div class="form">
                     @if(isset($items))
                         <div class="table-responsive payment__options-table">

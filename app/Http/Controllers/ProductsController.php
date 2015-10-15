@@ -333,7 +333,7 @@ class ProductsController extends Controller {
         if(VPOSResponse($arrayIn,$arrayOut,$llaveVPOSSignaturePub,$llaveComercioCifradoPriv ,$this->vectorInicializacion)){
             //$arrayOut['authorizationResult']= $resultadoAutorizacion;
             //$arrayOut['authorizationCode']= $codigoAutorizacion;
-            //dd("ok");
+            //dd($arrayOut);
             flash('ok');
         }else{
          //Puede haber un problema de mala configuración de las llaves
