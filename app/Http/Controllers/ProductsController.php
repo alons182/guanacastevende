@@ -299,7 +299,7 @@ class ProductsController extends Controller {
         $input = $request->all();
         //dd($input);
 
-        list($product, $items, $total) = $this->getPurchasedOptions(40);
+        //list($product, $items, $total) = $this->getPurchasedOptions(40);
 
 
         $llaveVPOSSignaturePub = "-----BEGIN PUBLIC KEY-----\n".
@@ -355,7 +355,7 @@ class ProductsController extends Controller {
             {
 
                 flash('Operación Rechazada');
-                $payment = $this->paymentRepository->store(['product_id' => 40,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+                //$payment = $this->paymentRepository->store(['product_id' => 40,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
             }
 
 
