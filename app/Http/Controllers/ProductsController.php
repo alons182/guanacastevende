@@ -339,7 +339,26 @@ class ProductsController extends Controller {
             //dd($arrayOut);
             flash('ok');
             //, 'Description'=> $items[0]['name'].'-'. $arrayOut['authorizationResult']
-            $payment = $this->paymentRepository->store(['product_id' => 40,'authorizationResult' => $arrayOut['authorizationResult']]);
+            if($arrayOut['authorizationResult'] == 00)
+            {
+
+                flash('Operación Autorizada');
+                $payment = $this->paymentRepository->store(['product_id' => 40,'authorizationResult' => $arrayOut['authorizationResult']]);
+            }
+            if($arrayOut['authorizationResult'] == 01)
+            {
+
+                flash('Operación Denegada en el Banco Emisor');
+
+            }
+            if($arrayOut['authorizationResult'] == 05)
+            {
+
+                flash('Operación Rechazada');
+              
+            }
+
+
         }else{
 
            flash('Respuesta Inválida');
