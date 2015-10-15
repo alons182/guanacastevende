@@ -282,7 +282,7 @@ class ProductsController extends Controller {
         $array_get['DIGITALSIGN']="";
         $array_get['SESSIONKEY']="";
 
-        
+
 
         VPOSSend($array_send,$array_get,$llaveVPOSCryptoPub,$llaveComercioFirmaPriv,$this->vectorInicializacion);
 
@@ -297,7 +297,7 @@ class ProductsController extends Controller {
     public function purchaseResponse(Request $request)
     {
         $input = $request->all();
-        //dd($input);
+        dd($input);
 
         //list($product, $items, $total) = $this->getPurchasedOptions($input["product_id"]);
 
