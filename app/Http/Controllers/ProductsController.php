@@ -299,7 +299,7 @@ class ProductsController extends Controller {
         $input = $request->all();
         //dd($input);
 
-        //list($product, $items, $total) = $this->getPurchasedOptions($input["product_id"]);
+        list($product, $items, $total) = $this->getPurchasedOptions(40);
 
 
         $llaveVPOSSignaturePub = "-----BEGIN PUBLIC KEY-----\n".
@@ -338,12 +338,10 @@ class ProductsController extends Controller {
             //$arrayOut['authorizationCode']= $codigoAutorizacion;
             //dd($arrayOut);
             flash('ok');
-            return view('products.purchase-response')->with(compact('input','arrayOut'));
+
+            $payment = $this->paymentRepository->store(['user_id' => Auth()->user()->id, 'product_id' => 0, 'Description'=> $items[0]['name'].'-'. $arrayOut['authorizationResult']]);
         }else{
-         //Puede haber un problema de mala configuración de las llaves
-         //vector deinicializacion o el VPOS no ha enviado valores correctos
-            //dd("Puede haber un problema de mala configuración de las llaves o vector deinicializacion o el VPOS no ha enviado valores correctos");
-            //flash('ok');
+
            flash('Respuesta Inválida');
         }
 

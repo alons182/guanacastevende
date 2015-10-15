@@ -12,7 +12,7 @@
 
             <section class="panel payment__method__card">
                 @if(isset($arrayOut))
-                    
+
                     @while(list($key, $val) = each($arrayOut))
                          <br> {!! $key !!} "=>" {!! $val !!}
 
