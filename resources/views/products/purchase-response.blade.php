@@ -11,8 +11,8 @@
             <h1 class="payment__title">Comprobante de pago</h1>
 
             <section class="panel payment__method__card">
-                {!! dd($arrayOut) !!}
-                @if(isset($arrayOut))
+
+                @if(isset($arrayOut) && $arrayOut != "")
 
                     @while(list($key, $val) = each($arrayOut))
                          <br> {!! $key !!} "=>" {!! $val !!}
