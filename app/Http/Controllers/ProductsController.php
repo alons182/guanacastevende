@@ -326,7 +326,7 @@ class ProductsController extends Controller {
         $arrayIn['IDACQUIRER'] = (isset($input['IDACQUIRER'])) ? $input['IDACQUIRER'] : "";
         $arrayIn['IDCOMMERCE'] = (isset($input['IDCOMMERCE'])) ? $input['IDCOMMERCE'] : "";
         $arrayIn['XMLRES'] = (isset($input["XMLRES"])) ? $input["XMLRES"] : "";
-        $arrayIn['DIGITALSIGN']= ""; //(isset($input["DIGITALSIGN"])) ? $input["DIGITALSIGN"] : "";
+        $arrayIn['DIGITALSIGN']= (isset($input["DIGITALSIGN"])) ? $input["DIGITALSIGN"] : "";
         $arrayIn['SESSIONKEY']= (isset($input['SESSIONKEY'])) ? $input['SESSIONKEY'] : "";
 
         $arrayOut= "";
@@ -362,7 +362,7 @@ class ProductsController extends Controller {
         }
 
 
-        return view('products.purchase-response')->with(compact('input','items','total','arrayOut'));
+        return view('products.purchase-response')->with(compact('items','total','arrayOut'));
 
     }
     /**
