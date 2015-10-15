@@ -365,7 +365,7 @@ class ProductsController extends Controller {
         }
 
 
-        return view('products.purchase-response')->with(compact('input','items','arrayOut'));
+        return view('products.purchase-response')->with(compact('input','items','total','arrayOut'));
 
     }
     /**
