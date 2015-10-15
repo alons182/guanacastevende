@@ -337,8 +337,7 @@ class ProductsController extends Controller {
             //$arrayOut['authorizationResult']= $resultadoAutorizacion;
             //$arrayOut['authorizationCode']= $codigoAutorizacion;
             //dd($arrayOut);
-            flash('ok');
-            //, 'Description'=> $items[0]['name'].'-'. $arrayOut['authorizationResult']
+
             if($arrayOut['authorizationResult'] == 00)
             {
 
@@ -355,7 +354,7 @@ class ProductsController extends Controller {
             {
 
                 flash('Operación Rechazada');
-                //$payment = $this->paymentRepository->store(['product_id' => 40,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+                
             }
 
 
