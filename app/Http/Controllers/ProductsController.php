@@ -298,7 +298,6 @@ class ProductsController extends Controller {
     public function purchaseResponse(Request $request)
     {
         $input = $request->all();
-        //dd($input);
 
 
         $llaveVPOSSignaturePub = "-----BEGIN PUBLIC KEY-----\n".
@@ -324,7 +323,7 @@ class ProductsController extends Controller {
             "zwd0jVnxjJ5uJGOUZkfvLWCG4bdiAWdn3pDGTugkgiW3\n".
             "-----END RSA PRIVATE KEY-----";
 
-        $arrayIn['IDACQUIRER'] = (isset($input['IDACQUIRER'])) ? $input['IDACQUIRER'] : "";
+        $arrayIn['IDACQUIRER'] = ""; //(isset($input['IDACQUIRER'])) ? $input['IDACQUIRER'] : "";
         $arrayIn['IDCOMMERCE'] = (isset($input['IDCOMMERCE'])) ? $input['IDCOMMERCE'] : "";
         $arrayIn['XMLRES'] = (isset($input["XMLRES"])) ? $input["XMLRES"] : "";
         $arrayIn['DIGITALSIGN']=  (isset($input["DIGITALSIGN"])) ? $input["DIGITALSIGN"] : "";
@@ -333,15 +332,14 @@ class ProductsController extends Controller {
         $arrayOut= "";
 
         if(VPOSResponse($arrayIn,$arrayOut,$llaveVPOSSignaturePub,$llaveComercioCifradoPriv ,$this->vectorInicializacion)){
-            //$arrayOut['authorizationResult']= $resultadoAutorizacion;
-            //$arrayOut['authorizationCode']= $codigoAutorizacion;
-            //dd($arrayOut);
+
             list($product, $items, $total) = $this->getPurchasedOptions($arrayOut['reserved2']);
 
             if($arrayOut['authorizationResult'] == 00)
             {
 
                 flash('Operación Autorizada');
+
                 //$payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
             }
             if($arrayOut['authorizationResult'] == 01)
@@ -354,7 +352,7 @@ class ProductsController extends Controller {
             {
 
                 flash('Operación Rechazada');
-                $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+
             }
 
 
