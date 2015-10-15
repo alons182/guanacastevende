@@ -336,7 +336,7 @@ class ProductsController extends Controller {
         if(VPOSResponse($arrayIn,$arrayOut,$llaveVPOSSignaturePub,$llaveComercioCifradoPriv ,$this->vectorInicializacion)){
             //$arrayOut['authorizationResult']= $resultadoAutorizacion;
             //$arrayOut['authorizationCode']= $codigoAutorizacion;
-            //dd($arrayOut);
+            dd($arrayOut);
             flash('ok');
             return view('products.purchase-response')->with(compact('input','arrayOut'));
         }else{
