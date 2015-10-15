@@ -323,10 +323,10 @@ class ProductsController extends Controller {
             "zwd0jVnxjJ5uJGOUZkfvLWCG4bdiAWdn3pDGTugkgiW3\n".
             "-----END RSA PRIVATE KEY-----";
 
-        $arrayIn['IDACQUIRER'] = ""; //(isset($input['IDACQUIRER'])) ? $input['IDACQUIRER'] : "";
+        $arrayIn['IDACQUIRER'] = (isset($input['IDACQUIRER'])) ? $input['IDACQUIRER'] : "";
         $arrayIn['IDCOMMERCE'] = (isset($input['IDCOMMERCE'])) ? $input['IDCOMMERCE'] : "";
         $arrayIn['XMLRES'] = (isset($input["XMLRES"])) ? $input["XMLRES"] : "";
-        $arrayIn['DIGITALSIGN']=  (isset($input["DIGITALSIGN"])) ? $input["DIGITALSIGN"] : "";
+        $arrayIn['DIGITALSIGN']= ""; //(isset($input["DIGITALSIGN"])) ? $input["DIGITALSIGN"] : "";
         $arrayIn['SESSIONKEY']= (isset($input['SESSIONKEY'])) ? $input['SESSIONKEY'] : "";
 
         $arrayOut= "";
