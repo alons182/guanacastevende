@@ -325,9 +325,9 @@ class ProductsController extends Controller {
             "zwd0jVnxjJ5uJGOUZkfvLWCG4bdiAWdn3pDGTugkgiW3\n".
             "-----END RSA PRIVATE KEY-----";
 
-        $arrayIn['XMLRES']="";//$input["XMLRES"];
-        $arrayIn['DIGITALSIGN']="";//$input["DIGITALSIGN"];
-        $arrayIn['SESSIONKEY']="";//$input['SESSIONKEY'];
+        $arrayIn['XMLRES'] = (isset($input["XMLRES"])) ? $input["XMLRES"] : "";
+        $arrayIn['DIGITALSIGN']=  (isset($input["DIGITALSIGN"])) ? $input["DIGITALSIGN"] : "";
+        $arrayIn['SESSIONKEY']= (isset($input['SESSIONKEY'])) ? $input['SESSIONKEY'] : "";
 
 
         if(VPOSResponse($arrayIn,$arrayOut,$llaveVPOSSignaturePub,$llaveComercioCifradoPriv ,$this->vectorInicializacion)){
