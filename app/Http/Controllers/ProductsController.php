@@ -299,7 +299,7 @@ class ProductsController extends Controller {
         $input = $request->all();
         //dd($input);
 
-        list($product, $items, $total) = $this->getPurchasedOptions(0);
+        //list($product, $items, $total) = $this->getPurchasedOptions(0);
 
 
         $llaveVPOSSignaturePub = "-----BEGIN PUBLIC KEY-----\n".
@@ -343,7 +343,7 @@ class ProductsController extends Controller {
             {
 
                 flash('Operación Autorizada');
-                $payment = $this->paymentRepository->store(['product_id' => 0]);
+                //$payment = $this->paymentRepository->store(['product_id' => 0]);
             }
             if($arrayOut['authorizationResult'] == 01)
             {
