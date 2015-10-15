@@ -298,7 +298,7 @@ class ProductsController extends Controller {
     public function purchaseResponse(Request $request)
     {
         $input = $request->all();
-        //dd($input);
+        dd($input);
 
         list($product, $items, $total) = $this->getPurchasedOptions($input['reserved2']);
 
@@ -343,7 +343,7 @@ class ProductsController extends Controller {
             {
 
                 flash('Operación Autorizada');
-                //$payment = $this->paymentRepository->store(['product_id' => $input['Reserved2'],'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+                //$payment = $this->paymentRepository->store(['product_id' => $input['reserved2'],'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
             }
             if($arrayOut['authorizationResult'] == 01)
             {
