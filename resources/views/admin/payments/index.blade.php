@@ -32,7 +32,7 @@
 
                             <td>{!!$payment->id!!}</td>
                             <td>{!!$payment->user->username !!} ( {!!$payment->user->profile->first_name !!} )</td>
-                            <td>{!!$payment->product->name !!}</td>
+                            <td>{!! $payment->product_id  !!} - {!! ($payment->product) ? $payment->product->name : 'Producto Eliminado'  !!}</td>
                             <td>{!! money($payment->amount, '₡') !!}</td>
                             <td class="center">{!! $payment->created_at !!}</td>
 

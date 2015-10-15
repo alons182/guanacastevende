@@ -43,12 +43,11 @@ class PaymentRepository extends DbRepository {
     {
         if (isset($search['q']) && ! empty($search['q']))
         {
-            $payments = $this->model->Search($search['q']);
+            $payments = $this->model->with('user', 'product')->Search($search['q']);
         } else
         {
-            $payments = $this->model;
+            $payments = $this->model->with('user', 'product');
         }
-
 
         return $payments->orderBy('created_at','desc')->paginate($this->limit);
     }

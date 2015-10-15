@@ -101,4 +101,9 @@ class Product extends Model {
         return $this->hasOne('App\Option');
     }
 
+    public function payment()
+    {
+        return $this->hasOne('App\Payment');
+    }
+
 }
