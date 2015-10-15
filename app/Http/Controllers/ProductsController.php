@@ -338,8 +338,8 @@ class ProductsController extends Controller {
             //$arrayOut['authorizationCode']= $codigoAutorizacion;
             //dd($arrayOut);
             flash('ok');
-
-            $payment = $this->paymentRepository->store(['user_id' => Auth()->user()->id, 'product_id' => 40, 'Description'=> $items[0]['name'].'-'. $arrayOut['authorizationResult']]);
+            //, 'Description'=> $items[0]['name'].'-'. $arrayOut['authorizationResult']
+            $payment = $this->paymentRepository->store(['product_id' => 40,'authorizationResult' => $arrayOut['authorizationResult']]);
         }else{
 
            flash('Respuesta Inválida');
