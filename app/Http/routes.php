@@ -86,6 +86,11 @@ Route::get('/faqs', [
 /**
  * User & Profile
  */
+Route::resource('users', 'UsersController');
+
+Route::resource('profile', 'ProfilesController', [
+    'only' => ['show', 'edit', 'update']
+]);
 Route::post('profile/{user}/reviews',[
     'as' => 'profile_review',
     'uses' => 'UsersController@postReview'
@@ -99,14 +104,14 @@ Route::get('profile/{user}/favorites',[
     'as' => 'profile_favorites',
     'uses' => 'ProfilesController@Favorites'
 ]);
-Route::resource('users', 'UsersController');
 
-Route::resource('profile', 'ProfilesController', [
-    'only' => ['show', 'edit', 'update']
-]);
+
+
 /**
  * products & categories
  */
+Route::resource('products', 'ProductsController');
+
 Route::get('search', [
     'as' => 'products_search',
     'uses' => 'ProductsController@search'
@@ -161,7 +166,7 @@ Route::post('/products/{product}/deletefavorites', [
 ]);
 
 
-Route::resource('products', 'ProductsController');
+
 
 /*
  * Photos Gallery
@@ -192,15 +197,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
     ]);
 
     # Users
+    Route::resource('users', 'Admin\UsersController');
+
     Route::get('users', [
         'as'   => 'users',
         'uses' => 'Admin\UsersController@index'
 
     ]);
+
     Route::get('users/register', [
         'as'   => 'user_register',
         'uses' => 'Admin\UsersController@create'
     ]);
+
     Route::post('users/register', [
         'as'   => 'user_register.store',
         'uses' => 'Admin\UsersController@store'
@@ -217,9 +226,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
         'uses' => 'Admin\UsersController@list_users'
     ]);
 
-    Route::resource('users', 'Admin\UsersController');
 
     # Products
+    Route::resource('products', 'Admin\ProductsController');
 
     foreach (['pub', 'unpub', 'feat', 'unfeat'] as $key)
     {
@@ -228,10 +237,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
             'uses' => 'Admin\ProductsController@' . $key,
         ));
     }
+
     Route::post('products/multiple', [
         'as'   => 'option_multiple',
         'uses' => 'Admin\ProductsController@option_multiple'
     ]);
+
 
 
     Route::get('products', [
@@ -239,7 +250,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
         'uses' => 'Admin\ProductsController@index'
     ]);
 
-    Route::resource('products', 'Admin\ProductsController');
 
     #photos(Gallery)
     Route::post('photos', [
@@ -252,6 +262,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
     ]);
 
     # categories
+    Route::resource('categories', 'Admin\CategoriesController');
+
     foreach (['up', 'down', 'pub', 'unpub', 'feat', 'unfeat'] as $key)
     {
         Route::post('categories/{category}/' . $key, [
@@ -261,30 +273,32 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
     }
     Route::get('categories', [
         'as'   => 'categories',
-        'uses' => 'Admin\ProductsController@index'
+        'uses' => 'Admin\CategoriesController@index'
     ]);
-    Route::resource('categories', 'Admin\CategoriesController');
 
     # tags
+
+    Route::resource('tags', 'Admin\TagsController');
 
     Route::get('tags', [
         'as'   => 'tags',
         'uses' => 'Admin\ProductsController@index'
     ]);
-    Route::resource('tags', 'Admin\TagsController');
 
     # options
+    Route::resource('options', 'Admin\OptionsController');
+
     Route::get('options', [
         'as'   => 'options',
         'uses' => 'Admin\OptionsController@index'
     ]);
-    Route::resource('options', 'Admin\OptionsController');
     # payments
+    Route::resource('payments', 'Admin\PaymentsController');
+
     Route::get('payments', [
         'as'   => 'payments',
         'uses' => 'Admin\PaymentsController@index'
     ]);
-    Route::resource('payments', 'Admin\PaymentsController');
 });
 
 // Authentication routes...

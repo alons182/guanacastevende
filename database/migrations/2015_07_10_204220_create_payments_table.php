@@ -19,6 +19,8 @@ class CreatePaymentsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('product_id')->unsigned()->index();
             $table->double('amount', 15, 2)->default(0);
+            $table->string('operationNumber', 11)->nullable();
+
             $table->text('description');
             $table->timestamps();
         });

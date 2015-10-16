@@ -3,15 +3,7 @@
     <div class="inner">
 
         <div class="left">
-            <!--<nav class="footer__menu">
-                <ul class="footer__menu__ul">
-                    <li class="footer__menu__item"><a class="footer__menu__link" href="{{ route('about_path') }}">Acerca de</a> </li>
-                    <li class="footer__menu__item"><a class="footer__menu__link" href="{{ route('products_path') }}">Productos</a> </li>
-                    <li class="footer__menu__item"><a class="footer__menu__link" href="{{ route('contact_path') }}">Contactenos</a> </li>
-                    <li class="footer__menu__item"><a class="footer__menu__link" href="/blog" target="_blank">Blog</a> </li>
 
-                </ul>
-            </nav>-->
             <a class="footer__logo" href="#"><img src="/img/logo-white.png" alt="Guanacaste Vende"/></a>
             <div class="footer__copyright">
 
