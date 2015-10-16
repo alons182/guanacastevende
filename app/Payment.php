@@ -9,7 +9,7 @@ class Payment extends Model
     protected $table = 'payments';
 
     protected $fillable = [
-        'user_id','product_id','amount', 'description'
+        'user_id','product_id','amount', 'description','operationNumber'
     ];
 
     public function scopeSearch($query, $search)
