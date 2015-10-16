@@ -36,7 +36,7 @@ class PaymentRepository extends DbRepository {
 
     /**
      * find payment for operation number
-     * @param $search
+     * @param $number
      * @return mixed
      */
     public function findByOperationNumber($number)

@@ -339,7 +339,7 @@ class ProductsController extends Controller {
 
             if($arrayOut['authorizationResult'] == 00)
             {
-                //guardamos la operacion en db
+                //guardamos la operacion en db si no existe ya el mismo numero de operación
                 $exitsPayment = $this->paymentRepository->findByOperationNumber($arrayOut['purchaseOperationNumber']);
 
                 if(! $exitsPayment)
@@ -349,7 +349,7 @@ class ProductsController extends Controller {
                 $this->productRepository->update_state($product->id, 1); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
 
                 // informamos via email del producto recien creado
-                $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product, 'profile' => Auth()->user()->profile ]);
+                $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product, 'profile' => Auth()->user()->profile]);
 
                 flash('Pago realizado con exito');
             }
@@ -366,23 +366,11 @@ class ProductsController extends Controller {
             {
 
                 //actualizamos el estado del producto recien ingresado inactivo si el pago fue rechazado
-               /* $this->productRepository->update_state($product->id, 3); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
+               $this->productRepository->update_state($product->id, 3); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
 
-                flash('La operación ha sido rechazada');*/
+                flash('La operación ha sido rechazada');
 
-                //guardamos la operacion en db
-                $exitsPayment = $this->paymentRepository->findByOperationNumber($arrayOut['purchaseOperationNumber']);
 
-                if(! $exitsPayment)
-                    $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
-
-                //actualizamos el estado del producto recien ingresado a publicado
-                $this->productRepository->update_state($product->id, 1); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
-
-                // informamos via email del producto recien creado
-                $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product, 'profile' => Auth()->user()->profile ]);
-
-                flash('Pago realizado con exito');
 
             }
 
