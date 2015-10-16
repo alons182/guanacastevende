@@ -362,10 +362,21 @@ class ProductsController extends Controller {
             {
 
                 //actualizamos el estado del producto recien ingresado inactivo si el pago fue rechazado
-                $this->productRepository->update_state($product->id, 3); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
+               /* $this->productRepository->update_state($product->id, 3); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
 
-                flash('La operación ha sido rechazada');
-                //$payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+                flash('La operación ha sido rechazada');*/
+
+                //guardamos la operacion en db
+                $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+
+                //actualizamos el estado del producto recien ingresado a publicado
+                $this->productRepository->update_state($product->id, 1); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
+
+                // informamos via email del producto recien creado
+                $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product, 'profile' => Auth()->user()->profile ]);
+
+                flash('Pago realizado con exito');
+
             }
 
 
