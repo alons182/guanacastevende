@@ -353,7 +353,7 @@ class ProductsController extends Controller {
             {
 
                 flash('Operación Rechazada');
-
+                $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
             }
 
 
