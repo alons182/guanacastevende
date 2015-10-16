@@ -20,7 +20,7 @@
                     @endwhile
                     <div class="header-receipt">
                         <h2 class="header-receipt-number">Numero de operación: {!! $arrayOut['purchaseOperationNumber'] !!}</h2>
-                        <h3 class="header-receipt-status">Estado de operación:
+                        <h3 class="header-receipt-status">Estado:
                             @if($arrayOut['authorizationResult'] == 00)
                                 <span>Autorizada</span>
                             @endif
