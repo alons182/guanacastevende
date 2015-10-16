@@ -44,8 +44,6 @@ class PaymentRepository extends DbRepository {
 
         $payment = $this->model->where('operationNumber', '=',$number)->first();
 
-        dd($payment);
-
         return $payment;
     }
 
