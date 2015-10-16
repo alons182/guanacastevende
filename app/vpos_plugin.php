@@ -509,13 +509,13 @@
 					$arregloSalida['tax_'.$i.'_amount'] = $nodoTax->getAttribute('amount');
 					$i++;
 
-					while (($nodoTax=$nodoTax->nextSibling)!=null) {
-						$arregloSalida['tax_'.$i.'_name'] = $nodoTax->getAttribute('name');
-						$arregloSalida['tax_'.$i.'_amount'] = $nodoTax->getAttribute('amount');
-						$i++;
-					}
-				}
 
+				}
+				while (($nodoTax=$nodoTax->nextSibling)!=null) {
+					$arregloSalida['tax_'.$i.'_name'] = $nodoTax->getAttribute('name');
+					$arregloSalida['tax_'.$i.'_amount'] = $nodoTax->getAttribute('amount');
+					$i++;
+				}
 
 
 
