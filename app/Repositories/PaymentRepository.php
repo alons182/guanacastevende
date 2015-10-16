@@ -88,8 +88,9 @@ class PaymentRepository extends DbRepository {
         }
 
         $data = array_add($data, 'user_id', auth()->user()->id);
-        $data = array_add($data, 'description',$descriptionPayment.' - OperationNumber: '.$data['purchaseOperationNumber'] );
+        $data = array_add($data, 'description',$descriptionPayment);
         $data = array_add($data, 'amount', $total);
+        $data = array_add($data, 'operationNumber', $data['purchaseOperationNumber']);
 
         return $data;
 
