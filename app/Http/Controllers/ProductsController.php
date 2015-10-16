@@ -338,21 +338,25 @@ class ProductsController extends Controller {
 
             if($arrayOut['authorizationResult'] == 00)
             {
+                //guardamos la operacion en db
+                $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+                //actualizamos el estado del producto recien ingresado con la opcion comprada
+                $this->productRepository->update_state($product->id, 1);
+                // informamos via email del producto recien creado
+                $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product, 'profile' => Auth()->user()->profile ]);
 
-                //flash('Operación Autorizada');
-
-                //$payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+                flash('Pago realizado con exito');
             }
             if($arrayOut['authorizationResult'] == 01)
             {
 
-                //flash('Operación Denegada en el Banco Emisor');
+                flash('La operación ha sido denegada en el Banco Emisor');
 
             }
             if($arrayOut['authorizationResult'] == 05)
             {
 
-                //flash('Operación Rechazada');
+                flash('La operación ha sido rechazada');
                 //$payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
             }
 
