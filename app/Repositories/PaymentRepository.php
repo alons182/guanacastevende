@@ -35,6 +35,21 @@ class PaymentRepository extends DbRepository {
     }
 
     /**
+     * find payment for operation number
+     * @param $search
+     * @return mixed
+     */
+    public function findByOperationNumber($number)
+    {
+
+        $payment = $this->model->where('operationNumber', '=',$number)->first();
+
+        dd($payment);
+
+        return $payment;
+    }
+
+    /**
      * get all categories from admin control
      * @param $search
      * @return mixed

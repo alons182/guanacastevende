@@ -340,7 +340,10 @@ class ProductsController extends Controller {
             if($arrayOut['authorizationResult'] == 00)
             {
                 //guardamos la operacion en db
-                $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+                $exitsPayment = $this->paymentRepository->findByOperationNumber($arrayOut['purchaseOperationNumber']);
+
+                if(! $exitsPayment)
+                    $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
 
                 //actualizamos el estado del producto recien ingresado a publicado
                 $this->productRepository->update_state($product->id, 1); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
@@ -368,7 +371,10 @@ class ProductsController extends Controller {
                 flash('La operación ha sido rechazada');*/
 
                 //guardamos la operacion en db
-                $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+                $exitsPayment = $this->paymentRepository->findByOperationNumber($arrayOut['purchaseOperationNumber']);
+
+                if(! $exitsPayment)
+                    $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
 
                 //actualizamos el estado del producto recien ingresado a publicado
                 $this->productRepository->update_state($product->id, 1); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
