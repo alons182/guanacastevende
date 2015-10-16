@@ -278,7 +278,7 @@ class ProductsController extends Controller {
         $array_send['billingLastName']= $input["last_name"];
         $array_send['language']= "SP"; //En español
         $array_send['reserved2']= $productId;
-        $array_send['reserved3']= csrf_token();;
+        
 
         //Setear un arreglo de cadenas con los parámetros que serán devueltos //por el componente
         $array_get['XMLREQ']="";
