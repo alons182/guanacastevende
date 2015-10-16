@@ -1176,14 +1176,19 @@ strong
 	padding .8rem
 	background-color verde
 	color white
+	text-align center
 	&-number
 	&-status
-		float left
 		display block
 		margin 0
-	&-status
-		float right
-
+@media screen and (min-width: 1024px)
+	.header-receipt
+		text-align left
+		&-number
+			float left
+		&-status
+			float right
+	
 .options__info
 	b
 		color verde
