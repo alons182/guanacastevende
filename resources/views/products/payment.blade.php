@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="payment">
-        <div class="alert alert-danger">Procedimiento de pago en periodo de prueba</div>
+
         {!! Form::open(['route'=>['product_payment.purchase',$product->id], 'class'=>'form-horizontal']) !!}
         <div class="left-section">
             <h1 class="payment__title">Opciones de pago</h1>
