@@ -19,6 +19,17 @@
 
                     @endwhile
                     <h2>Numero de operación: {!! $arrayOut['purchaseOperationNumber'] !!}</h2>
+                    <h3>Estado de operación:
+                        @if($arrayOut['authorizationResult'] == 00)
+                            <span>Autorizada</span>
+                        @endif
+                        @if($arrayOut['authorizationResult'] == 01)
+                            <span>Denegada en el Banco Emisor</span>
+                        @endif
+                        @if($arrayOut['authorizationResult'] == 05)
+                            <span>Rechazada</span>
+                        @endif
+                    </h3>
                 @endif
                 <div class="form">
                     @if(isset($items))
