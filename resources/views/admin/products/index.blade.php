@@ -47,6 +47,8 @@
                                         <button type="submit"  class="btn btn-success btn-xs" form="form-pub-unpub" formaction="{!! URL::route('products.unpub', [$product->id]) !!}">Active</button>
                                     @elseif($product->published == 2)
                                         <button type="submit"  class="btn btn-warning btn-xs" form="form-pub-unpub" formaction="{!! URL::route('products.pub', [$product->id]) !!}">Waiting</button>
+                                    @elseif($product->published == 3)
+                                        <button type="submit"  class="btn btn-danger btn-xs" form="form-pub-unpub" formaction="{!! URL::route('products.pub', [$product->id]) !!}">Inactive(Rechazado o Denegado)</button>
                                     @endif
 
                                 @else
