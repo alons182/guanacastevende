@@ -330,7 +330,7 @@ class ProductsController extends Controller {
         $arrayIn['XMLRES'] = (isset($input["XMLRES"])) ? $input["XMLRES"] : "";
         $arrayIn['DIGITALSIGN']= (isset($input["DIGITALSIGN"])) ? $input["DIGITALSIGN"] : "";
         $arrayIn['SESSIONKEY']= (isset($input['SESSIONKEY'])) ? $input['SESSIONKEY'] : "";
-        dd($arrayIn);
+        
         $arrayOut= "";
 
         if(VPOSResponse($arrayIn,$arrayOut,$llaveVPOSSignaturePub,$llaveComercioCifradoPriv ,$this->vectorInicializacion)){
