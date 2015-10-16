@@ -37,6 +37,11 @@
                 En espera de confirmación
             </div>
         @endif
+        @if($product->published == 3)
+            <div class="products__item__rechazado">
+                Inactivo (Pago fue denegado o rechazado)
+            </div>
+        @endif
         <div class="products__item__price">
             {!! money($product->price,'₡') !!}
         </div>

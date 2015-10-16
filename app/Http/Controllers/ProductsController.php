@@ -353,7 +353,7 @@ class ProductsController extends Controller {
             {
 
                 //actualizamos el estado del producto recien ingresado en espera si la fue denegado
-                $this->productRepository->update_state($product->id, 2);
+                $this->productRepository->update_state($product->id, 3);
 
                 flash('La operación ha sido denegada en el Banco Emisor');
 
@@ -362,7 +362,7 @@ class ProductsController extends Controller {
             {
 
                 //actualizamos el estado del producto recien ingresado en espera si la fue rechazado
-                $this->productRepository->update_state($product->id, 2);
+                $this->productRepository->update_state($product->id, 3);
 
                 flash('La operación ha sido rechazada');
                 //$payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
