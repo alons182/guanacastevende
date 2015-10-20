@@ -333,10 +333,10 @@ class ProductsController extends Controller {
         $arrayIn['DIGITALSIGN'] = $input['DIGITALSIGN'];
         $arrayIn['SESSIONKEY'] = $input['SESSIONKEY'];
 
-        $arrayOut = '4760916219954089';
+        $arrayOut = '';
 
 //valor del vector de inicializacion
-        $VI = $this->vectorInicializacion;
+        $VI = "4760916219954089";
 
         if(VPOSResponse($arrayIn,$arrayOut,$llavePublicaFirma,$llavePrivadaCifrado,$VI)){
 
