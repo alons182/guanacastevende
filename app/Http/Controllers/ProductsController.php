@@ -300,6 +300,7 @@ class ProductsController extends Controller {
     public function purchaseResponse(Request $request)
     {
         $input = $request->all();
+        dd($input);
 
         $llavePrivadaCifrado = "-----BEGIN RSA PRIVATE KEY-----\n".
             "MIICXQIBAAKBgQCr3xnDYPtCdJ1X/OtLGp01EPkAd2cOieqLKXSrbdNHuOLkpBMY\n".
