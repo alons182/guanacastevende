@@ -301,6 +301,78 @@ class ProductsController extends Controller {
     {
         $input = $request->all();
 
+        $llavePrivadaCifrado = "-----BEGIN RSA PRIVATE KEY-----\n".
+            "MIICXQIBAAKBgQCr3xnDYPtCdJ1X/OtLGp01EPkAd2cOieqLKXSrbdNHuOLkpBMY\n".
+            "xw89IrWVKFDJREiaGTJ79FYvgzGSmo2FT/SW1Ecv3TIqIM75eMomWQho7l5s9Qsa\n".
+            "1xfx3FZrUnnYS2MUAJfTTXww8SPB8RkRPRk8zOUh0IvvpI9xJFywPhII1wIDAQAB\n".
+            "AoGAAWiFlIVB6cx80ZC/+NCSAzJNaASScpsMsfE4BIOU3JyWN1tk0Koo5M5ZAIzh\n".
+            "BJUrpx+Xu05IOoFvsYzUpgf+sA5COAWogqjs8OD7M5zJu66lnAmb6KwJ9bpL4aOx\n".
+            "rR/ZfjzRK1am7C4LH4MSwUa2YxVbkf5EKhyuWU21+61dp0kCQQDcBn7CzRonTpTg\n".
+            "9DcwPCowfi/QdTYw7x4cedBG/h+Bm7b7hF8qGWtQyOez8Tm0ciYt7sWBGHLYnQLq\n".
+            "UwSAfyUVAkEAx/kMsUMQPlcC5u7q37HNGb6Kvpeqg4jCdxwKUtdWzzR9xAw6ijvC\n".
+            "yEFSR4Qo1JyyoYLTkaPuzpZuMsASEcvJOwJBAL3LDIVVDv5hFqOFhiWhgHMcJnqW\n".
+            "4QwM99hwa20RwHO4snr7kGtsSdoBs3zQ1IoG/VAZ61yUjlyz89PVkMiW5JECQQCQ\n".
+            "Gb21tvfrlFP5Cc2i6MM9e/sLIMu1AUXxAvnFfHuH0PGX5qAAoNPZ7ohWFLw/ibOH\n".
+            "g3jmCFW79NbwJ0xeGpWlAkBb+equG3spXxEIO8JI8Z3CA9jvPpXKchqSifLxfRPi\n".
+            "zwd0jVnxjJ5uJGOUZkfvLWCG4bdiAWdn3pDGTugkgiW3\n".
+            "-----END RSA PRIVATE KEY-----\n";
+
+
+//valor de la llave publica de firma de Alignet
+        $llavePublicaFirma = "-----BEGIN PUBLIC KEY-----\n".
+            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvJS8zLPeePN+fbJeIvp/jjvLW\n".
+            "Aedyx8UcfS1eM/a+Vv2yHTxCLy79dEIygDVE6CTKbP1eqwsxRg2Z/dI+/e14WDRs\n".
+            "g0QzDdjVFIuXLKJ0zIgDw6kQd1ovbqpdTn4wnnvwUCNpBASitdjpTcNTKONfXMtH\n".
+            "pIs4aIDXarTYJGWlyQIDAQAB\n".
+            "-----END PUBLIC KEY-----\n";
+
+        $arrayIn['IDACQUIRER'] = $input['IDACQUIRER'];
+        $arrayIn['IDCOMMERCE'] = $input['IDCOMMERCE'];
+        $arrayIn['XMLRES'] = $input['XMLRES'];
+        $arrayIn['DIGITALSIGN'] = $input['DIGITALSIGN'];
+        $arrayIn['SESSIONKEY'] = $input['SESSIONKEY'];
+
+        $arrayOut = '';
+
+//valor del vector de inicializacion
+        $VI = $this->vectorInicializacion;
+
+        if(VPOSResponse($arrayIn,$arrayOut,$llavePublicaFirma,$llavePrivadaCifrado,$VI)){
+
+            echo ('OK');
+            //La salida esta en $arrayOut con todos los parámetros decifrados devueltos por  el VPOS
+            $resultadoAutorizacion = $arrayOut['authorizationResult'];
+            $codigoAutorizacion = $arrayOut['authorizationCode'];
+            $codigoError = $arrayOut['errorCode'];
+            $errormensaje = $arrayOut['errorMessage'];
+
+            echo ('<br>');
+            echo $resultadoAutorizacion;
+            echo ('<br>');
+            echo $codigoAutorizacion;
+            echo ('<br>');
+            echo $codigoError;
+            echo ('<br>');
+            echo $errormensaje;
+            echo ('<br>');
+
+
+
+            // se deben revisar luego los demas campos de acuerdo a lo indicado en la guia de integracion
+
+        }else{
+
+            //Puede haber un problema de mala configuración de las llaves,
+            //vector deinicializacion o el VPOS no ha enviado valores
+            //correctos
+            echo "<br> Respuesta Inv&acute;lida";
+        }
+    }
+/*
+    public function purchaseResponse(Request $request)
+    {
+        $input = $request->all();
+
 
         $llaveVPOSSignaturePub = "-----BEGIN PUBLIC KEY-----\n".
             "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvJS8zLPeePN+fbJeIvp/jjvLW\n".
@@ -330,7 +402,7 @@ class ProductsController extends Controller {
         $arrayIn['XMLRES'] = (isset($input["XMLRES"])) ? $input["XMLRES"] : "";
         $arrayIn['DIGITALSIGN']= (isset($input["DIGITALSIGN"])) ? $input["DIGITALSIGN"] : "";
         $arrayIn['SESSIONKEY']= (isset($input['SESSIONKEY'])) ? $input['SESSIONKEY'] : "";
-        
+
         $arrayOut= "";
 
         if(VPOSResponse($arrayIn,$arrayOut,$llaveVPOSSignaturePub,$llaveComercioCifradoPriv ,$this->vectorInicializacion)){
@@ -383,7 +455,7 @@ class ProductsController extends Controller {
 
         return view('products.purchase-response')->with(compact('items','total','arrayOut'));
 
-    }
+    }*/
     /**
      * Post paid options
      * @param PaymentRequest $request
