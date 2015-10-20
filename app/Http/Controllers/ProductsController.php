@@ -300,7 +300,7 @@ class ProductsController extends Controller {
     public function purchaseResponse(Request $request)
     {
         $input = $request->all();
-        dd($input);
+
 
         $llavePrivadaCifrado = "-----BEGIN RSA PRIVATE KEY-----\n".
             "MIICXQIBAAKBgQCr3xnDYPtCdJ1X/OtLGp01EPkAd2cOieqLKXSrbdNHuOLkpBMY\n".
@@ -333,7 +333,7 @@ class ProductsController extends Controller {
         $arrayIn['DIGITALSIGN'] = $input['DIGITALSIGN'];
         $arrayIn['SESSIONKEY'] = $input['SESSIONKEY'];
 
-        $arrayOut = '';
+        $arrayOut = '4760916219954089';
 
 //valor del vector de inicializacion
         $VI = $this->vectorInicializacion;
