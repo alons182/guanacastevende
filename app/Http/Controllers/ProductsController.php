@@ -225,6 +225,62 @@ class ProductsController extends Controller {
     public function purchase(PaymentRequest $request, $productId)
     {
         $input = $request->all();
+
+        $llaveVPOSCryptoPub = 	"-----BEGIN PUBLIC KEY-----\n".
+            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDTJt+hUZiShEKFfs7DShsXCkoq\n".
+            "TEjv0SFkTM04qHyHFU90Da8Ep1F0gI2SFpCkLmQtsXKOrLrQTF0100dL/gDQlLt0\n".
+            "Ut8kM/PRLEM5thMPqtPq6G1GTjqmcsPzUUL18+tYwN3xFi4XBog4Hdv0ml1SRkVO\n".
+            "DRr1jPeilfsiFwiO8wIDAQAB\n".
+            "-----END PUBLIC KEY-----";
+
+
+        $llavePrivadaFirmaComercio = "-----BEGIN RSA PRIVATE KEY-----\n".
+            "MIICXAIBAAKBgQDI71jf/WkPdDuSPmArJFaxmvg1F+nQ7X26jkvVxDaFY57ZQlGq\n".
+            "S1wxiHE8dr06mz0vGdW0PLVggNo0aOKQXLuvyiV9QxHYpd4VPjKglMItA2ae11Qg\n".
+            "Xom0AoRDSR6+18lkFZpxXUY9KExjhL5dOIQXbnS7eVRjRfmrS5JnPeK8OwIDAQAB\n".
+            "AoGAUpwUrgJBb1kaJMYAQ7xs6BgOc8WhG4SIbGqUQw6oW67ZX/kkGh9hh/vQkks/\n".
+            "ARlRzkuQ0MkkyMgw7dsxSqjVgHTWaw0/Rh92VhXeFsi7GiGZgN0Zsnenujhye56Z\n".
+            "h8KNJc1gAihWTPbRi2dxzXFUyr6yO2MDNRbk6JQLidnvQAECQQD75aiRZHybJWHE\n".
+            "hL/rvpKYgcXiwZyKjj1fpTyjOw16PL2obpCHYjiuTF+ikTHRFv81GrgHLyvyVamb\n".
+            "/xQd3miBAkEAzDUwyGHGKcRalIwCV/hTm6hSDUBG2wfCVwuHZdcqtrzpq79+P3aq\n".
+            "W05vlF6Hf2yGGcKopAVd/t7+tmCSAklmuwJAePUo4tgr9ZwXvHQ6bIuQfWcjjOWH\n".
+            "tAjlc742xfMfX6k3MWAWSsxhh2DpM3khQNQYLHnuEJUYNz/nOB9em5EnAQJBAMKt\n".
+            "5u7x/6hr8Grzu3xAWvznkCnf4G0JzaWMcS2O3sLOAPtimSpJqAlaEpfhMs4xGPtQ\n".
+            "D9Qm5cCIuU4HbMtPTOcCQFIFEnv4VvtGJwWPSIQr6jxpL4Z+NA3sy8gWcZwKnWzp\n".
+            "72jjGx/YBW6qheLJUImAuVVS/7Tm6XztdkWMYT38fJo=\n".
+            "-----END RSA PRIVATE KEY-----";
+
+        $VI = "4760916219954089";
+
+        $arrayIn = '';
+        $arrayOut = '';
+
+        $arrayIn['acquirerId'] = '99';
+        $arrayIn['commerceId'] = '7574';
+        $arrayIn['commerceMallId'] = '1';
+        $arrayIn['terminalCode'] = '00000000';
+        $arrayIn['purchaseOperationNumber'] = "".((int)(microtime()*1000000));
+        $arrayIn['purchaseAmount'] = '100';
+        $arrayIn['purchaseCurrencyCode'] = '188';
+        $arrayIn['reserved1'] = 'sp';
+        $arrayIn['reserved13'] = 'GuanacasteVende';
+
+        echo "<br> VI: ".$VI;
+
+        VPOSSend($arrayIn,$arrayOut,$llaveVPOSCryptoPub,$llavePrivadaFirmaComercio,$VI);
+
+
+        $idAcquirer = $arrayIn['acquirerId'];
+        $idCommerce = $arrayIn['commerceId'];
+
+        list($product, $items, $total) = $this->getPurchasedOptions($productId);
+
+        return view('products.purchase')->with(compact('product','items', 'total','input','arrayOut','idAcquirer','idCommerce'));
+
+    }
+    /*public function purchase(PaymentRequest $request, $productId)
+    {
+        $input = $request->all();
         $purchaseOperationNumber = $this->getUniqueNumber();
         //$purchaseOperationNumber = $this->getToken(11);
 
@@ -295,7 +351,7 @@ class ProductsController extends Controller {
 
         return view('products.purchase')->with(compact('product','items', 'total','input','array_get','idAcquirer','idCommerce'));
 
-    }
+    }*/
 
     public function purchaseResponse(Request $request)
     {
@@ -316,16 +372,17 @@ class ProductsController extends Controller {
             "Gb21tvfrlFP5Cc2i6MM9e/sLIMu1AUXxAvnFfHuH0PGX5qAAoNPZ7ohWFLw/ibOH\n".
             "g3jmCFW79NbwJ0xeGpWlAkBb+equG3spXxEIO8JI8Z3CA9jvPpXKchqSifLxfRPi\n".
             "zwd0jVnxjJ5uJGOUZkfvLWCG4bdiAWdn3pDGTugkgiW3\n".
-            "-----END RSA PRIVATE KEY-----\n";
+            "-----END RSA PRIVATE KEY-----";
 
-
-//valor de la llave publica de firma de Alignet
-        $llavePublicaFirma = "-----BEGIN PUBLIC KEY-----\n".
+        $llavePublicaFirma = 	"-----BEGIN PUBLIC KEY-----\n".
             "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvJS8zLPeePN+fbJeIvp/jjvLW\n".
             "Aedyx8UcfS1eM/a+Vv2yHTxCLy79dEIygDVE6CTKbP1eqwsxRg2Z/dI+/e14WDRs\n".
             "g0QzDdjVFIuXLKJ0zIgDw6kQd1ovbqpdTn4wnnvwUCNpBASitdjpTcNTKONfXMtH\n".
             "pIs4aIDXarTYJGWlyQIDAQAB\n".
-            "-----END PUBLIC KEY-----\n";
+            "-----END PUBLIC KEY-----";
+
+
+
 
         $arrayIn['IDACQUIRER'] = $input['IDACQUIRER'];
         $arrayIn['IDCOMMERCE'] = $input['IDCOMMERCE'];
@@ -335,39 +392,19 @@ class ProductsController extends Controller {
 
         $arrayOut = '';
 
-//valor del vector de inicializacion
+
         $VI = "4760916219954089";
 
         if(VPOSResponse($arrayIn,$arrayOut,$llavePublicaFirma,$llavePrivadaCifrado,$VI)){
-
-            echo ('OK');
-            //La salida esta en $arrayOut con todos los parámetros decifrados devueltos por  el VPOS
-            $resultadoAutorizacion = $arrayOut['authorizationResult'];
-            $codigoAutorizacion = $arrayOut['authorizationCode'];
-            $codigoError = $arrayOut['errorCode'];
-            $errormensaje = $arrayOut['errorMessage'];
-
-            echo ('<br>');
-            echo $resultadoAutorizacion;
-            echo ('<br>');
-            echo $codigoAutorizacion;
-            echo ('<br>');
-            echo $codigoError;
-            echo ('<br>');
-            echo $errormensaje;
-            echo ('<br>');
-
-
-
-            // se deben revisar luego los demas campos de acuerdo a lo indicado en la guia de integracion
+            while(list($key, $val) = each($arrayOut)){
+                echo "<br> $key => ".$val;
+            }
 
         }else{
-
-            //Puede haber un problema de mala configuración de las llaves,
-            //vector deinicializacion o el VPOS no ha enviado valores
-            //correctos
             echo "<br> Respuesta Inv&acute;lida";
         }
+
+
     }
 /*
     public function purchaseResponse(Request $request)
