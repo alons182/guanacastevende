@@ -506,7 +506,7 @@ class ProductsController extends Controller {
      * @param PaymentRequest $request
      * @return \Illuminate\View\View
      */
-    public function postPayment(PaymentRequest $request)
+    /*public function postPayment(PaymentRequest $request)
     {
         $input = $request->all();
 
@@ -516,7 +516,7 @@ class ProductsController extends Controller {
 
         return Redirect()->route('profile.show', Auth()->user()->username);
 
-    }
+    }*/
 
     /**
      * Remove the specified resource from storage.

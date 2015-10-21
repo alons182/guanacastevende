@@ -7,12 +7,22 @@
     <div class="payment">
 
 
-           <!--<div class="alert alert-danger">Procedimiento de pago en periodo de prueba</div>-->
+
             <h1 class="payment__title">Comprobante de pago</h1>
 
             <section class="panel payment__method__card">
 
                 @if(isset($authorizationResult) && isset($purchaseOperationNumber))
+
+                    @if($authorizationResult == 00)
+                        <div class="alert alert-info">Pago realizado con exito</div>
+                    @endif
+                    @if($authorizationResult == 01)
+                            <div class="alert alert-danger">La operación ha sido denegada en el Banco Emisor</div>
+                    @endif
+                    @if($authorizationResult == 05)
+                            <div class="alert alert-danger">La operación ha sido rechazada</div>
+                    @endif
 
                     <div class="header-receipt {!! ($authorizationResult == 00) ? 'ok' : 'error' !!}">
                         <h2 class="header-receipt-number">Numero de operación: {!! $purchaseOperationNumber !!}</h2>
