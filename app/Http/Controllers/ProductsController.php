@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
+use Illuminate\Support\Facades\Log;
 
 
 class ProductsController extends Controller {
@@ -445,15 +446,20 @@ class ProductsController extends Controller {
 
         if(VPOSResponse($arrayIn,$arrayOut,$llaveVPOSSignaturePub,$llaveComercioCifradoPriv ,$this->vectorInicializacion)){
 
-            list($product, $items, $total) = $this->getPurchasedOptions($arrayOut['reserved2']);
 
-            if($arrayOut['authorizationResult'] == 00)
+            $authorizationResult = $arrayOut['authorizationResult'];
+            $purchaseOperationNumber = $arrayOut['purchaseOperationNumber'];
+            $idProduct = $arrayOut['reserved2'];
+
+            list($product, $items, $total) = $this->getPurchasedOptions($idProduct);
+
+            if($authorizationResult == 00)
             {
                 //guardamos la operacion en db si no existe ya el mismo numero de operación
-                $exitsPayment = $this->paymentRepository->findByOperationNumber($arrayOut['purchaseOperationNumber']);
+                $exitsPayment = $this->paymentRepository->findByOperationNumber($purchaseOperationNumber);
 
                 if(! $exitsPayment)
-                    $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$arrayOut['purchaseOperationNumber']]);
+                    $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$purchaseOperationNumber]);
 
                 //actualizamos el estado del producto recien ingresado a publicado
                 $this->productRepository->update_state($product->id, 1); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
@@ -463,7 +469,7 @@ class ProductsController extends Controller {
 
                 flash('Pago realizado con exito');
             }
-            if($arrayOut['authorizationResult'] == 01)
+            if($authorizationResult == 01)
             {
 
                 //actualizamos el estado del producto recien ingresado inactivo si el pago fue denegado
@@ -472,7 +478,7 @@ class ProductsController extends Controller {
                 flash('La operación ha sido denegada en el Banco Emisor');
 
             }
-            if($arrayOut['authorizationResult'] == 05)
+            if($authorizationResult == 05)
             {
 
                 //actualizamos el estado del producto recien ingresado inactivo si el pago fue rechazado
@@ -488,10 +494,11 @@ class ProductsController extends Controller {
         }else{
 
            flash('Respuesta Inválida');
+
         }
+        Log::info('results of VPOS: '.$arrayOut);
 
-
-        return view('products.purchase-response')->with(compact('items','total','arrayOut'));
+        return view('products.purchase-response')->with(compact('items','total','authorizationResult','purchaseOperationNumber'));
 
     }
     /**

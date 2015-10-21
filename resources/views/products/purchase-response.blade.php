@@ -12,22 +12,18 @@
 
             <section class="panel payment__method__card">
 
-                @if(isset($arrayOut) && $arrayOut != "")
+                @if(isset($authorizationResult) && isset($purchaseOperationNumber))
 
-                    @while(list($key, $val) = each($arrayOut))
-                         <br> {!! $key !!} "=>" {!! $val !!}
-
-                    @endwhile
-                    <div class="header-receipt {!! ($arrayOut['authorizationResult'] == 00) ? 'ok' : 'error' !!}">
-                        <h2 class="header-receipt-number">Numero de operación: {!! $arrayOut['purchaseOperationNumber'] !!}</h2>
+                    <div class="header-receipt {!! ($authorizationResult == 00) ? 'ok' : 'error' !!}">
+                        <h2 class="header-receipt-number">Numero de operación: {!! $purchaseOperationNumber !!}</h2>
                         <h3 class="header-receipt-status">Estado:
-                            @if($arrayOut['authorizationResult'] == 00)
+                            @if($authorizationResult == 00)
                                 <span>Autorizada</span>
                             @endif
-                            @if($arrayOut['authorizationResult'] == 01)
+                            @if($authorizationResult == 01)
                                 <span>Denegada en el Banco Emisor</span>
                             @endif
-                            @if($arrayOut['authorizationResult'] == 05)
+                            @if($authorizationResult == 05)
                                 <span>Rechazada</span>
                             @endif
                         </h3>
