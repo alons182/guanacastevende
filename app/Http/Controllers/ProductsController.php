@@ -281,7 +281,7 @@ class ProductsController extends Controller {
     public function purchase(PaymentRequest $request, $productId)
     {
         $input = $request->all();
-        $purchaseOperationNumber = $this->getUniqueNumber();
+        $purchaseOperationNumber = "c6eb6349f8b";//$this->getUniqueNumber();
         //$purchaseOperationNumber = $this->getToken(11);
 
 
