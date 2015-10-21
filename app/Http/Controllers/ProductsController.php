@@ -496,7 +496,7 @@ class ProductsController extends Controller {
            flash('Respuesta Inválida');
 
         }
-        Log::info('results of VPOS: '.$arrayOut);
+        Log::info('results of VPOS: '.json_encode($arrayOut));
 
         return view('products.purchase-response')->with(compact('items','total','authorizationResult','purchaseOperationNumber'));
 
