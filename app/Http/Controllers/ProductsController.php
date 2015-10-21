@@ -311,13 +311,13 @@ class ProductsController extends Controller {
             "72jjGx/YBW6qheLJUImAuVVS/7Tm6XztdkWMYT38fJo=\n".
             "-----END RSA PRIVATE KEY-----";
 
-
+        $total = "75";
         $array_send['acquirerId']= $this->acquirerId;
         $array_send['commerceId']= $this->commerceId;
         $array_send['commerceMallId']= $this->mallId;
         $array_send['terminalCode']= $this->terminalCode;
 
-        $array_send['purchaseAmount']= $total . "00";
+        $array_send['purchaseAmount']= "75";//$total . "00";
         $array_send['purchaseCurrencyCode']= $this->purchaseCurrencyCode;
         $array_send['purchaseOperationNumber']= $purchaseOperationNumber;
 
