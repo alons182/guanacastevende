@@ -241,7 +241,8 @@
             $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled', false);
 
         } else {
-            $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled', true).attr('checked', false);
+            $('.option__tags').find('input[type="checkbox"]').attr('disabled', true).attr('checked', false);
+
         }
     });
     $("input[name='tags[]']").on('click', checkOnlyOne);
