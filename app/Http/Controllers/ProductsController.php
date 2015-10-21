@@ -467,7 +467,7 @@ class ProductsController extends Controller {
                 // informamos via email del producto recien creado
                 $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product, 'profile' => Auth()->user()->profile]);
 
-                flash('Pago realizado con exito');
+                //flash('Pago realizado con exito');
             }
             if($authorizationResult == 01)
             {
@@ -475,7 +475,7 @@ class ProductsController extends Controller {
                 //actualizamos el estado del producto recien ingresado inactivo si el pago fue denegado
                 $this->productRepository->update_state($product->id, 3); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
 
-                flash('La operación ha sido denegada en el Banco Emisor');
+               // flash('La operación ha sido denegada en el Banco Emisor');
 
             }
             if($authorizationResult == 05)
@@ -484,7 +484,7 @@ class ProductsController extends Controller {
                 //actualizamos el estado del producto recien ingresado inactivo si el pago fue rechazado
                $this->productRepository->update_state($product->id, 3); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
 
-                flash('La operación ha sido rechazada');
+                //flash('La operación ha sido rechazada');
 
 
 
