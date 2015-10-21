@@ -222,7 +222,7 @@ class ProductsController extends Controller {
      * @param PaymentRequest $request
      * @return \Illuminate\View\View
      */
-    public function purchase(PaymentRequest $request, $productId)
+    /*public function purchase(PaymentRequest $request, $productId)
     {
         $input = $request->all();
 
@@ -277,8 +277,8 @@ class ProductsController extends Controller {
 
         return view('products.purchase')->with(compact('product','items', 'total','input','arrayOut','idAcquirer','idCommerce'));
 
-    }
-    /*public function purchase(PaymentRequest $request, $productId)
+    }*/
+    public function purchase(PaymentRequest $request, $productId)
     {
         $input = $request->all();
         $purchaseOperationNumber = $this->getUniqueNumber();
@@ -351,9 +351,9 @@ class ProductsController extends Controller {
 
         return view('products.purchase')->with(compact('product','items', 'total','input','array_get','idAcquirer','idCommerce'));
 
-    }*/
+    }
 
-    public function purchaseResponse(Request $request)
+   /* public function purchaseResponse(Request $request)
     {
         $input = $request->all();
 
@@ -405,8 +405,8 @@ class ProductsController extends Controller {
         }
 
 
-    }
-/*
+    }*/
+
     public function purchaseResponse(Request $request)
     {
         $input = $request->all();
@@ -493,7 +493,7 @@ class ProductsController extends Controller {
 
         return view('products.purchase-response')->with(compact('items','total','arrayOut'));
 
-    }*/
+    }
     /**
      * Post paid options
      * @param PaymentRequest $request

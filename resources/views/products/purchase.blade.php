@@ -15,9 +15,9 @@
                 <div class="form">
                     {!! Form::hidden('IDACQUIRER',  $idAcquirer) !!}
                     {!! Form::hidden('IDCOMMERCE',  $idCommerce) !!}
-                    {!! Form::hidden('XMLREQ',  $arrayOut['XMLREQ']) !!}
-                    {!! Form::hidden('DIGITALSIGN',  $arrayOut['DIGITALSIGN']) !!}
-                    {!! Form::hidden('SESSIONKEY',  $arrayOut['SESSIONKEY']) !!}
+                    {!! Form::hidden('XMLREQ',  $array_get['XMLREQ']) !!}
+                    {!! Form::hidden('DIGITALSIGN',  $array_get['DIGITALSIGN']) !!}
+                    {!! Form::hidden('SESSIONKEY',  $array_get['SESSIONKEY']) !!}
 
 
                     <p class="profile__item"> <strong>Nombre:</strong> {!! $input["first_name"] !!} </p>
