@@ -110,16 +110,16 @@
 
 
 			}
-			else if(preg_match('tax_([0-9]{1}|[0-9]{2})_name',$key)){
+			else if(preg_match('/tax_([0-9]{1}|[0-9]{2})_name/',$key)){
 
-				$keyam = preg_replace('(^tax_)|(_name$)','',$key);
+				$keyam = preg_replace('/(^tax_)|(_name$)/','',$key);
 
 				$taxesName[$keyam] = $value;
 
 				//array_push($taxesName,array($keyam => $value));
-			}else if(preg_match('tax_([0-9]{1}|[0-9]{2})_amount',$key)){
+			}else if(preg_match('/tax_([0-9]{1}|[0-9]{2})_amount/',$key)){
 
-				$keyam = preg_replace('(^tax_)|(_amount$)','',$key);
+				$keyam = preg_replace('/(^tax_)|(_amount$)/','',$key);
 
 				$taxesAmount[$keyam] = $value;
 
@@ -501,28 +501,9 @@
 
 		while (($nodoHijo=$nodoHijo->nextSibling)!=null) {
 			$i = 1;
-			if(strcmp($nodoHijo->nodeName,'taxes')==0){
-				if($nodoHijo->hasChildNodes()){
-					$nodoTax = $nodoHijo->firstChild;
 
-					$arregloSalida['tax_'.$i.'_name'] = $nodoTax->getAttribute('name');
-					$arregloSalida['tax_'.$i.'_amount'] = $nodoTax->getAttribute('amount');
-					$i++;
-
-
-				}
-				while (($nodoTax=$nodoTax->nextSibling)!=null) {
-					$arregloSalida['tax_'.$i.'_name'] = $nodoTax->getAttribute('name');
-					$arregloSalida['tax_'.$i.'_amount'] = $nodoTax->getAttribute('amount');
-					$i++;
-				}
-
-
-
-
-			}else {
 				$arregloSalida[$nodoHijo->nodeName] = $nodoHijo->nodeValue;
-			}
+			
 
 
 		}
