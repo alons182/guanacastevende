@@ -60,7 +60,7 @@
 
 @empty
     @if(isset($isHome) && $isHome)
-        <p>No se encontraron productos Destacados</p>
+        <!--<p>No se encontraron productos destacados</p>-->
     @else
         <p>No se encontraron productos</p>
     @endif
