@@ -26,7 +26,7 @@
 
             </div>
         </div>
-        @include('products.partials._products')
+        @include('products.partials._products',['isHome'=>true])
     </div>
 
 

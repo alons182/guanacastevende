@@ -59,5 +59,9 @@
 
 
 @empty
-    <p>No se encontraron productos</p>
+    @if(isset($isHome) && $isHome)
+        <p>No se encontraron productos Destacados</p>
+    @else
+        <p>No se encontraron productos</p>
+    @endif
 @endforelse
