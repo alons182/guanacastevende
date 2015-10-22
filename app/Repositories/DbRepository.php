@@ -112,7 +112,7 @@ class DbRepository {
                 }
             }
         }
-        if($watermark) $image->insert('img/logo.png','center');
+        if($watermark) $image->insert('img/watermark.png','center');
 
         $image->save($path . $filename, 60)
             ->resize($thumbWidth, $thumbHeight, function ($constraint)
