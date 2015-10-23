@@ -1,14 +1,14 @@
 @extends('layouts.layout')
 
 @section('meta-title')Guanacaste Vende | Confirmación de pago @stop
-@section('meta-description')Confirmación de pago @stop
+@section('meta-description')Verificar datos @stop
 @section('content')
 
     <div class="payment">
         <form action="https://vpayment.verifika.com/VPOS/MM/transactionStart20.do" method="POST" class="form-horizontal">
 
         <div class="left-section">
-            <h1 class="payment__title">Confirmación de pago</h1>
+            <h1 class="payment__title">Verificar datos</h1>
 
             <section class="panel payment__method__card">
 
@@ -34,7 +34,8 @@
 
                     <div class="form__group">
                         {!! Form::submit('Ejecutar pago', ['class' => 'btn btn-primary']) !!}
-                        <button type="submit" class="btn btn-gray" form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}">
+                        <a href="{{ URL::previous() }}" class="btn btn-default">Atras</a>
+                        <button type="submit"  style="margin-left: 1rem;" class="btn btn-gray" form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}">
                             Cancelar<i class="fa fa-trash-o"></i>
                         </button>
                     </div>
@@ -45,7 +46,7 @@
 
         </div>
         <div class="right-section">
-            <h1 class="payment__title">Opciones compradas</h1>
+            <h1 class="payment__title">Opciones seleccionadas</h1>
             {!! Form::hidden('product_id', $product->id,['class'=>'form__control', 'readonly']) !!}
 
             <div class="table-responsive payment__options-table">

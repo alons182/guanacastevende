@@ -39,12 +39,12 @@
                     </div>
                     <div class="form__group">
                         {!! Form::label('telephone', 'Teléfono:') !!}
-                        {!! Form::text('telephone', $currentUser->profile->telephone, ['class' => 'form__control','required' => 'required','maxlength'=>'15']) !!}
+                        {!! Form::text('telephone', str_limit($currentUser->profile->telephone, 15,''), ['class' => 'form__control','required' => 'required','maxlength'=>'15']) !!}
                         {!! errors_for('telephone',$errors) !!}
                     </div>
                     <div class="form__group">
                         {!! Form::label('address', 'Dirección:') !!}
-                        {!! Form::text('address', $currentUser->profile->address, ['class' => 'form__control','required' => 'required','maxlength'=>'50']) !!}
+                        {!! Form::text('address', str_limit($currentUser->profile->address, 50,''), ['class' => 'form__control','required' => 'required','maxlength'=>'50']) !!}
                         {!! errors_for('address',$errors) !!}
                     </div>
                     <div class="form__group">
@@ -101,7 +101,7 @@
 
         </div>
         <div class="right-section">
-            <h1 class="payment__title">Opciones compradas</h1>
+            <h1 class="payment__title">Opciones seleccionadas</h1>
             {!! Form::hidden('product_id', $product->id,['class'=>'form__control', 'readonly']) !!}
 
             <div class="table-responsive payment__options-table">
