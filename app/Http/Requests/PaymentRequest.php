@@ -32,7 +32,7 @@ class PaymentRequest extends Request
             'city' => 'required|max:50',
             'state' => 'required|max:15',
             'country' => 'required',
-            'zipcode' => 'required|max:10'
+            'zipcode' => 'max:10'
 
         ];
     }

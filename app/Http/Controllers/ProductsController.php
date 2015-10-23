@@ -349,7 +349,7 @@ class ProductsController extends Controller {
         $array_send['billingCity']= $input["city"];
         $array_send['billingState']= $input["state"];
         $array_send['billingCountry']= $input["country"];
-        $array_send['billingZIP']= $input["zipcode"];
+        $array_send['billingZIP']= ($input["zipcode"]=="") ? "50101" : $input["zipcode"];
 
         $array_send['billingPhone']= $input["telephone"];
         $array_send['billingEMail']= $input["email"];

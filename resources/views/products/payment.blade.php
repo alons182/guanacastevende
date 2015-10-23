@@ -12,7 +12,7 @@
 
             <div class="payment__methods">
                 <span class="pull-left left"><input type="radio" value="1" name="payment_method" checked data-method="card"> Tarjeta de credito o debito</span>
-                <span class="pull-right right"><input type="radio" value="2" name="payment_method" data-method="paypal"> Paypal</span>
+                <!--<span class="pull-right right"><input type="radio" value="2" name="payment_method" data-method="paypal"> Paypal</span>-->
             </div>
             <section class="panel payment__method__card">
 
@@ -64,7 +64,9 @@
                     </div>
                     <div class="form__group">
                         {!! Form::label('zipcode', 'Codigo Postal:') !!}
-                        {!! Form::text('zipcode', null, ['class' => 'form__control','required' => 'required','maxlength'=>'10']) !!}
+                        {!! Form::text('zipcode', null, ['class' => 'form__control','maxlength'=>'10']) !!}
+
+                        {{--!! Form::hidden('zipcode',  '50101', ['maxlength'=>'10']) --}}
                         {!! errors_for('zipcode',$errors) !!}
                     </div>
 
