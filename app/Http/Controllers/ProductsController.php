@@ -219,7 +219,7 @@ class ProductsController extends Controller {
     {
 
         list($product, $items, $total) = $this->getPurchasedOptions($productId);
-        
+
         return view('products.payment')->with(compact('product','items', 'total'));
     }
 
