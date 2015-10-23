@@ -70,7 +70,7 @@
     </div>
 
 @endif
-@if (true)
+@if (false)
     <div class="info__system">
         Procedimiento de pago en periodo de prueba!!
     </div>
