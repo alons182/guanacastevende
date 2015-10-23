@@ -219,13 +219,7 @@ class ProductsController extends Controller {
     {
 
         list($product, $items, $total) = $this->getPurchasedOptions($productId);
-        //para test
-        try {
-            $this->mailer->paymentConfirmation(['email' => auth()->user()->email, 'product' => $product, 'items' => $items, 'total' => 1500]);
-        }catch (Swift_RfcComplianceException $e)
-        {
-            Log::error($e->getMessage());
-        }
+        
         return view('products.payment')->with(compact('product','items', 'total'));
     }
 
