@@ -160,7 +160,15 @@ class ProductRepository extends DbRepository{
     {
         return $this->model->with('categories')->findOrFail($id);
     }
-
+    /**
+     * Find a product by ID published
+     * @param $id
+     * @return mixed
+     */
+    public function publishedById($id)
+    {
+        return $this->model->with('categories')->wherePublished(1)->findOrFail($id);
+    }
     /**
      * Find a product by Slug
      * @param $slug

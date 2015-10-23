@@ -273,10 +273,6 @@
 
 <p>Podés ver tu artículo en el siguiente enlace: <a href="{{ url('/products/'.$product['id'] ) }}" target="_blank">{{ $product['name'] }}</a></p>
 <p>También podés seguir vendiendo haciendo click <a href="{{ url('/products/create') }}" target="_blank">aquí</a></p>
-<a style="display: inline-block; padding: 5px;" href="https://www.mastercard.us/en-us/merchants/safety-security/securecode.html" target="_blank"><img
-            src="{{ url('/img/logo-mastercard.png') }}" alt="Mastercard" /></a>
-<a style="display: inline-block; padding: 5px;" href="https://usa.visa.com/personal/security/vbv/index.html?it=wb|/|Learn%20More" target="_blank"><img
-            src="{{ url('/img/logo-verified-by-visa.png') }}" alt="Verified by Visa" /></a>
 <p> Seguinos en nuestras redes sociales para estar atento a las sorpresas !!</p>
 <a style="display: inline-block; padding: 5px;" href="https://www.facebook.com/guanacastevende" target="_blank"><img src="{{ url('/img/facebook.jpg') }}"
                                                                                                                      alt="Facebook"></a>
@@ -286,6 +282,12 @@
                                                                                                                                      alt="Youtube"></a>
 <a style="display: inline-block; padding: 5px;" href="https://plus.google.com/+GuanacastevendeCR" target="_blank"><img src="{{ url('/img/googleplus.jpg') }}"
                                                                                                                        alt="Google Plus"></a>
+<p>
+<a style="display: inline-block; padding: 5px; vertical-align: middle;" href="https://www.mastercard.us/en-us/merchants/safety-security/securecode.html" target="_blank"><img
+            src="{{ url('/img/logo-mastercard.png') }}" alt="Mastercard" /></a>
+<a style="display: inline-block; padding: 5px; vertical-align: middle;" href="https://usa.visa.com/personal/security/vbv/index.html?it=wb|/|Learn%20More" target="_blank"><img
+            src="{{ url('/img/logo-verified-by-visa.png') }}" alt="Verified by Visa" /></a>
+</p>
 
 
 </body>

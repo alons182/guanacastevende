@@ -163,7 +163,7 @@ class ProductsController extends Controller {
      */
     public function show($id)
     {
-        $product = $this->productRepository->findById($id);
+        $product = $this->productRepository->publishedById($id);
 
         $photos = $this->photoRepository->getPhotos($product->id);
 
