@@ -61,12 +61,12 @@ class ProductsController extends Controller {
         $this->paymentRepository = $paymentRepository;
         $this->mailer = $mailer;
 
-        $this->acquirerId = 99;
-        $this->commerceId = 7574;
+        $this->acquirerId = 12;//99;
+        $this->commerceId = 6221;//7574;
         $this->mallId = 1;
         $this->purchaseCurrencyCode = 188; //colones - 840 dolares
         $this->terminalCode = 00000000;
-        $this->vectorInicializacion = "4760916219954089";
+        $this->vectorInicializacion = "3293707751578678";//"4760916219954089";
     }
 
     /**
@@ -288,15 +288,37 @@ class ProductsController extends Controller {
 
         list($product, $items, $total) = $this->getPurchasedOptions($productId);
 
-
         $llaveVPOSCryptoPub = "-----BEGIN PUBLIC KEY-----\n".
+            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC0t0Cnbne8gQoeGK4nG6O3zfwh\n".
+            "q8u9Wp5zHjyVYbvx2zudSOlBnJ5qU74BcTGypbn6W7jjvSNE7AmncOAVh4RxuRXO\n".
+            "+bINFIyQ7/ErH/v1YpDFk8knC/NuvFpfHqhJ/5j2I8y+WmyF0MZmGtm074nUGv4d\n".
+            "qlbUMT9aYUQ+RzMO7QIDAQAB\n".
+            "-----END PUBLIC KEY-----";
+        /*llave testing*/
+        /*$llaveVPOSCryptoPub = "-----BEGIN PUBLIC KEY-----\n".
             "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDTJt+hUZiShEKFfs7DShsXCkoq\n".
             "TEjv0SFkTM04qHyHFU90Da8Ep1F0gI2SFpCkLmQtsXKOrLrQTF0100dL/gDQlLt0\n".
             "Ut8kM/PRLEM5thMPqtPq6G1GTjqmcsPzUUL18+tYwN3xFi4XBog4Hdv0ml1SRkVO\n".
             "DRr1jPeilfsiFwiO8wIDAQAB\n".
-            "-----END PUBLIC KEY-----";
+            "-----END PUBLIC KEY-----";*/
 
         $llaveComercioFirmaPriv = "-----BEGIN RSA PRIVATE KEY-----\n".
+            "MIICWwIBAAKBgQC5mWVuDSSaRIT7P5C+5kFprVUDzVt8dt0GFSI7yvpNf2yRoKGi\n".
+            "ezftNyfXVnz5WeX8bZGQgo6HEWZUQQGLwZ5XqC9hZ0gYH8m3sfpWCGO7S8NnTdls\n".
+            "UYUjmlQL/vGGLEyNLUWwejtbidOPklQQdo0NQqUfEJQG2QtvX12z2ScgiwIDAQAB\n".
+            "AoGAX9b4a5XZ2tebG+q9IfbgvGNHTUlT/readrOfE+VCz5YHSEP8c1zRims65ZXB\n".
+            "vzlO68TgsBDa7KBtiQBwfeyjiJskuYZLEyfktC5i01SEoS8/VepC6mkuOYj3h7zp\n".
+            "DD7vQy6VwuPghOp/lhOlS1WQrKJ/0U8mDpjpshuBhZjoB4ECQQDeUfEbCelRI/fO\n".
+            "lwn2+/zIQU4d4oN4zKPrJZQSOanERdafwQljLp8Uyi7mGlzrcGxDGzM4prp97OlL\n".
+            "ghmERQFrAkEA1bdWpXCRJ4Rb6B2dUP5IAhb10YmNFnFXT46vNAQOwZgp5gBWWT6B\n".
+            "R4ofRnycLXKD9N6KORdMdFo3L2koZA+FYQJAVbkW1KwvsL/Dr38BsqBbSgQUUOWk\n".
+            "eBHAKs1kmNpvIWUkapkOO5YgdO24w7Tqm0XQGNgGGhP/2Mpe8mSJ3jyVXQJANCS1\n".
+            "WUwrvk6G9g0zsu03uHrNo0BCUjV5LgoMKU7MIuPzZRC0ALZFaKUEmHgSyuvj0jzx\n".
+            "0JgkqUbRrBmmJzO6QQJASvj9N11j7DRNRoQdxFy0LX1hXVJfCXKewxF7QmKUVG1F\n".
+            "m08UwlregO0uKRDERRxx/jYWXB2Zw4dWZ5XuMRFnrw==\n".
+            "-----END RSA PRIVATE KEY-----";
+        /*llave testing*/
+        /*$llaveComercioFirmaPriv = "-----BEGIN RSA PRIVATE KEY-----\n".
             "MIICXAIBAAKBgQDI71jf/WkPdDuSPmArJFaxmvg1F+nQ7X26jkvVxDaFY57ZQlGq\n".
             "S1wxiHE8dr06mz0vGdW0PLVggNo0aOKQXLuvyiV9QxHYpd4VPjKglMItA2ae11Qg\n".
             "Xom0AoRDSR6+18lkFZpxXUY9KExjhL5dOIQXbnS7eVRjRfmrS5JnPeK8OwIDAQAB\n".
@@ -310,7 +332,7 @@ class ProductsController extends Controller {
             "5u7x/6hr8Grzu3xAWvznkCnf4G0JzaWMcS2O3sLOAPtimSpJqAlaEpfhMs4xGPtQ\n".
             "D9Qm5cCIuU4HbMtPTOcCQFIFEnv4VvtGJwWPSIQr6jxpL4Z+NA3sy8gWcZwKnWzp\n".
             "72jjGx/YBW6qheLJUImAuVVS/7Tm6XztdkWMYT38fJo=\n".
-            "-----END RSA PRIVATE KEY-----";
+            "-----END RSA PRIVATE KEY-----";*/
 
         //$total = "75";
         $array_send['acquirerId']= $this->acquirerId;
@@ -414,13 +436,36 @@ class ProductsController extends Controller {
 
 
         $llaveVPOSSignaturePub = "-----BEGIN PUBLIC KEY-----\n".
+            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCtvXnikeSS+H/Qs/51iL3ZYPfz\n".
+            "KW94WUAz7IdZIOIcuG1zLIR3kUNUc/vdSmW120dwkIleB6pl4cVT5nDewBFJCzTS\n".
+            "W6jGaWaryzl7xS3ZToKTHpVeQr3avN7H+Om9TfsccY7gBV3IOIauTg9xIpDjIg52\n".
+            "fUcfyPq+Bhw0cWkDUQIDAQAB\n".
+            "-----END PUBLIC KEY-----";
+        /*llave testing*/
+        /*$llaveVPOSSignaturePub = "-----BEGIN PUBLIC KEY-----\n".
             "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvJS8zLPeePN+fbJeIvp/jjvLW\n".
             "Aedyx8UcfS1eM/a+Vv2yHTxCLy79dEIygDVE6CTKbP1eqwsxRg2Z/dI+/e14WDRs\n".
             "g0QzDdjVFIuXLKJ0zIgDw6kQd1ovbqpdTn4wnnvwUCNpBASitdjpTcNTKONfXMtH\n".
             "pIs4aIDXarTYJGWlyQIDAQAB\n".
-            "-----END PUBLIC KEY-----";
+            "-----END PUBLIC KEY-----";*/
 
         $llaveComercioCifradoPriv = "-----BEGIN RSA PRIVATE KEY-----\n".
+            "MIICXQIBAAKBgQDUFykzdsyPZyhb+O+dV4j6pokD7kqV3GSu0hNsxf3VCBCLO6Tb\n".
+            "Ozg/TNoOx9cjFbYBRieHhPB61BN/hh0GVSyxF8QJ1gG7QzK5eMtFrgeANrEzlo2J\n".
+            "Tvm6G6dXbGP1ojdlbVsaYdp72b8HNdpWDqEmqGnpoBgZVDe32+5ZPE0NCwIDAQAB\n".
+            "AoGAdAEvEe0auh0MYDHqrb7hN2e7baD6vrlLgKt64HXy/oBovB8lbpwXidf5NTht\n".
+            "Hc2UPWIn4OH/vs8c0xWB7qLLzBlnuW2IXd3tdQW6smkk7CkULfyWhiGQCg0d0cRt\n".
+            "Rlc/AETHRkWpkNW6UkpVfRJ+gwz9HDlwKZip6hwq8DKzexECQQD/FKdBvEmskafZ\n".
+            "zn08tKXXbX97Q7ipCf3yKe72RxXYfr6XmU/w7ltWSfMuxJ/YpKn4NYeB2041jQnO\n".
+            "XIrMtXhfAkEA1NrX4Q9UF1r1oay5VQEr8bV9vSEH8DViHJt0L6ydtaht5zqQJOhd\n".
+            "79S4H8SZ283pktnrF11Lfg3i5pU3rZHa1QJAIipYBLv9ejnAK7I2oAzqMaKe8pmt\n".
+            "gCawduEa+q2mxWqkiJWmWXTzkukww1DewBu+EFrLHZ+MKCwN5jAK/0RHLQJBALSj\n".
+            "rMXBPno7pW25qecsAWE1xyn0mEoQ49ynSOkUsxrxf6PWnXHVCbN5cXD0ZiaWD32j\n".
+            "FtJTSLgHjOJnDENvHqkCQQC+dZLZD4fcH/hYAmNyJtrvMWb8BKZNYI91BxJ5S4uM\n".
+            "liv104HjblITA/M5Agk30FPOG6HSZ1zsPDRm6BvDaYE6\n".
+            "-----END RSA PRIVATE KEY-----";
+        /*llave testing*/
+        /*$llaveComercioCifradoPriv = "-----BEGIN RSA PRIVATE KEY-----\n".
             "MIICXQIBAAKBgQCr3xnDYPtCdJ1X/OtLGp01EPkAd2cOieqLKXSrbdNHuOLkpBMY\n".
             "xw89IrWVKFDJREiaGTJ79FYvgzGSmo2FT/SW1Ecv3TIqIM75eMomWQho7l5s9Qsa\n".
             "1xfx3FZrUnnYS2MUAJfTTXww8SPB8RkRPRk8zOUh0IvvpI9xJFywPhII1wIDAQAB\n".
@@ -434,7 +479,7 @@ class ProductsController extends Controller {
             "Gb21tvfrlFP5Cc2i6MM9e/sLIMu1AUXxAvnFfHuH0PGX5qAAoNPZ7ohWFLw/ibOH\n".
             "g3jmCFW79NbwJ0xeGpWlAkBb+equG3spXxEIO8JI8Z3CA9jvPpXKchqSifLxfRPi\n".
             "zwd0jVnxjJ5uJGOUZkfvLWCG4bdiAWdn3pDGTugkgiW3\n".
-            "-----END RSA PRIVATE KEY-----";
+            "-----END RSA PRIVATE KEY-----";*/
 
         $arrayIn['IDACQUIRER'] = (isset($input['IDACQUIRER'])) ? $input['IDACQUIRER'] : "";
         $arrayIn['IDCOMMERCE'] = (isset($input['IDCOMMERCE'])) ? $input['IDCOMMERCE'] : "";

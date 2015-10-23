@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="payment">
-        <form action="https://test2.alignetsac.com/VPOS/MM/transactionStart20.do" method="POST" class="form-horizontal">
+        <form action="https://vpayment.verifika.com/VPOS/MM/transactionStart20.do" method="POST" class="form-horizontal">
 
         <div class="left-section">
             <h1 class="payment__title">Confirmación de pago</h1>
