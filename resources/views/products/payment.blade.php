@@ -126,6 +126,12 @@
 
                 </table>
                 <h1 class="payment__title">Total: {!! money($total, '₡') !!} </h1>
+                <div class="logos-payment">
+                    <a href="https://www.mastercard.us/en-us/merchants/safety-security/securecode.html" target="_blank"><img
+                                src="/img/logo-mastercard.png" alt="Mastercard" /></a>
+                    <a href="http://www.visalatam.com/s_verified/verified.jsp" target="_blank"><img
+                                src="/img/logo-verified-by-visa.png" alt="Verified by Visa" /></a>
+                </div>
             </div>
 
 
