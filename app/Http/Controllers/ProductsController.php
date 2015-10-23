@@ -20,6 +20,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Illuminate\Support\Facades\Log;
+use Swift_RfcComplianceException;
 
 
 class ProductsController extends Controller {
@@ -136,7 +137,15 @@ class ProductsController extends Controller {
         {
             $this->productRepository->update_state($product->id, 2); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
             flash('Producto Creado correctamente');
-            $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product, 'profile' => Auth()->user()->profile ]);
+
+            try {
+                $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product, 'profile' => Auth()->user()->profile ]);
+            }catch (Swift_RfcComplianceException $e)
+            {
+                Log::error($e->getMessage());
+            }
+
+
             return Redirect()->route('profile.show', Auth()->user()->username);
         }
 
@@ -210,9 +219,13 @@ class ProductsController extends Controller {
     {
 
         list($product, $items, $total) = $this->getPurchasedOptions($productId);
-
-
-
+        //para test
+        try {
+            $this->mailer->paymentConfirmation(['email' => auth()->user()->email, 'product' => $product, 'items' => $items, 'total' => 1500]);
+        }catch (Swift_RfcComplianceException $e)
+        {
+            Log::error($e->getMessage());
+        }
         return view('products.payment')->with(compact('product','items', 'total'));
     }
 
@@ -509,10 +522,14 @@ class ProductsController extends Controller {
                 //actualizamos el estado del producto recien ingresado a publicado
                 $this->productRepository->update_state($product->id, 1); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
 
-                // informamos via email del producto recien creado
-                $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product, 'profile' => Auth()->user()->profile]);
+                // informamos via email del producto recien creado y su confirmacion de pago
+                try {
+                    $this->mailer->paymentConfirmation(['email' => Auth()->user()->email, 'product' => $product, 'items' => $items, 'total' => $total]);
+                }catch (Swift_RfcComplianceException $e)
+                {
+                    Log::error($e->getMessage());
+                }
 
-                //flash('Pago realizado con exito');
             }
             if($authorizationResult == 01)
             {

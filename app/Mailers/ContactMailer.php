@@ -24,6 +24,14 @@ class ContactMailer extends Mailer{
 
         return $this->sendTo($emailTo, $subject, $view, $data);
     }
+    public function paymentConfirmation($data)
+    {
+        $view = 'emails.contact.paymentConfirmation';
+        $subject = 'Información desde el sitio Guanacaste Vende - Confirmación de pago';
+        $emailTo = $data['email'];
+
+        return $this->sendTo($emailTo, $subject, $view, $data);
+    }
 
     public function welcome($data)
     {

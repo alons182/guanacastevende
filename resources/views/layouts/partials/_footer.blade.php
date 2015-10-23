@@ -19,6 +19,10 @@
                 <a class="footer__social__link" href="https://plus.google.com/+GuanacastevendeCR" target="_blank"><i class="icon-google-plus"></i></a>
             </div>
             <div class="footer__verify">
+                <a href="https://www.mastercard.us/en-us/merchants/safety-security/securecode.html" target="_blank"><img
+                            src="/img/logo-mastercard.png" alt="Mastercard" /></a>
+                <a href="http://www.visalatam.com/s_verified/verified.jsp" target="_blank"><img
+                            src="/img/logo-verified-by-visa.png" alt="Verified by Visa" /></a>
                 <span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=JIfaqN6F1wh6amQKHCl57GcczGx0Pmvki0HKcadEpzw1eTHLXaenO41LULWW"></script></span>
                 <a href="#" class="siteLock" onclick="window.open('https://www.sitelock.com/verify.php?site=www.guanacastevende.com','SiteLock','width=600,height=600,left=160,top=170');" ><img alt="SiteLock" title="SiteLock" src="//shield.sitelock.com/shield/www.guanacastevende.com"/></a>
 

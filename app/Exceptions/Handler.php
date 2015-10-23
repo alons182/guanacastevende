@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Log;
+use Swift_RfcComplianceException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -54,6 +56,7 @@ class Handler extends ExceptionHandler
             return redirect()->route('categories');
 
         }
+
 
         return parent::render($request, $e);
     }
