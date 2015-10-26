@@ -11,6 +11,26 @@
         infoBox = $('#InfoBox'),
         filters = $(".filtros");
 
+    $('.purchase-form').find('.terms-input #terms').on('click', function(e){
+        if ($(this).attr('checked')) {
+
+            $(this).attr('checked', false);
+        } else {
+            $(this).attr('checked', true);
+        }
+
+    });
+
+    $('.btn-execute-payment').on('click', function(e){
+
+
+        if ($('.terms-input #terms').is(":checked")) {
+            $('.purchase-form').submit();
+        }else{
+            alert('Acepta los termino y condiciones para continuar');
+        }
+        e.preventDefault();
+    });
     $('.alert').delay(4000).fadeOut(300);
 
     function submitForm(){
