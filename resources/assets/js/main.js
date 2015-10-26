@@ -11,7 +11,10 @@
         infoBox = $('#InfoBox'),
         filters = $(".filtros");
 
-    $('.purchase-form').find('.terms-input #terms').on('click', function(e){
+    var $purchaseForm = $('.purchase-form');
+    var $terms = $purchaseForm.find('.terms-input #terms');
+
+    $terms.on('click', function(e){
         if ($(this).attr('checked')) {
 
             $(this).attr('checked', false);
@@ -24,13 +27,14 @@
     $('.btn-execute-payment').on('click', function(e){
 
 
-        if ($('.terms-input #terms').is(":checked")) {
-            $('.purchase-form').submit();
+        if ($terms.is(":checked")) {
+            $purchaseForm.submit();
         }else{
             alert('Acepta los termino y condiciones para continuar');
         }
         e.preventDefault();
     });
+
     $('.alert').delay(4000).fadeOut(300);
 
     function submitForm(){
@@ -103,7 +107,8 @@
         imagePreviewMultiple();
 
     });
-    $('body ').on('change', 'input[name="new_photo_file[]"]', function () {
+    var $body = $('body');
+    $body.on('change', 'input[name="new_photo_file[]"]', function () {
         imagePreview(this)
     });
     function imagePreviewMultiple() {
@@ -154,7 +159,7 @@
             alert("This browser does not support FileReader.");
         }
     }
-    $('body ').on('change', '.rootCategories', function () {
+    $body.on('change', '.rootCategories', function () {
 
         var $this = $(this);
         var containerId = $this.data('container');
@@ -232,7 +237,7 @@
 
     });
 
-    $("body").hoverIntent({
+    $body.hoverIntent({
         over: function () {
             $('.products__categories__ul').slideDown(200);
         },
@@ -254,9 +259,9 @@
 
     });
 
-
-    $("input[name='option_id']").on('click', checkOnlyOne);
-    $("input[name='option_id']").on('click', function () {
+    var $optionId =  $("input[name='option_id']");
+    $optionId.on('click', checkOnlyOne);
+    $optionId.on('click', function () {
         if ($(this).attr('value') == 4) {
             $(this).siblings('.option__tags').find('input[type="checkbox"]').attr('disabled', false);
 
@@ -543,7 +548,7 @@
             }
         }
     });
-    $('#gallery a').magnificPopup({
+    gallery.find('a').magnificPopup({
         type: 'image',
         gallery: {
             enabled: true
@@ -569,13 +574,14 @@
 
 
     //review
-    $('#new-review').autosize({append: "\n"});
 
     var reviewBox = $('#post-review-box');
     var newReview = $('#new-review');
     var openReviewBtn = $('#open-review-box');
     var closeReviewBtn = $('#close-review-box');
     var ratingsField = $('#ratings-hidden');
+
+    newReview.autosize({append: "\n"});
 
     openReviewBtn.click(function (e) {
         reviewBox.slideDown(400, function () {
