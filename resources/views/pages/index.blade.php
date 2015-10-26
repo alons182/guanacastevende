@@ -15,11 +15,11 @@
 
                     <div class="banner__slide" style="background-image: url('/img/banner.jpg')">
                         <!--<h2 class="banner__slide__title cursive">Publicidad</h2>-->
-                        <a href="#" class="banner__slide__link"></a>
+                        <a href="/about" class="banner__slide__link"></a>
                     </div>
                 <div class="banner__slide" style="background-image: url('/img/banner2.jpg')">
 
-                    <a href="#" class="banner__slide__link"></a>
+                    <a href="https://www.avotz.com" class="banner__slide__link" target="_blank"></a>
                 </div>
 
 
