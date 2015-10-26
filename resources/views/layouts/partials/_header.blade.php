@@ -54,7 +54,9 @@
                 <li class="header__menu__item"><a class="header__menu__link" href="/blog" target="_blank">Noticias</a> </li>
                 <li class="header__menu__item"><a class="header__menu__link" href="{{ route('about_path') }}">Acerca de</a> </li>
                 <li class="header__menu__item"><a class="header__menu__link" href="{{ route('contact_path') }}">Contactenos</a> </li>
-
+                @if (!Auth::guest())
+                <li class="header__menu__item"><a href="{{ route('product_create') }}" class="header__menu__link header__submenu__link__featured">Vender articulo</a></li>
+                @endif
 
 
             </ul>
