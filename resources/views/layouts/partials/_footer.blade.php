@@ -31,7 +31,7 @@
            <p>Esta tienda está autorizada por Visa y MasterCard para realizar transacciones Electrónicas. <a class="footer__terms__link" href="{{ route('terms_path') }}">Términos y Condiciones</a></p>
             <a href="https://www.mastercard.us/en-us/merchants/safety-security/securecode.html" target="_blank"><img
                         src="/img/logo-mastercard.png" alt="Mastercard" /></a>
-            <a href="http://www.visalatam.com/s_verified/verified.jsp" target="_blank"><img
+            <a href="https://usa.visa.com/personal/security/vbv/index.html?it=wb|/|Learn%20More" target="_blank"><img
                         src="/img/logo-verified-by-visa.png" alt="Verified by Visa" /></a>
         </div>
 
