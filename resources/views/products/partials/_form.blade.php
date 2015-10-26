@@ -12,8 +12,8 @@
             <!--<h1 class="product__edit__title">Agregar Imagen</h1>-->
             <div class="form">
                 <div class="form__group">
+                    <h2 style="text-transform: uppercase;">Imagen Principal:</h2>
 
-                    {!! Form::label('main-photo','Imagen Principal: ',['class'=>'control-label'])!!}
 
                     {!! Form::file('image',['required'=>'required','data-holder' =>'image-holder','class'=>'inputfile','id'=>'image']) !!}
 
