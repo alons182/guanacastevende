@@ -145,7 +145,7 @@
                         </ul>
                     </section>
                     <div class="form-group terms-input">
-                        {!! Form::label('terms', 'Acepta Terminos y Condiciones:',['class'=>'terms-input__label']) !!}
+                        {!! Form::label('terms', 'Aceptar Terminos y Condiciones:',['class'=>'terms-input__label']) !!}
                         {!! Form::checkbox('terms') !!}
                         {!! errors_for('terms',$errors) !!}
                     </div>
