@@ -197,6 +197,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
     ]);
 
     # Users
+    Route::get('users/list', [
+        'as' => 'users_list',
+        'uses' => 'Admin\UsersController@list_users'
+    ]);
+    
     Route::resource('users', 'Admin\UsersController');
 
     Route::get('users', [
@@ -204,6 +209,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
         'uses' => 'Admin\UsersController@index'
 
     ]);
+
 
     Route::get('users/register', [
         'as'   => 'user_register',
@@ -221,10 +227,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
             'uses' => 'Admin\UsersController@' . $key,
         ));
     }
-    Route::get('users/list', [
-        'as' => 'users_list',
-        'uses' => 'Admin\UsersController@list_users'
-    ]);
+
 
 
     # Products

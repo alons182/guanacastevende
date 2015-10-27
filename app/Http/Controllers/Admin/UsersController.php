@@ -166,7 +166,6 @@ class UsersController extends Controller {
      */
     public function list_users(Request $request)
     {
-
         return $this->userRepository->list_users($request->input('exc_id'), $request->input('key'));
     }
 
