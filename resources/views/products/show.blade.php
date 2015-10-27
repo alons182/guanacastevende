@@ -8,6 +8,7 @@
     <meta property="og:description" content="{!! trim(strip_tags( $product->description ))!!} | @foreach ($product->tags as $tag)
     {!! trim($tag->name) !!}@endforeach" />
     <meta property="og:image" content="{!! photos_path('products').'thumb_'.$product->image !!}" />
+    <meta property="og:url" content="{!! Request::url() !!}"/>
 @stop
 
 @section('content')
