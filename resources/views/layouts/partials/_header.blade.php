@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=1, initial-scale=1, maximum-scale=1">
     <link href='//fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <title>@yield('meta-title','Guanacaste Vende | Home')</title>
-
+    @yield('meta-share')
     <!-- page styles -->
     @yield('css')
     <link rel="stylesheet" href="{{ elixir('css/bundle.css') }}">
