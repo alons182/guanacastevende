@@ -201,7 +201,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
         'as' => 'users_list',
         'uses' => 'Admin\UsersController@list_users'
     ]);
-    
+
     Route::resource('users', 'Admin\UsersController');
 
     Route::get('users', [
@@ -285,7 +285,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
 
     Route::get('tags', [
         'as'   => 'tags',
-        'uses' => 'Admin\ProductsController@index'
+        'uses' => 'Admin\TagsController@index'
     ]);
 
     # options
