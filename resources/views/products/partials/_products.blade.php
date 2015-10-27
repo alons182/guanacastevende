@@ -45,7 +45,7 @@
         </div>
         <div class="products__item__info">
             <h2 class="products__item__intro">
-                <a class="products__item__link icon-caret-right" href="{!! ($product->published) ? URL::route('product_path', [$product->id]) : '#' !!}">{!! $product->name !!}</a>
+                <a class="products__item__link " href="{!! ($product->published) ? URL::route('product_path', [$product->id]) : '#' !!}">{!! $product->name !!} <span class="icon-caret-right"></span></a>
             </h2>
         </div>
        @if (isset($user) && $user->isCurrent() && $user->isHisProduct($product))

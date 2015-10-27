@@ -91,7 +91,7 @@
                 <div class="form__group">
                     {!! Form::label('name','Nombre de producto:',['class'=>'col-sm-2 control-label']) !!}
 
-                        {!! Form::text('name', null,['class'=>'form__control','required'=>'required']) !!}
+                        {!! Form::text('name', null,['class'=>'form__control','required'=>'required','maxlength'=>'20']) !!}
                         {!! errors_for('name',$errors) !!}
 
                 </div>

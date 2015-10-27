@@ -24,7 +24,7 @@ class ProductFrontRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|max:20',
             'description' => 'required',
             'price' => 'required|numeric',
             'categories' => 'required',
