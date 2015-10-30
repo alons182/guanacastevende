@@ -10,7 +10,7 @@ estamos para servirle @stop
             De Lunes a Viernes de 08:00 am a 12:00 y de 1:00 pm a 5:00 pm<br/>
 
             <span><b>Email:</b> info@guanacastevende.com</span><br/>
-            <span><b>Telefono:</b> 8352 3552</span>
+            <span><b>Telefono:</b> 8358 3552</span>
             <div class="contact__social">
                 <a class="contact__social__link" href="https://www.facebook.com/guanacastevende" target="_blank"><i class="icon-facebook"></i></a>
                 <a class="contact__social__link" href="https://twitter.com/GuanacasteVende" target="_blank"><i class="icon-twitter"></i></a>
