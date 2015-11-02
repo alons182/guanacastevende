@@ -13,7 +13,11 @@
                 <div class="cycle-prev"><i class="icon-angle-left"></i></div>
                 <div class="cycle-next"><i class="icon-angle-right"></i></div>
 
-                    <div class="banner__slide" style="background-image: url('/img/banner.jpg')">
+                <div class="banner__slide" style="background-image: url('/img/rifa-gte-vende.jpg')">
+
+                    <a href="#" class="banner__slide__link" ></a>
+                </div>
+                <div class="banner__slide" style="background-image: url('/img/banner.jpg')">
                         <!--<h2 class="banner__slide__title cursive">Publicidad</h2>-->
                         <a href="/about" class="banner__slide__link"></a>
                     </div>
@@ -21,6 +25,7 @@
 
                     <a href="https://www.avotz.com" class="banner__slide__link" target="_blank"></a>
                 </div>
+
 
 
 
