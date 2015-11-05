@@ -242,7 +242,7 @@ class ProductRepository extends DbRepository{
     public function getFeatured()
     {
 
-        $products = $this->model->Featured()->orderBy('created_at','DESC')->get();
+        $products = $this->model->Featured()->orderBy('created_at','DESC')->paginate(22);
 
         return $products;
     }
