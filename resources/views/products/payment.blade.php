@@ -6,13 +6,15 @@
 
     <div class="payment">
 
-        {!! Form::open(['route'=>['product_payment.purchase',$product->id], 'class'=>'form-horizontal']) !!}
+        {!! Form::open(['route'=>['product_payment.purchase',$product->id], 'class'=>'form-horizontal','id'=>'form-payment' ]) !!}
         <div class="left-section">
             <h1 class="payment__title">Opciones de pago</h1>
 
             <div class="payment__methods">
-                <span class="pull-left left"><input type="radio" value="1" name="payment_method" checked data-method="card"> Tarjeta de credito o debito</span>
-                <!--<span class="pull-right right"><input type="radio" value="2" name="payment_method" data-method="paypal"> Paypal</span>-->
+                <span class="pull-left left"><input id="payment_method_card" type="radio" value="1" name="payment_method" checked data-method="card" data-route="{!! route('product_payment.purchase',$product->id) !!}"> <label for="payment_method_card" title="Tarjeta de credito o debito"><img src="/img/visa-mastercard.png" alt="Tarjeta de credito o debito" /></label></span>
+               @if($currentUser->id == 1 || $currentUser->id == 7 || $currentUser->id == 8)
+                <span class="pull-right right"><input id="payment_method_paypal" type="radio" value="2" name="payment_method" data-method="paypal" data-route="{!! route('product_payment.purchasePaypal',$product->id) !!}"><label for="payment_method_paypal" title="Paypal"> <img src="https://www.paypalobjects.com/webstatic/es_MX/mktg/logos-buttons/grey_btn-356x42.png" alt="PayPal Credit" /></label></span>
+                @endif
             </div>
             <section class="panel payment__method__card">
 
@@ -77,25 +79,12 @@
                         <button type="submit" class="btn btn-gray" form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}">
                             Cancelar<i class="fa fa-trash-o"></i>
                         </button>
+
                     </div>
 
                 </div>
             </section>
             <section class="panel payment__method__paypal">
-                    <h1 class="payment__title">Paypal</h1>
-                @foreach($items as $item)
-                    <script async="async" src="/vendor/paypal-button.min.js?merchant=SHAHQGFU3JV94"
-                            data-button="buynow"
-                            data-name="{!! $item['name'] !!}"
-                            data-quantity="1"
-                            data-amount="{!! $item['priceDollar'] !!}"
-                            data-currency="USD"
-                            data-shipping="0"
-                            data-tax="0"
-                            data-callback="http://guanacastevende.com/profile/admin"
-                            data-env="sandbox"
-                            ></script>
-                @endforeach
 
             </section>
 
@@ -131,6 +120,7 @@
                                 src="/img/logo-mastercard.png" alt="Mastercard" /></a>
                     <a href="http://www.visalatam.com/s_verified/verified.jsp" target="_blank"><img
                                 src="/img/logo-verified-by-visa.png" alt="Verified by Visa" /></a>
+                    <a href="https://www.paypal.com/" target="_blank"><img src="https://www.paypalobjects.com/webstatic/es_MX/mktg/logos-buttons/aceptamos-145x47.png" alt="Paga con PayPal" /></a>
                 </div>
             </div>
 
@@ -142,7 +132,9 @@
     {!! Form::open(['method' => 'delete', 'id' =>'form-delete','data-confirm' => 'Estas seguro? Se eliminaran los datos del producto recien ingresado']) !!}{!! Form::close() !!}
 @stop
 
+@section('scripts')
 
+@stop
 
 
 		

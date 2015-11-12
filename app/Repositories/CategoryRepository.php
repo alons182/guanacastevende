@@ -175,6 +175,8 @@ class CategoryRepository extends DbRepository{
         if($data['parent_id'] == 'root')
             $data['parent_id'] = NULL;
 
+
+
         return $data;
     }
 

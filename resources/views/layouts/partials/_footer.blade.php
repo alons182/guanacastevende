@@ -33,6 +33,7 @@
                         src="/img/logo-mastercard.png" alt="Mastercard" /></a>
             <a href="https://usa.visa.com/personal/security/vbv/index.html?it=wb|/|Learn%20More" target="_blank"><img
                         src="/img/logo-verified-by-visa.png" alt="Verified by Visa" /></a>
+            <a href="https://www.paypal.com/" target="_blank" style="background-color: #FFF;"><img src="https://www.paypalobjects.com/webstatic/es_MX/mktg/logos-buttons/aceptamos-145x47.png" alt="Paga con PayPal" style="display: block;" /></a>
         </div>
 
 

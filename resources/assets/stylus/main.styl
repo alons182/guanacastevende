@@ -1187,9 +1187,26 @@ strong
 			width 550px
 .payment
 	margin 1rem 0
+	&__method__selected
+		margin-bottom 1rem
 	&__methods
 		margin-bottom 1rem
 		overflow hidden
+		input[type="radio"]
+			margin-right 2px
+		label
+			display inline-block
+			vertical-align middle
+		label[for="payment_method_paypal"]
+			width 85px
+			overflow hidden
+			position relative
+			height 51px
+			img
+				max-width inherit
+				width 348px
+
+
 	&__method__paypal
 		display none
 	&__terms
@@ -1197,6 +1214,18 @@ strong
 		overflow-y scroll
 		border  1px solid #e5e5e5
 		padding .5rem
+@media screen and (min-width: 640px)
+	.payment
+		&__methods
+			label[for="payment_method_paypal"]
+				width auto
+				overflow visible
+				height auto
+				img
+					max-width 100%
+					width 100%
+
+
 .logos-payment
 	a
 		display inline-block

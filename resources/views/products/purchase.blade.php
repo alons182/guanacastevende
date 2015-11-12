@@ -5,20 +5,30 @@
 @section('content')
 
     <div class="payment">
-        <form action="https://vpayment.verifika.com/VPOS/MM/transactionStart20.do" method="POST" class="form-horizontal purchase-form">
-
+        @if($paymentMethod == 1)
+            <form action="https://vpayment.verifika.com/VPOS/MM/transactionStart20.do" method="POST" class="form-horizontal purchase-form">
+        @else
+            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token={{ isset($tokenPaypal) ? $tokenPaypal : ''   }}&useraction=commit" method="POST" class="form-horizontal purchase-form">
+        @endif
         <div class="left-section">
             <h1 class="payment__title">Verificar datos</h1>
-
+            <div class="payment__method__selected">
+                @if($paymentMethod == 1)
+                    <span><b>Metodo de Pago:</b></span> <img src="/img/visa-mastercard.png" alt="Tarjeta de Debito o Crédito" style="display:inline-block; vertical-align:middle;">
+                @else
+                    <span><b>Metodo de Pago:</b></span> <img src="/img/paypal-method2.png" alt="Paypal" style="display:inline-block; vertical-align:middle;" />
+                @endif
+            </div>
             <section class="panel payment__method__card">
 
                 <div class="form">
-                    {!! Form::hidden('IDACQUIRER',  $idAcquirer) !!}
-                    {!! Form::hidden('IDCOMMERCE',  $idCommerce) !!}
-                    {!! Form::hidden('XMLREQ',  $array_get['XMLREQ']) !!}
-                    {!! Form::hidden('DIGITALSIGN',  $array_get['DIGITALSIGN']) !!}
-                    {!! Form::hidden('SESSIONKEY',  $array_get['SESSIONKEY']) !!}
-
+                    @if($paymentMethod == 1)
+                        {!! Form::hidden('IDACQUIRER',  $idAcquirer) !!}
+                        {!! Form::hidden('IDCOMMERCE',  $idCommerce) !!}
+                        {!! Form::hidden('XMLREQ',  $array_get['XMLREQ']) !!}
+                        {!! Form::hidden('DIGITALSIGN',  $array_get['DIGITALSIGN']) !!}
+                        {!! Form::hidden('SESSIONKEY',  $array_get['SESSIONKEY']) !!}
+                    @endif
 
                     <p class="profile__item"> <strong>Nombre:</strong> {!! $input["first_name"] !!} </p>
                     <p class="profile__item"> <strong>Apellidos:</strong> {!! $input["last_name"] !!} </p>
@@ -151,11 +161,16 @@
                     </div>
 
                     <div class="form__group">
-                        {!! Form::submit('Ejecutar pago', ['class' => 'btn btn-primary btn-execute-payment']) !!}
+                        @if($paymentMethod == 1)
+                            {!! Form::submit('Ejecutar pago', ['class' => 'btn btn-primary btn-execute-payment']) !!}
+                        @else
+                            {!! Form::submit('Ir a Paypal', ['class' => 'btn btn-primary btn-execute-payment']) !!}
+                        @endif
                         <a href="{{ URL::previous() }}" class="btn btn-default">Atras</a>
                         <button type="submit"  style="margin-left: 1rem;" class="btn btn-gray" form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}">
                             Cancelar<i class="fa fa-trash-o"></i>
                         </button>
+
                     </div>
 
                 </div>
@@ -194,6 +209,7 @@
                                 src="/img/logo-mastercard.png" alt="Mastercard" /></a>
                     <a href="http://www.visalatam.com/s_verified/verified.jsp" target="_blank"><img
                                 src="/img/logo-verified-by-visa.png" alt="Verified by Visa" /></a>
+                    <a href="https://www.paypal.com/" target="_blank"><img src="https://www.paypalobjects.com/webstatic/es_MX/mktg/logos-buttons/aceptamos-145x47.png" alt="Paga con PayPal" /></a>
                 </div>
 
             </div>
@@ -205,6 +221,7 @@
     </div>
     {!! Form::open(['method' => 'delete', 'id' =>'form-delete','data-confirm' => 'Estas seguro? Se eliminaran los datos del producto recien ingresado']) !!}{!! Form::close() !!}
 @stop
+
 
 
 

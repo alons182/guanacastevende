@@ -14,26 +14,26 @@
 
                 @if(isset($authorizationResult) && isset($purchaseOperationNumber))
 
-                    @if($authorizationResult == 00)
+                    @if($authorizationResult == 00 || $authorizationResult == "Success")
                         <div class="alert alert-info">Pago realizado con exito</div>
                     @endif
                     @if($authorizationResult == 01)
                             <div class="alert alert-danger">La operación ha sido denegada en el Banco Emisor</div>
                     @endif
-                    @if($authorizationResult == 05)
+                    @if($authorizationResult == 05 || $authorizationResult == "Failure")
                             <div class="alert alert-danger">La operación ha sido rechazada</div>
                     @endif
 
-                    <div class="header-receipt {!! ($authorizationResult == 00) ? 'ok' : 'error' !!}">
+                    <div class="header-receipt {!! ($authorizationResult == 00 || $authorizationResult == "Success") ? 'ok' : 'error' !!}">
                         <h2 class="header-receipt-number">Numero de operación: {!! $purchaseOperationNumber !!}</h2>
                         <h3 class="header-receipt-status">Estado:
-                            @if($authorizationResult == 00)
+                            @if($authorizationResult == 00 || $authorizationResult == "Success")
                                 <span>Autorizada</span>
                             @endif
                             @if($authorizationResult == 01)
                                 <span>Denegada en el Banco Emisor</span>
                             @endif
-                            @if($authorizationResult == 05)
+                            @if($authorizationResult == 05 || $authorizationResult == "Failure")
                                 <span>Rechazada</span>
                             @endif
                         </h3>

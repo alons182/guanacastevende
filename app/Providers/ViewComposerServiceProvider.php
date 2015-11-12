@@ -52,6 +52,9 @@ class ViewComposerServiceProvider extends ServiceProvider {
         view()->composer('products/purchase-response', function($view) {
             $view->with('currentUser', Auth::user());
         });
+        view()->composer('products/purchasePaypal-response', function($view) {
+            $view->with('currentUser', Auth::user());
+        });
         view()->composer('products/show', function($view) {
             $view->with('currentUser', Auth::user());
         });

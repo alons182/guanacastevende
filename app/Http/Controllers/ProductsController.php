@@ -20,6 +20,18 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Illuminate\Support\Facades\Log;
+use PayPal\CoreComponentTypes\BasicAmountType;
+use PayPal\EBLBaseComponents\DoExpressCheckoutPaymentRequestDetailsType;
+use PayPal\EBLBaseComponents\PaymentDetailsItemType;
+use PayPal\EBLBaseComponents\PaymentDetailsType;
+use PayPal\EBLBaseComponents\SetExpressCheckoutRequestDetailsType;
+use PayPal\PayPalAPI\DoExpressCheckoutPaymentReq;
+use PayPal\PayPalAPI\DoExpressCheckoutPaymentRequestType;
+use PayPal\PayPalAPI\GetExpressCheckoutDetailsReq;
+use PayPal\PayPalAPI\GetExpressCheckoutDetailsRequestType;
+use PayPal\PayPalAPI\SetExpressCheckoutReq;
+use PayPal\PayPalAPI\SetExpressCheckoutRequestType;
+use PayPal\Service\PayPalAPIInterfaceServiceService;
 use Swift_RfcComplianceException;
 
 
@@ -68,6 +80,13 @@ class ProductsController extends Controller {
         $this->purchaseCurrencyCode = 188; //colones - 840 dolares
         $this->terminalCode = 00000000;
         $this->vectorInicializacion = "3293707751578678";//"4760916219954089";
+
+        //paypal
+        $this->modeApiPaypal = "sandbox";
+        $this->userApiPaypal = "alons182-facilitator_api1.hotmail.com";
+        $this->passwordApiPaypal = "1402544584";
+        $this->signatureApiPaypal = "AFcWxV21C7fd0v3bYYYRCpSSRl31AZU8rQ9ZwgEnTY2tct6Okk7X9KqL";
+
     }
 
     /**
@@ -97,7 +116,7 @@ class ProductsController extends Controller {
         if (isset($search['q']) || ! $category)
             $products = $this->productRepository->getAll($search);
         else
-            $products = $this->productRepository->findByCategory($category);
+            list($products, $category) = $this->productRepository->findByCategory($category);
 
         $q = (isset($search['q'])) ? $search['q'] : '';
 
@@ -220,72 +239,18 @@ class ProductsController extends Controller {
 
         list($product, $items, $total) = $this->getPurchasedOptions($productId);
 
+
+
         return view('products.payment')->with(compact('product','items', 'total'));
     }
 
 
-
     /**
-     * Post paid options
+     * Purchase VPOS
      * @param PaymentRequest $request
-     * @return \Illuminate\View\View
+     * @param $productId
+     * @return $this
      */
-    /*public function purchase(PaymentRequest $request, $productId)
-    {
-        $input = $request->all();
-
-        $llaveVPOSCryptoPub = 	"-----BEGIN PUBLIC KEY-----\n".
-            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDTJt+hUZiShEKFfs7DShsXCkoq\n".
-            "TEjv0SFkTM04qHyHFU90Da8Ep1F0gI2SFpCkLmQtsXKOrLrQTF0100dL/gDQlLt0\n".
-            "Ut8kM/PRLEM5thMPqtPq6G1GTjqmcsPzUUL18+tYwN3xFi4XBog4Hdv0ml1SRkVO\n".
-            "DRr1jPeilfsiFwiO8wIDAQAB\n".
-            "-----END PUBLIC KEY-----";
-
-
-        $llavePrivadaFirmaComercio = "-----BEGIN RSA PRIVATE KEY-----\n".
-            "MIICXAIBAAKBgQDI71jf/WkPdDuSPmArJFaxmvg1F+nQ7X26jkvVxDaFY57ZQlGq\n".
-            "S1wxiHE8dr06mz0vGdW0PLVggNo0aOKQXLuvyiV9QxHYpd4VPjKglMItA2ae11Qg\n".
-            "Xom0AoRDSR6+18lkFZpxXUY9KExjhL5dOIQXbnS7eVRjRfmrS5JnPeK8OwIDAQAB\n".
-            "AoGAUpwUrgJBb1kaJMYAQ7xs6BgOc8WhG4SIbGqUQw6oW67ZX/kkGh9hh/vQkks/\n".
-            "ARlRzkuQ0MkkyMgw7dsxSqjVgHTWaw0/Rh92VhXeFsi7GiGZgN0Zsnenujhye56Z\n".
-            "h8KNJc1gAihWTPbRi2dxzXFUyr6yO2MDNRbk6JQLidnvQAECQQD75aiRZHybJWHE\n".
-            "hL/rvpKYgcXiwZyKjj1fpTyjOw16PL2obpCHYjiuTF+ikTHRFv81GrgHLyvyVamb\n".
-            "/xQd3miBAkEAzDUwyGHGKcRalIwCV/hTm6hSDUBG2wfCVwuHZdcqtrzpq79+P3aq\n".
-            "W05vlF6Hf2yGGcKopAVd/t7+tmCSAklmuwJAePUo4tgr9ZwXvHQ6bIuQfWcjjOWH\n".
-            "tAjlc742xfMfX6k3MWAWSsxhh2DpM3khQNQYLHnuEJUYNz/nOB9em5EnAQJBAMKt\n".
-            "5u7x/6hr8Grzu3xAWvznkCnf4G0JzaWMcS2O3sLOAPtimSpJqAlaEpfhMs4xGPtQ\n".
-            "D9Qm5cCIuU4HbMtPTOcCQFIFEnv4VvtGJwWPSIQr6jxpL4Z+NA3sy8gWcZwKnWzp\n".
-            "72jjGx/YBW6qheLJUImAuVVS/7Tm6XztdkWMYT38fJo=\n".
-            "-----END RSA PRIVATE KEY-----";
-
-        $VI = "4760916219954089";
-
-        $arrayIn = '';
-        $arrayOut = '';
-
-        $arrayIn['acquirerId'] = '99';
-        $arrayIn['commerceId'] = '7574';
-        $arrayIn['commerceMallId'] = '1';
-        $arrayIn['terminalCode'] = '00000000';
-        $arrayIn['purchaseOperationNumber'] = "".((int)(microtime()*1000000));
-        $arrayIn['purchaseAmount'] = '100';
-        $arrayIn['purchaseCurrencyCode'] = '188';
-        $arrayIn['reserved1'] = 'sp';
-        $arrayIn['reserved13'] = 'GuanacasteVende';
-
-        echo "<br> VI: ".$VI;
-
-        VPOSSend($arrayIn,$arrayOut,$llaveVPOSCryptoPub,$llavePrivadaFirmaComercio,$VI);
-
-
-        $idAcquirer = $arrayIn['acquirerId'];
-        $idCommerce = $arrayIn['commerceId'];
-
-        list($product, $items, $total) = $this->getPurchasedOptions($productId);
-
-        return view('products.purchase')->with(compact('product','items', 'total','input','arrayOut','idAcquirer','idCommerce'));
-
-    }*/
     public function purchase(PaymentRequest $request, $productId)
     {
         $input = $request->all();
@@ -293,7 +258,7 @@ class ProductsController extends Controller {
         //$purchaseOperationNumber = $this->getToken(11);
 
 
-        list($product, $items, $total) = $this->getPurchasedOptions($productId);
+        list($product, $items, $total, $totalDollar) = $this->getPurchasedOptions($productId);
 
         $llaveVPOSCryptoPub = "-----BEGIN PUBLIC KEY-----\n".
             "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC0t0Cnbne8gQoeGK4nG6O3zfwh\n".
@@ -378,65 +343,18 @@ class ProductsController extends Controller {
         $idAcquirer = $this->acquirerId;
         $idCommerce = $this->commerceId;
 
+        $paymentMethod = 1;
 
-        return view('products.purchase')->with(compact('product','items', 'total','input','array_get','idAcquirer','idCommerce'));
+        return view('products.purchase')->with(compact('product','items', 'total','input','array_get','idAcquirer','idCommerce','paymentMethod'));
 
     }
 
-   /* public function purchaseResponse(Request $request)
-    {
-        $input = $request->all();
 
-
-        $llavePrivadaCifrado = "-----BEGIN RSA PRIVATE KEY-----\n".
-            "MIICXQIBAAKBgQCr3xnDYPtCdJ1X/OtLGp01EPkAd2cOieqLKXSrbdNHuOLkpBMY\n".
-            "xw89IrWVKFDJREiaGTJ79FYvgzGSmo2FT/SW1Ecv3TIqIM75eMomWQho7l5s9Qsa\n".
-            "1xfx3FZrUnnYS2MUAJfTTXww8SPB8RkRPRk8zOUh0IvvpI9xJFywPhII1wIDAQAB\n".
-            "AoGAAWiFlIVB6cx80ZC/+NCSAzJNaASScpsMsfE4BIOU3JyWN1tk0Koo5M5ZAIzh\n".
-            "BJUrpx+Xu05IOoFvsYzUpgf+sA5COAWogqjs8OD7M5zJu66lnAmb6KwJ9bpL4aOx\n".
-            "rR/ZfjzRK1am7C4LH4MSwUa2YxVbkf5EKhyuWU21+61dp0kCQQDcBn7CzRonTpTg\n".
-            "9DcwPCowfi/QdTYw7x4cedBG/h+Bm7b7hF8qGWtQyOez8Tm0ciYt7sWBGHLYnQLq\n".
-            "UwSAfyUVAkEAx/kMsUMQPlcC5u7q37HNGb6Kvpeqg4jCdxwKUtdWzzR9xAw6ijvC\n".
-            "yEFSR4Qo1JyyoYLTkaPuzpZuMsASEcvJOwJBAL3LDIVVDv5hFqOFhiWhgHMcJnqW\n".
-            "4QwM99hwa20RwHO4snr7kGtsSdoBs3zQ1IoG/VAZ61yUjlyz89PVkMiW5JECQQCQ\n".
-            "Gb21tvfrlFP5Cc2i6MM9e/sLIMu1AUXxAvnFfHuH0PGX5qAAoNPZ7ohWFLw/ibOH\n".
-            "g3jmCFW79NbwJ0xeGpWlAkBb+equG3spXxEIO8JI8Z3CA9jvPpXKchqSifLxfRPi\n".
-            "zwd0jVnxjJ5uJGOUZkfvLWCG4bdiAWdn3pDGTugkgiW3\n".
-            "-----END RSA PRIVATE KEY-----";
-
-        $llavePublicaFirma = 	"-----BEGIN PUBLIC KEY-----\n".
-            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvJS8zLPeePN+fbJeIvp/jjvLW\n".
-            "Aedyx8UcfS1eM/a+Vv2yHTxCLy79dEIygDVE6CTKbP1eqwsxRg2Z/dI+/e14WDRs\n".
-            "g0QzDdjVFIuXLKJ0zIgDw6kQd1ovbqpdTn4wnnvwUCNpBASitdjpTcNTKONfXMtH\n".
-            "pIs4aIDXarTYJGWlyQIDAQAB\n".
-            "-----END PUBLIC KEY-----";
-
-
-
-
-        $arrayIn['IDACQUIRER'] = $input['IDACQUIRER'];
-        $arrayIn['IDCOMMERCE'] = $input['IDCOMMERCE'];
-        $arrayIn['XMLRES'] = $input['XMLRES'];
-        $arrayIn['DIGITALSIGN'] = $input['DIGITALSIGN'];
-        $arrayIn['SESSIONKEY'] = $input['SESSIONKEY'];
-
-        $arrayOut = '';
-
-
-        $VI = "4760916219954089";
-
-        if(VPOSResponse($arrayIn,$arrayOut,$llavePublicaFirma,$llavePrivadaCifrado,$VI)){
-            while(list($key, $val) = each($arrayOut)){
-                echo "<br> $key => ".$val;
-            }
-
-        }else{
-            echo "<br> Respuesta Inv&acute;lida";
-        }
-
-
-    }*/
-
+    /**
+     * Purchase VPOS Response
+     * @param Request $request
+     * @return $this
+     */
     public function purchaseResponse(Request $request)
     {
         $input = $request->all();
@@ -554,6 +472,197 @@ class ProductsController extends Controller {
         }
         Log::info('results of VPOS: '.json_encode($arrayOut));
 
+
+        return view('products.purchase-response')->with(compact('items','total','authorizationResult','purchaseOperationNumber'));
+
+    }
+
+    /**
+     * Purchase Paypal
+     * @param PaymentRequest $request
+     * @param $productId
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
+    public function purchasePaypal(PaymentRequest $request, $productId)
+    {
+        $input = $request->all();
+
+        list($product, $items, $total, $totalDollar) = $this->getPurchasedOptions($productId);
+
+        if($input['payment_method'] == 2)
+        {
+
+            $config = array(
+                'mode' => $this->modeApiPaypal,
+                'acct1.UserName' => $this->userApiPaypal,
+                'acct1.Password' => $this->passwordApiPaypal,
+                'acct1.Signature' => $this->signatureApiPaypal,
+
+            );
+
+            // Create request details
+
+            $setECReqDetails = new SetExpressCheckoutRequestDetailsType();
+
+            // descripcion del item comprado
+            $descriptionPayment = "";
+            $total = 0;
+
+            if($product->option_id)
+            {
+
+                $option = Option::findOrFail($product->option_id);
+
+                $descriptionPayment .= $option->name. ' '.$option->price;
+                $total += $option->price;
+            }
+            if($product->tags->count())
+            {
+                $descriptionPayment .= ' - Etiqueta: '. $product->tags->first()->name. ' ' .$product->tags->first()->price;
+                $total += $product->tags->first()->price;
+            }
+
+
+            $itemAmount = new BasicAmountType('USD', $totalDollar);
+
+            $itemDetails = new PaymentDetailsItemType();
+            $itemDetails->Name = $descriptionPayment;
+            $itemDetails->Amount = $itemAmount;
+            $itemDetails->Quantity = 1;
+
+            $paymentDetails = new PaymentDetailsType();
+            $paymentDetails->PaymentDetailsItem[0] = $itemDetails;
+
+            $setECReqDetails->PaymentDetails[0] = $paymentDetails;
+
+            $setECReqDetails->OrderTotal = $itemAmount;
+            $setECReqDetails->OrderDescription = $descriptionPayment;
+            //$setECReqDetails->PaymentAction = "Sale";
+            //$setECReqDetails->cppheaderbackcolor = "#000000";
+
+            $setECReqDetails->CancelURL = route('product_payment',$productId);
+            $setECReqDetails->ReturnURL = route('paypal_receipt');
+
+            $setECReqDetails->Custom = $productId;
+
+            $setECReqType = new SetExpressCheckoutRequestType();
+            $setECReqType->SetExpressCheckoutRequestDetails = $setECReqDetails;
+
+            // Create request
+            $setECReq = new SetExpressCheckoutReq();
+            $setECReq->SetExpressCheckoutRequest = $setECReqType;
+
+
+            // Perform request
+            $paypalService = new PayPalAPIInterfaceServiceService($config);
+            $setECResponse = $paypalService->SetExpressCheckout($setECReq);
+
+            $tokenPaypal = $setECResponse->Token;
+
+            // Check results
+            if($setECResponse->Ack == 'Success') {
+
+
+
+
+            }else
+            {
+                flash('Respuesta Inválida');
+                return redirect()->back();
+            }
+
+            Log::info('results of PAYPAL: '.json_encode($setECResponse));
+        }
+
+        $paymentMethod = 2;
+
+        return view('products.purchase')->with(compact('product','items', 'total', 'totalDollar','input','tokenPaypal','paymentMethod'));
+    }
+
+
+    /**
+     * Purchase Paypal Response
+     * @param Request $request
+     * @return $this
+     */
+    public function purchasePaypalResponse(Request $request)
+    {
+
+
+        $config = array(
+            'mode' => $this->modeApiPaypal,
+            'acct1.UserName' => $this->userApiPaypal,
+            'acct1.Password' => $this->passwordApiPaypal,
+            'acct1.Signature' => $this->signatureApiPaypal,
+
+        );
+        //getExpressCheckout
+        $getExpressCheckoutDetailsRequest = new GetExpressCheckoutDetailsRequestType($request->token);
+
+        $getExpressCheckoutReq = new GetExpressCheckoutDetailsReq();
+        $getExpressCheckoutReq->GetExpressCheckoutDetailsRequest = $getExpressCheckoutDetailsRequest;
+
+        $paypalService = new PayPalAPIInterfaceServiceService($config);
+
+        $getECResponse = $paypalService->GetExpressCheckoutDetails($getExpressCheckoutReq);
+
+
+        //DoExpressCheckout
+        $DoECRequestDetails = new DoExpressCheckoutPaymentRequestDetailsType();
+        $DoECRequestDetails->PayerID = $request->PayerID;
+        $DoECRequestDetails->Token =  $request->token;
+
+        $DoECRequestDetails->PaymentDetails[0] = $getECResponse->GetExpressCheckoutDetailsResponseDetails->PaymentDetails[0];
+        //$DoECRequestDetails->PaymentAction = "Sale";
+
+        $DoECRequest = new DoExpressCheckoutPaymentRequestType();
+        $DoECRequest->DoExpressCheckoutPaymentRequestDetails = $DoECRequestDetails;
+
+
+        $DoECReq = new DoExpressCheckoutPaymentReq();
+        $DoECReq->DoExpressCheckoutPaymentRequest = $DoECRequest;
+
+
+        $DoECResponse = $paypalService->DoExpressCheckoutPayment($DoECReq);
+
+
+        $purchaseOperationNumber = "";
+
+        //dd($DoECResponse);
+
+        list($product, $items, $total) = $this->getPurchasedOptions($getECResponse->GetExpressCheckoutDetailsResponseDetails->Custom);
+
+        if($DoECResponse->Ack == 'Success') {
+            $purchaseOperationNumber = $DoECResponse->DoExpressCheckoutPaymentResponseDetails->PaymentInfo[0]->TransactionID;
+
+            //guardamos la operacion en db si no existe ya el mismo numero de operación
+            $exitsPayment = $this->paymentRepository->findByOperationNumber($purchaseOperationNumber);
+
+            if(! $exitsPayment)
+                $payment = $this->paymentRepository->store(['product_id' => $product->id,'purchaseOperationNumber'=>$purchaseOperationNumber]);
+
+            //actualizamos el estado del producto recien ingresado a publicado
+            $this->productRepository->update_state($product->id, 1); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
+
+            // informamos via email del producto recien creado y su confirmacion de pago
+            try {
+                $this->mailer->paymentConfirmation(['email' => Auth()->user()->email, 'product' => $product, 'items' => $items, 'total' => $total]);
+            }catch (Swift_RfcComplianceException $e)
+            {
+                Log::error($e->getMessage());
+            }
+
+        }else{
+
+            //actualizamos el estado del producto recien ingresado inactivo si el pago fue denegado
+            $this->productRepository->update_state($product->id, 3); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
+        }
+
+        $authorizationResult = $DoECResponse->Ack;
+
+        Log::info('results of PAYPAL: '.json_encode($DoECResponse));
+
+
         return view('products.purchase-response')->with(compact('items','total','authorizationResult','purchaseOperationNumber'));
 
     }
@@ -637,12 +746,13 @@ class ProductsController extends Controller {
         $option = ($product->option_id) ? Option::findOrFail($product->option_id) : null;
         $items = [];
         $total = 0;
+        $totalDollar = 0;
         if ($option) {
             $optionItem = [
 
                 'name' => $option->name,
                 'price' => $option->price,
-                'priceDollar' => number_format($option->price / 530, 2)
+                'priceDollar' => number_format($option->price / 540, 2)
             ];
 
             if ($product->option_id == 4) {
@@ -660,8 +770,9 @@ class ProductsController extends Controller {
 
         foreach ($items as $item) {
             $total += $item['price'];
+            $totalDollar += $item['priceDollar'];
         }
-        return array($product, $items, $total);
+        return array($product, $items, $total, $totalDollar);
     }
     private function crypto_rand_secure($min, $max) {
         $range = $max - $min;

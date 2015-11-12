@@ -128,7 +128,10 @@ Route::post('/products/{product}/purchase',[
     'as'   => 'product_payment.purchase',
     'uses' => 'ProductsController@purchase'
 ]);
-
+Route::post('/products/{product}/purchasePaypal',[
+    'as'   => 'product_payment.purchasePaypal',
+    'uses' => 'ProductsController@purchasePaypal'
+]);
 /*Route::get('/products/receipt',[
     'as'   => 'purchase.response',
     'uses' => 'ProductsController@purchaseResponse'
@@ -136,6 +139,11 @@ Route::post('/products/{product}/purchase',[
 Route::post('/products/receipt',[
     'as'   => 'purchase.response',
     'uses' => 'ProductsController@purchaseResponse'
+]);
+
+Route::get('/paypal_receipt',[
+    'as'   => 'paypal_receipt',
+    'uses' => 'ProductsController@purchasePaypalResponse'
 ]);
 /*Route::post('/products/payment',[
     'as'   => 'product_payment.store',

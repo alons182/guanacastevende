@@ -187,11 +187,12 @@ class ProductRepository extends DbRepository{
     public function findByCategory($category)
     {
 
-        $category = Category::searchSlug($category)->firstOrFail();
+        $category = Category::findOrFail($category);//Category::searchSlug($category)->firstOrFail();
         $products = $category->products()->with('categories')->where('published', '=', 1)->orderBy('option_id','DESC')->paginate($this->limit);
 
-        return $products;
+        return array($products, $category);
     }
+
 
     /**
      * Get all the products for the admin panel

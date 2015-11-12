@@ -289,12 +289,14 @@
 
     $("input[name='payment_method']").on('click', function () {
 
-        if ($(this).data('method') === 'card') {
-            $('.payment__method__paypal').slideUp();
-            $('.payment__method__card').slideDown();
+        if ($(this).data('method') === 'paypal') {
+            $('#form-payment').prop('action',$(this).data('route'));
+            /*$('.payment__method__paypal').slideUp();
+            $('.payment__method__card').slideDown();*/
         } else {
-            $('.payment__method__paypal').slideDown();
-            $('.payment__method__card').slideUp();
+            $('#form-payment').prop('action',$(this).data('route'));
+            /*$('.payment__method__paypal').slideDown();
+            $('.payment__method__card').slideUp();*/
         }
     });
 
