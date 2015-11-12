@@ -161,11 +161,9 @@
                     </div>
 
                     <div class="form__group">
-                        @if($paymentMethod == 1)
-                            {!! Form::submit('Ejecutar pago', ['class' => 'btn btn-primary btn-execute-payment']) !!}
-                        @else
-                            {!! Form::submit('Ir a Paypal', ['class' => 'btn btn-primary btn-execute-payment']) !!}
-                        @endif
+
+                        {!! Form::submit('Ejecutar pago', ['class' => 'btn btn-primary btn-execute-payment']) !!}
+
                         <a href="{{ URL::previous() }}" class="btn btn-default">Atras</a>
                         <button type="submit"  style="margin-left: 1rem;" class="btn btn-gray" form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}">
                             Cancelar<i class="fa fa-trash-o"></i>
