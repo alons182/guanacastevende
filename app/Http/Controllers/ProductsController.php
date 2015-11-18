@@ -82,10 +82,10 @@ class ProductsController extends Controller {
         $this->vectorInicializacion = "3293707751578678";//"4760916219954089";
 
         //paypal
-        $this->modeApiPaypal = "sandbox";
-        $this->userApiPaypal = "alons182-facilitator_api1.hotmail.com";
-        $this->passwordApiPaypal = "1402544584";
-        $this->signatureApiPaypal = "AFcWxV21C7fd0v3bYYYRCpSSRl31AZU8rQ9ZwgEnTY2tct6Okk7X9KqL";
+        $this->modeApiPaypal = "production";
+        $this->userApiPaypal = "oporto_api1.avotz.com";
+        $this->passwordApiPaypal = "QFPRMSAFMD9PF39Y";
+        $this->signatureApiPaypal = "AhGNifOfpUYJzHqWRIdZJhJXCY44AKAInw3g1Cymr8yFklI034BgKdUs";
 
     }
 

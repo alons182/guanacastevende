@@ -8,7 +8,7 @@
         @if($paymentMethod == 1)
             <form action="https://vpayment.verifika.com/VPOS/MM/transactionStart20.do" method="POST" class="form-horizontal purchase-form">
         @else
-            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token={{ isset($tokenPaypal) ? $tokenPaypal : ''   }}&useraction=commit" method="POST" class="form-horizontal purchase-form">
+            <form action="https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token={{ isset($tokenPaypal) ? $tokenPaypal : ''   }}&useraction=commit" method="POST" class="form-horizontal purchase-form">
         @endif
         <div class="left-section">
             <h1 class="payment__title">Verificar datos</h1>
