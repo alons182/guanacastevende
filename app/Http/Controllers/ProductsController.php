@@ -82,7 +82,7 @@ class ProductsController extends Controller {
         $this->vectorInicializacion = "3293707751578678";//"4760916219954089";
 
         //paypal
-        $this->modeApiPaypal = "production";
+        $this->modeApiPaypal = "live";
         $this->userApiPaypal = "oporto_api1.avotz.com";
         $this->passwordApiPaypal = "QFPRMSAFMD9PF39Y";
         $this->signatureApiPaypal = "AhGNifOfpUYJzHqWRIdZJhJXCY44AKAInw3g1Cymr8yFklI034BgKdUs";
@@ -497,6 +497,7 @@ class ProductsController extends Controller {
                 'acct1.UserName' => $this->userApiPaypal,
                 'acct1.Password' => $this->passwordApiPaypal,
                 'acct1.Signature' => $this->signatureApiPaypal,
+                
 
             );
 
@@ -563,7 +564,7 @@ class ProductsController extends Controller {
             if($setECResponse->Ack == 'Success') {
 
 
-
+             
 
             }else
             {
@@ -593,7 +594,8 @@ class ProductsController extends Controller {
             'mode' => $this->modeApiPaypal,
             'acct1.UserName' => $this->userApiPaypal,
             'acct1.Password' => $this->passwordApiPaypal,
-            'acct1.Signature' => $this->signatureApiPaypal,
+            'acct1.Signature' => $this->signatureApiPaypal
+            
 
         );
         //getExpressCheckout
