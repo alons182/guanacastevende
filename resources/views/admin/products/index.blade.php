@@ -49,6 +49,8 @@
                                         <button type="submit"  class="btn btn-warning btn-xs" form="form-pub-unpub" formaction="{!! URL::route('products.pub', [$product->id]) !!}">Waiting</button>
                                     @elseif($product->published == 3)
                                         <button type="submit"  class="btn btn-danger btn-xs" form="form-pub-unpub" formaction="{!! URL::route('products.pub', [$product->id]) !!}">Inactive(Pago rechazado o denegado)</button>
+                                    @elseif($product->published == 4)
+                                        <button type="submit"  class="btn btn-default btn-xs" form="form-pub-unpub" formaction="{!! URL::route('products.pub', [$product->id]) !!}">Selled</button>
                                     @endif
 
                                 @else

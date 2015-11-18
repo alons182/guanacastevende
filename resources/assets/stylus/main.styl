@@ -797,6 +797,7 @@ strong
 		&__published
 		&__inactive
 		&__rechazado
+		&__vendido	
 			color white
 			font-size 13px
 			padding .3rem
@@ -810,7 +811,17 @@ strong
 
 		&__rechazado
 			background-color red
-
+		&__vendido
+			background-color red
+			width 500px
+			text-align center
+			transform rotate(-35deg)
+			top 38%
+			left -50px
+			bottom auto
+			text-transform uppercase
+			font-weight 700
+			font-size 2rem
 		&__price
 			background-color verde
 			color white
@@ -850,6 +861,7 @@ strong
 					color verde
 		&__edit
 		&__delete
+		&__selled	
 			color white
 			background-color verde
 			padding .5rem
@@ -863,6 +875,10 @@ strong
 		&__delete
 			background-color red
 			border none
+		&__selled
+			background-color naranja
+			border none
+			right 85px	
 
 @media screen and (min-width: 640px)
 	.products

@@ -132,6 +132,10 @@ Route::post('/products/{product}/purchasePaypal',[
     'as'   => 'product_payment.purchasePaypal',
     'uses' => 'ProductsController@purchasePaypal'
 ]);
+Route::post('/products/{product}/selled',[
+    'as'   => 'products.selled',
+    'uses' => 'ProductsController@selled'
+]);
 /*Route::get('/products/receipt',[
     'as'   => 'purchase.response',
     'uses' => 'ProductsController@purchaseResponse'

@@ -40,6 +40,11 @@
                 Inactivo (Pago fue denegado o rechazado)
             </div>
         @endif
+        @if($product->published == 4)
+            <div class="products__item__vendido">
+                Vendido
+            </div>
+        @endif
         <div class="products__item__price">
             {!! money($product->price,'₡') !!}
         </div>
@@ -51,7 +56,11 @@
        @if (isset($user) && $user->isCurrent() && $user->isHisProduct($product))
 
             {{--  link_to_route('products.edit', 'Editar', $product->id,['class'=>'products__item__edit']) --}}
-            <button type="submit" class="products__item__delete " form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}">Eliminar</button>
+            @if($product->published == 1)
+                <button type="submit" class="products__item__selled " form="form-selled" formaction="{!! URL::route('products.selled', [$product->id]) !!}" title="Marcar como vendido">Marcar como vendido</button>
+                {!! Form::open(['method' => 'post', 'id' =>'form-selled','data-confirm' => 'Vas a poner este articulo como vendido, Estas seguro?']) !!}{!! Form::close() !!}
+            @endif
+            <button type="submit" class="products__item__delete " form="form-delete" formaction="{!! URL::route('products.destroy', [$product->id]) !!}" title="Eliminar Producto">Eliminar</button>
             {!! Form::open(['method' => 'delete', 'id' =>'form-delete','data-confirm' => 'Estas seguro?']) !!}{!! Form::close() !!}
         @endif
 

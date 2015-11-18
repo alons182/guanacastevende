@@ -99,7 +99,7 @@ class ProductsController extends Controller {
     public function index(Request $request)
     {
 
-        $search = array_add($request->all(), 'published', 1);
+        $search = array_add($request->all(), 'published', [1,4]);
 
         $products = $this->productRepository->getall($search);
         $q = (isset($search['q'])) ? $search['q'] : '';
@@ -110,7 +110,7 @@ class ProductsController extends Controller {
     public function search(Request $request, $category = null)
     {
 
-        $search = array_add($request->all(), 'published', 1);
+        $search = array_add($request->all(), 'published', [1,4]);
 
         //if ($search['q'] == '') return view('categories.index');
         if (isset($search['q']) || ! $category)
@@ -182,7 +182,7 @@ class ProductsController extends Controller {
      */
     public function show($id)
     {
-        $product = $this->productRepository->publishedById($id);
+        $product = $this->productRepository->publishedOrSelledById($id);
 
         $photos = $this->photoRepository->getPhotos($product->id);
 
@@ -684,6 +684,21 @@ class ProductsController extends Controller {
         return Redirect()->route('profile.show', Auth()->user()->username);
 
     }*/
+
+    /**
+     * Mark selled a product.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function selled($id)
+    {
+        $this->productRepository->update_state($id, 4);
+
+        Flash('Producto Vendido');
+
+        return Redirect()->route('profile.show', Auth()->user()->username);
+    }
 
     /**
      * Remove the specified resource from storage.

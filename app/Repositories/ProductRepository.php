@@ -170,6 +170,15 @@ class ProductRepository extends DbRepository{
         return $this->model->with('categories')->wherePublished(1)->findOrFail($id);
     }
     /**
+     * Find a product by ID published
+     * @param $id
+     * @return mixed
+     */
+    public function publishedOrSelledById($id)
+    {
+        return $this->model->with('categories')->whereIn('published',[1,4])->findOrFail($id);
+    }
+    /**
      * Find a product by Slug
      * @param $slug
      * @return mixed
@@ -218,7 +227,7 @@ class ProductRepository extends DbRepository{
 
         if (isset($search['published']) && $search['published'] != "")
         {
-           $products = $products->where('published', '=', $search['published']);
+           $products = $products->whereIn('published', $search['published']);
         }
 
 
