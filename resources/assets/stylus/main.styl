@@ -817,7 +817,7 @@ strong
 			text-align center
 			transform rotate(-35deg)
 			top 38%
-			left -90px
+			left -125px
 			bottom auto
 			text-transform uppercase
 			font-weight 700
@@ -886,6 +886,11 @@ strong
 			width 50%
 			height 350px
 			float left
+@media screen and (min-width: 768px)
+	.products
+		&__item
+			&__vendido
+				left -90px		
 @media screen and (min-width: 1024px)
 	.products
 		&__categories
@@ -915,6 +920,7 @@ strong
 		&__item
 			width 50%
 			height 350px
+			
 
 	.home
 		.products
@@ -924,6 +930,10 @@ strong
 	.products
 		&__item
 			width 33.33%
+			&__vendido
+				left -110px
+			
+				
 			
 				
 .product
