@@ -42,7 +42,7 @@
         @endif
         @if($product->published == 4)
             <div class="products__item__vendido">
-                Vendido
+                Articulo Vendido
             </div>
         @endif
         <div class="products__item__price">
