@@ -23,7 +23,7 @@ class Product extends Model {
         return $query->where(function ($query) use ($search)
         {
             $query->where('slug', '=', $search)
-                ->where('published', '=', 1);
+                ->whereIn('published', [1,4]);
         });
     }
     public function scopeFeaturedBanner($query)
@@ -41,7 +41,7 @@ class Product extends Model {
         {
             $query->where('option_id', '<>', 1)
                 ->where('featured', '=', 1)
-                ->where('published', '=', 1);
+                ->whereIn('published', [1,4]);
         });
     }
     public function scopeNoFeatured($query)
@@ -50,7 +50,7 @@ class Product extends Model {
         {
             $query->where('option_id', '=', 1)
                 ->where('featured', '<>', 1)
-                ->where('published', '=', 1);
+                ->whereIn('published', [1,4]);
         });
     }
     public function setPriceAttribute($price)
