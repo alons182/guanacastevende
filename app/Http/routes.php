@@ -177,7 +177,10 @@ Route::post('/products/{product}/deletefavorites', [
     'uses' => 'ProductsController@deleteFavorites'
 ]);
 
-
+Route::post('/products/{product}/comments', [
+    'as'   => 'comments.store',
+    'uses' => 'ProductsController@saveComment'
+]);
 
 
 /*
@@ -192,6 +195,8 @@ Route::post('photos/{photo}', [
     'as'   => 'delete_photo',
     'uses' => 'PhotosController@destroy'
 ]);
+
+
 
 
 

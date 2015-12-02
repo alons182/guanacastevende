@@ -123,7 +123,8 @@ return [
         "estate" => "Provincia",
         "comment" => "Comentario",
         "rating" => "Puntos",
-        "terms" => "Términos y condiciones"
+        "terms" => "Términos y condiciones",
+        "body" =>"Comentario"
 
     ],
 

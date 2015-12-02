@@ -114,7 +114,39 @@
                 <div class="product__comments">
                     @if(! auth()->guest())
 
-                        <div class="fb-comments" data-href="{!! Request::url()!!}" data-numposts="5"></div>
+                        <!--<div class="fb-comments" data-href="{!! Request::url()!!}" data-numposts="5"></div>-->
+                        {!! Form::open(['route'=>['comments.store', $product->id], 'class'=>'form-horizontal']) !!}
+
+                        <strong>{{ $comments->total() }} Comentarios </strong>
+                       <hr />
+                        <div class="form">
+                            <div class="form__group">
+                                 
+                               
+                                    {!! Form::textarea('body',null,['class'=>'form__control','required'=>'required','placeholder'=>'Escribe un comentario']) !!}
+                                    {!! errors_for('body',$errors) !!}
+
+                            </div>
+                            <div class="form__group">
+                                {!! Form::submit('Comentar',['class'=>'btn btn-primary'])!!}
+                            </div>
+                        </div>
+
+
+                        {!! Form::close() !!}
+
+                        <div class="comments">
+
+                           @foreach($comments as $comment)
+                                @include('products.partials.comments')
+                            @endforeach
+                            @if ($comments->total())
+                                <div class="pagination-container">{!! $comments->render() !!}</div>
+                            @endif
+                        </div>
+                        
+
+
 
                     @else
                         <a href="{!! URL::to('auth/login') !!}" class="btn btn-success"

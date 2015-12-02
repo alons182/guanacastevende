@@ -237,6 +237,7 @@
 
     });
 
+
     $body.hoverIntent({
         over: function () {
             $('.products__categories__ul').slideDown(200);
@@ -254,6 +255,17 @@
         },
         out: function () {
             $(this).find(">.products__categories__submenu").slideUp(200);
+        },
+        timeout: 200
+
+    });
+
+     $('.notification').hoverIntent({
+        over: function () {
+            $(this).find(">.notification-list").slideDown(200);
+        },
+        out: function () {
+            $(this).find(">.notification-list").slideUp(200);
         },
         timeout: 200
 
@@ -607,6 +619,41 @@
     $('.starrr').on('starrr:change', function (e, value) {
         ratingsField.val(value);
     });
+
+    //reply
+
+    var replyBox = $('.post-reply-box');
+    var newReply = $('.new-reply');
+    var openReplyBtn = $('.open-reply-box');
+    var closeReplyBtn = $('.close-reply-box');
+   
+
+    newReply.autosize({append: "\n"});
+
+    openReplyBtn.click(function (e) {
+        $(this).siblings(".post-reply-box" ).slideDown(400, function () {
+            $('.new-reply').trigger('autosize.resize');
+            newReply.focus();
+        });
+
+        /*replyBox.slideDown(400, function () {
+            $('.new-reply').trigger('autosize.resize');
+            newReply.focus();
+        });*/
+        openReplyBtn.fadeOut(100);
+        closeReplyBtn.show();
+    });
+
+    closeReplyBtn.click(function (e) {
+        e.preventDefault();
+        replyBox.slideUp(300, function () {
+            newReply.focus();
+            openReplyBtn.fadeIn(200);
+        });
+        closeReplyBtn.hide();
+
+    });
+
 
 
 })(jQuery);

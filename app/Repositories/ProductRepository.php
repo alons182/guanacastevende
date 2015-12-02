@@ -227,6 +227,7 @@ class ProductRepository extends DbRepository{
 
         if (isset($search['published']) && $search['published'] != "")
         {
+           
            $products = $products->whereIn('published', $search['published']);
         }
 

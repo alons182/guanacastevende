@@ -24,7 +24,7 @@
             @include('products.partials._products')
 
         </article>
-        @if ($products)
+        @if ($products->total())
             <div class="pagination-container">{!! $products->appends(['q'=>$q])->render() !!}</div>
         @endif
     </div>

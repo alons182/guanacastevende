@@ -2,37 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Http\Requests\PaymentRequest;
-use App\Http\Requests\ProductFrontRequest;
-
-use App\Mailers\ContactMailer;
-use App\Option;
-use App\Repositories\CategoryRepository;
-use App\Repositories\PaymentRepository;
-use App\Repositories\PhotoRepository;
-use App\Repositories\ProductRepository;
 use App\Tag;
-
-use Illuminate\Http\Request;
-
+use App\Option;
+use App\Comment;
+use App\Category;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Illuminate\Pagination\LengthAwarePaginator as Paginator;
-use Illuminate\Support\Facades\Log;
-use PayPal\CoreComponentTypes\BasicAmountType;
-use PayPal\EBLBaseComponents\DoExpressCheckoutPaymentRequestDetailsType;
-use PayPal\EBLBaseComponents\PaymentDetailsItemType;
-use PayPal\EBLBaseComponents\PaymentDetailsType;
-use PayPal\EBLBaseComponents\SetExpressCheckoutRequestDetailsType;
-use PayPal\PayPalAPI\DoExpressCheckoutPaymentReq;
-use PayPal\PayPalAPI\DoExpressCheckoutPaymentRequestType;
-use PayPal\PayPalAPI\GetExpressCheckoutDetailsReq;
-use PayPal\PayPalAPI\GetExpressCheckoutDetailsRequestType;
-use PayPal\PayPalAPI\SetExpressCheckoutReq;
-use PayPal\PayPalAPI\SetExpressCheckoutRequestType;
-use PayPal\Service\PayPalAPIInterfaceServiceService;
+use Illuminate\Http\Request;
+use App\Mailers\ContactMailer;
 use Swift_RfcComplianceException;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\PaymentRequest;
+use App\Repositories\PhotoRepository;
+use App\Repositories\PaymentRepository;
+use App\Repositories\ProductRepository;
+use App\Repositories\CategoryRepository;
+use App\Http\Requests\CommentFrontRequest;
+use App\Http\Requests\ProductFrontRequest;
+use PayPal\PayPalAPI\SetExpressCheckoutReq;
+use PayPal\CoreComponentTypes\BasicAmountType;
+use PayPal\EBLBaseComponents\PaymentDetailsType;
+use PayPal\PayPalAPI\DoExpressCheckoutPaymentReq;
+use PayPal\PayPalAPI\GetExpressCheckoutDetailsReq;
+use PayPal\PayPalAPI\SetExpressCheckoutRequestType;
+use PayPal\EBLBaseComponents\PaymentDetailsItemType;
+use PayPal\Service\PayPalAPIInterfaceServiceService;
+use PayPal\PayPalAPI\DoExpressCheckoutPaymentRequestType;
+use PayPal\PayPalAPI\GetExpressCheckoutDetailsRequestType;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
+use PayPal\EBLBaseComponents\SetExpressCheckoutRequestDetailsType;
+use PayPal\EBLBaseComponents\DoExpressCheckoutPaymentRequestDetailsType;
 
 
 class ProductsController extends Controller {
@@ -183,10 +182,19 @@ class ProductsController extends Controller {
     public function show($id)
     {
         $product = $this->productRepository->publishedOrSelledById($id);
-
+        $comments = $product->comments()->where('comment_id', '=', 0)->paginate(5);
         $photos = $this->photoRepository->getPhotos($product->id);
 
-        return view('products.show')->with(compact('product', 'photos'));
+        if(Auth()->user() /*&& Auth()->user()->id == $product->user_id*/)
+        {
+            $commentsNotViewed = $product->comments()->notViewed()->where('user_id', '=', Auth()->user()->id)->get();
+            foreach ($commentsNotViewed  as $comment) {
+                $comment->viewed = true;
+                $comment->save();
+            }
+        }
+     
+        return view('products.show')->with(compact('product', 'photos','comments'));
     }
 
     /**
@@ -751,6 +759,33 @@ class ProductsController extends Controller {
         //flash('Propiedad eliminada de tus favoritos!');
 
         //return Redirect()->route('profile_favorites', $user->username);
+    }
+
+
+    public function saveComment(CommentFrontRequest $request, $productId)
+    {
+        $input = $request->all();
+        $user = auth()->user();
+
+        $product = $this->productRepository->findById($productId);
+
+        $comment = New Comment;
+        $comment->comment_id = (isset($input['comment_id'])) ? $input['comment_id'] : 0;
+        $comment->storeCommentForUser((isset($input['user_to_respond'])) ? $input['user_to_respond'] :$product->user->id, $user->id, $input['body'], $productId);
+
+      
+        try {
+  
+            $this->mailer->newCommentPublished(['email' => (isset($input['author'])) ? $input['author'] : $product->user->email, 'product' => $product]);
+            
+
+        }catch (Swift_RfcComplianceException $e)
+        {
+            Log::error($e->getMessage());
+        }
+
+        return Redirect()->route('product_path', $product->id);
+        
     }
 
     /**

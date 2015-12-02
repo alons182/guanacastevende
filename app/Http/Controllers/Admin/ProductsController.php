@@ -44,7 +44,7 @@ class ProductsController extends Controller {
         $search = $request->all();
         $search['q'] = (isset($search['q'])) ? trim($search['q']) : '';
         $search['cat'] = (isset($search['cat'])) ? $search['cat'] : '';
-        $search['published'] = (isset($search['published'])) ? $search['published'] : '';
+        $search['published'] = (isset($search['published'])) ? [$search['published']] : '';
         //$this->categoryRepository->getParents();
 
         $products = $this->productRepository->getAll($search);

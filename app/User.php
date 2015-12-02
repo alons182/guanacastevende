@@ -98,6 +98,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * Relationship with the Comment model
+     * @return mixed
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
+    /**
      * create a profile
      * @param null $profile
      * @return mixed
@@ -196,4 +205,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         $this->rating_count = $reviews->count();
         $this->save();
     }
+
+    
 }

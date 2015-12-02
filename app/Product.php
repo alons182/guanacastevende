@@ -96,6 +96,15 @@ class Product extends Model {
         return $this->belongsToMany('App\User');
     }
 
+    /**
+     * Relationship with the Comment model
+     * @return mixed
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment')->latest();
+    }
+
     public function option()
     {
         return $this->hasOne('App\Option');

@@ -34,7 +34,7 @@
                          @if (Auth::guest())
                              Inicia Sesion
                          @else
-                            {{ $currentUser->username  }}
+                            {{ $currentUser->username  }} 
                          @endif
                        <br /> <span class="header__menu__account">Tu Cuenta</span>
                     </span>
@@ -54,7 +54,7 @@
                 <li class="header__menu__item"><a class="header__menu__link" href="/blog" target="_blank">Noticias</a> </li>
                 <li class="header__menu__item"><a class="header__menu__link" href="{{ route('about_path') }}">Acerca de</a> </li>
                 <li class="header__menu__item"><a class="header__menu__link" href="{{ route('contact_path') }}">Contactenos</a> </li>
-                <li class="header__menu__item"><a href="{{ route('product_create') }}" class="header__menu__link header__submenu__link__featured">Vender articulo</a></li>
+                <li class="header__menu__item"><a href="{{ route('product_create') }}" class="header__menu__link header__submenu__link__featured">Vender <span class="long">articulo</span></a></li>
 
 
 
@@ -71,6 +71,23 @@
     </div>
 
 @endif
+@if (!Auth::guest() && $currentUser->comments()->notViewed()->count())
+    <div class="info__system">
+        <div class="notification">
+            Tienes <a href="#" class="notification-count">{{ $currentUser->comments()->notViewed()->count() }} comentarios</a> no vistos
+            <div class="notification-list">
+                <ul>
+                    @foreach($currentUser->comments()->notViewed()->get() as $item)
+                        <li><a href="{{ route('product_path', $item->product->id) }}" class="notification-link">Nuevo comentario en {{ str_limit($item->product->name, 20)  }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+
+@endif
+
 @if (false)
     <div class="info__system">
         Procedimiento de pago en periodo de prueba!!

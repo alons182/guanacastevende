@@ -40,5 +40,22 @@ class ContactMailer extends Mailer{
         $emailTo = $data['email'];
         return $this->sendTo($emailTo, $subject, $view, $data);
     }
+    public function newCommentPublished($data)
+    {
+       
+        $view = 'emails.contact.newComment';
+        $subject = 'Información desde el sitio Guanacaste Vende - Nuevo Comentario publicado en tu producto';
+        $emailTo = $data['email'];
 
+        return $this->sendTo($emailTo, $subject, $view, $data);
+    }
+    public function infoProductsInnactive($data)
+    {
+       
+        $view = 'emails.contact.infoInnactiveProducts';
+        $subject = 'Información desde el sitio Guanacaste Vende - Productos inactivos (30 dias)';
+        $emailTo = $this->listAdministration;
+
+        return $this->sendTo($emailTo, $subject, $view, $data);
+    }
 } 

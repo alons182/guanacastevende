@@ -56,6 +56,17 @@ strong
 	color verde
 	&.orange
 		color naranja
+blockquote
+	padding 10px 20px
+	margin 0 0 20px
+	font-size 17.5px
+	border-left 5px solid #eee
+	footer
+		display block
+		font-size 80%
+		line-height 1.42857
+		color #777777
+
 .underline
 	text-decoration underline
 .disabled
@@ -134,7 +145,11 @@ strong
 .btn-link
 	display inline-block
 	color verde
-
+.btn-small
+	padding 0 .5rem
+	height auto
+	line-height 25px
+	background-color #37BC9B
 .btn-remove
 	background-color red
 .info__system
@@ -142,12 +157,41 @@ strong
 	color white
 	padding .5rem
 	text-align center
+	position relative
 
 	a
 		color white
 		text-decoration underline
 		&:hover
 			color verde
+.notification
+	&-list
+		position absolute
+		background-color oscuro
+		left 0
+		right 0
+		top 46px
+		width 250px
+		z-index 999
+		margin 0 auto
+		display none
+		ul
+			list-style none
+			
+		li 
+			border-bottom 1px solid gris2
+			margin 0
+			&:hover
+				background-color #000
+		a 
+			color white
+			text-decoration none
+			display block
+			padding .5rem
+			font-size 12px
+	
+		
+					
 .image-holder
 	width 150px
 .alert
@@ -412,6 +456,9 @@ strong
 		float right
 		text-align right
 		clear none
+	.comments 
+		blockquote
+			margin 1em 40px	
 .top
 	background-color oscuro
 	padding 1rem
@@ -526,6 +573,8 @@ strong
 			&__featured
 				background-color naranja
 				color white !important
+				.long 
+					display none
 				&:hover
 					background-color #000
 	&__btn-menu
@@ -579,7 +628,7 @@ strong
 
 			&__link
 				color gris
-				padding 1.6rem 1.3rem
+				padding 1.6rem .7rem//1.6rem 1.3rem
 			&__account
 				display block
 		&__submenu
@@ -593,6 +642,18 @@ strong
 
 		&__btn-menu
 			display none
+
+@media screen and (min-width: 1200px)
+	.header
+		&__menu 
+			&__link 
+				padding 1.6rem 1.3rem
+		&__submenu
+			&__link
+				&__featured
+					.long
+						display inline-block
+			
 
 .main
 	//overflow hidden
@@ -1027,7 +1088,7 @@ strong
 		margin-bottom 1rem
 
 	&__comments
-		text-align center
+		//text-align center
 		.fb-comments
 			> span
 				width 300px !important
