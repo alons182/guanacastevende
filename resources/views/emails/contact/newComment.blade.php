@@ -8,7 +8,7 @@
 <div class="logo" style="text-align: center;">
     <img src="{{ url('/img/logo-email.png') }}" alt="Guanacaste Vende">
 </div>
-<p>Nuevo Comentario publicado en  tu producto: {{ $product['name'] }}</p>
+<p>Nuevo Comentario publicado en el producto: {{ $product['name'] }}</p>
 <p>Puedes revisarlo y contestarlo en el siguiente enlace: <a href="{{ url('/products/'.$product['id']) }}" target="_blank">aquí</a></p>
 <p> Seguinos en nuestras redes sociales para estar atento a las sorpresas !!</p>
 <a style="display: inline-block; padding: 5px;" href="https://www.facebook.com/guanacastevende" target="_blank"><img src="{{ url('/img/facebook.jpg') }}"
