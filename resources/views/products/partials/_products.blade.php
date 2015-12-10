@@ -19,7 +19,11 @@
                      NUEVO
                 </span>
             @endif
-           
+            @if($product->option_id == 4)
+                @foreach($product->tags as $tag)
+                    <span class="products__item__tag">{!! $tag->name !!}</span>
+                @endforeach
+            @endif
         </div>
         @if($product->published == 0)
             <div class="products__item__inactive">
