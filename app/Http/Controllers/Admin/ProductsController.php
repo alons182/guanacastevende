@@ -46,14 +46,14 @@ class ProductsController extends Controller {
         $search['cat'] = (isset($search['cat'])) ? $search['cat'] : '';
         $search['published'] = (isset($search['published'])) ? [$search['published']] : '';
         //$this->categoryRepository->getParents();
-
+        //dd($search);
         $products = $this->productRepository->getAll($search);
 
         return View('admin.products.index')->with([
             'products'         => $products,
             'search'           => $search['q'],
             'categorySelected' => $search['cat'],
-            'selectedStatus'   => $search['published']
+            'selectedStatus'   => ($search['published']) ? $search['published'][0] : ''
 
         ]);
     }
