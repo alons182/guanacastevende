@@ -30,7 +30,7 @@ class ProductRepository extends DbRepository{
     public function store($data, $user = null)
     {
         $data = $this->prepareData($data);
-        $data['image'] = (isset($data['image'])) ? $this->storeImage($data['image'], $data['name'], 'products', null, null, 640, null, true) : '';
+        $data['image'] = (isset($data['image'])) ? $this->storeImage($data['image'], $data['name'].'-'.getUniqueNumber(), 'products', null, null, 640, null, true) : '';
 
         $product = ($user) ?  $user->products()->save(new $this->model($data)) : $this->model->create($data);
 
@@ -55,7 +55,7 @@ class ProductRepository extends DbRepository{
         $product = $this->model->findOrFail($id);
         $data = $this->prepareData($data);
 
-        $data['image'] = (isset($data['image'])) ? $this->storeImage($data['image'], $data['name'], 'products', null, null, 640, null, true) : $product->image;
+        $data['image'] = (isset($data['image'])) ? $this->storeImage($data['image'], $data['name'].'-'.getUniqueNumber(), 'products', null, null, 640, null, true) : $product->image;
 
         $product->fill($data);
         $product->save();
