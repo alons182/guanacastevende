@@ -51,7 +51,7 @@
         var action = $(this).data('action');
 
         chkSelectAll.val(action);
-
+        $('#select-action').val(action);
         (verificaChkActivo(chkProduct)) ? $('#form-option-chk').submit() : alert('Seleccione un registro de la lista');
 
 

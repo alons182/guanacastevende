@@ -206,14 +206,15 @@ class ProductsController extends Controller {
     public function option_multiple(Request $request)
     {
         $products_id = $request->input('chk_product');
-        $action = $request->input('select_all');
+        $action = $request->input('select_action');
+       
         foreach ($products_id as $id)
         {
             if($action == "active")
                 $this->productRepository->update_state($id, 1);
             elseif($action == "inactive")
                 $this->productRepository->update_state($id, 0);
-            else
+            elseif($action == "delete")
                 $this->productRepository->destroy($id);
 
         }

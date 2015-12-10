@@ -21,7 +21,9 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>{!! Form::checkbox('select_all', 0, null, ['id' => 'select-all']) !!} </th>
+                        <th>{!! Form::checkbox('select_all', 0, null, ['id' => 'select-all']) !!}
+                            {!! Form::hidden('select_action', null, ['id' => 'select-action']) !!} 
+                         </th>
                         <th>#</th>
                         <th>Name</th>
                         <th>Description</th>
