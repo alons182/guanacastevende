@@ -13,7 +13,7 @@
 
         </figure>
         <div class="products__item__stick">
-           <!--<i class="{!! ($product->option_id == 4) ? ($product->tags->first()->icon) ? $product->tags->first()->icon : 'icon-tag' : 'icon-tag' !!} animated "></i>-->
+          
             @if($product->option_id == 2 )
                 <span class="products__item__tag">
                      NUEVO
