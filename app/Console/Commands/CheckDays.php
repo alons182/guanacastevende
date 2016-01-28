@@ -59,12 +59,12 @@ class CheckDays extends Command
                 $countInactive++;
                 $arrProductsIna[]= $product->name;
             }
-            if($differenceDays >= 60 && $product->published == 0)
+            /*if($differenceDays >= 60 && $product->published == 0)
             {
                 $arrProductsDel[]= $product->name;
                 $this->productRepository->destroy($product->id);
                 $countDeleted++;
-            }
+            }*/
 
         }
 
