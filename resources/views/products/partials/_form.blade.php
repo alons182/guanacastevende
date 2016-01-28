@@ -142,7 +142,7 @@
                 <div class="form__group">
                     {!! Form::label('description','Descripción:',['class'=>'col-sm-2 control-label'])!!}
 
-                        {!! Form::textarea('description',null,['class'=>'form__control','id'=>'ckeditor','required'=>'required']) !!}
+                        {!! Form::textarea('description',null,['class'=>'form__control','id'=>'ckeditor','required'=>'required','maxlength'=>'1000']) !!}
                         {!! errors_for('description',$errors) !!}
 
 

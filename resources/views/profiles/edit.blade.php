@@ -22,7 +22,7 @@
                 </div>
                 <!-- Identification Form Input -->
                 <div class="form__group">
-                    {!! Form::label('ide', 'Identificación:') !!}
+                    <label for="ide">Identificación <small><b>(No se será publico)</b></small>: </label>
                     {!! Form::text('ide', null, ['class' => 'form__control','required' => 'required']) !!}
                     {!! errors_for('ide',$errors) !!}
                 </div>
@@ -33,7 +33,7 @@
                 </div>
                 <!-- Address Form Input -->
                 <div class="form__group">
-                    {!! Form::label('address', 'Dirección:') !!}
+                    <label for="address">Dirección <small><b>(No se será publico)</b></small>: </label>
                     {!! Form::text('address', null, ['class' => 'form__control','required' => 'required']) !!}
                     {!! errors_for('address',$errors) !!}
 
