@@ -218,16 +218,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
         'as' => 'users_list',
         'uses' => 'Admin\UsersController@list_users'
     ]);
-
-    Route::resource('users', 'Admin\UsersController');
-
-    Route::get('users', [
-        'as'   => 'users',
-        'uses' => 'Admin\UsersController@index'
-
-    ]);
-
-
     Route::get('users/register', [
         'as'   => 'user_register',
         'uses' => 'Admin\UsersController@create'
@@ -237,6 +227,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
         'as'   => 'user_register.store',
         'uses' => 'Admin\UsersController@store'
     ]);
+
+    Route::resource('users', 'Admin\UsersController');
+
+    Route::get('users', [
+        'as'   => 'users',
+        'uses' => 'Admin\UsersController@index'
+
+    ]);
+
+    
     foreach (['active', 'inactive'] as $key)
     {
         Route::post('users/{user}/' . $key, array(
