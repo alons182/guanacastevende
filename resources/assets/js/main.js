@@ -11,6 +11,10 @@
         infoBox = $('#InfoBox'),
         filters = $(".filtros");
 
+    $('.currency').maskMoney({
+        precision: 0
+    });
+    
     var $purchaseForm = $('.purchase-form');
     var $terms = $purchaseForm.find('.terms-input #terms');
 

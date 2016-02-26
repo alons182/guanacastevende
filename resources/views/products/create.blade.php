@@ -14,19 +14,7 @@
 
 @stop
 @section('scripts')
-
-   <!-- <script src="/vendor/dropzone/dropzone.js"></script>-->
-    <!--<script src="/vendor/ckeditor/ckeditor.js"></script>
-    <script>
-
-        CKEDITOR.replace( 'ckeditor' , {
-            uiColor: '#FAFAFA',
-            forcePasteAsPlainText : true,
-            removePlugins : 'sourcearea'
-
-
-        });
-    </script>-->
+   
 @stop
 
 

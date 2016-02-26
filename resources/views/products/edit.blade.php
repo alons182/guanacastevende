@@ -19,13 +19,5 @@
     <div class="clear"></div>
 @stop
 @section('scripts')
-    <!--<script src="/vendor/ckeditor/ckeditor.js"></script>
-    <script>
-
-        CKEDITOR.replace( 'ckeditor' , {
-            uiColor: '#FAFAFA',
-            forcePasteAsPlainText : true,
-            removePlugins : 'sourcearea'
-        });
-    </script>-->
+  
 @stop

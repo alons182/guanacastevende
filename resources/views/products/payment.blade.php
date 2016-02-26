@@ -12,9 +12,9 @@
 
             <div class="payment__methods">
                 <span class="pull-left left"><input id="payment_method_card" type="radio" value="1" name="payment_method" checked data-method="card" data-route="{!! route('product_payment.purchase',$product->id) !!}"> <label for="payment_method_card" title="Tarjeta de credito o debito"><img src="/img/visa-mastercard.png" alt="Tarjeta de credito o debito" /></label></span>
-               @if($currentUser->id == 1 || $currentUser->id == 7 || $currentUser->id == 8)
+               <!--$currentUser-->
                 <span class="pull-right right"><input id="payment_method_paypal" type="radio" value="2" name="payment_method" data-method="paypal" data-route="{!! route('product_payment.purchasePaypal',$product->id) !!}"><label for="payment_method_paypal" title="Paypal"> <img src="https://www.paypalobjects.com/webstatic/es_MX/mktg/logos-buttons/grey_btn-356x42.png" alt="PayPal Credit" /></label></span>
-                @endif
+               
             </div>
             <section class="panel payment__method__card">
 

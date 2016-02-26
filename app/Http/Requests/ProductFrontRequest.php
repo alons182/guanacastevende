@@ -26,7 +26,7 @@ class ProductFrontRequest extends Request
         return [
             'name' => 'required|max:20',
             'description' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required',
             'categories' => 'required',
             'image' => 'required|image'
 

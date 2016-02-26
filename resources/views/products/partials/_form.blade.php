@@ -152,7 +152,7 @@
 
                         <div class="input__group input__group--left">
                             <span class="input__group__icon">&cent;</span>
-                            {!! Form::text('price',isset($product) ? money($product->price, false) : null,['class'=>'form__control','required'=>'required', 'onkeypress'=>'return event.charCode >= 48 && event.charCode <= 57'])!!}
+                            {!! Form::text('price',isset($product) ? money($product->price, false) : null,['class'=>'form__control currency','required'=>'required'/*, 'onkeypress'=>'return event.charCode >= 48 && event.charCode <= 57'*/])!!}
                             {!! errors_for('price',$errors) !!}
 
                         </div>
