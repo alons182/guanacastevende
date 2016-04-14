@@ -33,7 +33,7 @@
 
                             <td>{!!$tag->id!!}</td>
                             <td>{!!$tag->name!!}</td>
-                            <td>{!!$tag->products->count() !!}</td>
+                            <td>{!!$tag->products()->count() !!}</td>
                             <td class="center">{!! $tag->created_at !!}</td>
 
 
