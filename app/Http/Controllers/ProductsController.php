@@ -455,7 +455,8 @@ class ProductsController extends Controller {
             {
 
                 //actualizamos el estado del producto recien ingresado inactivo si el pago fue denegado
-                $this->productRepository->update_state($product->id, 3); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
+                if($product->published != 1)
+                    $this->productRepository->update_state($product->id, 3); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
 
                // flash('La operación ha sido denegada en el Banco Emisor');
 
@@ -464,7 +465,8 @@ class ProductsController extends Controller {
             {
 
                 //actualizamos el estado del producto recien ingresado inactivo si el pago fue rechazado
-               $this->productRepository->update_state($product->id, 3); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
+               if($product->published != 1)
+                    $this->productRepository->update_state($product->id, 3); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
 
                 //flash('La operación ha sido rechazada');
 
