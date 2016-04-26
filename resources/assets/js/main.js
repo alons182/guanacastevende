@@ -242,16 +242,20 @@
     });
 
 
-    $body.hoverIntent({
+   /* $body.hoverIntent({
         over: function () {
             $('.products__categories__ul').slideDown(200);
         },
         out: function () {
             $('.products__categories__ul').slideUp(200);
         },
-        selector: '.btn-categories',/*'.products__categories.mobile',*/
+        selector: '.btn-categories',/*'.products__categories.mobile',
         timeout: 200
-    });
+    });*/
+    $('.btn-categories').on('click',function (e) {
+        
+        $('.products__categories__ul').slideDown(200);
+    })
 
     categories.find(".parent").hoverIntent({
         over: function () {
