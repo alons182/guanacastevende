@@ -253,8 +253,8 @@
         timeout: 200
     });*/
     $('.btn-categories').on('click',function (e) {
-        
-        $('.products__categories__ul').slideDown(200);
+
+        $('.products__categories__ul').slideToggle(200);
     })
 
     categories.find(".parent").hoverIntent({
