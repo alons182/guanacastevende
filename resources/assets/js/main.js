@@ -255,8 +255,10 @@
     $('.btn-categories').on('click',function (e) {
 
         $('.products__categories__ul').slideToggle(200);
-    })
-
+    });
+    $('products__categories.mobile').find(".parent").on('click',function (e) {
+        $(this).find(">.products__categories__submenu").slideToggle(200);
+    });
     categories.find(".parent").hoverIntent({
         over: function () {
             $(this).find(">.products__categories__submenu").slideDown(200);
