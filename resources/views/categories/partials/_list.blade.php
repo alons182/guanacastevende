@@ -1,6 +1,6 @@
 <aside class="products__categories">
     <h2 class="products__categories__title">Categorias</h2>
-
+    <button class="btn-categories">Categorias</button>
     <?php
     $roots = $categories;
 

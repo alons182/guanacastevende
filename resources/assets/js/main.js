@@ -249,7 +249,7 @@
         out: function () {
             $('.products__categories__ul').slideUp(200);
         },
-        selector: '.products__categories.mobile',
+        selector: '.btn-categories',/*'.products__categories.mobile',*/
         timeout: 200
     });
 

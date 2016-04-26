@@ -741,8 +741,24 @@ blockquote
 			.products
 				&__categories
 					&__title
-						display block
+						display none
 						//margin-bottom 2rem
+		.btn-categories
+			display block
+			background-color verde
+			color white
+			border none
+			padding .5rem 1rem
+			&:after
+				content ''
+				width 0
+				height 0
+				border-left 5px solid transparent
+				border-right 5px solid transparent
+				border-top 5px solid white
+				position relative
+				top 10px
+				left 10px			
 		&__title
 			color oscuro
 			text-transform uppercase
@@ -961,6 +977,9 @@ blockquote
 			margin-top 2rem
 			&__title
 				cursor inherit
+				
+			.btn-categories
+				display none
 			&__ul
 				display block !important
 			&__submenu
