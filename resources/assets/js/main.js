@@ -256,15 +256,22 @@
 
         $('.products__categories__ul').slideToggle(200);
     });
-    $('products__categories.mobile').find(".parent").on('click',function (e) {
+    /*categories.find(".parent").on('click',function (e) {
+       
         $(this).find(">.products__categories__submenu").slideToggle(200);
-    });
+    });*/
     categories.find(".parent").hoverIntent({
         over: function () {
-            $(this).find(">.products__categories__submenu").slideDown(200);
+            if (getWindowWidth() >= 1024) {
+                $(this).find(">.products__categories__submenu").slideDown(200);
+            }else{
+                $(this).find(">.products__categories__submenu").slideToggle(200);
+            }
         },
         out: function () {
-            $(this).find(">.products__categories__submenu").slideUp(200);
+            if (getWindowWidth() >= 1024) {
+                $(this).find(">.products__categories__submenu").slideUp(200);
+            }
         },
         timeout: 200
 
