@@ -15,7 +15,7 @@ class ProductsController extends ApiController
     function __construct(ProductTransformer $productTransformer)
     {
         $this->productTransformer = $productTransformer;
-        $this->middleware('auth.basic',['only' => 'post']);
+        $this->middleware('auth.basic',['only' => 'store']);
     }
 
     /**
