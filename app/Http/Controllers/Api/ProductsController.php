@@ -43,6 +43,12 @@ class ProductsController extends ApiController
     public function store(Request $request)
     {
 
+       if(! auth()->user()->hasRole('administrator'))
+        {
+           $this->setStatusCode(422);
+           return $this->respondWithError('No have permission');
+        }
+
        if( !$request->input('user_id'))
        {
            $this->setStatusCode(422);
