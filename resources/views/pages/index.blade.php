@@ -14,10 +14,7 @@
                 <div class="cycle-next"><i class="icon-angle-right"></i></div>
 
                 
-                <div class="banner__slide" style="background-image: url('/img/rifa-gte-vende-iphone.jpg')">
-
-                    <a href="#" class="banner__slide__link" ></a>
-                </div>
+                
                 <div class="banner__slide" style="background-image: url('/img/gte-vende-banner-ya-esta-vendiendo.jpg')">
 
                     <a href="#" class="banner__slide__link" ></a>
