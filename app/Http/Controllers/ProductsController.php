@@ -82,10 +82,10 @@ class ProductsController extends Controller {
 
         //paypal
         $this->modeApiPaypal = "live";
-        $this->userApiPaypal = "oporto_api1.avotz.com";
-        $this->passwordApiPaypal = "QFPRMSAFMD9PF39Y";
-        $this->signatureApiPaypal = "AhGNifOfpUYJzHqWRIdZJhJXCY44AKAInw3g1Cymr8yFklI034BgKdUs";
-
+        $this->userApiPaypal = env('USER_API_PAYPAL');
+        $this->passwordApiPaypal = env('PASS_API_PAYPAL'); 
+        $this->signatureApiPaypal = env('SIGNATURE_API_PAYPAL');
+       
     }
 
     /**
