@@ -67,25 +67,25 @@ class ProductsController extends Controller {
     function __construct(ProductRepository $productRepository, PhotoRepository $photoRepository, CategoryRepository $categoryRepository, PaymentRepository $paymentRepository, ContactMailer $mailer)
     {
         $this->productRepository = $productRepository;
-        $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update','Paid','postPaid', 'destroy']]);
+        $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update','payment','purchase','purchaseResponse', 'destroy']]);
         $this->photoRepository = $photoRepository;
         $this->categoryRepository = $categoryRepository;
         $this->paymentRepository = $paymentRepository;
         $this->mailer = $mailer;
 
-        $this->acquirerId = 12;//99;
-        $this->commerceId = 6221;//7574;
-        $this->mallId = 1;
-        $this->purchaseCurrencyCode = 188; //colones - 840 dolares
-        $this->terminalCode = 00000000;
-        $this->vectorInicializacion = "3293707751578678";//"4760916219954089";
+        $this->acquirerId = env('ACQUIRE_ID'); 
+        $this->commerceId = env('COMMERCE_ID');
+        $this->mallId = env('MALL_ID');
+        $this->purchaseCurrencyCode = env('CURRENCY_CODE');
+        $this->terminalCode = env('TERMINAL_CODE'); 
+        $this->vectorInicializacion = env('VECTOR');
 
         //paypal
-        $this->modeApiPaypal = "live";
+        $this->modeApiPaypal = env('MODE_API_PAYPAL');
         $this->userApiPaypal = env('USER_API_PAYPAL');
         $this->passwordApiPaypal = env('PASS_API_PAYPAL'); 
         $this->signatureApiPaypal = env('SIGNATURE_API_PAYPAL');
-       
+
     }
 
     /**
