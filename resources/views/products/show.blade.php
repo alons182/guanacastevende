@@ -117,7 +117,7 @@
                         <!--<div class="fb-comments" data-href="{!! Request::url()!!}" data-numposts="5"></div>-->
                         {!! Form::open(['route'=>['comments.store', $product->id], 'class'=>'form-horizontal']) !!}
 
-                        <strong>{{ $comments->total() }} Preguntar al vendedor </strong>
+                        <strong>{{ $comments->total() }} Comentarios </strong>
                        <hr />
                         <div class="form">
                             <div class="form__group">
@@ -150,7 +150,7 @@
 
                     @else
                         <a href="{!! URL::to('auth/login') !!}" class="btn btn-success"
-                           title="Inicia Sesion para ver los comentarios!">Ver comentarios</a>
+                           title="Inicia Sesion para ver los comentarios!">Preguntar al vendedor</a>
                     @endif
                 </div>
             </div>
