@@ -117,7 +117,7 @@
                         <!--<div class="fb-comments" data-href="{!! Request::url()!!}" data-numposts="5"></div>-->
                         {!! Form::open(['route'=>['comments.store', $product->id], 'class'=>'form-horizontal']) !!}
 
-                        <strong>{{ $comments->total() }} Comentarios </strong>
+                        <strong>{{ $comments->total() }} Preguntar al vendedor </strong>
                        <hr />
                         <div class="form">
                             <div class="form__group">
