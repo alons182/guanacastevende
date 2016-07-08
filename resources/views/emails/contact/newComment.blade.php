@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>Nueva Pregunta publicado en el producto: {{ $product['name'] }}</h1>
+<h1>Nueva Pregunta publicada en el producto: {{ $product['name'] }}</h1>
 <p>Puedes revisarlo y contestarlo en el siguiente enlace: <a href="{{ url('/products/'.$product['id']) }}" target="_blank">aquí</a></p>
 <p> Seguinos en nuestras redes sociales para estar atento a las sorpresas !!</p>
 <div class="logo" style="text-align: center;">
