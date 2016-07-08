@@ -2,15 +2,16 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Información desde el sitio Guanacaste Vende - Nuevo Comentario Publicado</title>
+    <title>Información desde el sitio Guanacaste Vende - Nueva Pregunta Publicado</title>
 </head>
 <body>
+
+<h1>Nueva Pregunta publicado en el producto: {{ $product['name'] }}</h1>
+<p>Puedes revisarlo y contestarlo en el siguiente enlace: <a href="{{ url('/products/'.$product['id']) }}" target="_blank">aquí</a></p>
+<p> Seguinos en nuestras redes sociales para estar atento a las sorpresas !!</p>
 <div class="logo" style="text-align: center;">
     <img src="{{ url('/img/logo-email.png') }}" alt="Guanacaste Vende">
 </div>
-<p>Nuevo Comentario publicado en el producto: {{ $product['name'] }}</p>
-<p>Puedes revisarlo y contestarlo en el siguiente enlace: <a href="{{ url('/products/'.$product['id']) }}" target="_blank">aquí</a></p>
-<p> Seguinos en nuestras redes sociales para estar atento a las sorpresas !!</p>
 <a style="display: inline-block; padding: 5px;" href="https://www.facebook.com/guanacastevende" target="_blank"><img src="{{ url('/img/facebook.jpg') }}"
                                                                                                                      alt="Facebook"></a>
 <a style="display: inline-block; padding: 5px;" href="https://twitter.com/GuanacasteVende" target="_blank"><img src="{{ url('/img/twitter.jpg') }}"
