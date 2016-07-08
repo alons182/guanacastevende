@@ -1,7 +1,7 @@
 <blockquote>
   <p>{{$comment->body}}</p>
   <footer>
-    Comentario por <a href="{!! URL::route('profile.show', [$comment->author->username]) !!}">{{ $comment->author->username}}</a>
+    Pegunta por <a href="{!! URL::route('profile.show', [$comment->author->username]) !!}">{{ $comment->author->username}}</a>
      on <span>{{ $comment->getTimeagoAttribute() }}</span>
      @include('products.partials.reply-form')
   </footer>
