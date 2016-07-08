@@ -7,7 +7,7 @@
 <body>
 
 <h1>Nueva Pregunta publicada en el producto: {{ $product['name'] }}</h1>
-<p>Puedes revisarlo y contestarlo en el siguiente enlace: <a href="{{ url('/products/'.$product['id']) }}" target="_blank">aquí</a></p>
+<p>Puedes revisarlo y contestarlo en el siguiente enlace: <a href="{{ url('/products/'.$product['id']) }}" target="_blank" style="font-size:18px;font-weight:bold;">aquí</a></p>
 <p> Seguinos en nuestras redes sociales para estar atento a las sorpresas !!</p>
 <div class="logo" style="text-align: center;">
     <img src="{{ url('/img/logo-email.png') }}" alt="Guanacaste Vende">

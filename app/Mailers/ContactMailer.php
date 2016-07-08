@@ -44,7 +44,7 @@ class ContactMailer extends Mailer{
     {
        
         $view = 'emails.contact.newComment';
-        $subject = 'Información desde el sitio Guanacaste Vende - Nuevo Comentario publicado en tu producto';
+        $subject = 'Información desde el sitio Guanacaste Vende - Nueva Pregunta publicada en tu producto';
         $emailTo = $data['email'];
 
         return $this->sendTo($emailTo, $subject, $view, $data);
