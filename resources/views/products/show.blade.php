@@ -117,18 +117,18 @@
                         <!--<div class="fb-comments" data-href="{!! Request::url()!!}" data-numposts="5"></div>-->
                         {!! Form::open(['route'=>['comments.store', $product->id], 'class'=>'form-horizontal']) !!}
 
-                        <strong>{{ $comments->total() }} Comentarios </strong>
+                        <strong>{{ $comments->total() }} Preguntas </strong>
                        <hr />
                         <div class="form">
                             <div class="form__group">
                                  
                                
-                                    {!! Form::textarea('body',null,['class'=>'form__control','required'=>'required','placeholder'=>'Escribe un comentario']) !!}
+                                    {!! Form::textarea('body',null,['class'=>'form__control','required'=>'required','placeholder'=>'Escribe una pregunta para el vendedor']) !!}
                                     {!! errors_for('body',$errors) !!}
 
                             </div>
                             <div class="form__group">
-                                {!! Form::submit('Comentar',['class'=>'btn btn-primary'])!!}
+                                {!! Form::submit('Preguntar',['class'=>'btn btn-primary'])!!}
                             </div>
                         </div>
 
