@@ -16,7 +16,7 @@
             {!! Form::open(['route' =>['option_multiple'],'method' => 'post', 'id' =>'form-option-chk','data-confirm' => 'You are sure?']) !!}
             <button type="submit" class="btn-multiple btn btn-success btn-sm " data-action="active" title="Active"><i class="fa fa-check-circle"></i></button>
             <button type="submit" class="btn-multiple btn btn-danger btn-sm " data-action="inactive" title="Inactive"><i class="fa fa-times-circle"></i></button>
-            <button type="submit" class="btn-multiple btn btn-danger btn-sm " data-action="delete" title="Delete"><i class="fa fa-trash-o"></i></button>
+            <!--<button type="submit" class="btn-multiple btn btn-danger btn-sm " data-action="delete" title="Delete"><i class="fa fa-trash-o"></i></button>-->
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -71,9 +71,9 @@
                                 <a class="btn btn-info" href="{!! URL::route('admin.products.edit', [$product->id]) !!}">
                                 <i class="fa fa-edit"></i>
                                 </a>
-                                <button type="submit" class="btn btn-danger" form="form-delete" formaction="{!! URL::route('admin.products.destroy', [$product->id]) !!}">
+                                <!--<button type="submit" class="btn btn-danger" form="form-delete" formaction="{!! URL::route('admin.products.destroy', [$product->id]) !!}">
                                 <i class="fa fa-trash-o"></i>
-                                </button>
+                                </button>-->
                             </td>
                         </tr>
                     @endforeach
