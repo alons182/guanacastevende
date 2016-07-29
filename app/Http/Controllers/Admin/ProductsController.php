@@ -188,11 +188,11 @@ class ProductsController extends Controller {
      */
     public function destroy($id)
     {
-        $this->productRepository->destroy($id);
+        /*$this->productRepository->destroy($id);
 
         Flash::message('Product Deleted');
 
-        return Redirect()->route('products');
+        return Redirect()->route('products');*/
     }
 
     /**
@@ -214,8 +214,8 @@ class ProductsController extends Controller {
                 $this->productRepository->update_state($id, 1);
             elseif($action == "inactive")
                 $this->productRepository->update_state($id, 0);
-            elseif($action == "delete")
-                $this->productRepository->destroy($id);
+            /*elseif($action == "delete")
+                $this->productRepository->destroy($id);*/
 
         }
 
