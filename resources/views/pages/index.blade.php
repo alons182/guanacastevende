@@ -14,10 +14,6 @@
                 <div class="cycle-next"><i class="icon-angle-right"></i></div>
 
                 
-                <div class="banner__slide" style="background-image: url('/img/gte-vende-banner-ya-esta-MES-ANEXION.jpg')">
-
-                    <a href="https://twibbon.com/Support/somosguanacaste" class="banner__slide__link" target="_blank"></a>
-                </div>
                 <div class="banner__slide" style="background-image: url('/img/gte-vende-banner-ya-esta-vendiendo.jpg')">
 
                     <a href="#" class="banner__slide__link" ></a>
