@@ -108,7 +108,7 @@ class ProductsController extends Controller {
 
     public function search(Request $request, $category = null)
     {
-        dd($category);
+        //dd($category);
         $search = array_add($request->all(), 'published', [1,4]);
 
         //if ($search['q'] == '') return view('categories.index');
@@ -118,7 +118,7 @@ class ProductsController extends Controller {
             list($products, $category) = $this->productRepository->findByCategory($category);
 
         $q = (isset($search['q'])) ? $search['q'] : '';
-
+        dd($products->toArray());
         return view('products.index')->with(compact('products', 'q', 'category'));
     }
 
