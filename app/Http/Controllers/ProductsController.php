@@ -112,8 +112,10 @@ class ProductsController extends Controller {
         $search = array_add($request->all(), 'published', [1,4]);
 
         //if ($search['q'] == '') return view('categories.index');
-        if (isset($search['q']) || ! $category)
+        if (isset($search['q']) || ! $category){
+            dd('d');
             $products = $this->productRepository->getAll($search);
+        }
         else
             list($products, $category) = $this->productRepository->findByCategory($category);
 
