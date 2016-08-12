@@ -23,7 +23,7 @@
 
         </article>
         @if ($products->total())
-            <div class="pagination-container">{!! $products->appends(['q'=> $q, 'category' => $category->id ])->render() !!}</div>
+            <div class="pagination-container">{!! $products->appends(['q'=> $q ])->render() !!}</div>
         @endif
     </div>
 
