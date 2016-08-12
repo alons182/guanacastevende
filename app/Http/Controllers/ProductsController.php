@@ -102,7 +102,7 @@ class ProductsController extends Controller {
 
         $products = $this->productRepository->getall($search);
         $q = (isset($search['q'])) ? $search['q'] : '';
-
+        dd('page 2');
         return view('products.index')->with(compact('products', 'q'));
     }
 
