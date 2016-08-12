@@ -12,9 +12,9 @@
                 <h1>
                     @if(isset($category))
                         Categoria : {{ $category }}
-                        @foreach($category->getAncestors() as $parent)
+                        <!--@foreach($category->getAncestors() as $parent)
                             {!! $parent->name !!} -
-                         @endforeach
+                         @endforeach-->
                         {!! $category->name !!}
                     @else
                         Todos los Productos
