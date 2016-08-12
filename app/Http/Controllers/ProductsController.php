@@ -118,7 +118,7 @@ class ProductsController extends Controller {
             list($products, $category) = $this->productRepository->findByCategory($category);
 
         $q = (isset($search['q'])) ? $search['q'] : '';
-        dd($products->toArray());
+        
         return view('products.index')->with(compact('products', 'q', 'category'));
     }
 
