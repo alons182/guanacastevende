@@ -108,7 +108,7 @@ class ProductsController extends Controller {
 
     public function search(Request $request, $category = null)
     {
-        dd($category);
+        
         $search = array_add($request->all(), 'published', [1,4]);
 
         //if ($search['q'] == '') return view('categories.index');
