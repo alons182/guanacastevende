@@ -1,6 +1,6 @@
 @extends('layouts.layout')
-@section('meta-title')Guanacaste Vende | @if(isset($category))  {!! $category->name !!} @endif | Productos @stop
-@section('meta-description') @if(isset($category)) Lista de productos de la categoria: {!! $category->name !!}@else Todos los Productos @endif @stop
+@section('meta-title')Guanacaste Vende | @if(isset($category)) @foreach($category->getAncestors() as $parent) {!! $parent->name !!} - @endforeach {!! $category->name !!} @endif | Productos @stop
+@section('meta-description') @if(isset($category)) Lista de productos de la categoria: @foreach($category->getAncestors() as $parent) {!! $parent->name !!} - @endforeach {!! $category->name !!}@else Todos los Productos @endif @stop
 
 @section('content')
     <div class="products">
