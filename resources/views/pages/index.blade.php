@@ -13,9 +13,9 @@
                 <div class="cycle-prev"><i class="icon-angle-left"></i></div>
                 <div class="cycle-next"><i class="icon-angle-right"></i></div>
 
-                <div class="banner__slide" style="background-image: url('/img/mom2.jpg')">
+                <div class="banner__slide" style="background-image: url('/img/rifa-entradas-cine.jpg')">
 
-                    <a href="https://www.guanacastevende.com/categories/164/products" class="banner__slide__link" ></a>
+                    <a href="#" class="banner__slide__link" ></a>
                 </div>
                 <div class="banner__slide" style="background-image: url('/img/gte-vende-banner-ya-esta-vendiendo.jpg')">
 
