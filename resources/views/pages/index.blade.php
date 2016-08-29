@@ -15,7 +15,7 @@
 
                 <div class="banner__slide" style="background-image: url('/img/rifa-entradas-cine.jpg')">
 
-                    <a href="#" class="banner__slide__link" ></a>
+                    <a href="https://www.facebook.com/guanacastevende" class="banner__slide__link" target="_blank"></a>
                 </div>
                 <div class="banner__slide" style="background-image: url('/img/gte-vende-banner-ya-esta-vendiendo.jpg')">
 
