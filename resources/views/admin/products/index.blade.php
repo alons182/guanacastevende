@@ -27,6 +27,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>User</th>
                         <th>Created</th>
 
                         <th>Status</th>
@@ -41,6 +42,7 @@
                             <td>{!!$product->id!!}</td>
                             <td>{!!$product->name!!}</td>
                             <td>{!! str_limit($product->description, 20) !!}</td>
+                            <td>{!!$product->user_id!!}</td>
                             <td class="center">{!! $product->created_at !!}</td>
 
                             <td class="center">

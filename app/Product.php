@@ -14,8 +14,8 @@ class Product extends Model {
     {
         return $query->where(function ($query) use ($search)
         {
-            $query->where('name', 'like', '%' . $search . '%');
-                //->orWhere('description', 'like', '%' . $search . '%');
+            $query->where('name', 'like', '%' . $search . '%')
+                 ->orWhere('user_id', 'like', '%' . $search . '%');
         });
     }
     public function scopeSearchSlug($query, $search)
