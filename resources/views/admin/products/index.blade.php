@@ -42,7 +42,7 @@
                             <td>{!!$product->id!!}</td>
                             <td>{!!$product->name!!}</td>
                             <td>{!! str_limit($product->description, 20) !!}</td>
-                            <td>{!!$product->user_id!!}</td>
+                            <td>{!!$product->user->email !!}</td>
                             <td class="center">{!! $product->created_at !!}</td>
 
                             <td class="center">
