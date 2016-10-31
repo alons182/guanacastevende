@@ -114,7 +114,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
+        //Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -150,7 +150,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Baum\Providers\BaumServiceProvider::class,
         App\Providers\NewsletterListServiceProvider::class,
-        //Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
 
     ],
 
