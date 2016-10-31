@@ -14,7 +14,8 @@
         "baum/baum": "~1.1",
         "mailchimp/mailchimp": "~2.0",
         "mandrill/mandrill": "~1.0",
-        "paypal/merchant-sdk-php":"3.9.*"
+        "paypal/merchant-sdk-php":"3.9.*",
+        "bugsnag/bugsnag-laravel": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
