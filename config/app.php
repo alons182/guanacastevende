@@ -150,7 +150,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Baum\Providers\BaumServiceProvider::class,
         App\Providers\NewsletterListServiceProvider::class,
-        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
+        //Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
 
     ],
 
@@ -203,7 +203,7 @@ return [
         'Html'      => Illuminate\Html\HtmlFacade::class,
         'Image'     => Intervention\Image\Facades\Image::class,
         'Flash'     => Laracasts\Flash\Flash::class,
-        'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
+        //'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
 
     ],
 
