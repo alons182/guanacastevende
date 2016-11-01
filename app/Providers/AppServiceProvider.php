@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,7 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
         $this->app->alias('bugsnag.multi', \Illuminate\Contracts\Logging\Log::class);
         $this->app->alias('bugsnag.multi', \Psr\Log\LoggerInterface::class);
+        
     }
 }
