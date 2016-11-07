@@ -19,7 +19,7 @@ return [
 
     "token"    => "Este token de recuperación de contraseña es inválido.",
 
-    "sent"     => "¡Recordatorio de contraseña enviado!",
+    "sent"     => "¡Recordatorio de contraseña enviado! Revisa tu correo electrónico",
 
     "reset"    => "¡Tu contraseña ha sido restablecida!",
 
