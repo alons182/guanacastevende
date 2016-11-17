@@ -23,8 +23,8 @@ class UserEditRequest extends Request {
 	{
 		return [
             'username' => 'required',
-            'email' => 'required|email|unique:users,email,'.auth()->id(),
-            'password' => 'confirmed|size:6',
+            'email' => 'required|email',
+            'password' => 'confirmed|min:6',
 		];
 	}
 
