@@ -45,10 +45,10 @@ class Handler extends ExceptionHandler
 
         if ($e instanceof ModelNotFoundException)
         {
-            return response()->json([
+           /* return response()->json([
                 'error' => ['message' => 'Resoucer not Found']
-            ],404);
-            //return redirect()->home(); //response()->view('errors.'.'404');
+            ],404);*/
+            return /*redirect()->home(); */ response()->view('errors.'.'404');
         }
         if ($e instanceof MoveNotPossibleException)
         {
