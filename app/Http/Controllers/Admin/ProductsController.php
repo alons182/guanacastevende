@@ -130,6 +130,21 @@ class ProductsController extends Controller {
      *
      * @return Response
      */
+    public function active_all()
+    {
+        \DB::table('products')->update(['published' => 1]);
+
+        Flash::message('All Products Activated');
+
+        return Redirect()->route('products');
+    }
+    /**
+     * published a Product.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
     public function pub($id)
     {
         $this->productRepository->update_state($id, 1);

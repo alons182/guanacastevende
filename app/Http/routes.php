@@ -263,7 +263,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authByRole:administrator'], 
         'uses' => 'Admin\ProductsController@option_multiple'
     ]);
 
-
+    Route::post('products/activeall', [
+        'as'   => 'products.active_all',
+        'uses' => 'Admin\ProductsController@active_all'
+    ]);
 
     Route::get('products', [
         'as'   => 'products',

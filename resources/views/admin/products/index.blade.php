@@ -11,11 +11,13 @@
         <div class="panel-heading" style="overflow: hidden;">
             {!! link_to_route('admin.products.create','New Product',null,['class'=>'btn btn-success']) !!}
             @include('admin/products/partials/_search')
+
         </div>
         <div class="panel-body no-padding">
             {!! Form::open(['route' =>['option_multiple'],'method' => 'post', 'id' =>'form-option-chk','data-confirm' => 'You are sure?']) !!}
             <button type="submit" class="btn-multiple btn btn-success btn-sm " data-action="active" title="Active"><i class="fa fa-check-circle"></i></button>
             <button type="submit" class="btn-multiple btn btn-danger btn-sm " data-action="inactive" title="Inactive"><i class="fa fa-times-circle"></i></button>
+            <button type="submit"  class="btn btn-info btn-sm" form="form-active-all" formaction="{!! URL::route('products.active_all') !!}">Active All</button>
             <!--<button type="submit" class="btn-multiple btn btn-danger btn-sm " data-action="delete" title="Delete"><i class="fa fa-trash-o"></i></button>-->
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
@@ -100,6 +102,7 @@
 
 
     {!! Form::open(array('method' => 'post', 'id' => 'form-pub-unpub')) !!}{!! Form::close() !!}
+    {!! Form::open(array('method' => 'post', 'id' => 'form-active-all')) !!}{!! Form::close() !!}
     {!! Form::open(['method' => 'post', 'id' => 'form-feat-unfeat']) !!}{!! Form::close() !!}
     {!! Form::open(['method' => 'delete', 'id' =>'form-delete','data-confirm' => 'You are sure?']) !!}{!! Form::close() !!}
 @stop
