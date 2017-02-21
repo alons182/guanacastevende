@@ -52,7 +52,7 @@ class CheckDays extends Command
         {
             $differenceDays = $product->created_at->diffInDays(Carbon::now());
 
-            if($differenceDays >= 30 && $product->published <> 0)
+            if($differenceDays >= 30 && $product->published == 1)
             {
                 $product->published = 0;
                 $product->save();

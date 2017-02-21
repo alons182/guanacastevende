@@ -132,7 +132,7 @@ class ProductsController extends Controller {
      */
     public function active_all()
     {
-        \DB::table('products')->update(['published' => 1]);
+        \DB::table('products')->where('published', 0)->update(['published' => 1]);
 
         Flash::message('All Products Activated');
 
