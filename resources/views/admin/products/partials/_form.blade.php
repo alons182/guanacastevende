@@ -78,9 +78,9 @@
 
 
             <div class="form-group">
-                {!! Form::label('published','Published:',['class'=>'col-sm-2 control-label'])!!}
+                {!! Form::label('published','Status:',['class'=>'col-sm-2 control-label'])!!}
                 <div class="col-sm-10">
-                    {!! Form::select('published', ['1' => 'Yes', '0' => 'No'], null,['class'=>'form-control selectpicker','required'=>'required']) !!}
+                    {!! Form::select('published', ['1' => 'Activo', '0' => 'Inactive', '2' => 'Waiting', '3' => 'Payment Failure','4'=>'Selled'], null,['class'=>'form-control selectpicker','required'=>'required']) !!}
                     {!! errors_for('published',$errors) !!}
                 </div>
 
