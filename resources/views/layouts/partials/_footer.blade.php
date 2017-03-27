@@ -64,7 +64,7 @@ window.smartsupp||(function(d) {
 })(document);
 </script>
 
-<div id='cptup-ready'></div>
+<!-- <div id='cptup-ready'></div>
 <script data-cfasync='false' type='text/javascript'>
     window.captain = {up: function(fn) { captain.topics.push(fn) }, topics: []};
     // Add your settings here:
@@ -78,7 +78,7 @@ window.smartsupp||(function(d) {
         cpt.src = 'https://captainup.com/assets/embed.es.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(cpt);
     })();
-</script>
+</script> -->
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
