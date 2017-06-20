@@ -156,12 +156,16 @@ class ProductsController extends Controller {
             $this->productRepository->update_state($product->id, 2); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
             flash('Producto Creado correctamente');
 
+           
             try {
+                        
                 $this->mailer->newProductCreated(['user'=> Auth()->user(),'product' => $product, 'profile' => Auth()->user()->profile ]);
-            }catch (Swift_RfcComplianceException $e)
+                
+            }catch (\Swift_TransportException $e)  //Swift_RfcComplianceException
             {
-                Log::error($e->getMessage());
+                \Log::error($e->getMessage());
             }
+
 
 
             return Redirect()->route('profile.show', Auth()->user()->username);
@@ -361,12 +365,20 @@ class ProductsController extends Controller {
                 $this->productRepository->update_state($product->id, 1); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
 
                 // informamos via email del producto recien creado y su confirmacion de pago
-                try {
-                    $this->mailer->paymentConfirmation(['email' => Auth()->user()->email, 'product' => $product, 'items' => $items, 'total' => $total]);
-                }catch (Swift_RfcComplianceException $e)
+                 try {
+                        
+                   $this->mailer->paymentConfirmation(['email' => Auth()->user()->email, 'product' => $product, 'items' => $items, 'total' => $total]);
+                    
+                }catch (\Swift_TransportException $e)  //Swift_RfcComplianceException
                 {
-                    Log::error($e->getMessage());
+                    \Log::error($e->getMessage());
                 }
+                // try {
+                //     $this->mailer->paymentConfirmation(['email' => Auth()->user()->email, 'product' => $product, 'items' => $items, 'total' => $total]);
+                // }catch (Swift_RfcComplianceException $e)
+                // {
+                //     Log::error($e->getMessage());
+                // }
 
             }
             if($authorizationResult == 01)
@@ -575,12 +587,20 @@ class ProductsController extends Controller {
             $this->productRepository->update_state($product->id, 1); // 0:inactivo 1:publicado 2:en espera 3:inactivo(pago rechazado o denegado)
 
             // informamos via email del producto recien creado y su confirmacion de pago
-            try {
+             try {
+                        
+                 $this->mailer->paymentConfirmation(['email' => Auth()->user()->email, 'product' => $product, 'items' => $items, 'total' => $total]);
+                    
+                }catch (\Swift_TransportException $e)  //Swift_RfcComplianceException
+                {
+                    \Log::error($e->getMessage());
+                }
+            /*try {
                 $this->mailer->paymentConfirmation(['email' => Auth()->user()->email, 'product' => $product, 'items' => $items, 'total' => $total]);
             }catch (Swift_RfcComplianceException $e)
             {
                 Log::error($e->getMessage());
-            }
+            }*/
 
         }else{
 
@@ -694,15 +714,24 @@ class ProductsController extends Controller {
         $comment->storeCommentForUser((isset($input['user_to_respond'])) ? $input['user_to_respond'] :$product->user->id, $user->id, $input['body'], $productId);
 
       
+        
         try {
+                    
+             $this->mailer->newCommentPublished(['email' => (isset($input['author'])) ? $input['author'] : $product->user->email, 'product' => $product]);
+                
+            }catch (\Swift_TransportException $e)  //Swift_RfcComplianceException
+            {
+                \Log::error($e->getMessage());
+            }
+        // try {
   
-            $this->mailer->newCommentPublished(['email' => (isset($input['author'])) ? $input['author'] : $product->user->email, 'product' => $product]);
+        //     $this->mailer->newCommentPublished(['email' => (isset($input['author'])) ? $input['author'] : $product->user->email, 'product' => $product]);
             
 
-        }catch (Swift_RfcComplianceException $e)
-        {
-            Log::error($e->getMessage());
-        }
+        // }catch (Swift_RfcComplianceException $e)
+        // {
+        //     Log::error($e->getMessage());
+        // }
 
         return Redirect()->route('product_path', $product->id);
         
