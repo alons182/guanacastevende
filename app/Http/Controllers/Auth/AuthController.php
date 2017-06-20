@@ -119,7 +119,15 @@ class AuthController extends Controller
         Auth::login($user);
         Flash::message('Cuenta Creada correctamente. se te ha enviado un correo con la información de usuario. Completa tu perfil por favor, es importante !');
 
-        $this->mailer->welcome($user->toArray());
+      
+          try {
+                        
+               $this->mailer->welcome($user->toArray());
+                
+            }catch (\Swift_TransportException $e)  //Swift_RfcComplianceException
+            {
+                \Log::error($e->getMessage());
+            }
 
         try {
             $this->newsletterList->subscribeTo('Guanacaste Vende',$request->get('email'),$request->get('username'),'');
